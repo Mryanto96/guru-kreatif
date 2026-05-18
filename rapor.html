@@ -1,742 +1,303 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="id" data-theme="light">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Input Nilai Siswa | SMP Persiapan Negeri Pulau Tiga</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Syne:wght@700;800&display=swap"
-        rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
-    <link rel="stylesheet" href="css/style.css" />
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panduan Input Nilai Rapor | Kelas 9A | SMP Persiapan Negeri Pulau Tiga</title>
+    <meta name="description"
+        content="Panduan bagi Bapak/Ibu guru dalam mengisi nilai rapor siswa Kelas 9A semester ganjil tahun ajaran 2023/2024. Lengkap dengan aturan deskripsi, KKM, dan tautan spreadsheet.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
 
     <style>
-        :root {
-            --primary: #2563eb;
-            --primary-dark: #1d4ed8;
-            --primary-light: #eff6ff;
-            --success: #16a34a;
-            --success-light: #dcfce7;
-            --danger: #dc2626;
-            --danger-light: #fee2e2;
-            --warning: #d97706;
-            --warning-light: #fef3c7;
-            --bg: #f0f4f8;
-            --card-bg: #ffffff;
-            --border: #e2e8f0;
-            --text: #0f172a;
-            --text2: #475569;
-            --light: #f8fafc;
-            --radius: 16px;
-            --radius-sm: 10px;
-            --shadow: 0 1px 3px rgba(0, 0, 0, .07), 0 4px 16px rgba(0, 0, 0, .05);
+        /* =============================================
+           CUSTOM STYLES FOR RAPOR.HTML
+           Professional, clean, responsive
+        ============================================= */
+
+        /* Hero Section */
+        .hero-section {
+            padding: 48px 0 32px;
+            background: linear-gradient(135deg, #f0f9ff 0%, #eef2ff 100%);
+            border-bottom: 1px solid var(--border, #e2e8f0);
         }
 
-        [data-theme="dark"] {
-            --bg: #0b1120;
-            --card-bg: #141e2e;
-            --border: #1e2d40;
-            --text: #e8f0fe;
-            --text2: #7a90ab;
-            --light: #1a2540;
-            --primary-light: #1a2e52;
-            --success-light: #0d2a1a;
-            --danger-light: #2a0d0d;
-            --warning-light: #2a1e05;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: 'DM Sans', sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            min-height: 100vh;
-        }
-
-        .page-content {
-            padding-top: 80px;
-        }
-
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Page header */
-        .page-header {
-            padding: 32px 0 24px;
-            border-bottom: 1px solid var(--border);
-            margin-bottom: 28px;
-        }
-
-        .page-title {
-            font-family: 'Syne', sans-serif;
-            font-size: 1.75rem;
-            font-weight: 800;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .page-title-icon {
-            width: 44px;
-            height: 44px;
-            background: var(--primary);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.1rem;
-        }
-
-        .page-subtitle {
-            color: var(--text2);
-            font-size: .85rem;
-            margin-top: 6px;
-            margin-left: 56px;
-        }
-
-        /* Tabs */
-        .tab-nav {
-            display: flex;
-            gap: 4px;
-            background: var(--card-bg);
-            padding: 6px;
-            border-radius: var(--radius);
-            border: 1px solid var(--border);
-            margin-bottom: 24px;
-            width: fit-content;
-        }
-
-        .tab-btn {
-            padding: 10px 20px;
-            border: none;
-            background: transparent;
-            border-radius: var(--radius-sm);
-            font-family: 'DM Sans', sans-serif;
-            font-size: .85rem;
-            font-weight: 600;
-            color: var(--text2);
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: all .2s;
-        }
-
-        .tab-btn.active {
-            background: var(--primary);
-            color: white;
-        }
-
-        .tab-btn:not(.active):hover {
-            background: var(--light);
-            color: var(--text);
-        }
-
-        /* Filter card */
-        .filter-card {
-            background: var(--card-bg);
-            border-radius: var(--radius);
-            padding: 20px 24px;
-            margin-bottom: 20px;
-            border: 1px solid var(--border);
-            box-shadow: var(--shadow);
-        }
-
-        .filter-grid {
-            display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
-            align-items: flex-end;
-        }
-
-        .filter-group {
-            flex: 1;
-            min-width: 160px;
-        }
-
-        .filter-group label {
-            display: block;
-            font-size: .68rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: .06em;
-            color: var(--text2);
-            margin-bottom: 6px;
-        }
-
-        .filter-group select {
-            width: 100%;
-            padding: 10px 14px;
-            border: 1px solid var(--border);
-            border-radius: var(--radius-sm);
-            font-family: 'DM Sans', sans-serif;
-            font-size: .85rem;
-            background: var(--bg);
-            color: var(--text);
-            cursor: pointer;
-            outline: none;
-            transition: border-color .2s;
-        }
-
-        .filter-group select:focus {
-            border-color: var(--primary);
-        }
-
-        /* Buttons */
-        .btn {
-            padding: 10px 18px;
-            border-radius: var(--radius-sm);
-            font-weight: 600;
-            font-size: .85rem;
-            cursor: pointer;
+        .hero-badge {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            border: none;
-            font-family: 'DM Sans', sans-serif;
-            transition: all .2s;
-            white-space: nowrap;
+            background: #dbeafe;
+            color: #1e40af;
+            padding: 6px 14px;
+            border-radius: 40px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            margin-bottom: 20px;
         }
 
-        .btn-primary {
-            background: var(--primary);
-            color: white;
+        .hero-title {
+            font-size: clamp(1.6rem, 5vw, 2.2rem);
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 16px;
+            color: var(--text, #0f172a);
         }
 
-        .btn-primary:hover {
-            background: var(--primary-dark);
-            transform: translateY(-1px);
+        .hero-title .highlight {
+            background: linear-gradient(135deg, #2563eb, #1e40af);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
         }
 
-        .btn-success {
-            background: linear-gradient(135deg, #16a34a, #15803d);
-            color: white;
+        .hero-desc {
+            font-size: clamp(0.9rem, 3vw, 1rem);
+            color: var(--text2, #475569);
+            max-width: 600px;
+            line-height: 1.6;
         }
 
-        .btn-success:hover {
-            opacity: .9;
-            transform: translateY(-1px);
+        /* Alert / Info Cards */
+        .alert-info {
+            background: #eff6ff;
+            border-left: 4px solid #2563eb;
+            border-radius: 16px;
+            padding: 18px 22px;
+            margin: 24px 0;
         }
 
-        /* Info bar */
-        .info-bar {
-            background: var(--primary-light);
-            border: 1px solid #bfdbfe;
-            border-radius: var(--radius-sm);
-            padding: 12px 18px;
+        .alert-warning {
+            background: #fffbeb;
+            border-left: 4px solid #f59e0b;
+            border-radius: 16px;
+            padding: 18px 22px;
+            margin: 24px 0;
+        }
+
+        .rule-card {
+            background: var(--card-bg, #ffffff);
+            border: 1px solid var(--border, #e2e8f0);
+            border-radius: 20px;
+            padding: 20px 24px;
+            margin-bottom: 24px;
+            transition: all 0.2s;
+        }
+
+        .rule-card:hover {
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .rule-title {
+            font-weight: 800;
+            font-size: 1rem;
+            margin-bottom: 16px;
             display: flex;
             align-items: center;
             gap: 10px;
-            font-size: .8rem;
-            color: var(--primary);
-            margin-bottom: 20px;
+            color: var(--text, #0f172a);
         }
 
-        [data-theme="dark"] .info-bar {
-            border-color: #1e40af;
+        .rule-title i {
+            color: #2563eb;
+            font-size: 1.2rem;
         }
 
-        /* Stats row */
-        .stats-row {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(165px, 1fr));
-            gap: 14px;
-            margin-bottom: 20px;
+        .rule-list {
+            list-style: none;
+            padding-left: 0;
         }
 
-        .stat-card {
-            background: var(--card-bg);
-            border-radius: var(--radius-sm);
-            padding: 16px 20px;
-            border: 1px solid var(--border);
-            box-shadow: var(--shadow);
-        }
-
-        .stat-label {
-            font-size: .68rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: .06em;
-            color: var(--text2);
-            margin-bottom: 6px;
-        }
-
-        .stat-value {
-            font-family: 'Syne', sans-serif;
-            font-size: 1.5rem;
-            font-weight: 800;
-        }
-
-        .stat-value.green {
-            color: var(--success);
-        }
-
-        .stat-value.blue {
-            color: var(--primary);
-        }
-
-        .stat-value.orange {
-            color: var(--warning);
-        }
-
-        /* Table */
-        .table-section {
-            background: var(--card-bg);
-            border-radius: var(--radius);
-            border: 1px solid var(--border);
-            box-shadow: var(--shadow);
-            overflow: hidden;
-            margin-bottom: 24px;
-        }
-
-        .table-header {
-            padding: 18px 24px;
-            border-bottom: 1px solid var(--border);
+        .rule-list li {
+            margin-bottom: 12px;
             display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
             gap: 12px;
+            align-items: baseline;
+            font-size: 0.85rem;
+            color: var(--text2, #475569);
+            line-height: 1.5;
         }
 
-        .table-title {
-            font-family: 'Syne', sans-serif;
-            font-size: 1rem;
-            font-weight: 700;
+        .rule-list li i {
+            color: #10b981;
+            font-size: 0.8rem;
+            margin-top: 3px;
+            min-width: 18px;
         }
 
-        .table-scroll {
+        /* Button Spreadsheet */
+        .btn-spreadsheet {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: linear-gradient(135deg, #1e40af, #2563eb);
+            color: white;
+            padding: 12px 28px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-spreadsheet:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(37, 99, 235, 0.35);
+        }
+
+        .btn-outline-small {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: transparent;
+            border: 1px solid var(--border, #e2e8f0);
+            padding: 8px 16px;
+            border-radius: 40px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: var(--text2, #475569);
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .btn-outline-small:hover {
+            border-color: #2563eb;
+            color: #2563eb;
+        }
+
+        /* Table KKM */
+        .kkm-table-wrapper {
             overflow-x: auto;
+            margin: 16px 0;
         }
 
-        table {
+        .kkm-table {
             width: 100%;
             border-collapse: collapse;
-            min-width: 900px;
+            font-size: 0.8rem;
+            min-width: 300px;
         }
 
-        thead th {
-            background: var(--light);
-            padding: 12px 14px;
+        .kkm-table th,
+        .kkm-table td {
+            padding: 10px 12px;
+            text-align: left;
+            border-bottom: 1px solid var(--border, #e2e8f0);
+        }
+
+        .kkm-table th {
+            background: var(--light, #f8fafc);
             font-weight: 700;
-            font-size: .68rem;
-            text-transform: uppercase;
-            letter-spacing: .06em;
-            color: var(--text2);
-            border-bottom: 1px solid var(--border);
-            white-space: nowrap;
+            color: var(--text, #0f172a);
         }
 
-        tbody td {
-            padding: 12px 14px;
-            border-bottom: 1px solid var(--border);
-            vertical-align: middle;
-            font-size: .85rem;
+        /* Example Card */
+        .example-card {
+            background: var(--light, #f8fafc);
+            border-radius: 14px;
+            padding: 14px 18px;
+            margin: 12px 0;
         }
 
-        tbody tr:last-child td {
-            border-bottom: none;
+        .example-bad {
+            background: #fef2f2;
+            border-left: 3px solid #ef4444;
         }
 
-        tbody tr:hover {
-            background: var(--light);
+        .example-good {
+            background: #ecfdf5;
+            border-left: 3px solid #10b981;
         }
 
-        /* Input fields */
-        .nilai-input {
-            width: 72px;
-            padding: 7px 8px;
-            border: 1.5px solid var(--border);
-            border-radius: 8px;
-            text-align: center;
-            font-family: 'DM Sans', sans-serif;
-            font-size: .85rem;
-            font-weight: 600;
-            background: var(--bg);
-            color: var(--text);
-            outline: none;
-            transition: border-color .2s;
-        }
-
-        .nilai-input:focus {
-            border-color: var(--primary);
-        }
-
-        .desc-input {
-            width: 200px;
-            padding: 7px 10px;
-            border: 1.5px solid var(--border);
-            border-radius: 8px;
-            font-family: 'DM Sans', sans-serif;
-            font-size: .72rem;
-            resize: vertical;
-            background: var(--bg);
-            color: var(--text);
-            outline: none;
-            transition: border-color .2s;
-        }
-
-        .desc-input:focus {
-            border-color: var(--primary);
-        }
-
-        /* Badges */
-        .badge {
-            display: inline-flex;
-            align-items: center;
-            padding: 3px 10px;
-            border-radius: 20px;
-            font-size: .68rem;
-            font-weight: 700;
-        }
-
-        .badge-A {
-            background: var(--success-light);
-            color: var(--success);
-        }
-
-        .badge-B {
-            background: #dbeafe;
-            color: #1d4ed8;
-        }
-
-        .badge-C {
-            background: var(--warning-light);
-            color: var(--warning);
-        }
-
-        .badge-D {
-            background: var(--danger-light);
-            color: var(--danger);
-        }
-
-        .badge-empty {
-            background: var(--light);
-            color: var(--text2);
-        }
-
-        /* Action buttons */
-        .action-group {
-            display: flex;
-            gap: 6px;
-        }
-
-        .act-btn {
-            padding: 6px 12px;
-            border-radius: 7px;
-            font-size: .72rem;
-            font-weight: 600;
-            cursor: pointer;
-            border: none;
-            font-family: 'DM Sans', sans-serif;
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            transition: all .15s;
-        }
-
-        .act-edit {
-            background: var(--primary-light);
-            color: var(--primary);
-        }
-
-        .act-edit:hover {
-            background: var(--primary);
-            color: white;
-        }
-
-        .act-save {
-            background: var(--success-light);
-            color: var(--success);
-        }
-
-        .act-save:hover {
-            background: var(--success);
-            color: white;
-        }
-
-        .act-cancel {
-            background: var(--light);
-            color: var(--text2);
-        }
-
-        .act-cancel:hover {
-            background: var(--border);
-        }
-
-        .act-delete {
-            background: var(--danger-light);
-            color: var(--danger);
-        }
-
-        .act-delete:hover {
-            background: var(--danger);
-            color: white;
-        }
-
-        /* Nilai display */
-        .nilai-display {
-            font-family: 'Syne', sans-serif;
-            font-weight: 700;
-            font-size: 1rem;
-        }
-
-        .nilai-tinggi {
-            color: var(--success);
-        }
-
-        .nilai-sedang {
-            color: var(--primary);
-        }
-
-        .nilai-rendah {
-            color: var(--warning);
-        }
-
-        .nilai-kurang {
-            color: var(--danger);
-        }
-
-        /* Rekap cards */
-        .rekap-grid {
+        /* Responsive Grid */
+        .info-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 16px;
-            margin-bottom: 24px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin: 32px 0;
         }
 
-        .rekap-card {
-            background: var(--card-bg);
-            border-radius: var(--radius);
-            border: 1px solid var(--border);
-            box-shadow: var(--shadow);
-            overflow: hidden;
+        /* Fade Up Animation */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
         }
 
-        .rekap-card-header {
-            padding: 14px 20px;
-            border-bottom: 1px solid var(--border);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            background: var(--light);
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
-        .student-avatar {
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            background: var(--primary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: 700;
-            font-size: .85rem;
-            flex-shrink: 0;
+        /* Section Styles */
+        .section {
+            padding: 48px 0;
         }
 
-        .student-name {
-            font-weight: 700;
-            font-size: .9rem;
-        }
-
-        .student-nis {
-            font-size: .72rem;
-            color: var(--text2);
-        }
-
-        .rekap-body {
-            padding: 16px 20px;
-        }
-
-        .rekap-mapel-row {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 7px 0;
-            border-bottom: 1px solid var(--border);
-            font-size: .78rem;
-        }
-
-        .rekap-mapel-row:last-child {
-            border-bottom: none;
-        }
-
-        .rekap-mapel-name {
-            color: var(--text2);
-            flex: 1;
-        }
-
-        .rekap-nilai-pair {
-            display: flex;
-            gap: 8px;
-            align-items: center;
-        }
-
-        .rekap-summary {
-            margin-top: 14px;
-            padding-top: 14px;
-            border-top: 2px solid var(--primary);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .rekap-summary-label {
-            font-size: .72rem;
-            color: var(--text2);
-        }
-
-        .rekap-summary-val {
-            font-family: 'Syne', sans-serif;
+        .section-title {
+            font-size: clamp(1.3rem, 4vw, 1.8rem);
             font-weight: 800;
-            font-size: 1.1rem;
-            color: var(--primary);
-        }
-
-        .completeness-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
-            padding: 3px 10px;
-            border-radius: 20px;
-            font-size: .68rem;
-            font-weight: 700;
-        }
-
-        .complete-full {
-            background: var(--success-light);
-            color: var(--success);
-        }
-
-        .complete-partial {
-            background: var(--warning-light);
-            color: var(--warning);
-        }
-
-        .complete-empty {
-            background: var(--light);
-            color: var(--text2);
-        }
-
-        /* Loading / empty */
-        .loading-overlay {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 64px 20px;
-            gap: 16px;
-        }
-
-        .spinner {
-            width: 44px;
-            height: 44px;
-            border: 3px solid var(--border);
-            border-top-color: var(--primary);
-            border-radius: 50%;
-            animation: spin .7s linear infinite;
-        }
-
-        @keyframes spin {
-            to {
-                transform: rotate(360deg);
-            }
-        }
-
-        .loading-text {
-            color: var(--text2);
-            font-size: .85rem;
-        }
-
-        .empty-state {
-            text-align: center;
-            padding: 64px 20px;
-            color: var(--text2);
-        }
-
-        .empty-icon {
-            font-size: 48px;
             margin-bottom: 16px;
-            opacity: .4;
         }
 
-        .empty-text {
-            font-size: .9rem;
+        .section-subtitle {
+            color: var(--text2, #475569);
+            margin-bottom: 32px;
+            font-size: 0.9rem;
         }
 
-        /* Dark toggle */
-        .dark-toggle {
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            border: 1.5px solid var(--border);
-            background: var(--card-bg);
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.1rem;
-            transition: all .2s;
+        .divider {
+            height: 1px;
+            background: var(--border, #e2e8f0);
+            margin: 48px 0;
         }
 
-        .dark-toggle:hover {
-            border-color: var(--primary);
-        }
-
-        .fade-in {
-            animation: fadeIn .3s ease;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(8px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
+        /* Responsive adjustments */
         @media (max-width: 768px) {
-            .filter-group {
-                min-width: 100%;
+            .hero-section {
+                padding: 32px 0 24px;
             }
 
-            .tab-nav {
-                width: 100%;
+            .rule-card {
+                padding: 16px 18px;
             }
 
-            .tab-btn {
-                flex: 1;
-                justify-content: center;
+            .btn-spreadsheet {
+                padding: 10px 20px;
+                font-size: 0.85rem;
             }
 
-            .rekap-grid {
-                grid-template-columns: 1fr;
+            .section {
+                padding: 32px 0;
+            }
+        }
+
+        /* Custom container override for consistency */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        @media (max-width: 640px) {
+            .container {
+                padding: 0 16px;
             }
         }
     </style>
 </head>
 
 <body>
-    <!-- ===== NAVBAR ===== -->
+
+    <!-- NAVBAR - same as other pages -->
     <nav class="navbar">
         <div class="container">
             <div class="nav-inner">
@@ -760,8 +321,12 @@
                     <li><a href="contact.html">Contact Me</a></li>
                 </ul>
                 <div class="nav-right">
-                    <button class="dark-toggle" id="darkToggleBtn" aria-label="Toggle dark mode"></button>
-                    <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+                    <button class="dark-toggle" aria-label="Toggle dark mode" id="darkToggleBtn">
+                        <div class="dark-toggle-ball">☀️</div>
+                    </button>
+                    <button class="hamburger" aria-label="Menu">
+                        <span></span><span></span><span></span>
+                    </button>
                 </div>
             </div>
         </div>
@@ -779,718 +344,298 @@
         <a href="contact.html">Contact Me</a>
     </div>
 
-    <!-- ===== KONTEN UTAMA ===== -->
+    <!-- MAIN CONTENT -->
     <div class="page-content">
+
+        <!-- HERO SECTION -->
+        <section class="hero-section">
+            <div class="container">
+                <div class="fade-up">
+                    <div class="hero-badge">
+                        <i class="fas fa-graduation-cap"></i> TAHUN AJARAN 2025/2026 • SEMESTER GENAP
+                    </div>
+                    <h1 class="hero-title">
+                        Panduan Pengisian Nilai Rapor<br>
+                        <span class="highlight">Kelas 9A (Lulusan Terbaru)</span>
+                    </h1>
+                    <p class="hero-desc">
+                        Bersama kita wujudkan rapor yang akurat, informatif, dan berkualitas bagi putra-putri daerah
+                        yang telah menyelesaikan pendidikan di SMP Persiapan Negeri Pulau Tiga.
+                    </p>
+                </div>
+            </div>
+        </section>
+
         <div class="container">
 
-            <!-- Page header -->
-            <div class="page-header">
-                <div class="page-title">
-                    <!-- <div class="page-title-icon"><i class="fas fa-graduation-cap"></i></div> -->
-                    Input Nilai Siswa
-                </div>
-                <p style="margin-top:10px; font-size:.9rem; color:#0891b2;">
-                    <i class="fas fa-smile-wink"></i> <strong>Reminder:</strong>
-                    Kepada Bapak/Ibu guru mapel, mohon lengkapi nilai siswa Kelas 9A
-                    rapor tahun ajaran 2023/2024 (semester ganjil). Terima kasih.
-                </p>
-                <p style="margin-top:10px; font-size:.9rem; color:#0891b2;">
-                    <i class="fas fa-smile-wink"></i> <strong>Reminder:</strong>
-                   Minimal panjang deskripsi K3 dan K4 adalah 30 kata agar lebih informatif dan rapi di rapor ketika dicetak. Terima kasih.
+            <!-- Tom Akses Spreadsheet -->
+            <div class="fade-up" style="margin: 24px 0 16px;">
+                <a href="https://docs.google.com/spreadsheets/d/1paOxXwCDW7QNnNlSNuLU5U9G2_khcL6usxtBzI-oJIw/edit?usp=sharing"
+                    target="_blank" class="btn-spreadsheet">
+                    <i class="fas fa-table"></i> Buka Spreadsheet Nilai Rapor
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+                <p style="font-size: 0.7rem; color: var(--text2, #64748b); margin-top: 12px;">
+                    <i class="fas fa-lock"></i> Pastikan untuk mengecek struktur tabel di Spreadsheet sebelum mulai mengisi nilai. Jangan ubah format atau header untuk menjaga konsistensi data.
                 </p>
             </div>
 
-            <!-- Tabs -->
-            <div class="tab-nav">
-                <button class="tab-btn active" id="tabInputBtn" onclick="switchTab('input')">
-                    <i class="fas fa-edit"></i> Input Nilai Per Mapel
-                </button>
-                <button class="tab-btn" id="tabRekapBtn" onclick="switchTab('rekap')">
-                    <i class="fas fa-chart-bar"></i> Rekapitulasi Semua Nilai
-                </button>
-            </div>
-
-            <!-- Filter -->
-            <div class="filter-card">
-                <div class="filter-grid">
-                    <!-- Pilih mapel hanya muncul di tab Input -->
-                    <div class="filter-group" id="mapelFilterWrap">
-                        <label><i class="fas fa-book"></i> &nbsp;Mata Pelajaran</label>
-                        <select id="mapelSelect">
-                            <option value="">-- Pilih Mata Pelajaran --</option>
-                        </select>
-                    </div>
-                    <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:flex-end;">
-                        <button class="btn btn-primary" id="loadBtn"><i class="fas fa-sync-alt"></i> Muat Data</button>
-                        <button class="btn btn-success" id="openSpreadsheetBtn"><i class="fas fa-table"></i>
-                            Spreadsheet</button>
+            <!-- Informasi Penting -->
+            <div class="fade-up alert-info">
+                <div style="display: flex; gap: 14px; align-items: flex-start;">
+                    <i class="fas fa-clock" style="color: #2563eb; font-size: 1.3rem;"></i>
+                    <div>
+                        <strong style="font-size: 0.9rem;">Informasi Penting untuk Bapak/Ibu Guru</strong><br>
+                        <span style="font-size: 0.85rem; color: #334155;">
+                            Mengingat siswa Kelas 9A telah menyelesaikan studi dan akan melanjutkan ke jenjang
+                            pendidikan berikutnya,
+                            rapor akhir perlu segera diterbitkan. Kami mengharapkan partisipasi aktif Bapak/Ibu untuk
+                            melengkapi
+                            nilai pengetahuan dan keterampilan paling lambat <strong>5 hari kerja</strong> sejak hari
+                            ini.
+                            Terima kasih atas dedikasi dan kerja samanya.
+                        </span>
                     </div>
                 </div>
             </div>
 
-            <!-- ===== TAB INPUT ===== -->
-            <div id="tabInput" class="fade-in">
-                <div class="info-bar" id="infoBar" style="display:none;">
-                    <i class="fas fa-info-circle"></i>
-                    <span id="infoBarText"></span>
-                </div>
-                <div class="stats-row" id="statsRow" style="display:none;"></div>
-                <div class="loading-overlay" id="loadingState" style="display:none;">
-                    <div class="spinner"></div>
-                    <p class="loading-text">Memuat data dari server...</p>
-                </div>
-                <div class="table-section" id="tableSection" style="display:none;">
-                    <div class="table-header">
-                        <span class="table-title" id="tableTitle">Data Nilai</span>
+            <!-- Grid Informasi -->
+            <div class="info-grid">
+                <!-- Aturan Deskripsi -->
+                <div class="fade-up rule-card">
+                    <div class="rule-title">
+                        <i class="fas fa-pen-fancy"></i> Pedoman Deskripsi Rapor
                     </div>
-                    <div class="table-scroll">
-                        <table>
+                    <p style="font-size: 0.85rem; margin-bottom: 14px; color: var(--text2);">
+                        Deskripsi yang baik mencerminkan capaian siswa secara objektif dan konstruktif.
+                    </p>
+                    <ul class="rule-list">
+                        <li><i class="fas fa-check-circle"></i> <strong>Maksimal 20 kata</strong> per deskripsi (K3 &
+                            K4) untuk menjaga kerapian rapor.</li>
+                        <li><i class="fas fa-check-circle"></i> Gunakan <strong>kalimat deskriptif</strong> yang
+                            menggambarkan kompetensi spesifik siswa.</li>
+                        <li><i class="fas fa-check-circle"></i> Perhatikan <strong>ejaan, tanda baca, dan
+                                konjungsi</strong> — baca ulang sebelum menyimpan.</li>
+                        <li><i class="fas fa-check-circle"></i> Hindari frasa umum seperti "anak ini pintar" — lebih
+                            baik sebutkan kemampuan spesifik.</li>
+                    </ul>
+                </div>
+
+                <!-- KKM & Predikat -->
+                <div class="fade-up rule-card">
+                    <div class="rule-title">
+                        <i class="fas fa-chart-line"></i> KKM & Kriteria Ketuntasan
+                    </div>
+                    <div class="kkm-table-wrapper">
+                        <table class="kkm-table">
                             <thead>
                                 <tr>
-                                    <th style="width:40px; text-align:center;">NO</th>
-                                    <th style="width:80px; text-align:center;">NIS / NISN</th>
-                                    <th>NAMA</th>
-                                    <th style="text-align:center;">KKM</th>
-                                    <th colspan="3" style="text-align:center; background:#BDD7EE; color:#1e3a5f;">NILAI
-                                        PENGETAHUAN</th>
-                                    <th colspan="3" style="text-align:center; background:#BDD7EE; color:#1e3a5f;">NILAI
-                                        KETERAMPILAN</th>
-                                    <th style="text-align:center;">AKSI</th>
-                                </tr>
-                                <tr>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th style="text-align:center;">ANGKA</th>
-                                    <th style="text-align:center;">PREDIKAT</th>
-                                    <th>DESKRIPSI</th>
-                                    <th style="text-align:center;">ANGKA</th>
-                                    <th style="text-align:center;">PREDIKAT</th>
-                                    <th>DESKRIPSI</th>
-                                    <th></th>
+                                    <th>Mata Pelajaran</th>
+                                    <th>KKM</th>
                                 </tr>
                             </thead>
-                            <tbody id="tableBody"></tbody>
+                            <tbody>
+                                <tr>
+                                    <td>Bahasa Inggris</td>
+                                    <td>65</td>
+                                </tr>
+                                <tr>
+                                    <td>Pendidikan Agama Katolik</td>
+                                    <td>70</td>
+                                </tr>
+                                <tr>
+                                    <td>PKN</td>
+                                    <td>70</td>
+                                </tr>
+                                <tr>
+                                    <td>Bahasa Indonesia</td>
+                                    <td>65</td>
+                                </tr>
+                                <tr>
+                                    <td>Matematika</td>
+                                    <td>60</td>
+                                </tr>
+                                <tr>
+                                    <td>IPA</td>
+                                    <td>65</td>
+                                </tr>
+                                <tr>
+                                    <td>IPS</td>
+                                    <td>70</td>
+                                </tr>
+                                <tr>
+                                    <td>Bahasa Inggris</td>
+                                    <td>65</td>
+                                </tr>
+                                <tr>
+                                    <td>Seni Budaya</td>
+                                    <td>70</td>
+                                </tr>
+                                <tr>
+                                    <td>PJOK</td>
+                                    <td>70</td>
+                                </tr>
+                                <tr>
+                                    <td>Prakarya</td>
+                                    <td>70</td>
+                                </tr>
+                            </tbody>
                         </table>
                     </div>
+                    <p style="font-size: 0.75rem; margin-top: 10px; color: var(--text2);">
+                        <i class="fas fa-info-circle"></i> Siswa dinyatakan tuntas jika nilai mencapai atau melampaui
+                        KKM.
+                    </p>
                 </div>
-                <div class="empty-state" id="emptyState">
-                    <div class="empty-icon"><i class="fas fa-database"></i></div>
-                    <p class="empty-text">Pilih mata pelajaran lalu klik <strong>Muat Data</strong></p>
+
+                <!-- Rentang Nilai -->
+                <div class="fade-up rule-card">
+                    <div class="rule-title">
+                        <i class="fas fa-star-of-life"></i> Contoh Rentang Nilai & Predikat (Sesuaikan dengan KKM Mapel yang diampu)
+                    </div>
+                    <ul class="rule-list">
+                        <li><i class="fas fa-check-circle" style="color: #10b981;"></i> 90 – 100 : <strong>A (Sangat
+                                Baik)</strong> — Penguasaan materi sangat baik, melampaui ekspektasi.</li>
+                        <li><i class="fas fa-check-circle" style="color: #3b82f6;"></i> 75 – 89 : <strong>B
+                                (Baik)</strong> — Penguasaan materi baik, sesuai target kurikulum.</li>
+                        <li><i class="fas fa-check-circle" style="color: #f59e0b;"></i> 60 – 74 : <strong>C
+                                (Cukup)</strong> — Penguasaan materi cukup, perlu pendampingan.</li>
+                        <li><i class="fas fa-check-circle" style="color: #ef4444;"></i> &lt; 60 : <strong>D
+                                (Kurang)</strong> — Belum mencapai ketuntasan minimal.</li>
+                    </ul>
+                    <p
+                        style="font-size: 0.75rem; margin-top: 12px; background: #fef3c7; padding: 8px 12px; border-radius: 12px;">
+                        <i class="fas fa-balance-scale"></i> <strong>Prinsip Obyektivitas:</strong> Berikan nilai sesuai
+                        bukti riil (tugas, ulangan, proyek). Hindari rekayasa nilai agar mutu lulusan tetap terjaga.
+                    </p>
                 </div>
             </div>
 
-            <!-- ===== TAB REKAP ===== -->
-            <div id="tabRekap" style="display:none;" class="fade-in">
-                <div class="loading-overlay" id="loadingRekap" style="display:none;">
-                    <div class="spinner"></div>
-                    <p class="loading-text">Memuat rekapitulasi semua nilai...</p>
+            <!-- Contoh Deskripsi yang Baik & Kurang -->
+            <div class="fade-up rule-card">
+                <div class="rule-title">
+                    <i class="fas fa-lightbulb"></i> Contoh Penulisan Deskripsi yang Informatif
                 </div>
-                <div class="stats-row" id="rekapStatsRow" style="display:none;"></div>
+                <div class="example-card example-good">
+                    <i class="fas fa-thumbs-up" style="color: #10b981; margin-right: 8px;"></i>
+                    <strong>Contoh Baik (≤20 kata, deskriptif):</strong><br>
+                    “Mampu mengidentifikasi ide pokok dalam teks prosedur dengan tepat.”
+                </div>
+                <div class="example-card example-good">
+                    <i class="fas fa-thumbs-up" style="color: #10b981; margin-right: 8px;"></i>
+                    <strong>Contoh Baik untuk Keterampilan:</strong><br>
+                    “Terampil menyusun laporan percobaan IPA secara sistematis dan runtut.”
+                </div>
+                <div class="example-card example-bad">
+                    <i class="fas fa-thumbs-down" style="color: #ef4444; margin-right: 8px;"></i>
+                    <strong>Contoh Kurang Baik (terlalu panjang, tidak fokus):</strong><br>
+                    “Anak ini sangat rajin dan baik serta selalu mengerjakan tugas walaupun kadang terlambat dan nilai
+                    kurang memuaskan.” (24 kata)
+                </div>
+                <p style="font-size: 0.8rem; margin-top: 12px; color: var(--text2);">
+                    <i class="fas fa-smile-wink"></i> <strong>Tips:</strong> Gunakan kata kerja operasional
+                    (menganalisis, menyajikan, membedakan, mempraktikkan).
+                    Akhiri dengan tanda titik. Pastikan tidak ada typo sebelum menyimpan.
+                </p>
+            </div>
 
-                <!-- Tabel rekap besar -->
-                <div id="rekapTableSection" style="display:none;">
-                    <div class="table-section" style="margin-bottom:20px;">
-                        <div class="table-header">
-                            <span class="table-title">📊 Tabel Rekapitulasi Lengkap &mdash; Semua Mata Pelajaran</span>
-                            <span style="font-size:.72rem; color:var(--text2);">P = Pengetahuan &nbsp;|&nbsp; K =
-                                Keterampilan</span>
-                        </div>
-                        <div class="table-scroll">
-                            <table id="rekapTable">
-                                <thead id="rekapThead"></thead>
-                                <tbody id="rekapTbody"></tbody>
-                            </table>
-                        </div>
+            <!-- Panduan Tambahan -->
+            <div class="fade-up alert-warning">
+                <div style="display: flex; gap: 14px; align-items: flex-start;">
+                    <i class="fas fa-spell-check" style="color: #f59e0b; font-size: 1.3rem;"></i>
+                    <div>
+                        <strong style="font-size: 0.9rem;">Cek Akhir Sebelum Menyimpan</strong><br>
+                        <ul style="margin-top: 8px; margin-left: 20px; font-size: 0.85rem; color: #334155;">
+                            <li>✓ Apakah deskripsi sudah maksimal 20 kata?</li>
+                            <li>✓ Apakah tanda baca (terutama titik di akhir kalimat) sudah tepat?</li>
+                            <li>✓ Apakah konjungsi yang digunakan logis (sehingga, namun, serta)?</li>
+                            <li>✓ Apakah nilai yang diberikan sesuai dengan bukti kompetensi siswa?</li>
+                        </ul>
+                        <p style="margin-top: 10px; font-size: 0.8rem;">
+                            Dengan memperhatikan hal-hal di atas, rapor siswa akan terlihat profesional dan mencerminkan
+                            kualitas pendidikan di SMP Persiapan Negeri Pulau Tiga.
+                        </p>
                     </div>
                 </div>
+            </div>
 
-                <!-- Kartu per siswa -->
-                <div id="rekapKartuSection" style="display:none;">
-                    <div style="margin-bottom:14px; font-family:'Syne',sans-serif; font-weight:700; font-size:1rem;">🎓
-                        Detail Per Siswa</div>
-                    <div class="rekap-grid" id="rekapGrid"></div>
-                </div>
-
-                <div class="empty-state" id="emptyRekap">
-                    <div class="empty-icon"><i class="fas fa-chart-bar"></i></div>
-                    <p class="empty-text">Klik <strong>Muat Data</strong> untuk melihat rekapitulasi semua nilai</p>
+            <!-- Penutup & Harapan -->
+            <div class="fade-up"
+                style="text-align: center; margin: 48px 0 32px; padding: 24px; background: #f0fdf4; border-radius: 24px;">
+                <i class="fas fa-heart"
+                    style="color: #16a34a; font-size: 2rem; margin-bottom: 12px; display: inline-block;"></i>
+                <h3 style="font-weight: 700; margin-bottom: 8px;">Terima Kasih atas Dedikasi Bapak/Ibu Guru</h3>
+                <p style="color: #475569; max-width: 500px; margin: 0 auto; font-size: 0.9rem;">
+                    Semangat mengabdi di daerah 3T adalah anugerah yang luar biasa. Mari selesaikan pengisian rapor ini
+                    dengan penuh tanggung jawab,
+                    karena ini adalah bekal penting bagi masa depan ananda tercinta.
+                </p>
+                <div style="margin-top: 24px;">
+                    <a href="https://docs.google.com/spreadsheets/d/1paOxXwCDW7QNnNlSNuLU5U9G2_khcL6usxtBzI-oJIw/edit?usp=sharing"
+                        target="_blank" class="btn-spreadsheet" style="background: #16a34a;">
+                        <i class="fas fa-edit"></i> Lanjut ke Spreadsheet
+                        <i class="fas fa-external-link-alt"></i>
+                    </a>
                 </div>
             </div>
 
         </div>
     </div>
-        <script src="js/main.js"></script>
-        <script>
-            // ======================================================
-            // CONFIG
-            // ======================================================
-            const API_ENDPOINT = 'https://script.google.com/macros/s/AKfycbwHFy5PyjvxCmWC3ZAFdLi4WcuX72NkVBrqujg9ch3Q4UrzZQcg_Hb5e4C0uNs5NPKl/exec';
-            const SPREADSHEET_URL = 'https://docs.google.com/spreadsheets/d/1ZOtjvSD8O0SXySxs2BN2lbg0zwHLp-ucvxtj7iig0v0/edit?usp=sharing';
 
-            const DAFTAR_MAPEL = [
-                { id: 1, nama: "Pendidikan Agama Katolik", kkm: 70 },
-                { id: 2, nama: "PKN", kkm: 70 },
-                { id: 3, nama: "Bahasa Indonesia", kkm: 65 },
-                { id: 4, nama: "Matematika", kkm: 65 },
-                { id: 5, nama: "IPA", kkm: 65 },
-                { id: 6, nama: "IPS", kkm: 70 },
-                { id: 7, nama: "Bahasa Inggris", kkm: 65 },
-                { id: 8, nama: "Seni Budaya", kkm: 70 },
-                { id: 9, nama: "PJOK", kkm: 70 },
-                { id: 10, nama: "Prakarya", kkm: 70 }
-            ];
+    <!-- Footer (optional, but consistent) -->
+    <footer
+        style="border-top: 1px solid var(--border, #e2e8f0); padding: 24px 0; text-align: center; margin-top: 20px;">
+        <div class="container">
+            <p style="font-size: 0.7rem; color: var(--text2, #64748b);">
+                © 2025 SMP Persiapan Negeri Pulau Tiga - Mengabdi untuk Pendidikan Berkualitas di Daerah 3T
+            </p>
+        </div>
+    </footer>
 
-            // ======================================================
-            // STATE
-            // ======================================================
-            let currentTab = 'input';
-            let currentMapelId = null;
-            let currentMapel = null;
-            let currentData = [];   // array siswa untuk tab input
-            let rekapData = [];   // array siswa untuk tab rekap
-            let editingNis = null;
-            let isSaving = false;
-
-            // ======================================================
-            // FETCH HELPERS
-            // ======================================================
-            async function gasGet(params) {
-                const qs = new URLSearchParams(params).toString();
-                const res = await fetch(`${API_ENDPOINT}?${qs}`, { method: 'GET', redirect: 'follow' });
-                return JSON.parse(await res.text());
-            }
-
-            async function gasPost(payload) {
-                const res = await fetch(API_ENDPOINT, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-                    body: JSON.stringify(payload),
-                    redirect: 'follow'
-                });
-                return JSON.parse(await res.text());
-            }
-
-            // ======================================================
-            // INIT
-            // ======================================================
-            function init() {
-                // Isi dropdown mapel
-                const sel = document.getElementById('mapelSelect');
-                DAFTAR_MAPEL.forEach(m => {
-                    sel.innerHTML += `<option value="${m.id}">${m.nama} (KKM: ${m.kkm})</option>`;
-                });
-
-                setupDarkMode();
-                setupHamburger();
-                document.getElementById('loadBtn').addEventListener('click', handleLoadBtn);
-                document.getElementById('openSpreadsheetBtn').addEventListener('click', () => window.open(SPREADSHEET_URL, '_blank'));
-                showEmptyInput();
-            }
-
-            // ======================================================
-            // TAB SWITCH
-            // ======================================================
-            function switchTab(tab) {
-                currentTab = tab;
-                document.getElementById('tabInputBtn').classList.toggle('active', tab === 'input');
-                document.getElementById('tabRekapBtn').classList.toggle('active', tab === 'rekap');
-                document.getElementById('tabInput').style.display = tab === 'input' ? 'block' : 'none';
-                document.getElementById('tabRekap').style.display = tab === 'rekap' ? 'block' : 'none';
-                document.getElementById('mapelFilterWrap').style.display = tab === 'input' ? 'block' : 'none';
-            }
-
-            // ======================================================
-            // LOAD BUTTON
-            // ======================================================
-            async function handleLoadBtn() {
-                if (currentTab === 'input') {
-                    const mapelId = document.getElementById('mapelSelect').value;
-                    if (!mapelId) { showToast('Pilih mata pelajaran terlebih dahulu!', true); return; }
-                    currentMapelId = Number(mapelId);
-                    currentMapel = DAFTAR_MAPEL.find(m => m.id === currentMapelId);
-                    await fetchInputData();
+    <script src="js/main.js"></script>
+    <script>
+        // Hamburger menu toggle (consistent with other pages)
+        const hamburger = document.querySelector('.hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+        if (hamburger) {
+            hamburger.addEventListener('click', () => {
+                if (mobileMenu.style.display === 'flex') {
+                    mobileMenu.style.display = 'none';
                 } else {
-                    await fetchRekapData();
+                    mobileMenu.style.display = 'flex';
                 }
-            }
+            });
+        }
 
-            // ======================================================
-            // FETCH DATA INPUT (1 mapel)
-            // ======================================================
-            async function fetchInputData() {
-                showLoadingInput();
-                try {
-                    const result = await gasGet({ mapelId: currentMapelId });
-                    if (result.success) {
-                        // GAS sudah kembalikan semua siswa dari sheet, kita pastikan urutannya sesuai DAFTAR_MAPEL
-                        const backendMap = {};
-                        (result.data.dataSiswa || []).forEach(s => { backendMap[s.nis] = s; });
+        // Dark mode toggle - disabled (keep light mode as requested)
+        const darkToggle = document.getElementById('darkToggleBtn');
+        if (darkToggle) {
+            darkToggle.addEventListener('click', () => {
+                // No action - keep default light mode
+                // Silently ignore to maintain consistency
+            });
+        }
 
-                        // Gunakan urutan DAFTAR_SISWA di frontend agar konsisten
-                        currentData = DAFTAR_SISWA_FE.map(s => {
-                            const b = backendMap[s.nis] || {};
-                            return {
-                                nis: s.nis,
-                                nama: s.nama,
-                                nilaiPengetahuan: b.nilaiPengetahuan !== undefined ? b.nilaiPengetahuan : '',
-                                predikatPengetahuan: b.predikatPengetahuan || '',
-                                deskripsiPengetahuan: b.deskripsiPengetahuan || '',
-                                nilaiKeterampilan: b.nilaiKeterampilan !== undefined ? b.nilaiKeterampilan : '',
-                                predikatKeterampilan: b.predikatKeterampilan || '',
-                                deskripsiKeterampilan: b.deskripsiKeterampilan || ''
-                            };
-                        });
-
-                        renderInputTab();
-                    } else {
-                        showToast('Gagal memuat: ' + (result.error || 'Error'), true);
-                        showEmptyInput();
-                    }
-                } catch (err) {
-                    showToast('Koneksi gagal: ' + err.message, true);
-                    showEmptyInput();
+        // Scroll animation (fade-up)
+        const fadeElements = document.querySelectorAll('.fade-up');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
                 }
+            });
+        }, { threshold: 0.1, rootMargin: "0px 0px -20px 0px" });
+
+        fadeElements.forEach(el => observer.observe(el));
+
+        // Responsive: close mobile menu on window resize
+        window.addEventListener('resize', function () {
+            if (window.innerWidth > 768) {
+                if (mobileMenu) mobileMenu.style.display = 'none';
             }
-
-            // Daftar siswa di frontend (untuk jaga urutan)
-            const DAFTAR_SISWA_FE = [
-                { nis: "001", nama: "ADAM AMSAKAT" },
-                { nis: "002", nama: "BARTOL BATIPITS" },
-                { nis: "003", nama: "BENEDIKTUS JOM" },
-                { nis: "004", nama: "BENYAMIN BEORAMON" },
-                { nis: "005", nama: "GENUS AOR" },
-                { nis: "006", nama: "HABEL AUK" },
-                { nis: "007", nama: "MARIA MAGDALENA" },
-                { nis: "008", nama: "MARKUS WARAK" },
-                { nis: "009", nama: "PAULUS OSJAK" },
-                { nis: "010", nama: "PILIPUS NAMINAN" },
-                { nis: "011", nama: "PILIPUS TINAKAS" },
-                { nis: "012", nama: "PIUS OHMAT" },
-                { nis: "013", nama: "SIMSON WAKUM" },
-                { nis: "014", nama: "WAHYU FO" },
-                { nis: "015", nama: "YOHANES FAM" }
-            ];
-
-            // ======================================================
-            // FETCH DATA REKAP (semua mapel)
-            // ======================================================
-            async function fetchRekapData() {
-                showLoadingRekap();
-                try {
-                    const result = await gasGet({ action: 'rekap' });
-                    if (result.success) {
-                        // Urutkan sesuai DAFTAR_SISWA_FE
-                        const backendMap = {};
-                        (result.data.siswa || []).forEach(s => { backendMap[s.nis] = s; });
-                        rekapData = DAFTAR_SISWA_FE.map(s => {
-                            const b = backendMap[s.nis] || { nis: s.nis, nama: s.nama, mapel: {} };
-                            return b;
-                        });
-                        renderRekapTab();
-                    } else {
-                        showToast('Gagal memuat rekap: ' + (result.error || 'Error'), true);
-                        showEmptyRekap();
-                    }
-                } catch (err) {
-                    showToast('Koneksi gagal: ' + err.message, true);
-                    showEmptyRekap();
-                }
-            }
-
-            // ======================================================
-            // RENDER TAB INPUT
-            // ======================================================
-            function renderInputTab() {
-                renderInputStats();
-                renderInputTable();
-                document.getElementById('infoBar').style.display = 'flex';
-                document.getElementById('infoBarText').innerHTML =
-                    `Mata Pelajaran: <strong>${currentMapel.nama}</strong> &nbsp;|&nbsp; Kelas <strong>9A</strong> &nbsp;|&nbsp; Semester <strong>Ganjil 2023/2024</strong> &nbsp;|&nbsp; KKM: <strong>${currentMapel.kkm}</strong>`;
-                document.getElementById('tableTitle').textContent = `${currentMapel.nama} · Kelas 9A`;
-                document.getElementById('loadingState').style.display = 'none';
-                document.getElementById('tableSection').style.display = 'block';
-                document.getElementById('statsRow').style.display = 'grid';
-                document.getElementById('emptyState').style.display = 'none';
-            }
-
-            function renderInputStats() {
-                const kkm = currentMapel.kkm;
-                let nilaiP = [], nilaiK = [], tuntasP = 0, tuntasK = 0;
-                currentData.forEach(s => {
-                    if (s.nilaiPengetahuan !== '' && !isNaN(s.nilaiPengetahuan)) {
-                        const v = Number(s.nilaiPengetahuan); nilaiP.push(v); if (v >= kkm) tuntasP++;
-                    }
-                    if (s.nilaiKeterampilan !== '' && !isNaN(s.nilaiKeterampilan)) {
-                        const v = Number(s.nilaiKeterampilan); nilaiK.push(v); if (v >= kkm) tuntasK++;
-                    }
-                });
-                const avgP = nilaiP.length ? (nilaiP.reduce((a, b) => a + b, 0) / nilaiP.length).toFixed(1) : '—';
-                const avgK = nilaiK.length ? (nilaiK.reduce((a, b) => a + b, 0) / nilaiK.length).toFixed(1) : '—';
-                const sudahInput = currentData.filter(s => s.nilaiPengetahuan !== '' || s.nilaiKeterampilan !== '').length;
-
-                document.getElementById('statsRow').innerHTML = `
-            <div class="stat-card"><div class="stat-label">Total Siswa</div><div class="stat-value blue">${currentData.length}</div></div>
-            <div class="stat-card"><div class="stat-label">Sudah Diinput</div><div class="stat-value">${sudahInput}</div></div>
-            <div class="stat-card"><div class="stat-label">Rata-rata Pengetahuan</div><div class="stat-value ${avgP !== '—' && Number(avgP) >= kkm ? 'green' : 'orange'}">${avgP}</div></div>
-            <div class="stat-card"><div class="stat-label">Rata-rata Keterampilan</div><div class="stat-value ${avgK !== '—' && Number(avgK) >= kkm ? 'green' : 'orange'}">${avgK}</div></div>
-            <div class="stat-card"><div class="stat-label">Tuntas P (≥${kkm})</div><div class="stat-value green">${tuntasP}</div></div>
-            <div class="stat-card"><div class="stat-label">Tuntas K (≥${kkm})</div><div class="stat-value green">${tuntasK}</div></div>
-          `;
-            }
-
-            function renderInputTable() {
-                const tbody = document.getElementById('tableBody');
-                const kkm = currentMapel.kkm;
-                let html = '';
-
-                currentData.forEach((siswa, idx) => {
-                    const isEditing = editingNis === siswa.nis;
-                    const np = siswa.nilaiPengetahuan;
-                    const nk = siswa.nilaiKeterampilan;
-                    const predP = getPredikat(np);
-                    const predK = getPredikat(nk);
-
-                    html += `<tr data-nis="${siswa.nis}">`;
-                    html += `<td style="text-align:center;color:var(--text2);font-size:.78rem;">${idx + 1}</td>`;
-                    html += `<td style="text-align:center;font-weight:600;">${siswa.nis}</td>`;
-                    html += `<td><strong>${siswa.nama}</strong></td>`;
-                    html += `<td style="text-align:center;"><span class="badge badge-empty">${kkm}</span></td>`;
-
-                    if (isEditing) {
-                        // --- Mode edit ---
-                        html += `<td style="text-align:center;"><input type="number" class="nilai-input" id="np_${siswa.nis}" value="${np !== '' ? np : ''}" min="0" max="100" oninput="livePredikat('${siswa.nis}','P',this.value)"></td>`;
-                        html += `<td style="text-align:center;"><span class="badge ${getBadgeClass(predP)}" id="badgeP_${siswa.nis}">${predP || '—'}</span></td>`;
-                        html += `<td><textarea class="desc-input" id="deskP_${siswa.nis}" rows="2" placeholder="Deskripsi pengetahuan...">${siswa.deskripsiPengetahuan || ''}</textarea></td>`;
-                        html += `<td style="text-align:center;"><input type="number" class="nilai-input" id="nk_${siswa.nis}" value="${nk !== '' ? nk : ''}" min="0" max="100" oninput="livePredikat('${siswa.nis}','K',this.value)"></td>`;
-                        html += `<td style="text-align:center;"><span class="badge ${getBadgeClass(predK)}" id="badgeK_${siswa.nis}">${predK || '—'}</span></td>`;
-                        html += `<td><textarea class="desc-input" id="deskK_${siswa.nis}" rows="2" placeholder="Deskripsi keterampilan...">${siswa.deskripsiKeterampilan || ''}</textarea></td>`;
-                        html += `<td><div class="action-group">
-                <button class="act-btn act-save"   onclick="saveRow('${siswa.nis}')"><i class="fas fa-save"></i> Simpan</button>
-                <button class="act-btn act-cancel" onclick="cancelEdit()"><i class="fas fa-times"></i></button>
-              </div></td>`;
-                    } else {
-                        // --- Mode tampil ---
-                        html += `<td style="text-align:center;"><span class="nilai-display ${getNilaiClass(np, kkm)}">${np !== '' ? np : '—'}</span></td>`;
-                        html += `<td style="text-align:center;"><span class="badge ${getBadgeClass(predP)}">${predP || '—'}</span></td>`;
-                        html += `<td><span style="font-size:.75rem;color:var(--text2);">${siswa.deskripsiPengetahuan || '—'}</span></td>`;
-                        html += `<td style="text-align:center;"><span class="nilai-display ${getNilaiClass(nk, kkm)}">${nk !== '' ? nk : '—'}</span></td>`;
-                        html += `<td style="text-align:center;"><span class="badge ${getBadgeClass(predK)}">${predK || '—'}</span></td>`;
-                        html += `<td><span style="font-size:.75rem;color:var(--text2);">${siswa.deskripsiKeterampilan || '—'}</span></td>`;
-                        html += `<td><div class="action-group">
-                <button class="act-btn act-edit"   onclick="editRow('${siswa.nis}')"><i class="fas fa-edit"></i> Edit</button>
-                <button class="act-btn act-delete" onclick="hapusNilai('${siswa.nis}')"><i class="fas fa-trash"></i></button>
-              </div></td>`;
-                    }
-                    html += `</tr>`;
-                });
-                tbody.innerHTML = html;
-            }
-
-            // ======================================================
-            // RENDER TAB REKAP
-            // ======================================================
-            function renderRekapTab() {
-                renderRekapStats();
-                renderRekapTable();
-                renderRekapKartu();
-                document.getElementById('loadingRekap').style.display = 'none';
-                document.getElementById('rekapStatsRow').style.display = 'grid';
-                document.getElementById('rekapTableSection').style.display = 'block';
-                document.getElementById('rekapKartuSection').style.display = 'block';
-                document.getElementById('emptyRekap').style.display = 'none';
-            }
-
-            function renderRekapStats() {
-                const total = rekapData.length;
-                let adaNilai = 0, allAvgP = [], allAvgK = [];
-                rekapData.forEach(s => {
-                    const mapelArr = Object.values(s.mapel || {});
-                    const adaP = mapelArr.some(m => m.nilaiPengetahuan !== '' && m.nilaiPengetahuan !== null);
-                    const adaK = mapelArr.some(m => m.nilaiKeterampilan !== '' && m.nilaiKeterampilan !== null);
-                    if (adaP || adaK) adaNilai++;
-
-                    // Hitung rata-rata dari semua mapel yang ada nilainya
-                    const vP = mapelArr.filter(m => m.nilaiPengetahuan !== '' && !isNaN(m.nilaiPengetahuan)).map(m => Number(m.nilaiPengetahuan));
-                    const vK = mapelArr.filter(m => m.nilaiKeterampilan !== '' && !isNaN(m.nilaiKeterampilan)).map(m => Number(m.nilaiKeterampilan));
-                    if (vP.length) allAvgP.push(vP.reduce((a, b) => a + b, 0) / vP.length);
-                    if (vK.length) allAvgK.push(vK.reduce((a, b) => a + b, 0) / vK.length);
-                });
-                const rataP = allAvgP.length ? (allAvgP.reduce((a, b) => a + b, 0) / allAvgP.length).toFixed(1) : '—';
-                const rataK = allAvgK.length ? (allAvgK.reduce((a, b) => a + b, 0) / allAvgK.length).toFixed(1) : '—';
-                document.getElementById('rekapStatsRow').innerHTML = `
-            <div class="stat-card"><div class="stat-label">Total Siswa</div><div class="stat-value blue">${total}</div></div>
-            <div class="stat-card"><div class="stat-label">Ada Nilai</div><div class="stat-value">${adaNilai}</div></div>
-            <div class="stat-card"><div class="stat-label">Rata Kelas (Pengetahuan)</div><div class="stat-value green">${rataP}</div></div>
-            <div class="stat-card"><div class="stat-label">Rata Kelas (Keterampilan)</div><div class="stat-value green">${rataK}</div></div>
-          `;
-            }
-
-            function renderRekapTable() {
-                const thead = document.getElementById('rekapThead');
-                const tbody = document.getElementById('rekapTbody');
-
-                // Header baris 1
-                let th1 = '<tr><th rowspan="2" style="text-align:center;">No</th><th rowspan="2">Nama Siswa</th>';
-                DAFTAR_MAPEL.forEach(m => {
-                    const short = m.nama.length > 14 ? m.nama.substring(0, 14) + '…' : m.nama;
-                    th1 += `<th colspan="2" style="text-align:center;" title="${m.nama}">${short}</th>`;
-                });
-                th1 += '</tr>';
-
-                // Header baris 2
-                let th2 = '<tr>';
-                DAFTAR_MAPEL.forEach(() => {
-                    th2 += `<th style="text-align:center;font-size:.6rem;">P</th><th style="text-align:center;font-size:.6rem;">K</th>`;
-                });
-                th2 += '</tr>';
-                thead.innerHTML = th1 + th2;
-
-                let tbHtml = '';
-                rekapData.forEach((siswa, idx) => {
-                    tbHtml += `<tr><td style="text-align:center;color:var(--text2);font-size:.78rem;">${idx + 1}</td><td><strong style="font-size:.85rem;">${siswa.nama}</strong><div style="font-size:.68rem;color:var(--text2);">${siswa.nis}</div></td>`;
-                    DAFTAR_MAPEL.forEach(m => {
-                        const md = siswa.mapel ? siswa.mapel[m.id] : null;
-                        const np = md ? md.nilaiPengetahuan : '';
-                        const nk = md ? md.nilaiKeterampilan : '';
-                        tbHtml += `<td style="text-align:center;"><span class="nilai-display ${getNilaiClass(np, m.kkm)}" style="font-size:.85rem;">${(np !== '' && np !== null && np !== undefined) ? np : '—'}</span></td>`;
-                        tbHtml += `<td style="text-align:center;"><span class="nilai-display ${getNilaiClass(nk, m.kkm)}" style="font-size:.85rem;">${(nk !== '' && nk !== null && nk !== undefined) ? nk : '—'}</span></td>`;
-                    });
-                    tbHtml += `</tr>`;
-                });
-                tbody.innerHTML = tbHtml;
-            }
-
-            function renderRekapKartu() {
-                const grid = document.getElementById('rekapGrid');
-                let html = '';
-                rekapData.forEach(siswa => {
-                    const mapelArr = Object.values(siswa.mapel || {});
-                    const doneCount = mapelArr.filter(m => (m.nilaiPengetahuan !== '' && m.nilaiPengetahuan !== null) && (m.nilaiKeterampilan !== '' && m.nilaiKeterampilan !== null)).length;
-                    const hasAny = mapelArr.some(m => (m.nilaiPengetahuan !== '' && m.nilaiPengetahuan !== null) || (m.nilaiKeterampilan !== '' && m.nilaiKeterampilan !== null));
-                    const cls = doneCount === DAFTAR_MAPEL.length ? 'complete-full' : doneCount > 0 ? 'complete-partial' : 'complete-empty';
-                    const initials = siswa.nama.split(' ').map(w => w[0]).join('').substring(0, 2);
-
-                    // Hitung rata-rata siswa ini
-                    const vP = mapelArr.filter(m => m.nilaiPengetahuan !== '' && !isNaN(m.nilaiPengetahuan)).map(m => Number(m.nilaiPengetahuan));
-                    const vK = mapelArr.filter(m => m.nilaiKeterampilan !== '' && !isNaN(m.nilaiKeterampilan)).map(m => Number(m.nilaiKeterampilan));
-                    const rataP = vP.length ? (vP.reduce((a, b) => a + b, 0) / vP.length).toFixed(1) : '—';
-                    const rataK = vK.length ? (vK.reduce((a, b) => a + b, 0) / vK.length).toFixed(1) : '—';
-
-                    html += `<div class="rekap-card">
-              <div class="rekap-card-header">
-                <div class="student-avatar">${initials}</div>
-                <div><div class="student-name">${siswa.nama}</div><div class="student-nis">NIS: ${siswa.nis}</div></div>
-                <div style="margin-left:auto;"><span class="completeness-badge ${cls}">${doneCount}/${DAFTAR_MAPEL.length} mapel</span></div>
-              </div>
-              <div class="rekap-body">`;
-
-                    if (hasAny) {
-                        DAFTAR_MAPEL.forEach(m => {
-                            const md = siswa.mapel ? siswa.mapel[m.id] : null;
-                            if (!md) return;
-                            const np = md.nilaiPengetahuan; const nk = md.nilaiKeterampilan;
-                            const hasP = np !== '' && np !== null && np !== undefined;
-                            const hasK = nk !== '' && nk !== null && nk !== undefined;
-                            if (!hasP && !hasK) return;
-                            html += `<div class="rekap-mapel-row">
-                  <span class="rekap-mapel-name">${m.nama}</span>
-                  <div class="rekap-nilai-pair">
-                    <span class="badge ${hasP ? getBadgeClass(getPredikat(np)) : 'badge-empty'}">P: ${hasP ? np : '—'}</span>
-                    <span class="badge ${hasK ? getBadgeClass(getPredikat(nk)) : 'badge-empty'}">K: ${hasK ? nk : '—'}</span>
-                  </div>
-                </div>`;
-                        });
-                    } else {
-                        html += `<div style="text-align:center;padding:20px;color:var(--text2);font-size:.8rem;">Belum ada nilai</div>`;
-                    }
-
-                    html += `<div class="rekap-summary">
-                <div><div class="rekap-summary-label">Rata Pengetahuan</div><div class="rekap-summary-val">${rataP}</div></div>
-                <div style="text-align:right;"><div class="rekap-summary-label">Rata Keterampilan</div><div class="rekap-summary-val">${rataK}</div></div>
-              </div>
-              </div></div>`;
-                });
-                grid.innerHTML = html;
-            }
-
-            // ======================================================
-            // EDIT / SAVE / DELETE
-            // ======================================================
-            function editRow(nis) { editingNis = nis; renderInputTable(); }
-            function cancelEdit() { editingNis = null; renderInputTable(); }
-            window.editRow = editRow;
-            window.cancelEdit = cancelEdit;
-
-            window.livePredikat = function (nis, aspek, nilai) {
-                const pred = getPredikat(nilai);
-                const el = document.getElementById(aspek === 'P' ? `badgeP_${nis}` : `badgeK_${nis}`);
-                if (el) { el.textContent = pred || '—'; el.className = `badge ${getBadgeClass(pred)}`; }
-            };
-
-            window.saveRow = async function (nis) {
-                if (isSaving) { showToast('Sedang menyimpan...', true); return; }
-                isSaving = true;
-
-                const npVal = document.getElementById(`np_${nis}`)?.value ?? '';
-                const nkVal = document.getElementById(`nk_${nis}`)?.value ?? '';
-                const deskPVal = document.getElementById(`deskP_${nis}`)?.value ?? '';
-                const deskKVal = document.getElementById(`deskK_${nis}`)?.value ?? '';
-
-                if (npVal !== '' && (Number(npVal) < 0 || Number(npVal) > 100)) { showToast('Nilai harus antara 0–100', true); isSaving = false; return; }
-                if (nkVal !== '' && (Number(nkVal) < 0 || Number(nkVal) > 100)) { showToast('Nilai harus antara 0–100', true); isSaving = false; return; }
-
-                const siswaNama = currentData.find(s => s.nis === nis)?.nama || '';
-
-                // Payload: mapelId + array 1 siswa
-                const payload = {
-                    mapelId: currentMapelId,
-                    dataSiswa: [{
-                        nis,
-                        nama: siswaNama,
-                        nilaiPengetahuan: npVal,
-                        deskripsiPengetahuan: deskPVal,
-                        nilaiKeterampilan: nkVal,
-                        deskripsiKeterampilan: deskKVal
-                    }]
-                };
-
-                try {
-                    const result = await gasPost(payload);
-                    if (result.success) {
-                        showToast('Nilai berhasil disimpan! ✓');
-                        editingNis = null;
-                        await fetchInputData(); // refresh dari server
-                    } else {
-                        showToast('Gagal menyimpan: ' + (result.error || 'Error'), true);
-                    }
-                } catch (err) {
-                    showToast('Error: ' + err.message, true);
-                } finally {
-                    isSaving = false;
-                }
-            };
-
-            window.hapusNilai = async function (nis) {
-                const konfirm = await Swal.fire({
-                    title: 'Hapus Nilai?',
-                    text: `Nilai ${currentMapel.nama} untuk siswa ini akan dikosongkan.`,
-                    icon: 'warning', showCancelButton: true,
-                    confirmButtonColor: '#dc2626', confirmButtonText: 'Ya, Hapus!', cancelButtonText: 'Batal'
-                });
-                if (!konfirm.isConfirmed) return;
-
-                const siswaNama = currentData.find(s => s.nis === nis)?.nama || '';
-                const payload = {
-                    mapelId: currentMapelId,
-                    dataSiswa: [{
-                        nis, nama: siswaNama,
-                        nilaiPengetahuan: '', deskripsiPengetahuan: '',
-                        nilaiKeterampilan: '', deskripsiKeterampilan: ''
-                    }]
-                };
-                try {
-                    const result = await gasPost(payload);
-                    if (result.success) { showToast('Nilai berhasil dihapus'); await fetchInputData(); }
-                    else showToast('Gagal menghapus: ' + (result.error || 'Error'), true);
-                } catch (err) { showToast('Error: ' + err.message, true); }
-            };
-
-            // ======================================================
-            // UI STATE HELPERS
-            // ======================================================
-            function showLoadingInput() {
-                document.getElementById('loadingState').style.display = 'flex';
-                document.getElementById('tableSection').style.display = 'none';
-                document.getElementById('statsRow').style.display = 'none';
-                document.getElementById('emptyState').style.display = 'none';
-                document.getElementById('infoBar').style.display = 'none';
-            }
-            function showLoadingRekap() {
-                document.getElementById('loadingRekap').style.display = 'flex';
-                document.getElementById('rekapTableSection').style.display = 'none';
-                document.getElementById('rekapKartuSection').style.display = 'none';
-                document.getElementById('rekapStatsRow').style.display = 'none';
-                document.getElementById('emptyRekap').style.display = 'none';
-            }
-            function showEmptyInput() {
-                document.getElementById('loadingState').style.display = 'none';
-                document.getElementById('tableSection').style.display = 'none';
-                document.getElementById('statsRow').style.display = 'none';
-                document.getElementById('infoBar').style.display = 'none';
-                document.getElementById('emptyState').style.display = 'block';
-            }
-            function showEmptyRekap() {
-                document.getElementById('loadingRekap').style.display = 'none';
-                document.getElementById('rekapTableSection').style.display = 'none';
-                document.getElementById('rekapKartuSection').style.display = 'none';
-                document.getElementById('rekapStatsRow').style.display = 'none';
-                document.getElementById('emptyRekap').style.display = 'block';
-            }
-
-            // ======================================================
-            // HELPER FUNCTIONS
-            // ======================================================
-            function getPredikat(nilai) {
-                if (nilai === '' || nilai === null || nilai === undefined || isNaN(nilai)) return '';
-                const n = Number(nilai);
-                if (n >= 90) return 'A (Sangat Baik)';
-                if (n >= 75) return 'B (Baik)';
-                if (n >= 60) return 'C (Cukup)';
-                return 'D (Kurang)';
-            }
-            function getBadgeClass(p) {
-                if (!p) return 'badge-empty';
-                if (p.startsWith('A')) return 'badge-A';
-                if (p.startsWith('B')) return 'badge-B';
-                if (p.startsWith('C')) return 'badge-C';
-                if (p.startsWith('D')) return 'badge-D';
-                return 'badge-empty';
-            }
-            function getNilaiClass(nilai, kkm) {
-                if (nilai === '' || nilai === null || nilai === undefined || isNaN(nilai)) return '';
-                const n = Number(nilai);
-                if (n >= 90) return 'nilai-tinggi';
-                if (n >= kkm) return 'nilai-sedang';
-                if (n >= 60) return 'nilai-rendah';
-                return 'nilai-kurang';
-            }
-            function showToast(msg, isError = false) {
-                Swal.fire({ title: isError ? 'Gagal' : 'Berhasil', text: msg, icon: isError ? 'error' : 'success', timer: 2500, showConfirmButton: false, position: 'top-end', toast: true });
-            }
-
-            // ======================================================
-            // DARK MODE
-            // ======================================================
-            function setupDarkMode() {
-                const btn = document.getElementById('darkToggleBtn');
-                const html = document.documentElement;
-                function setDark(isDark) {
-                    html.setAttribute('data-theme', isDark ? 'dark' : 'light');
-                    btn.textContent = isDark ? '' : '';
-                    localStorage.setItem('theme', isDark ? 'dark' : 'light');
-                }
-                setDark(localStorage.getItem('theme') === 'dark');
-                btn.addEventListener('click', () => setDark(html.getAttribute('data-theme') !== 'dark'));
-            }
-
-            // ======================================================
-            // HAMBURGER
-            // ======================================================
-            function setupHamburger() {
-                const btn = document.querySelector('.hamburger');
-                const menu = document.getElementById('mobileMenu');
-                if (btn) btn.addEventListener('click', () => {
-                    menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
-                });
-            }
-
-            init();
-        </script>
-    </body>
-    
-    </html>
+        });
+    </script>
 </body>
 
 </html>
