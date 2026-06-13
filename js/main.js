@@ -20,23 +20,17 @@ function toggleTheme() {
   setTheme(!isDark);
 }
 
-// ===== MOBILE MENU =====
-function toggleMobileMenu() {
-  const menu = document.getElementById('mobileMenu');
-  if (menu) menu.classList.toggle('open');
-}
-
-// ===== ACTIVE NAV =====
-function setActiveNav() {
-  const path = window.location.pathname.split('/').pop() || 'index.html';
-  document.querySelectorAll('.nav-links a, .mobile-menu a').forEach(a => {
-    const href = a.getAttribute('href');
-    if (href === path || (path === '' && href === 'index.html')) {
-      a.classList.add('active');
-    } else {
-      a.classList.remove('active');
-    }
-  });
+// ===== RE-ATTACH DARK TOGGLE (untuk navbar.js) =====
+function reattachDarkToggle() {
+  const darkToggle = document.getElementById('darkToggleBtn');
+  if (darkToggle) {
+    const newDarkToggle = darkToggle.cloneNode(true);
+    darkToggle.parentNode.replaceChild(newDarkToggle, darkToggle);
+    newDarkToggle.addEventListener('click', toggleTheme);
+    const isDark = html.getAttribute('data-theme') === 'dark';
+    const ball = newDarkToggle.querySelector('.dark-toggle-ball');
+    if (ball) ball.innerHTML = isDark ? '🌙' : '☀️';
+  }
 }
 
 // ===== FADE UP ON SCROLL =====
@@ -72,18 +66,18 @@ function showLoadingIndicator(fileName) {
       </div>
       <div class="loading-message">Mohon tunggu, sedang mengunduh...</div>
       <div class="loading-hint">
-        <i class="fas fa-info-circle"></i> 
+        <i class="fas fa-info-circle"></i>
         Koneksi internet mungkin lambat, harap sabar
       </div>
     </div>
   `;
   document.body.appendChild(loadingOverlay);
 
-  setTimeout(() => {
+  requestAnimationFrame(() => {
     if (loadingOverlay) {
       loadingOverlay.classList.add('active');
     }
-  }, 10);
+  });
 }
 
 function hideLoadingIndicator() {
@@ -113,20 +107,20 @@ const documentsData = [
 function renderTable() {
   const tbody = document.getElementById('tableBody');
   if (!tbody) return;
-  
+
   tbody.innerHTML = '';
-  
+
   documentsData.forEach(doc => {
     const row = tbody.insertRow();
     const typeColor = doc.type === 'pdf' ? '#d93025' : doc.type === 'excel' ? '#217346' : '#2b579a';
-    
+
     let actionBtn;
     if (doc.available) {
       actionBtn = `<a href="${doc.link}" target="_blank" class="btn btn-download" style="padding:6px 14px;"><i class="fas fa-download"></i> Download</a>`;
     } else {
       actionBtn = `<button class="btn btn-disabled" style="padding:6px 14px;opacity:0.6;cursor:pointer;" data-file-name="${doc.name}" data-file-type="${doc.type}"><i class="fas fa-download"></i> Belum Tersedia</button>`;
     }
-    
+
     row.innerHTML = `
       <td><span style="font-weight:600;color:var(--text2);">${doc.no}</span></td>
       <td><div style="display:flex;align-items:center;gap:10px;"><i class="fas ${doc.icon}" style="color:${typeColor};font-size:1.1rem;"></i><span style="font-weight:600;">${doc.name}</span></div></td>
@@ -136,15 +130,13 @@ function renderTable() {
       <td>${actionBtn}</td>
     `;
   });
-  
-  // Tambahkan event listener untuk tombol disabled di tabel
+
   document.querySelectorAll('#tableBody .btn-disabled').forEach(btn => {
     btn.removeEventListener('click', handleDisabledClick);
     btn.addEventListener('click', handleDisabledClick);
   });
 }
 
-// ===== HANDLER UNTUK TOMBOL DISABLED =====
 function handleDisabledClick(e) {
   e.preventDefault();
   e.stopPropagation();
@@ -155,10 +147,8 @@ function handleDisabledClick(e) {
 
 // ===== MODAL UNTUK FILE BELUM TERSEDIA =====
 function showUnavailableModal(fileName, fileType) {
-  // Cek apakah modal sudah ada
   let modal = document.getElementById('errorModal');
-  
-  // Jika belum ada, buat modal
+
   if (!modal) {
     modal = document.createElement('div');
     modal.id = 'errorModal';
@@ -181,36 +171,31 @@ function showUnavailableModal(fileName, fileType) {
       </div>
     `;
     document.body.appendChild(modal);
-    
-    // Event klik pada overlay (background) untuk menutup
-    modal.addEventListener('click', function(e) {
+
+    modal.addEventListener('click', function (e) {
       if (e.target === modal) {
         closeModal();
       }
     });
   }
-  
-  // Update pesan modal sesuai file
+
   const modalMessage = document.getElementById('modalMessage');
   if (modalMessage) {
     const typeText = fileType === 'excel' ? 'Excel' : (fileType === 'word' ? 'Word' : 'file');
     modalMessage.innerHTML = `Maaf, file <strong>${fileName}</strong> (${typeText}) belum tersedia saat ini. File sedang dalam proses persiapan dan akan segera diunggah.`;
   }
-  
-  // Event listener untuk tombol close (dipasang ulang setiap kali modal ditampilkan)
+
   const closeBtn = document.getElementById('closeModalBtn');
   if (closeBtn) {
-    // Hapus event listener lama untuk menghindari duplikasi
     const newCloseBtn = closeBtn.cloneNode(true);
     closeBtn.parentNode.replaceChild(newCloseBtn, closeBtn);
-    newCloseBtn.addEventListener('click', function(e) {
+    newCloseBtn.addEventListener('click', function (e) {
       e.preventDefault();
       e.stopPropagation();
       closeModal();
     });
   }
-  
-  // Tampilkan modal
+
   modal.classList.add('show');
   document.body.style.overflow = 'hidden';
 }
@@ -223,8 +208,7 @@ function closeModal() {
   }
 }
 
-// Event listener untuk tombol ESC di level document (hanya sekali)
-document.addEventListener('keydown', function(e) {
+document.addEventListener('keydown', function (e) {
   if (e.key === 'Escape') {
     const modal = document.getElementById('errorModal');
     if (modal && modal.classList.contains('show')) {
@@ -233,38 +217,31 @@ document.addEventListener('keydown', function(e) {
   }
 });
 
-// ===== DOWNLOAD HANDLER (HANYA UNTUK FILE AKTIF) =====
+// ===== DOWNLOAD HANDLER =====
 function initDownloadButtons() {
   setTimeout(() => {
-    // Hanya ambil tombol dengan class btn-download (bukan btn-disabled)
     const downloadBtns = document.querySelectorAll('.btn-download:not(.btn-disabled)');
-    
+
     downloadBtns.forEach(btn => {
       const newBtn = btn.cloneNode(true);
       btn.parentNode.replaceChild(newBtn, btn);
-      
-      newBtn.addEventListener('click', function(e) {
+
+      newBtn.addEventListener('click', function (e) {
         e.preventDefault();
-        
+
         const url = this.getAttribute('href');
-        
-        // Validasi link - jika # atau kosong, jangan download
         if (!url || url === '#') {
           showNotif('⚠️ File belum tersedia', 'error');
           return;
         }
-        
-        // Ambil nama file
+
         let fileName = '';
-        
-        // Coba dari card grid
         const card = this.closest('.doc-card');
         if (card) {
           const nameDiv = card.querySelector('.doc-name');
           fileName = nameDiv ? nameDiv.innerText : '';
         }
-        
-        // Jika tidak ketemu, coba dari baris tabel
+
         if (!fileName) {
           const row = this.closest('tr');
           if (row) {
@@ -275,29 +252,25 @@ function initDownloadButtons() {
             }
           }
         }
-        
-        // Fallback
+
         if (!fileName) fileName = 'dokumen';
-        
-        // Bersihkan nama file
         fileName = fileName.replace(/[\\/*?:"<>|]/g, '').trim();
         if (!fileName.match(/\.(pdf|docx?|xlsx?)$/i)) {
           fileName += '.pdf';
         }
-        
-        // Tampilkan loading
+
         showLoadingIndicator(fileName);
-        
-        // Proses download
+
         setTimeout(() => {
           const link = document.createElement('a');
           link.href = url;
           link.download = fileName;
           link.target = '_blank';
+          link.rel = 'noopener noreferrer';
           document.body.appendChild(link);
           link.click();
           document.body.removeChild(link);
-          
+
           setTimeout(() => {
             hideLoadingIndicator();
             showNotif(`📥 ${fileName} mulai diunduh`, 'success');
@@ -312,15 +285,14 @@ function initDownloadButtons() {
 function initFilter() {
   const filterBtns = document.querySelectorAll('.filter-btn');
   const docCards = document.querySelectorAll('.doc-card');
-  
+
   if (!filterBtns.length) return;
-  
-  // Update jumlah dokumen di badge filter
+
   const pdfCount = document.querySelectorAll('.doc-card[data-file-type="pdf"]').length;
   const excelCount = document.querySelectorAll('.doc-card[data-file-type="excel"]').length;
   const wordCount = document.querySelectorAll('.doc-card[data-file-type="word"]').length;
   const totalCount = pdfCount + excelCount + wordCount;
-  
+
   filterBtns.forEach(btn => {
     const filter = btn.getAttribute('data-filter');
     if (filter === 'all') btn.innerHTML = `<i class="fas fa-folder-open"></i> Semua (${totalCount})`;
@@ -328,14 +300,18 @@ function initFilter() {
     if (filter === 'excel') btn.innerHTML = `<i class="fas fa-file-excel"></i> Excel (${excelCount})`;
     if (filter === 'word') btn.innerHTML = `<i class="fas fa-file-word"></i> Word (${wordCount})`;
   });
-  
+
   filterBtns.forEach(btn => {
+    const newBtn = btn.cloneNode(true);
+    btn.parentNode.replaceChild(newBtn, btn);
+  });
+
+  document.querySelectorAll('.filter-btn').forEach(btn => {
     btn.addEventListener('click', () => {
-      filterBtns.forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-      
+
       const filter = btn.getAttribute('data-filter');
-      
       docCards.forEach(card => {
         if (filter === 'all' || card.getAttribute('data-file-type') === filter) {
           card.style.display = 'block';
@@ -347,13 +323,12 @@ function initFilter() {
   });
 }
 
-// ===== HANDLE TOMBOL DISABLED DI GRID =====
 function initDisabledGridButtons() {
   const disabledBtns = document.querySelectorAll('.doc-card .btn-disabled');
-  
   disabledBtns.forEach(btn => {
-    btn.removeEventListener('click', handleGridDisabledClick);
-    btn.addEventListener('click', handleGridDisabledClick);
+    const newBtn = btn.cloneNode(true);
+    btn.parentNode.replaceChild(newBtn, btn);
+    newBtn.addEventListener('click', handleGridDisabledClick);
   });
 }
 
@@ -363,13 +338,11 @@ function handleGridDisabledClick(e) {
   const card = this.closest('.doc-card');
   let fileName = '';
   let fileType = '';
-  
   if (card) {
     const nameDiv = card.querySelector('.doc-name');
     fileName = nameDiv ? nameDiv.innerText : 'file';
     fileType = card.getAttribute('data-file-type') || '';
   }
-  
   showUnavailableModal(fileName, fileType);
 }
 
@@ -378,7 +351,7 @@ function initContactForm() {
   const form = document.getElementById('contactForm');
   if (!form) return;
 
-  form.addEventListener('submit', function(e) {
+  form.addEventListener('submit', function (e) {
     e.preventDefault();
 
     const name = document.getElementById('name').value.trim();
@@ -426,14 +399,14 @@ function showNotif(text, type = 'success') {
   }, 3000);
 }
 
-// ===== VIEW TOGGLE (documents page) =====
+// ===== VIEW TOGGLE =====
 function initViewToggle() {
   const gridBtn = document.getElementById('gridBtn');
   const tableBtn = document.getElementById('tableBtn');
   const gridView = document.getElementById('gridView');
   const tableView = document.getElementById('tableView');
 
-  if (!gridBtn) return;
+  if (!gridBtn || !tableBtn) return;
 
   gridBtn.addEventListener('click', () => {
     if (gridView) gridView.style.display = 'grid';
@@ -450,7 +423,6 @@ function initViewToggle() {
   });
 }
 
-// ===== CEK HALAMAN DOKUMEN =====
 function isDocumentsPage() {
   return window.location.pathname.includes('documents.html');
 }
@@ -458,40 +430,32 @@ function isDocumentsPage() {
 // ===== INIT =====
 document.addEventListener('DOMContentLoaded', () => {
   initTheme();
-  setActiveNav();
   initFadeUp();
   initContactForm();
   initViewToggle();
-  
-  // Jika di halaman documents, jalankan fungsi khusus
+
   if (isDocumentsPage()) {
     renderTable();
     initFilter();
     initDownloadButtons();
     initDisabledGridButtons();
   }
-  
-  // Dark toggle click
+
+  // Dark toggle click (jika navbar sudah ada saat DOMContentLoaded)
   const toggle = document.querySelector('.dark-toggle');
   if (toggle) toggle.addEventListener('click', toggleTheme);
-  
-  // Hamburger
-  const ham = document.querySelector('.hamburger');
-  if (ham) ham.addEventListener('click', toggleMobileMenu);
-  
-  // Close mobile menu on link click
-  document.querySelectorAll('.mobile-menu a').forEach(a => {
-    a.addEventListener('click', () => {
-      document.getElementById('mobileMenu')?.classList.remove('open');
-    });
-  });
-  
-  // Add fade-up to elements on page
-  setTimeout(() => {
-    document.querySelectorAll('.fade-up').forEach((el, i) => {
-      el.style.transitionDelay = `${i * 0.05}s`;
-    });
-  }, 100);
 });
 
+// ===== EVENT UNTUK NAVBAR.JS =====
+document.addEventListener('navbarUpdated', () => {
+  reattachDarkToggle();
 
+  if (isDocumentsPage()) {
+    setTimeout(() => {
+      renderTable();
+      initFilter();
+      initDownloadButtons();
+      initDisabledGridButtons();
+    }, 100);
+  }
+});
