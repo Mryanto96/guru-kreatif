@@ -77,8 +77,8 @@ function renderNavbar() {
         <a href="index.html" class="logo">
           <div class="logo-icon">SMP</div>
           <div class="logo-text">
-            <span class="logo-title">SMP Persiapan Negeri</span>
-            <span class="logo-sub">Pulau Tiga • Nakai</span>
+            <span class="logo-title">Persiapan Negeri</span>
+            <span class="logo-sub">Pulau Tiga ŊÆ௹Æǐ</span>
           </div>
         </a>
         <ul class="nav-links">
