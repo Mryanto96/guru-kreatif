@@ -365,24 +365,36 @@
             }
         }
 
+        /* ===== PERBAIKAN: MOBILE TABEL SCROLL HORIZONTAL ===== */
         @media (max-width: 768px) {
             .search-wrapper {
                 flex-direction: column;
                 align-items: stretch;
             }
 
-            .student-table th,
-            .student-table td {
-                padding: 10px 8px;
-                font-size: 0.7rem;
+            /* Tabel tetap scroll horizontal, tidak di-wrap */
+            .table-container {
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
             }
 
             .student-table {
-                white-space: normal;
+                min-width: 800px;
+                white-space: nowrap;
             }
 
+            .student-table th,
             .student-table td {
+                padding: 10px 12px;
+                font-size: 0.7rem;
+                white-space: nowrap;
+            }
+
+            /* Hanya kolom asal sekolah yang boleh wrap jika terlalu panjang */
+            .student-table td:nth-child(4) {
                 white-space: normal;
+                min-width: 140px;
+                max-width: 180px;
                 word-break: break-word;
             }
 
@@ -401,6 +413,22 @@
 
             .export-buttons {
                 justify-content: flex-start;
+            }
+
+            .stats-cards {
+                gap: 12px;
+            }
+
+            .stat-card-primary {
+                padding: 12px;
+            }
+
+            .stat-number {
+                font-size: 1.8rem;
+            }
+
+            .stat-label {
+                font-size: 0.7rem;
             }
         }
     </style>
@@ -464,9 +492,10 @@
 
             <!-- EXPORT BUTTONS -->
             <div class="export-buttons fade-up">
-                <button class="btn-export btn-excel" id="exportExcelBtn"><i class="fas fa-file-excel"></i>Download
+                <button class="btn-export btn-excel" id="exportExcelBtn"><i class="fas fa-file-excel"></i> Download
                     Excel</button>
-                <button class="btn-export btn-pdf" id="exportPdfBtn"><i class="fas fa-file-pdf"></i> Export to PDF</button>
+                <button class="btn-export btn-pdf" id="exportPdfBtn"><i class="fas fa-file-pdf"></i> Export to
+                    PDF</button>
             </div>
 
             <!-- TABEL DATA -->
@@ -550,7 +579,6 @@
         let genderChart = null;
         let statusChart = null;
 
-        // ===== RENDER STATISTIK =====
         function renderStats() {
             const total = currentData.length;
             const laki = currentData.filter(s => s.jenisKelamin === 'L').length;
@@ -577,19 +605,11 @@
             `;
         }
 
-        // ===== RENDER TABEL =====
         function renderTable() {
             const tbody = document.getElementById('tableBody');
 
             if (currentData.length === 0) {
-                tbody.innerHTML = `
-                    <tr>
-                        <td colspan="8" class="empty-state">
-                            <i class="fas fa-search"></i>
-                            <p>Data tidak ditemukan</p>
-                        </td>
-                    </tr>
-                `;
+                tbody.innerHTML = `<tr><td colspan="8" class="empty-state"><i class="fas fa-search"></i><p>Data tidak ditemukan</p></td></tr>`;
                 return;
             }
 
@@ -630,7 +650,6 @@
             tbody.innerHTML = html;
         }
 
-        // ===== RENDER GRAFIK =====
         function renderCharts() {
             const laki = currentData.filter(s => s.jenisKelamin === 'L').length;
             const perempuan = currentData.filter(s => s.jenisKelamin === 'P').length;
@@ -707,7 +726,6 @@
             });
         }
 
-        // ===== FILTER & RESET =====
         function filterData() {
             const searchTerm = document.getElementById('searchInput').value.toLowerCase();
             const statusFilter = document.getElementById('filterStatus').value;
@@ -735,14 +753,12 @@
             renderCharts();
         }
 
-        // ===== EXPORT KE EXCEL DENGAN 2 SHEET =====
         function exportToExcel() {
             if (currentData.length === 0) {
                 alert('Tidak ada data untuk diekspor');
                 return;
             }
 
-            // ===== SHEET 1: DATA CALON SISWA =====
             const exportData = currentData.map((siswa, idx) => ({
                 'No': idx + 1,
                 'Nama Lengkap': siswa.nama,
@@ -755,45 +771,27 @@
             }));
 
             const wsData = XLSX.utils.json_to_sheet(exportData);
-            wsData['!cols'] = [
-                { wch: 5 },   // No
-                { wch: 30 },  // Nama Lengkap
-                { wch: 18 },  // NIK
-                { wch: 28 },  // Asal Sekolah
-                { wch: 15 },  // Jenis Kelamin
-                { wch: 28 },  // Nama Ayah
-                { wch: 28 },  // Nama Ibu
-                { wch: 20 }   // Status
-            ];
+            wsData['!cols'] = [{ wch: 5 }, { wch: 30 }, { wch: 18 }, { wch: 28 }, { wch: 15 }, { wch: 28 }, { wch: 28 }, { wch: 20 }];
 
-            // ===== SHEET 2: STATISTIK & GRAFIK =====
             const total = currentData.length;
             const laki = currentData.filter(s => s.jenisKelamin === 'L').length;
             const perempuan = currentData.filter(s => s.jenisKelamin === 'P').length;
-            const persenLaki = ((laki / total) * 100).toFixed(1);
-            const persenPerempuan = ((perempuan / total) * 100).toFixed(1);
-
-            // Data per asal sekolah
-            const sekolahMap = new Map();
-            currentData.forEach(s => {
-                sekolahMap.set(s.asalSekolah, (sekolahMap.get(s.asalSekolah) || 0) + 1);
-            });
-            const sekolahData = Array.from(sekolahMap.entries()).map(([nama, jumlah]) => ({ nama, jumlah }));
-
-            // Data per status
             const verifiedCount = currentData.filter(s => s.status === 'verified').length;
             const pendingCount = currentData.filter(s => s.status === 'pending').length;
             const reviewCount = currentData.filter(s => s.status === 'review').length;
 
-            // Buat sheet statistik
+            const sekolahMap = new Map();
+            currentData.forEach(s => sekolahMap.set(s.asalSekolah, (sekolahMap.get(s.asalSekolah) || 0) + 1));
+            const sekolahData = Array.from(sekolahMap.entries()).map(([nama, jumlah]) => ({ nama, jumlah }));
+
             const statSheetData = [
                 ['LAPORAN STATISTIK PPDB 2026/2027'],
                 ['SMP Persiapan Negeri Pulau Tiga'],
                 [''],
                 ['A. RINGKASAN UMUM'],
                 ['Total Pendaftar', total],
-                ['Laki-laki', `${laki} (${persenLaki}%)`],
-                ['Perempuan', `${perempuan} (${persenPerempuan}%)`],
+                ['Laki-laki', `${laki} (${((laki / total) * 100).toFixed(1)}%)`],
+                ['Perempuan', `${perempuan} (${((perempuan / total) * 100).toFixed(1)}%)`],
                 [''],
                 ['B. STATUS PENDAFTARAN'],
                 ['Terverifikasi', verifiedCount, `(${((verifiedCount / total) * 100).toFixed(1)}%)`],
@@ -803,71 +801,33 @@
                 ['C. ASAL SEKOLAH'],
                 ...sekolahData.map(s => [s.nama, s.jumlah, `(${((s.jumlah / total) * 100).toFixed(1)}%)`]),
                 [''],
-                ['D. INFORMASI TAMBAHAN'],
-                ['Tanggal Export', new Date().toLocaleDateString('id-ID')],
-                ['Waktu Export', new Date().toLocaleTimeString('id-ID')],
-                ['Total Data', `${total} Siswa`],
-                [''],
-                ['E. GRAFIK DISTRIBUSI (Text-based)'],
-                [''],
+                ['D. GRAFIK (Text-based)'],
                 ['Jenis Kelamin:'],
-                [`Laki-laki   : ${'█'.repeat(Math.round(laki / total * 20))} ${laki} (${persenLaki}%)`],
-                [`Perempuan    : ${'█'.repeat(Math.round(perempuan / total * 20))} ${perempuan} (${persenPerempuan}%)`],
-                [''],
-                ['Status Pendaftaran:'],
-                [`Terverifikasi    : ${'█'.repeat(Math.round(verifiedCount / total * 20))} ${verifiedCount} (${((verifiedCount / total) * 100).toFixed(1)}%)`],
-                [`Menunggu Verifikasi : ${'█'.repeat(Math.round(pendingCount / total * 20))} ${pendingCount} (${((pendingCount / total) * 100).toFixed(1)}%)`],
-                [`Dalam Review      : ${'█'.repeat(Math.round(reviewCount / total * 20))} ${reviewCount} (${((reviewCount / total) * 100).toFixed(1)}%)`],
-                [''],
-                ['F. CATATAN'],
-                ['- Data ini merupakan data calon siswa baru tahun ajaran 2026/2027'],
-                ['- Status "Terverifikasi" berarti berkas lengkap dan valid'],
-                ['- Status "Menunggu Verifikasi" berarti berkas sedang diperiksa'],
-                ['- Status "Dalam Review" berarti ada berkas yang perlu dilengkapi']
+                [`Laki-laki   : ${'█'.repeat(Math.round(laki / total * 20))} ${laki} (${((laki / total) * 100).toFixed(1)}%)`],
+                [`Perempuan    : ${'█'.repeat(Math.round(perempuan / total * 20))} ${perempuan} (${((perempuan / total) * 100).toFixed(1)}%)`]
             ];
 
             const wsStat = XLSX.utils.aoa_to_sheet(statSheetData);
-            wsStat['!cols'] = [
-                { wch: 30 },
-                { wch: 20 },
-                { wch: 15 }
-            ];
+            wsStat['!cols'] = [{ wch: 30 }, { wch: 20 }, { wch: 15 }];
+            wsStat['!merges'] = [{ s: { r: 0, c: 0 }, e: { r: 0, c: 2 } }, { s: { r: 1, c: 0 }, e: { r: 1, c: 2 } }];
 
-            // Gabungkan sel judul
-            wsStat['!merges'] = [
-                { s: { r: 0, c: 0 }, e: { r: 0, c: 2 } },
-                { s: { r: 1, c: 0 }, e: { r: 1, c: 2 } }
-            ];
-
-            // Buat workbook dengan 2 sheet
             const wb = XLSX.utils.book_new();
             XLSX.utils.book_append_sheet(wb, wsData, 'Data Calon Siswa');
-            XLSX.utils.book_append_sheet(wb, wsStat, 'Statistik & Grafik');
-
-            // Download file
+            XLSX.utils.book_append_sheet(wb, wsStat, 'Statistik');
             XLSX.writeFile(wb, `Data_PPDB_${new Date().toISOString().split('T')[0]}.xlsx`);
-
-            alert(`✅ Berhasil mengekspor ${currentData.length} data siswa\n📊 2 Sheet: "Data Calon Siswa" dan "Statistik & Grafik"`);
+            alert(`✅ Berhasil mengekspor ${currentData.length} data siswa`);
         }
 
-        // ===== EXPORT PDF (Menggunakan Print Browser) =====
         function exportToPDF() {
             if (currentData.length === 0) {
                 alert('Tidak ada data untuk diekspor');
                 return;
             }
-
-            // Simpan data saat ini
-            const originalData = [...currentData];
-
-            // Tampilkan notifikasi
-            alert('📄 Membuka jendela print. Pilih "Save as PDF" dan atur layout menjadi Landscape.\n\nTips: Di jendela print, pilih layout Landscape untuk hasil terbaik.');
-
-            // Panggil print browser
+            alert('📄 Membuka jendela print. Pilih "Save as PDF" dan atur layout menjadi Landscape.');
             window.print();
         }
 
-        // ===== EVENT LISTENERS =====
+        // Event Listeners
         document.getElementById('searchBtn').addEventListener('click', filterData);
         document.getElementById('resetBtn').addEventListener('click', resetFilter);
         document.getElementById('exportExcelBtn').addEventListener('click', exportToExcel);
@@ -876,7 +836,7 @@
             if (e.key === 'Enter') filterData();
         });
 
-        // ===== INIT =====
+        // INIT
         (function init() {
             renderStats();
             renderTable();
