@@ -17,6 +17,49 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        /* ANIMASI MODERN UNTUK STATISTIK CARDS */
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulseGlow {
+            0% {
+                box-shadow: 0 0 0 0 rgba(255, 107, 107, 0.4);
+            }
+
+            70% {
+                box-shadow: 0 0 0 15px rgba(255, 107, 107, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(255, 107, 107, 0);
+            }
+        }
+
+        @keyframes countUp {
+            from {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
         .stats-cards {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -30,11 +73,46 @@
             border-radius: 20px;
             padding: 20px;
             text-align: center;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            animation: slideInUp 0.6s ease forwards;
+            opacity: 0;
+        }
+
+        .stat-card-primary:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .stat-card-primary:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .stat-card-primary:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .stat-card-primary:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+
+        .stat-card-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .stat-card-primary:hover::before {
+            left: 100%;
         }
 
         .stat-card-primary:hover {
-            transform: translateY(-4px);
+            transform: translateY(-8px) scale(1.02);
             box-shadow: var(--shadow-lg);
         }
 
@@ -46,6 +124,7 @@
             background-clip: text;
             color: transparent;
             line-height: 1.2;
+            animation: countUp 0.6s ease forwards;
         }
 
         .stat-label {
@@ -53,6 +132,253 @@
             color: var(--text2);
             font-weight: 500;
             margin-top: 8px;
+        }
+
+        /* PAGINATION STYLES */
+        .pagination-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            margin-top: 30px;
+            margin-bottom: 20px;
+        }
+
+        .pagination-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            border-radius: 40px;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            color: var(--text2);
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .pagination-btn:hover:not(:disabled) {
+            background: linear-gradient(135deg, var(--c1), var(--c2));
+            color: white;
+            border-color: transparent;
+            transform: translateY(-2px);
+        }
+
+        .pagination-btn:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+
+        .page-info {
+            color: var(--text2);
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        /* ACTION BUTTONS (EDIT & DELETE) */
+        .action-btns {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+        }
+
+        .btn-edit {
+            background: rgba(59, 130, 246, 0.15);
+            color: #3b82f6;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.7rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-edit:hover {
+            background: #3b82f6;
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .btn-delete {
+            background: rgba(239, 68, 68, 0.15);
+            color: #ef4444;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.7rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-delete:hover {
+            background: #ef4444;
+            color: white;
+            transform: scale(1.05);
+        }
+
+        /* MODAL STYLES */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background: var(--card-bg);
+            border-radius: 24px;
+            width: 90%;
+            max-width: 700px;
+            max-height: 85vh;
+            overflow-y: auto;
+            padding: 30px;
+            position: relative;
+            animation: slideInUp 0.4s ease;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .modal-header h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text);
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text2);
+            transition: all 0.3s ease;
+        }
+
+        .modal-close:hover {
+            color: var(--c1);
+            transform: rotate(90deg);
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--text2);
+            margin-bottom: 5px;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 10px 12px;
+            border-radius: 10px;
+            border: 1.5px solid var(--border);
+            background: var(--bg);
+            color: var(--text);
+            font-family: var(--font);
+            font-size: 0.85rem;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            border-color: var(--c1);
+            box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.2);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .modal-footer {
+            display: flex;
+            justify-content: flex-end;
+            gap: 12px;
+            margin-top: 25px;
+            padding-top: 15px;
+            border-top: 1px solid var(--border);
+        }
+
+        .btn-save {
+            background: linear-gradient(135deg, var(--c1), var(--c2));
+            color: white;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 40px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-save:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+        }
+
+        .btn-cancel {
+            background: var(--bg3);
+            border: 1px solid var(--border);
+            color: var(--text2);
+            padding: 10px 24px;
+            border-radius: 40px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-cancel:hover {
+            background: var(--bg2);
+        }
+
+        /* TOAST NOTIFICATION */
+        .toast-notif {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 40px;
+            font-weight: 600;
+            z-index: 10001;
+            animation: slideInUp 0.3s ease;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .toast-notif.error {
+            background: linear-gradient(135deg, #ef4444, #dc2626);
         }
 
         .search-section {
@@ -180,34 +506,51 @@
 
         .table-container {
             overflow-x: auto;
+            overflow-y: visible;
             border-radius: 16px;
             border: 1px solid var(--border);
             background: var(--card-bg);
-            margin-bottom: 40px;
+            margin-bottom: 20px;
+            -webkit-overflow-scrolling: touch;
         }
 
         .student-table {
-            width: 100%;
+            width: auto;
+            min-width: 2400px;
             border-collapse: collapse;
-            font-size: 0.85rem;
+            font-size: 0.7rem;
             table-layout: auto;
             white-space: nowrap;
         }
 
         .student-table th {
             background: var(--bg3);
-            padding: 14px 16px;
-            text-align: left;
+            padding: 10px 8px;
+            text-align: center;
             font-weight: 700;
             color: var(--text);
             border-bottom: 1px solid var(--border);
+            border-right: 1px solid var(--border);
+            white-space: nowrap;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .student-table th:last-child {
+            border-right: none;
         }
 
         .student-table td {
-            padding: 12px 16px;
+            padding: 8px;
             border-bottom: 1px solid var(--border);
+            border-right: 1px solid var(--border);
             color: var(--text2);
             white-space: nowrap;
+        }
+
+        .student-table td:last-child {
+            border-right: none;
         }
 
         .student-table tbody tr:hover td {
@@ -218,9 +561,9 @@
             display: inline-flex;
             align-items: center;
             gap: 4px;
-            padding: 4px 10px;
+            padding: 3px 8px;
             border-radius: 99px;
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             font-weight: 600;
             white-space: nowrap;
         }
@@ -315,7 +658,6 @@
             border-top: 1px solid var(--border);
         }
 
-        /* Style untuk Print PDF */
         @media print {
             body {
                 background: white;
@@ -330,7 +672,9 @@
             footer,
             .page-header-bg,
             .chart-note,
-            .btn-export {
+            .btn-export,
+            .pagination-container,
+            .action-btns {
                 display: none !important;
             }
 
@@ -354,48 +698,26 @@
                 overflow: visible !important;
             }
 
+            .student-table {
+                min-width: 100% !important;
+            }
+
             .student-table th,
             .student-table td {
                 border: 1px solid #ddd !important;
+                white-space: normal !important;
             }
 
             @page {
                 size: landscape;
-                margin: 1cm;
+                margin: 0.5cm;
             }
         }
 
-        /* ===== PERBAIKAN: MOBILE TABEL SCROLL HORIZONTAL ===== */
         @media (max-width: 768px) {
             .search-wrapper {
                 flex-direction: column;
                 align-items: stretch;
-            }
-
-            /* Tabel tetap scroll horizontal, tidak di-wrap */
-            .table-container {
-                overflow-x: auto;
-                -webkit-overflow-scrolling: touch;
-            }
-
-            .student-table {
-                min-width: 800px;
-                white-space: nowrap;
-            }
-
-            .student-table th,
-            .student-table td {
-                padding: 10px 12px;
-                font-size: 0.7rem;
-                white-space: nowrap;
-            }
-
-            /* Hanya kolom asal sekolah yang boleh wrap jika terlalu panjang */
-            .student-table td:nth-child(4) {
-                white-space: normal;
-                min-width: 140px;
-                max-width: 180px;
-                word-break: break-word;
             }
 
             .charts-section {
@@ -430,6 +752,15 @@
             .stat-label {
                 font-size: 0.7rem;
             }
+
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+
+            .modal-content {
+                padding: 20px;
+            }
         }
     </style>
 </head>
@@ -437,7 +768,6 @@
 <body>
 
     <div class="page-content">
-        <!-- PAGE HEADER -->
         <div class="page-header">
             <div class="page-header-bg"></div>
             <div class="container">
@@ -456,15 +786,13 @@
 
         <div class="container" style="padding-bottom: 60px;">
 
-            <!-- STATISTIK -->
             <div class="stats-cards fade-up" id="statsContainer"></div>
 
-            <!-- SEARCH & FILTER -->
             <div class="search-section fade-up">
                 <div class="search-wrapper">
                     <div class="search-group">
-                        <label><i class="fas fa-search"></i> Cari Nama / NIK / Asal Sekolah</label>
-                        <input type="text" id="searchInput" placeholder="Ketik kata kunci..." autocomplete="off">
+                        <label><i class="fas fa-search"></i> Cari Nama / NIK</label>
+                        <input type="text" id="searchInput" placeholder="Ketik nama atau NIK..." autocomplete="off">
                     </div>
                     <div class="search-group">
                         <label><i class="fas fa-filter"></i> Status</label>
@@ -490,7 +818,6 @@
                 </div>
             </div>
 
-            <!-- EXPORT BUTTONS -->
             <div class="export-buttons fade-up">
                 <button class="btn-export btn-excel" id="exportExcelBtn"><i class="fas fa-file-excel"></i> Download
                     Excel</button>
@@ -498,26 +825,48 @@
                     PDF</button>
             </div>
 
-            <!-- TABEL DATA -->
-            <div class="table-container fade-up" id="tableContainer">
+            <div class="table-container fade-up">
                 <table class="student-table" id="studentTable">
-                    <thead>
+                    <thead id="tableHeader">
                         <tr>
                             <th>No</th>
                             <th>Nama Lengkap</th>
+                            <th>Nama Panggilan</th>
+                            <th>Jenis Kelamin</th>
+                            <th>Tempat, Tgl Lahir</th>
                             <th>NIK</th>
+                            <th>Agama</th>
+                            <th>Anak Ke</th>
+                            <th>Alamat Siswa</th>
+                            <th>No. HP Siswa</th>
                             <th>Asal Sekolah</th>
-                            <th>JK</th>
                             <th>Nama Ayah</th>
+                            <th>TTL Ayah</th>
+                            <th>Pekerjaan Ayah</th>
+                            <th>Alamat Ayah</th>
+                            <th>No. HP Ayah</th>
                             <th>Nama Ibu</th>
-                            <th>Status</th>
+                            <th>TTL Ibu</th>
+                            <th>Pekerjaan Ibu</th>
+                            <th>Alamat Ibu</th>
+                            <th>No. HP Ibu</th>
+                            <th>Status Verifikasi</th>
+                            <th>Kelengkapan Berkas</th>
+                            <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody id="tableBody"></tbody>
                 </table>
             </div>
 
-            <!-- GRAFIK SECTION -->
+            <!-- PAGINATION -->
+            <div class="pagination-container" id="paginationContainer">
+                <button class="pagination-btn" id="prevPageBtn"><i class="fas fa-chevron-left"></i> Sebelumnya</button>
+                <span class="page-info" id="pageInfo">Halaman 1 dari 3</span>
+                <button class="pagination-btn" id="nextPageBtn">Selanjutnya <i
+                        class="fas fa-chevron-right"></i></button>
+            </div>
+
             <div class="charts-section fade-up">
                 <div class="chart-card">
                     <div class="chart-title">
@@ -548,42 +897,549 @@
         </div>
     </div>
 
+    <!-- MODAL EDIT -->
+    <div id="editModal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fas fa-edit"></i> Edit Data Siswa</h3>
+                <button class="modal-close" id="closeModalBtn">&times;</button>
+            </div>
+            <form id="editForm">
+                <input type="hidden" id="editId">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Nama Lengkap</label>
+                        <input type="text" id="editNamaLengkap" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Nama Panggilan</label>
+                        <input type="text" id="editNamaPanggilan" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Jenis Kelamin</label>
+                        <select id="editJenisKelamin">
+                            <option value="L">Laki-laki</option>
+                            <option value="P">Perempuan</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Tempat, Tgl Lahir</label>
+                        <input type="text" id="editTempatTglLahir" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>NIK</label>
+                        <input type="text" id="editNik" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Agama</label>
+                        <input type="text" id="editAgama" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Anak Ke</label>
+                        <input type="text" id="editAnakKe" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Alamat Siswa</label>
+                        <input type="text" id="editAlamatSiswa" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>No. HP Siswa</label>
+                        <input type="text" id="editNoHpSiswa" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Asal Sekolah</label>
+                        <input type="text" id="editAsalSekolah" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Nama Ayah</label>
+                        <input type="text" id="editNamaAyah" required>
+                    </div>
+                    <div class="form-group">
+                        <label>TTL Ayah</label>
+                        <input type="text" id="editTtlAyah" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Pekerjaan Ayah</label>
+                        <input type="text" id="editPekerjaanAyah" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Alamat Ayah</label>
+                        <input type="text" id="editAlamatAyah" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>No. HP Ayah</label>
+                        <input type="text" id="editNoHpAyah" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Nama Ibu</label>
+                        <input type="text" id="editNamaIbu" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>TTL Ibu</label>
+                        <input type="text" id="editTtlIbu" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Pekerjaan Ibu</label>
+                        <input type="text" id="editPekerjaanIbu" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Alamat Ibu</label>
+                        <input type="text" id="editAlamatIbu" required>
+                    </div>
+                    <div class="form-group">
+                        <label>No. HP Ibu</label>
+                        <input type="text" id="editNoHpIbu" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Status</label>
+                        <select id="editStatus">
+                            <option value="verified">Terverifikasi</option>
+                            <option value="pending">Menunggu Verifikasi</option>
+                            <option value="review">Dalam Review</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Kelengkapan Berkas</label>
+                        <input type="text" id="editKelengkapanBerkas" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn-cancel" id="cancelModalBtn">Batal</button>
+                    <button type="submit" class="btn-save"><i class="fas fa-save"></i> Simpan Perubahan</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <script src="js/main.js"></script>
     <script src="js/navbar.js"></script>
     <script src="https://cdn.sheetjs.com/xlsx-0.20.2/package/dist/xlsx.full.min.js"></script>
 
     <script>
         // ============================================
-        // DATA CALON SISWA BARU - 15 SISWA
+        // DATA CALON SISWA BARU - 15 SISWA (LENGKAP)
         // ============================================
-        const studentsData = [
-            { nama: "Ahmad Fathir Al-Ghifari", nik: "3273011201100001", asalSekolah: "SD Negeri 1 Pulau Tiga", jenisKelamin: "L", namaAyah: "H. Abdul Majid, S.Ag.", namaIbu: "Hj. Siti Aminah, S.Pd.", status: "verified" },
-            { nama: "Bunga Citra Lestari", nik: "3273014502110002", asalSekolah: "SD Inpres Nakai", jenisKelamin: "P", namaAyah: "Bambang Supriyanto", namaIbu: "Dewi Kartika, S.Pd.", status: "verified" },
-            { nama: "Cahya Kirana Putri", nik: "3273016203110003", asalSekolah: "SD YPK Pulau Tiga", jenisKelamin: "P", namaAyah: "Cahyo Wibowo, S.E.", namaIbu: "Ratna Sari Dewi", status: "pending" },
-            { nama: "Daffa Alvaro Pratama", nik: "3273011504110004", asalSekolah: "SD Negeri 2 Pulau Tiga", jenisKelamin: "L", namaAyah: "Darmawan Setiawan, S.H.", namaIbu: "Eka Fitriyani, S.Kep.", status: "verified" },
-            { nama: "Elvina Maharani", nik: "3273016805110005", asalSekolah: "SD Inpres Nakai", jenisKelamin: "P", namaAyah: "Eko Prasetyo", namaIbu: "Farida Ulfa", status: "review" },
-            { nama: "Farel Athallah Zikri", nik: "3273010206110006", asalSekolah: "SD Negeri 1 Pulau Tiga", jenisKelamin: "L", namaAyah: "Faisal Anwar, S.T.", namaIbu: "Gina Sonia, A.Md.", status: "verified" },
-            { nama: "Gracia Angelina", nik: "3273017307110007", asalSekolah: "SD YPK Pulau Tiga", jenisKelamin: "P", namaAyah: "Gabriel Manurung", namaIbu: "Helena Sihombing", status: "pending" },
-            { nama: "Hendra Setiawan", nik: "3273011908110008", asalSekolah: "SD Negeri 2 Pulau Tiga", jenisKelamin: "L", namaAyah: "Hendro Suwito", namaIbu: "Indah Lestari, S.Pd.", status: "verified" },
-            { nama: "Indah Puspita Sari", nik: "3273016609110009", asalSekolah: "SD Inpres Nakai", jenisKelamin: "P", namaAyah: "Irfan Hakim, S.Sos.", namaIbu: "Juwita Rini, S.E.", status: "review" },
-            { nama: "Johan Fernando", nik: "3273010510110010", asalSekolah: "SD Negeri 1 Pulau Tiga", jenisKelamin: "L", namaAyah: "Joko Susilo", namaIbu: "Kartika Sari", status: "verified" },
-            { nama: "Karina Azzahra", nik: "3273017001110011", asalSekolah: "SD YPK Pulau Tiga", jenisKelamin: "P", namaAyah: "Kurniawan Dwi, S.Kom.", namaIbu: "Lilis Mulyani", status: "pending" },
-            { nama: "Lukman Hakim", nik: "3273012102110012", asalSekolah: "SD Negeri 2 Pulau Tiga", jenisKelamin: "L", namaAyah: "Lukito Hadi, S.Ag.", namaIbu: "Maya Sari, S.Pd.I.", status: "verified" },
-            { nama: "Mutiara Azzahra", nik: "3273015503110013", asalSekolah: "SD Inpres Nakai", jenisKelamin: "P", namaAyah: "Muhammad Iqbal, S.H.", namaIbu: "Nadia Permata", status: "pending" },
-            { nama: "Naufal Al-Ghifari", nik: "3273010804110014", asalSekolah: "SD Negeri 1 Pulau Tiga", jenisKelamin: "L", namaAyah: "Nasrullah, S.Pd.", namaIbu: "Olivia Christy", status: "review" },
-            { nama: "Olivia Febriyanti", nik: "3273016205110015", asalSekolah: "SD YPK Pulau Tiga", jenisKelamin: "P", namaAyah: "Oscar Sitohang", namaIbu: "Putri Wulandari, S.S.", status: "verified" }
+        let studentsData = [
+            {
+                no: 1,
+                namaLengkap: "Ahmad Fathir Al-Ghifari",
+                namaPanggilan: "Fathir",
+                jenisKelamin: "L",
+                tempatTglLahir: "Pulau Tiga, 12 Januari 2010",
+                nik: "3273011201100001",
+                agama: "Islam",
+                anakKe: "2 dari 3 bersaudara",
+                alamatSiswa: "Kampung Nakai, Distrik Pulau Tiga, Kabupaten Asmat",
+                noHpSiswa: "0822-1234-5678",
+                asalSekolah: "SD Negeri 1 Pulau Tiga",
+                namaAyah: "H. Abdul Majid, S.Ag.",
+                ttlAyah: "Jakarta, 15 Maret 1975",
+                pekerjaanAyah: "Guru Agama",
+                alamatAyah: "Kampung Nakai, Distrik Pulau Tiga",
+                noHpAyah: "0812-3456-7890",
+                namaIbu: "Hj. Siti Aminah, S.Pd.",
+                ttlIbu: "Surabaya, 20 Mei 1978",
+                pekerjaanIbu: "Guru SD",
+                alamatIbu: "Kampung Nakai, Distrik Pulau Tiga",
+                noHpIbu: "0852-3456-7891",
+                status: "verified",
+                kelengkapanBerkas: "Lengkap (KK, Ijazah, Akta, Pas Foto)"
+            },
+            {
+                no: 2,
+                namaLengkap: "Bunga Citra Lestari",
+                namaPanggilan: "Bunga",
+                jenisKelamin: "P",
+                tempatTglLahir: "Pulau Tiga, 5 Februari 2011",
+                nik: "3273014502110002",
+                agama: "Kristen",
+                anakKe: "1 dari 2 bersaudara",
+                alamatSiswa: "Kampung YPK, Distrik Pulau Tiga",
+                noHpSiswa: "0823-4567-8901",
+                asalSekolah: "SD Inpres Nakai",
+                namaAyah: "Bambang Supriyanto",
+                ttlAyah: "Yogyakarta, 10 April 1970",
+                pekerjaanAyah: "Nelayan",
+                alamatAyah: "Kampung YPK, Distrik Pulau Tiga",
+                noHpAyah: "0813-4567-8901",
+                namaIbu: "Dewi Kartika, S.Pd.",
+                ttlIbu: "Semarang, 25 Agustus 1975",
+                pekerjaanIbu: "Guru SD",
+                alamatIbu: "Kampung YPK, Distrik Pulau Tiga",
+                noHpIbu: "0853-4567-8902",
+                status: "verified",
+                kelengkapanBerkas: "Lengkap (KK, Ijazah, Akta, Pas Foto)"
+            },
+            {
+                no: 3,
+                namaLengkap: "Cahya Kirana Putri",
+                namaPanggilan: "Cahya",
+                jenisKelamin: "P",
+                tempatTglLahir: "Pulau Tiga, 20 Maret 2011",
+                nik: "3273016203110003",
+                agama: "Islam",
+                anakKe: "3 dari 3 bersaudara",
+                alamatSiswa: "Kampung Waikam, Distrik Pulau Tiga",
+                noHpSiswa: "0824-5678-9012",
+                asalSekolah: "SD YPK Pulau Tiga",
+                namaAyah: "Cahyo Wibowo, S.E.",
+                ttlAyah: "Bandung, 12 Juli 1972",
+                pekerjaanAyah: "Wiraswasta",
+                alamatAyah: "Kampung Waikam, Distrik Pulau Tiga",
+                noHpAyah: "0814-5678-9012",
+                namaIbu: "Ratna Sari Dewi",
+                ttlIbu: "Malang, 8 September 1976",
+                pekerjaanIbu: "Ibu Rumah Tangga",
+                alamatIbu: "Kampung Waikam, Distrik Pulau Tiga",
+                noHpIbu: "0854-5678-9013",
+                status: "pending",
+                kelengkapanBerkas: "Kurang Fotokopi Ijazah"
+            },
+            {
+                no: 4,
+                namaLengkap: "Daffa Alvaro Pratama",
+                namaPanggilan: "Daffa",
+                jenisKelamin: "L",
+                tempatTglLahir: "Pulau Tiga, 15 April 2010",
+                nik: "3273011504110004",
+                agama: "Katolik",
+                anakKe: "1 dari 2 bersaudara",
+                alamatSiswa: "Kampung Komar, Distrik Pulau Tiga",
+                noHpSiswa: "0825-6789-0123",
+                asalSekolah: "SD Negeri 2 Pulau Tiga",
+                namaAyah: "Darmawan Setiawan, S.H.",
+                ttlAyah: "Surabaya, 20 Januari 1973",
+                pekerjaanAyah: "Advokat",
+                alamatAyah: "Kampung Komar, Distrik Pulau Tiga",
+                noHpAyah: "0815-6789-0123",
+                namaIbu: "Eka Fitriyani, S.Kep.",
+                ttlIbu: "Denpasar, 5 Juni 1977",
+                pekerjaanIbu: "Perawat",
+                alamatIbu: "Kampung Komar, Distrik Pulau Tiga",
+                noHpIbu: "0855-6789-0124",
+                status: "verified",
+                kelengkapanBerkas: "Lengkap"
+            },
+            {
+                no: 5,
+                namaLengkap: "Elvina Maharani",
+                namaPanggilan: "Elvi",
+                jenisKelamin: "P",
+                tempatTglLahir: "Pulau Tiga, 28 Mei 2011",
+                nik: "3273016805110005",
+                agama: "Islam",
+                anakKe: "2 dari 2 bersaudara",
+                alamatSiswa: "Kampung Nakai, Distrik Pulau Tiga",
+                noHpSiswa: "0826-7890-1234",
+                asalSekolah: "SD Inpres Nakai",
+                namaAyah: "Eko Prasetyo",
+                ttlAyah: "Semarang, 15 Desember 1971",
+                pekerjaanAyah: "Petani",
+                alamatAyah: "Kampung Nakai, Distrik Pulau Tiga",
+                noHpAyah: "0816-7890-1234",
+                namaIbu: "Farida Ulfa",
+                ttlIbu: "Padang, 10 Oktober 1978",
+                pekerjaanIbu: "Ibu Rumah Tangga",
+                alamatIbu: "Kampung Nakai, Distrik Pulau Tiga",
+                noHpIbu: "0856-7890-1235",
+                status: "review",
+                kelengkapanBerkas: "Dalam Proses Verifikasi"
+            },
+            {
+                no: 6,
+                namaLengkap: "Farel Athallah Zikri",
+                namaPanggilan: "Farel",
+                jenisKelamin: "L",
+                tempatTglLahir: "Pulau Tiga, 2 Juni 2010",
+                nik: "3273010206110006",
+                agama: "Islam",
+                anakKe: "1 dari 3 bersaudara",
+                alamatSiswa: "Kampung Waikam, Distrik Pulau Tiga",
+                noHpSiswa: "0827-8901-2345",
+                asalSekolah: "SD Negeri 1 Pulau Tiga",
+                namaAyah: "Faisal Anwar, S.T.",
+                ttlAyah: "Medan, 22 Maret 1974",
+                pekerjaanAyah: "Kontraktor",
+                alamatAyah: "Kampung Waikam, Distrik Pulau Tiga",
+                noHpAyah: "0817-8901-2345",
+                namaIbu: "Gina Sonia, A.Md.",
+                ttlIbu: "Makassar, 18 Juli 1979",
+                pekerjaanIbu: "Bidan",
+                alamatIbu: "Kampung Waikam, Distrik Pulau Tiga",
+                noHpIbu: "0857-8901-2346",
+                status: "verified",
+                kelengkapanBerkas: "Lengkap"
+            },
+            {
+                no: 7,
+                namaLengkap: "Gracia Angelina",
+                namaPanggilan: "Gracia",
+                jenisKelamin: "P",
+                tempatTglLahir: "Pulau Tiga, 23 Juli 2011",
+                nik: "3273017307110007",
+                agama: "Kristen",
+                anakKe: "2 dari 2 bersaudara",
+                alamatSiswa: "Kampung YPK, Distrik Pulau Tiga",
+                noHpSiswa: "0828-9012-3456",
+                asalSekolah: "SD YPK Pulau Tiga",
+                namaAyah: "Gabriel Manurung",
+                ttlAyah: "Medan, 5 Januari 1970",
+                pekerjaanAyah: "Guru",
+                alamatAyah: "Kampung YPK, Distrik Pulau Tiga",
+                noHpAyah: "0818-9012-3456",
+                namaIbu: "Helena Sihombing",
+                ttlIbu: "Medan, 12 Februari 1975",
+                pekerjaanIbu: "Ibu Rumah Tangga",
+                alamatIbu: "Kampung YPK, Distrik Pulau Tiga",
+                noHpIbu: "0858-9012-3457",
+                status: "pending",
+                kelengkapanBerkas: "Kurang Pas Foto"
+            },
+            {
+                no: 8,
+                namaLengkap: "Hendra Setiawan",
+                namaPanggilan: "Hendra",
+                jenisKelamin: "L",
+                tempatTglLahir: "Pulau Tiga, 19 Agustus 2010",
+                nik: "3273011908110008",
+                agama: "Islam",
+                anakKe: "1 dari 2 bersaudara",
+                alamatSiswa: "Kampung Komar, Distrik Pulau Tiga",
+                noHpSiswa: "0829-0123-4567",
+                asalSekolah: "SD Negeri 2 Pulau Tiga",
+                namaAyah: "Hendro Suwito",
+                ttlAyah: "Yogyakarta, 10 Juni 1972",
+                pekerjaanAyah: "Wiraswasta",
+                alamatAyah: "Kampung Komar, Distrik Pulau Tiga",
+                noHpAyah: "0819-0123-4567",
+                namaIbu: "Indah Lestari, S.Pd.",
+                ttlIbu: "Solo, 25 Agustus 1976",
+                pekerjaanIbu: "Guru",
+                alamatIbu: "Kampung Komar, Distrik Pulau Tiga",
+                noHpIbu: "0859-0123-4568",
+                status: "verified",
+                kelengkapanBerkas: "Lengkap"
+            },
+            {
+                no: 9,
+                namaLengkap: "Indah Puspita Sari",
+                namaPanggilan: "Indah",
+                jenisKelamin: "P",
+                tempatTglLahir: "Pulau Tiga, 16 September 2011",
+                nik: "3273016609110009",
+                agama: "Islam",
+                anakKe: "1 dari 2 bersaudara",
+                alamatSiswa: "Kampung Nakai, Distrik Pulau Tiga",
+                noHpSiswa: "0830-1234-5678",
+                asalSekolah: "SD Inpres Nakai",
+                namaAyah: "Irfan Hakim, S.Sos.",
+                ttlAyah: "Jakarta, 3 Desember 1973",
+                pekerjaanAyah: "PNS",
+                alamatAyah: "Kampung Nakai, Distrik Pulau Tiga",
+                noHpAyah: "0820-1234-5678",
+                namaIbu: "Juwita Rini, S.E.",
+                ttlIbu: "Bandung, 19 Januari 1978",
+                pekerjaanIbu: "Wiraswasta",
+                alamatIbu: "Kampung Nakai, Distrik Pulau Tiga",
+                noHpIbu: "0860-1234-5679",
+                status: "review",
+                kelengkapanBerkas: "Verifikasi Berkas"
+            },
+            {
+                no: 10,
+                namaLengkap: "Johan Fernando",
+                namaPanggilan: "Johan",
+                jenisKelamin: "L",
+                tempatTglLahir: "Pulau Tiga, 5 Oktober 2010",
+                nik: "3273010510110010",
+                agama: "Katolik",
+                anakKe: "2 dari 2 bersaudara",
+                alamatSiswa: "Kampung Waikam, Distrik Pulau Tiga",
+                noHpSiswa: "0831-2345-6789",
+                asalSekolah: "SD Negeri 1 Pulau Tiga",
+                namaAyah: "Joko Susilo",
+                ttlAyah: "Surabaya, 11 April 1971",
+                pekerjaanAyah: "Petani",
+                alamatAyah: "Kampung Waikam, Distrik Pulau Tiga",
+                noHpAyah: "0821-2345-6789",
+                namaIbu: "Kartika Sari",
+                ttlIbu: "Malang, 7 Mei 1975",
+                pekerjaanIbu: "Ibu Rumah Tangga",
+                alamatIbu: "Kampung Waikam, Distrik Pulau Tiga",
+                noHpIbu: "0861-2345-6790",
+                status: "verified",
+                kelengkapanBerkas: "Lengkap"
+            },
+            {
+                no: 11,
+                namaLengkap: "Karina Azzahra",
+                namaPanggilan: "Karina",
+                jenisKelamin: "P",
+                tempatTglLahir: "Pulau Tiga, 12 November 2011",
+                nik: "3273017001110011",
+                agama: "Islam",
+                anakKe: "1 dari 2 bersaudara",
+                alamatSiswa: "Kampung YPK, Distrik Pulau Tiga",
+                noHpSiswa: "0832-3456-7890",
+                asalSekolah: "SD YPK Pulau Tiga",
+                namaAyah: "Kurniawan Dwi, S.Kom.",
+                ttlAyah: "Malang, 8 Agustus 1974",
+                pekerjaanAyah: "Programmer",
+                alamatAyah: "Kampung YPK, Distrik Pulau Tiga",
+                noHpAyah: "0822-3456-7890",
+                namaIbu: "Lilis Mulyani",
+                ttlIbu: "Bandung, 14 Maret 1977",
+                pekerjaanIbu: "Ibu Rumah Tangga",
+                alamatIbu: "Kampung YPK, Distrik Pulau Tiga",
+                noHpIbu: "0862-3456-7891",
+                status: "pending",
+                kelengkapanBerkas: "Kurang Akta Kelahiran"
+            },
+            {
+                no: 12,
+                namaLengkap: "Lukman Hakim",
+                namaPanggilan: "Lukman",
+                jenisKelamin: "L",
+                tempatTglLahir: "Pulau Tiga, 21 Desember 2010",
+                nik: "3273012102110012",
+                agama: "Islam",
+                anakKe: "2 dari 3 bersaudara",
+                alamatSiswa: "Kampung Komar, Distrik Pulau Tiga",
+                noHpSiswa: "0833-4567-8901",
+                asalSekolah: "SD Negeri 2 Pulau Tiga",
+                namaAyah: "Lukito Hadi, S.Ag.",
+                ttlAyah: "Solo, 19 September 1972",
+                pekerjaanAyah: "Guru",
+                alamatAyah: "Kampung Komar, Distrik Pulau Tiga",
+                noHpAyah: "0823-4567-8901",
+                namaIbu: "Maya Sari, S.Pd.I.",
+                ttlIbu: "Yogyakarta, 22 November 1976",
+                pekerjaanIbu: "Guru",
+                alamatIbu: "Kampung Komar, Distrik Pulau Tiga",
+                noHpIbu: "0863-4567-8902",
+                status: "verified",
+                kelengkapanBerkas: "Lengkap"
+            },
+            {
+                no: 13,
+                namaLengkap: "Mutiara Azzahra",
+                namaPanggilan: "Mutiara",
+                jenisKelamin: "P",
+                tempatTglLahir: "Pulau Tiga, 9 Januari 2011",
+                nik: "3273015503110013",
+                agama: "Islam",
+                anakKe: "1 dari 2 bersaudara",
+                alamatSiswa: "Kampung Nakai, Distrik Pulau Tiga",
+                noHpSiswa: "0834-5678-9012",
+                asalSekolah: "SD Inpres Nakai",
+                namaAyah: "Muhammad Iqbal, S.H.",
+                ttlAyah: "Jakarta, 25 Mei 1973",
+                pekerjaanAyah: "Pengacara",
+                alamatAyah: "Kampung Nakai, Distrik Pulau Tiga",
+                noHpAyah: "0824-5678-9012",
+                namaIbu: "Nadia Permata",
+                ttlIbu: "Bandung, 30 Oktober 1977",
+                pekerjaanIbu: "Ibu Rumah Tangga",
+                alamatIbu: "Kampung Nakai, Distrik Pulau Tiga",
+                noHpIbu: "0864-5678-9013",
+                status: "pending",
+                kelengkapanBerkas: "Proses Verifikasi"
+            },
+            {
+                no: 14,
+                namaLengkap: "Naufal Al-Ghifari",
+                namaPanggilan: "Naufal",
+                jenisKelamin: "L",
+                tempatTglLahir: "Pulau Tiga, 8 Februari 2011",
+                nik: "3273010804110014",
+                agama: "Islam",
+                anakKe: "1 dari 2 bersaudara",
+                alamatSiswa: "Kampung Waikam, Distrik Pulau Tiga",
+                noHpSiswa: "0835-6789-0123",
+                asalSekolah: "SD Negeri 1 Pulau Tiga",
+                namaAyah: "Nasrullah, S.Pd.",
+                ttlAyah: "Medan, 17 April 1974",
+                pekerjaanAyah: "Guru",
+                alamatAyah: "Kampung Waikam, Distrik Pulau Tiga",
+                noHpAyah: "0825-6789-0123",
+                namaIbu: "Olivia Christy",
+                ttlIbu: "Manado, 3 Juni 1978",
+                pekerjaanIbu: "Ibu Rumah Tangga",
+                alamatIbu: "Kampung Waikam, Distrik Pulau Tiga",
+                noHpIbu: "0865-6789-0124",
+                status: "review",
+                kelengkapanBerkas: "Dokumen Kurang"
+            },
+            {
+                no: 15,
+                namaLengkap: "Olivia Febriyanti",
+                namaPanggilan: "Olivia",
+                jenisKelamin: "P",
+                tempatTglLahir: "Pulau Tiga, 25 Maret 2011",
+                nik: "3273016205110015",
+                agama: "Kristen",
+                anakKe: "2 dari 3 bersaudara",
+                alamatSiswa: "Kampung YPK, Distrik Pulau Tiga",
+                noHpSiswa: "0836-7890-1234",
+                asalSekolah: "SD YPK Pulau Tiga",
+                namaAyah: "Oscar Sitohang",
+                ttlAyah: "Medan, 9 Juli 1971",
+                pekerjaanAyah: "Wiraswasta",
+                alamatAyah: "Kampung YPK, Distrik Pulau Tiga",
+                noHpAyah: "0826-7890-1234",
+                namaIbu: "Putri Wulandari, S.S.",
+                ttlIbu: "Padang, 14 Desember 1976",
+                pekerjaanIbu: "Guru",
+                alamatIbu: "Kampung YPK, Distrik Pulau Tiga",
+                noHpIbu: "0866-7890-1235",
+                status: "verified",
+                kelengkapanBerkas: "Lengkap"
+            }
         ];
 
         // Variabel Global
         let currentData = [...studentsData];
+        let filteredData = [...studentsData];
         let genderChart = null;
         let statusChart = null;
+        let currentPage = 1;
+        const rowsPerPage = 5;
 
+        // Helper Functions
+        function showToast(message, isError = false) {
+            const toast = document.createElement('div');
+            toast.className = `toast-notif ${isError ? 'error' : ''}`;
+            toast.innerHTML = `<i class="fas ${isError ? 'fa-exclamation-triangle' : 'fa-check-circle'}"></i> ${message}`;
+            document.body.appendChild(toast);
+            setTimeout(() => toast.remove(), 3000);
+        }
+
+        // Render Functions
         function renderStats() {
-            const total = currentData.length;
-            const laki = currentData.filter(s => s.jenisKelamin === 'L').length;
-            const perempuan = currentData.filter(s => s.jenisKelamin === 'P').length;
-            const asalSekolah = new Set(currentData.map(s => s.asalSekolah)).size;
+            const total = filteredData.length;
+            const laki = filteredData.filter(s => s.jenisKelamin === 'L').length;
+            const perempuan = filteredData.filter(s => s.jenisKelamin === 'P').length;
+            const asalSekolah = new Set(filteredData.map(s => s.asalSekolah)).size;
 
             document.getElementById('statsContainer').innerHTML = `
                 <div class="stat-card-primary">
@@ -607,55 +1463,85 @@
 
         function renderTable() {
             const tbody = document.getElementById('tableBody');
+            const start = (currentPage - 1) * rowsPerPage;
+            const end = start + rowsPerPage;
+            const pageData = filteredData.slice(start, end);
 
-            if (currentData.length === 0) {
-                tbody.innerHTML = `<tr><td colspan="8" class="empty-state"><i class="fas fa-search"></i><p>Data tidak ditemukan</p></td></tr>`;
+            if (pageData.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="24" class="empty-state"><i class="fas fa-search"></i><p>Data tidak ditemukan</p></td></tr>`;
+                document.getElementById('pageInfo').textContent = `Halaman 0 dari 0`;
                 return;
             }
 
-            let html = '';
-            currentData.forEach((siswa, index) => {
-                let statusClass = '', statusText = '', statusIcon = '';
+            const totalPages = Math.ceil(filteredData.length / rowsPerPage);
+            document.getElementById('pageInfo').textContent = `Halaman ${currentPage} dari ${totalPages}`;
 
+            let html = '';
+            pageData.forEach((siswa) => {
+                const jkText = siswa.jenisKelamin === 'L' ? 'Laki-laki' : 'Perempuan';
+                const jkIcon = siswa.jenisKelamin === 'L' ? '♂️' : '♀️';
+
+                let statusClass = '', statusText = '', statusIcon = '';
                 if (siswa.status === 'verified') {
                     statusClass = 'status-verified';
                     statusText = 'Terverifikasi';
-                    statusIcon = '<i class="fas fa-check-circle"></i>';
+                    statusIcon = '✅';
                 } else if (siswa.status === 'pending') {
                     statusClass = 'status-pending';
                     statusText = 'Menunggu Verifikasi';
-                    statusIcon = '<i class="fas fa-clock"></i>';
+                    statusIcon = '⏳';
                 } else {
                     statusClass = 'status-review';
                     statusText = 'Dalam Review';
-                    statusIcon = '<i class="fas fa-spinner"></i>';
+                    statusIcon = '📋';
                 }
-
-                const jenisKelaminText = siswa.jenisKelamin === 'L' ? 'L' : 'P';
-                const jenisKelaminIcon = siswa.jenisKelamin === 'L' ? '<i class="fas fa-mars"></i>' : '<i class="fas fa-venus"></i>';
 
                 html += `
                     <tr>
-                        <td>${index + 1}</td>
-                        <td><strong>${siswa.nama}</strong></td>
+                        <td>${siswa.no}</td>
+                        <td><strong>${siswa.namaLengkap}</strong></td>
+                        <td>${siswa.namaPanggilan}</td>
+                        <td>${jkIcon} ${jkText}</td>
+                        <td>${siswa.tempatTglLahir}</td>
                         <td>${siswa.nik}</td>
+                        <td>${siswa.agama}</td>
+                        <td>${siswa.anakKe}</td>
+                        <td>${siswa.alamatSiswa}</td>
+                        <td>${siswa.noHpSiswa}</td>
                         <td>${siswa.asalSekolah}</td>
-                        <td>${jenisKelaminIcon} ${jenisKelaminText}</td>
                         <td>${siswa.namaAyah}</td>
+                        <td>${siswa.ttlAyah}</td>
+                        <td>${siswa.pekerjaanAyah}</td>
+                        <td>${siswa.alamatAyah}</td>
+                        <td>${siswa.noHpAyah}</td>
                         <td>${siswa.namaIbu}</td>
+                        <td>${siswa.ttlIbu}</td>
+                        <td>${siswa.pekerjaanIbu}</td>
+                        <td>${siswa.alamatIbu}</td>
+                        <td>${siswa.noHpIbu}</td>
                         <td><span class="status-badge ${statusClass}">${statusIcon} ${statusText}</span></td>
+                        <td>${siswa.kelengkapanBerkas}</td>
+                        <td class="action-btns">
+                            <button class="btn-edit" onclick="editStudent(${siswa.no})"><i class="fas fa-edit"></i> Edit</button>
+                            <button class="btn-delete" onclick="deleteStudent(${siswa.no})"><i class="fas fa-trash"></i> Hapus</button>
+                        </td>
                     </tr>
                 `;
             });
             tbody.innerHTML = html;
+
+            // Update pagination buttons state
+            document.getElementById('prevPageBtn').disabled = currentPage === 1;
+            document.getElementById('nextPageBtn').disabled = currentPage === totalPages;
         }
 
         function renderCharts() {
-            const laki = currentData.filter(s => s.jenisKelamin === 'L').length;
-            const perempuan = currentData.filter(s => s.jenisKelamin === 'P').length;
-            const verified = currentData.filter(s => s.status === 'verified').length;
-            const pending = currentData.filter(s => s.status === 'pending').length;
-            const review = currentData.filter(s => s.status === 'review').length;
+            const laki = filteredData.filter(s => s.jenisKelamin === 'L').length;
+            const perempuan = filteredData.filter(s => s.jenisKelamin === 'P').length;
+            const verified = filteredData.filter(s => s.status === 'verified').length;
+            const pending = filteredData.filter(s => s.status === 'pending').length;
+            const review = filteredData.filter(s => s.status === 'review').length;
+            const total = filteredData.length;
 
             if (genderChart) genderChart.destroy();
             if (statusChart) statusChart.destroy();
@@ -719,25 +1605,43 @@
                 options: {
                     responsive: true,
                     maintainAspectRatio: true,
-                    plugins: { legend: { display: false }, tooltip: { callbacks: { label: (ctx) => `Jumlah: ${ctx.raw} (${((ctx.raw / (verified + pending + review)) * 100).toFixed(1)}%)` } } },
+                    plugins: { legend: { display: false }, tooltip: { callbacks: { label: (ctx) => `Jumlah: ${ctx.raw} (${((ctx.raw / total) * 100).toFixed(1)}%)` } } },
                     scales: { y: { beginAtZero: true, ticks: { stepSize: 1, precision: 0 } } },
                     animation: { duration: 1500, easing: 'easeInOutQuart' }
                 }
             });
         }
 
+        // Pagination
+        function prevPage() {
+            if (currentPage > 1) {
+                currentPage--;
+                renderTable();
+            }
+        }
+
+        function nextPage() {
+            const totalPages = Math.ceil(filteredData.length / rowsPerPage);
+            if (currentPage < totalPages) {
+                currentPage++;
+                renderTable();
+            }
+        }
+
+        // Filter Functions
         function filterData() {
             const searchTerm = document.getElementById('searchInput').value.toLowerCase();
             const statusFilter = document.getElementById('filterStatus').value;
             const genderFilter = document.getElementById('filterGender').value;
 
-            currentData = studentsData.filter(siswa => {
-                const matchSearch = searchTerm === '' || siswa.nama.toLowerCase().includes(searchTerm) || siswa.nik.includes(searchTerm) || siswa.asalSekolah.toLowerCase().includes(searchTerm);
+            filteredData = studentsData.filter(siswa => {
+                const matchSearch = searchTerm === '' || siswa.namaLengkap.toLowerCase().includes(searchTerm) || siswa.nik.includes(searchTerm);
                 const matchStatus = statusFilter === 'all' || siswa.status === statusFilter;
                 const matchGender = genderFilter === 'all' || siswa.jenisKelamin === genderFilter;
                 return matchSearch && matchStatus && matchGender;
             });
 
+            currentPage = 1;
             renderStats();
             renderTable();
             renderCharts();
@@ -747,83 +1651,261 @@
             document.getElementById('searchInput').value = '';
             document.getElementById('filterStatus').value = 'all';
             document.getElementById('filterGender').value = 'all';
-            currentData = [...studentsData];
+            filteredData = [...studentsData];
+            currentPage = 1;
             renderStats();
             renderTable();
             renderCharts();
         }
 
+        // Edit & Delete Functions
+        window.editStudent = function (id) {
+            const siswa = studentsData.find(s => s.no === id);
+            if (!siswa) return;
+
+            document.getElementById('editId').value = siswa.no;
+            document.getElementById('editNamaLengkap').value = siswa.namaLengkap;
+            document.getElementById('editNamaPanggilan').value = siswa.namaPanggilan;
+            document.getElementById('editJenisKelamin').value = siswa.jenisKelamin;
+            document.getElementById('editTempatTglLahir').value = siswa.tempatTglLahir;
+            document.getElementById('editNik').value = siswa.nik;
+            document.getElementById('editAgama').value = siswa.agama;
+            document.getElementById('editAnakKe').value = siswa.anakKe;
+            document.getElementById('editAlamatSiswa').value = siswa.alamatSiswa;
+            document.getElementById('editNoHpSiswa').value = siswa.noHpSiswa;
+            document.getElementById('editAsalSekolah').value = siswa.asalSekolah;
+            document.getElementById('editNamaAyah').value = siswa.namaAyah;
+            document.getElementById('editTtlAyah').value = siswa.ttlAyah;
+            document.getElementById('editPekerjaanAyah').value = siswa.pekerjaanAyah;
+            document.getElementById('editAlamatAyah').value = siswa.alamatAyah;
+            document.getElementById('editNoHpAyah').value = siswa.noHpAyah;
+            document.getElementById('editNamaIbu').value = siswa.namaIbu;
+            document.getElementById('editTtlIbu').value = siswa.ttlIbu;
+            document.getElementById('editPekerjaanIbu').value = siswa.pekerjaanIbu;
+            document.getElementById('editAlamatIbu').value = siswa.alamatIbu;
+            document.getElementById('editNoHpIbu').value = siswa.noHpIbu;
+            document.getElementById('editStatus').value = siswa.status;
+            document.getElementById('editKelengkapanBerkas').value = siswa.kelengkapanBerkas;
+
+            document.getElementById('editModal').classList.add('active');
+        };
+
+        window.deleteStudent = function (id) {
+            if (confirm('Apakah Anda yakin ingin menghapus data siswa ini?')) {
+                const index = studentsData.findIndex(s => s.no === id);
+                if (index !== -1) {
+                    studentsData.splice(index, 1);
+                    // Renumber
+                    studentsData.forEach((s, i) => s.no = i + 1);
+                    filteredData = [...studentsData];
+                    renderStats();
+                    renderTable();
+                    renderCharts();
+                    showToast('✅ Data berhasil dihapus!');
+                }
+            }
+        };
+
+        function closeModal() {
+            document.getElementById('editModal').classList.remove('active');
+        }
+
+        document.getElementById('editForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const id = parseInt(document.getElementById('editId').value);
+            const index = studentsData.findIndex(s => s.no === id);
+
+            if (index !== -1) {
+                studentsData[index] = {
+                    no: id,
+                    namaLengkap: document.getElementById('editNamaLengkap').value,
+                    namaPanggilan: document.getElementById('editNamaPanggilan').value,
+                    jenisKelamin: document.getElementById('editJenisKelamin').value,
+                    tempatTglLahir: document.getElementById('editTempatTglLahir').value,
+                    nik: document.getElementById('editNik').value,
+                    agama: document.getElementById('editAgama').value,
+                    anakKe: document.getElementById('editAnakKe').value,
+                    alamatSiswa: document.getElementById('editAlamatSiswa').value,
+                    noHpSiswa: document.getElementById('editNoHpSiswa').value,
+                    asalSekolah: document.getElementById('editAsalSekolah').value,
+                    namaAyah: document.getElementById('editNamaAyah').value,
+                    ttlAyah: document.getElementById('editTtlAyah').value,
+                    pekerjaanAyah: document.getElementById('editPekerjaanAyah').value,
+                    alamatAyah: document.getElementById('editAlamatAyah').value,
+                    noHpAyah: document.getElementById('editNoHpAyah').value,
+                    namaIbu: document.getElementById('editNamaIbu').value,
+                    ttlIbu: document.getElementById('editTtlIbu').value,
+                    pekerjaanIbu: document.getElementById('editPekerjaanIbu').value,
+                    alamatIbu: document.getElementById('editAlamatIbu').value,
+                    noHpIbu: document.getElementById('editNoHpIbu').value,
+                    status: document.getElementById('editStatus').value,
+                    kelengkapanBerkas: document.getElementById('editKelengkapanBerkas').value
+                };
+
+                filteredData = [...studentsData];
+                renderStats();
+                renderTable();
+                renderCharts();
+                closeModal();
+                showToast('✅ Data berhasil diperbarui!');
+            }
+        });
+
+        // ===== EXPORT EXCEL DENGAN 2 SHEET + GRAFIK WARNA =====
         function exportToExcel() {
-            if (currentData.length === 0) {
-                alert('Tidak ada data untuk diekspor');
+            if (filteredData.length === 0) {
+                showToast('Tidak ada data untuk diekspor', true);
                 return;
             }
 
-            const exportData = currentData.map((siswa, idx) => ({
-                'No': idx + 1,
-                'Nama Lengkap': siswa.nama,
-                'NIK': siswa.nik,
-                'Asal Sekolah': siswa.asalSekolah,
+            // ===== SHEET 1: DATA CALON SISWA =====
+            const exportData = filteredData.map((siswa) => ({
+                'No': siswa.no,
+                'Nama Lengkap': siswa.namaLengkap,
+                'Nama Panggilan': siswa.namaPanggilan,
                 'Jenis Kelamin': siswa.jenisKelamin === 'L' ? 'Laki-laki' : 'Perempuan',
+                'Tempat, Tgl Lahir': siswa.tempatTglLahir,
+                'NIK': siswa.nik,
+                'Agama': siswa.agama,
+                'Anak Ke': siswa.anakKe,
+                'Alamat Siswa': siswa.alamatSiswa,
+                'No. HP Siswa': siswa.noHpSiswa,
+                'Asal Sekolah': siswa.asalSekolah,
                 'Nama Ayah': siswa.namaAyah,
+                'TTL Ayah': siswa.ttlAyah,
+                'Pekerjaan Ayah': siswa.pekerjaanAyah,
+                'Alamat Ayah': siswa.alamatAyah,
+                'No. HP Ayah': siswa.noHpAyah,
                 'Nama Ibu': siswa.namaIbu,
-                'Status': siswa.status === 'verified' ? 'Terverifikasi' : (siswa.status === 'pending' ? 'Menunggu Verifikasi' : 'Dalam Review')
+                'TTL Ibu': siswa.ttlIbu,
+                'Pekerjaan Ibu': siswa.pekerjaanIbu,
+                'Alamat Ibu': siswa.alamatIbu,
+                'No. HP Ibu': siswa.noHpIbu,
+                'Status Verifikasi': siswa.status === 'verified' ? 'Terverifikasi' : (siswa.status === 'pending' ? 'Menunggu Verifikasi' : 'Dalam Review'),
+                'Kelengkapan Berkas': siswa.kelengkapanBerkas
             }));
 
             const wsData = XLSX.utils.json_to_sheet(exportData);
-            wsData['!cols'] = [{ wch: 5 }, { wch: 30 }, { wch: 18 }, { wch: 28 }, { wch: 15 }, { wch: 28 }, { wch: 28 }, { wch: 20 }];
+            wsData['!cols'] = [
+                { wch: 6 }, { wch: 28 }, { wch: 18 }, { wch: 14 }, { wch: 24 },
+                { wch: 18 }, { wch: 12 }, { wch: 16 }, { wch: 38 }, { wch: 16 },
+                { wch: 28 }, { wch: 28 }, { wch: 22 }, { wch: 18 }, { wch: 38 },
+                { wch: 16 }, { wch: 28 }, { wch: 22 }, { wch: 18 }, { wch: 38 },
+                { wch: 16 }, { wch: 20 }, { wch: 32 }
+            ];
+            wsData['!sheetProtection'] = { sheet: true };
 
-            const total = currentData.length;
-            const laki = currentData.filter(s => s.jenisKelamin === 'L').length;
-            const perempuan = currentData.filter(s => s.jenisKelamin === 'P').length;
-            const verifiedCount = currentData.filter(s => s.status === 'verified').length;
-            const pendingCount = currentData.filter(s => s.status === 'pending').length;
-            const reviewCount = currentData.filter(s => s.status === 'review').length;
+            // ===== SHEET 2: STATISTIK DENGAN GRAFIK WARNA =====
+            const total = filteredData.length;
+            const laki = filteredData.filter(s => s.jenisKelamin === 'L').length;
+            const perempuan = filteredData.filter(s => s.jenisKelamin === 'P').length;
+            const verifiedCount = filteredData.filter(s => s.status === 'verified').length;
+            const pendingCount = filteredData.filter(s => s.status === 'pending').length;
+            const reviewCount = filteredData.filter(s => s.status === 'review').length;
+
+            const persenLaki = ((laki / total) * 100).toFixed(1);
+            const persenPerempuan = ((perempuan / total) * 100).toFixed(1);
+
+            const maxBarLength = 25;
+            const lakiBarLength = Math.round((laki / total) * maxBarLength);
+            const perempuanBarLength = Math.round((perempuan / total) * maxBarLength);
+
+            const blueBlock = '█';
+            const redBlock = '█';
+            const orangeBlock = '█';
+            const greenBlock = '█';
+            const yellowBlock = '█';
 
             const sekolahMap = new Map();
-            currentData.forEach(s => sekolahMap.set(s.asalSekolah, (sekolahMap.get(s.asalSekolah) || 0) + 1));
-            const sekolahData = Array.from(sekolahMap.entries()).map(([nama, jumlah]) => ({ nama, jumlah }));
+            filteredData.forEach(s => {
+                sekolahMap.set(s.asalSekolah, (sekolahMap.get(s.asalSekolah) || 0) + 1);
+            });
+            const sekolahData = Array.from(sekolahMap.entries()).map(([nama, jumlah]) => ({ nama, jumlah })).sort((a, b) => b.jumlah - a.jumlah);
 
             const statSheetData = [
-                ['LAPORAN STATISTIK PPDB 2026/2027'],
-                ['SMP Persiapan Negeri Pulau Tiga'],
-                [''],
-                ['A. RINGKASAN UMUM'],
-                ['Total Pendaftar', total],
-                ['Laki-laki', `${laki} (${((laki / total) * 100).toFixed(1)}%)`],
-                ['Perempuan', `${perempuan} (${((perempuan / total) * 100).toFixed(1)}%)`],
-                [''],
-                ['B. STATUS PENDAFTARAN'],
-                ['Terverifikasi', verifiedCount, `(${((verifiedCount / total) * 100).toFixed(1)}%)`],
-                ['Menunggu Verifikasi', pendingCount, `(${((pendingCount / total) * 100).toFixed(1)}%)`],
-                ['Dalam Review', reviewCount, `(${((reviewCount / total) * 100).toFixed(1)}%)`],
-                [''],
-                ['C. ASAL SEKOLAH'],
-                ...sekolahData.map(s => [s.nama, s.jumlah, `(${((s.jumlah / total) * 100).toFixed(1)}%)`]),
-                [''],
-                ['D. GRAFIK (Text-based)'],
-                ['Jenis Kelamin:'],
-                [`Laki-laki   : ${'█'.repeat(Math.round(laki / total * 20))} ${laki} (${((laki / total) * 100).toFixed(1)}%)`],
-                [`Perempuan    : ${'█'.repeat(Math.round(perempuan / total * 20))} ${perempuan} (${((perempuan / total) * 100).toFixed(1)}%)`]
+                ['', '', ''],
+                ['LAPORAN STATISTIK PPDB 2026/2027', '', ''],
+                ['SMP Persiapan Negeri Pulau Tiga', '', ''],
+                ['', '', ''],
+                ['█ = 4% dari total pendaftar', '', ''],
+                ['', '', ''],
+                ['═══════════════════════════════════════════════════════════════════', '', ''],
+                ['A. RINGKASAN UMUM', '', ''],
+                ['═══════════════════════════════════════════════════════════════════', '', ''],
+                ['Total Pendaftar', `${total} siswa`, ''],
+                ['', '', ''],
+                ['📊 GRAFIK PERBANDINGAN JENIS KELAMIN', '', ''],
+                ['', '', ''],
+                [`🔵 Laki-laki  (${laki} siswa / ${persenLaki}%) : ${blueBlock.repeat(lakiBarLength)}`, '', ''],
+                [`🔴 Perempuan   (${perempuan} siswa / ${persenPerempuan}%) : ${redBlock.repeat(perempuanBarLength)}`, '', ''],
+                ['', '', ''],
+                ['', '', ''],
+                ['═══════════════════════════════════════════════════════════════════', '', ''],
+                ['B. STATUS PENDAFTARAN', '', ''],
+                ['═══════════════════════════════════════════════════════════════════', '', ''],
+                ['', '', ''],
+                [`✅ Terverifikasi     : ${verifiedCount} siswa (${((verifiedCount / total) * 100).toFixed(1)}%)`, '', ''],
+                [`⏳ Menunggu Verifikasi : ${pendingCount} siswa (${((pendingCount / total) * 100).toFixed(1)}%)`, '', ''],
+                [`📋 Dalam Review      : ${reviewCount} siswa (${((reviewCount / total) * 100).toFixed(1)}%)`, '', ''],
+                ['', '', ''],
+                ['📊 GRAFIK STATUS PENDAFTARAN', '', ''],
+                ['', '', ''],
+                [`🟢 Terverifikasi    : ${greenBlock.repeat(Math.round(verifiedCount / total * maxBarLength))}`, '', ''],
+                [`🟡 Menunggu Verifikasi : ${yellowBlock.repeat(Math.round(pendingCount / total * maxBarLength))}`, '', ''],
+                [`🟠 Dalam Review      : ${orangeBlock.repeat(Math.round(reviewCount / total * maxBarLength))}`, '', ''],
+                ['', '', ''],
+                ['═══════════════════════════════════════════════════════════════════', '', ''],
+                ['C. ASAL SEKOLAH', '', ''],
+                ['═══════════════════════════════════════════════════════════════════', '', ''],
+                ...sekolahData.map(s => [`📚 ${s.nama}`, `${s.jumlah} siswa (${((s.jumlah / total) * 100).toFixed(1)}%)`, '']),
+                ['', '', ''],
+                ['═══════════════════════════════════════════════════════════════════', '', ''],
+                ['D. INFORMASI TAMBAHAN', '', ''],
+                ['═══════════════════════════════════════════════════════════════════', '', ''],
+                ['📅 Tanggal Export', new Date().toLocaleDateString('id-ID'), ''],
+                ['⏰ Waktu Export', new Date().toLocaleTimeString('id-ID'), ''],
+                ['📆 Periode', 'Tahun Ajaran 2026/2027', ''],
+                ['👥 Total Data', `${total} Siswa`, ''],
+                ['', '', ''],
+                ['═══════════════════════════════════════════════════════════════════', '', ''],
+                ['📌 KETERANGAN WARNA GRAFIK:', '', ''],
+                ['🔵 Biru   = Laki-laki', '', ''],
+                ['🔴 Merah  = Perempuan', '', ''],
+                ['🟢 Hijau  = Terverifikasi', '', ''],
+                ['🟡 Kuning = Menunggu Verifikasi', '', ''],
+                ['🟠 Oranye = Dalam Review', '', '']
             ];
 
             const wsStat = XLSX.utils.aoa_to_sheet(statSheetData);
-            wsStat['!cols'] = [{ wch: 30 }, { wch: 20 }, { wch: 15 }];
-            wsStat['!merges'] = [{ s: { r: 0, c: 0 }, e: { r: 0, c: 2 } }, { s: { r: 1, c: 0 }, e: { r: 1, c: 2 } }];
+            wsStat['!cols'] = [{ wch: 45 }, { wch: 25 }, { wch: 15 }];
+            wsStat['!merges'] = [
+                { s: { r: 1, c: 0 }, e: { r: 1, c: 2 } },
+                { s: { r: 2, c: 0 }, e: { r: 2, c: 2 } },
+                { s: { r: 7, c: 0 }, e: { r: 7, c: 2 } },
+                { s: { r: 11, c: 0 }, e: { r: 11, c: 2 } },
+                { s: { r: 18, c: 0 }, e: { r: 18, c: 2 } },
+                { s: { r: 20, c: 0 }, e: { r: 20, c: 2 } },
+                { s: { r: 32, c: 0 }, e: { r: 32, c: 2 } },
+                { s: { r: 34, c: 0 }, e: { r: 34, c: 2 } },
+                { s: { r: 40, c: 0 }, e: { r: 40, c: 2 } },
+                { s: { r: 42, c: 0 }, e: { r: 42, c: 2 } }
+            ];
+            wsStat['!sheetProtection'] = { sheet: true };
 
             const wb = XLSX.utils.book_new();
             XLSX.utils.book_append_sheet(wb, wsData, 'Data Calon Siswa');
-            XLSX.utils.book_append_sheet(wb, wsStat, 'Statistik');
+            XLSX.utils.book_append_sheet(wb, wsStat, 'Statistik & Grafik');
             XLSX.writeFile(wb, `Data_PPDB_${new Date().toISOString().split('T')[0]}.xlsx`);
-            alert(`✅ Berhasil mengekspor ${currentData.length} data siswa`);
+
+            showToast(`✅ Data ${filteredData.length} Siswa Berhasil di Export`);
         }
 
         function exportToPDF() {
-            if (currentData.length === 0) {
-                alert('Tidak ada data untuk diekspor');
+            if (filteredData.length === 0) {
+                showToast('Tidak ada data untuk diekspor', true);
                 return;
             }
-            alert('📄 Membuka jendela print. Pilih "Save as PDF" dan atur layout menjadi Landscape.');
+            showToast('📄 Pilih Save as PDF ');
             window.print();
         }
 
@@ -832,8 +1914,15 @@
         document.getElementById('resetBtn').addEventListener('click', resetFilter);
         document.getElementById('exportExcelBtn').addEventListener('click', exportToExcel);
         document.getElementById('exportPdfBtn').addEventListener('click', exportToPDF);
+        document.getElementById('prevPageBtn').addEventListener('click', prevPage);
+        document.getElementById('nextPageBtn').addEventListener('click', nextPage);
+        document.getElementById('closeModalBtn').addEventListener('click', closeModal);
+        document.getElementById('cancelModalBtn').addEventListener('click', closeModal);
         document.getElementById('searchInput').addEventListener('keypress', (e) => {
             if (e.key === 'Enter') filterData();
+        });
+        document.getElementById('editModal').addEventListener('click', (e) => {
+            if (e.target === document.getElementById('editModal')) closeModal();
         });
 
         // INIT
