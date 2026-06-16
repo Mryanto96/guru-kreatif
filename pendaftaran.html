@@ -13,7 +13,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
 
-    <!-- Chart.js untuk grafik -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 
     <style>
@@ -21,7 +20,6 @@
             box-sizing: border-box;
         }
 
-        /* ANIMASI MODERN UNTUK STATISTIK CARDS */
         @keyframes slideInUp {
             from {
                 opacity: 0;
@@ -31,20 +29,6 @@
             to {
                 opacity: 1;
                 transform: translateY(0);
-            }
-        }
-
-        @keyframes pulseGlow {
-            0% {
-                box-shadow: 0 0 0 0 rgba(255, 107, 107, 0.4);
-            }
-
-            70% {
-                box-shadow: 0 0 0 15px rgba(255, 107, 107, 0);
-            }
-
-            100% {
-                box-shadow: 0 0 0 0 rgba(255, 107, 107, 0);
             }
         }
 
@@ -134,7 +118,6 @@
             margin-top: 8px;
         }
 
-        /* PAGINATION STYLES */
         .pagination-container {
             display: flex;
             justify-content: center;
@@ -177,7 +160,6 @@
             font-weight: 500;
         }
 
-        /* ACTION BUTTONS (EDIT & DELETE) */
         .action-btns {
             display: flex;
             gap: 8px;
@@ -191,7 +173,7 @@
             padding: 6px 12px;
             border-radius: 8px;
             cursor: pointer;
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             font-weight: 600;
             transition: all 0.3s ease;
         }
@@ -209,7 +191,7 @@
             padding: 6px 12px;
             border-radius: 8px;
             cursor: pointer;
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             font-weight: 600;
             transition: all 0.3s ease;
         }
@@ -220,7 +202,6 @@
             transform: scale(1.05);
         }
 
-        /* MODAL STYLES */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -362,7 +343,6 @@
             background: var(--bg2);
         }
 
-        /* TOAST NOTIFICATION */
         .toast-notif {
             position: fixed;
             bottom: 30px;
@@ -516,25 +496,29 @@
 
         .student-table {
             width: auto;
-            min-width: 2400px;
+            min-width: 2800px;
             border-collapse: collapse;
-            font-size: 0.7rem;
+            font-size: 0.9rem;
             table-layout: auto;
             white-space: nowrap;
         }
 
         .student-table th {
-            background: var(--bg3);
+            background: linear-gradient(135deg, #FF6B6B, #4ECDC4, #FFE66D);
+            background-size: 200% 200%;
+            animation: gradientShift 3s ease infinite;
             padding: 10px 8px;
             text-align: center;
             font-weight: 700;
-            color: var(--text);
+            color: #ffffff;
             border-bottom: 1px solid var(--border);
             border-right: 1px solid var(--border);
             white-space: nowrap;
             position: sticky;
             top: 0;
             z-index: 10;
+            font-size: 0.8rem;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
         }
 
         .student-table th:last-child {
@@ -542,11 +526,12 @@
         }
 
         .student-table td {
-            padding: 8px;
+            padding: 6px;
             border-bottom: 1px solid var(--border);
             border-right: 1px solid var(--border);
             color: var(--text2);
             white-space: nowrap;
+            font-size: 0.8rem;
         }
 
         .student-table td:last-child {
@@ -561,9 +546,9 @@
             display: inline-flex;
             align-items: center;
             gap: 4px;
-            padding: 3px 8px;
+            padding: 2px 6px;
             border-radius: 99px;
-            font-size: 0.65rem;
+            font-size: 0.6rem;
             font-weight: 600;
             white-space: nowrap;
         }
@@ -581,6 +566,24 @@
         .status-review {
             background: rgba(59, 130, 246, 0.15);
             color: #3b82f6;
+        }
+
+        .berkas-badge {
+            display: inline-block;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: 700;
+        }
+
+        .berkas-lengkap {
+            background: rgba(16, 185, 129, 0.15);
+            color: #10b981;
+        }
+
+        .berkas-belum {
+            background: rgba(239, 68, 68, 0.15);
+            color: #ef4444;
         }
 
         .empty-state {
@@ -852,6 +855,10 @@
                             <th>No. HP Ibu</th>
                             <th>Status Verifikasi</th>
                             <th>Kelengkapan Berkas</th>
+                            <th>Foto Copy KK</th>
+                            <th>Foto Copy SKHUN/Ijazah SD</th>
+                            <th>Foto Copy Akta Kelahiran</th>
+                            <th>Pas Photo 3x4</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -859,7 +866,6 @@
                 </table>
             </div>
 
-            <!-- PAGINATION -->
             <div class="pagination-container" id="paginationContainer">
                 <button class="pagination-btn" id="prevPageBtn"><i class="fas fa-chevron-left"></i> Sebelumnya</button>
                 <span class="page-info" id="pageInfo">Halaman 1 dari 3</span>
@@ -1023,6 +1029,38 @@
                         <input type="text" id="editKelengkapanBerkas" required>
                     </div>
                 </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Foto Copy KK</label>
+                        <select id="editKK">
+                            <option value="✅">✅ Ada</option>
+                            <option value="❌">❌ Tidak Ada</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Foto Copy SKHUN/Ijazah SD</label>
+                        <select id="editIjazah">
+                            <option value="✅">✅ Ada</option>
+                            <option value="❌">❌ Tidak Ada</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Foto Copy Akta Kelahiran</label>
+                        <select id="editAkta">
+                            <option value="✅">✅ Ada</option>
+                            <option value="❌">❌ Tidak Ada</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Pas Photo 3x4</label>
+                        <select id="editFoto">
+                            <option value="✅">✅ Ada</option>
+                            <option value="❌">❌ Tidak Ada</option>
+                        </select>
+                    </div>
+                </div>
                 <div class="modal-footer">
                     <button type="button" class="btn-cancel" id="cancelModalBtn">Batal</button>
                     <button type="submit" class="btn-save"><i class="fas fa-save"></i> Simpan Perubahan</button>
@@ -1037,387 +1075,402 @@
 
     <script>
         // ============================================
-        // DATA CALON SISWA BARU - 15 SISWA (LENGKAP)
+        // DATA CALON SISWA BARU - 14 SISWA (DARI EXCEL)
         // ============================================
-        let studentsData = [
-            {
-                no: 1,
-                namaLengkap: "Ahmad Fathir Al-Ghifari",
-                namaPanggilan: "Fathir",
-                jenisKelamin: "L",
-                tempatTglLahir: "Pulau Tiga, 12 Januari 2010",
-                nik: "3273011201100001",
-                agama: "Islam",
-                anakKe: "2 dari 3 bersaudara",
-                alamatSiswa: "Kampung Nakai, Distrik Pulau Tiga, Kabupaten Asmat",
-                noHpSiswa: "0822-1234-5678",
-                asalSekolah: "SD Negeri 1 Pulau Tiga",
-                namaAyah: "H. Abdul Majid, S.Ag.",
-                ttlAyah: "Jakarta, 15 Maret 1975",
-                pekerjaanAyah: "Guru Agama",
-                alamatAyah: "Kampung Nakai, Distrik Pulau Tiga",
-                noHpAyah: "0812-3456-7890",
-                namaIbu: "Hj. Siti Aminah, S.Pd.",
-                ttlIbu: "Surabaya, 20 Mei 1978",
-                pekerjaanIbu: "Guru SD",
-                alamatIbu: "Kampung Nakai, Distrik Pulau Tiga",
-                noHpIbu: "0852-3456-7891",
-                status: "verified",
-                kelengkapanBerkas: "Lengkap (KK, Ijazah, Akta, Pas Foto)"
-            },
-            {
-                no: 2,
-                namaLengkap: "Bunga Citra Lestari",
-                namaPanggilan: "Bunga",
-                jenisKelamin: "P",
-                tempatTglLahir: "Pulau Tiga, 5 Februari 2011",
-                nik: "3273014502110002",
-                agama: "Kristen",
-                anakKe: "1 dari 2 bersaudara",
-                alamatSiswa: "Kampung YPK, Distrik Pulau Tiga",
-                noHpSiswa: "0823-4567-8901",
-                asalSekolah: "SD Inpres Nakai",
-                namaAyah: "Bambang Supriyanto",
-                ttlAyah: "Yogyakarta, 10 April 1970",
-                pekerjaanAyah: "Nelayan",
-                alamatAyah: "Kampung YPK, Distrik Pulau Tiga",
-                noHpAyah: "0813-4567-8901",
-                namaIbu: "Dewi Kartika, S.Pd.",
-                ttlIbu: "Semarang, 25 Agustus 1975",
-                pekerjaanIbu: "Guru SD",
-                alamatIbu: "Kampung YPK, Distrik Pulau Tiga",
-                noHpIbu: "0853-4567-8902",
-                status: "verified",
-                kelengkapanBerkas: "Lengkap (KK, Ijazah, Akta, Pas Foto)"
-            },
-            {
-                no: 3,
-                namaLengkap: "Cahya Kirana Putri",
-                namaPanggilan: "Cahya",
-                jenisKelamin: "P",
-                tempatTglLahir: "Pulau Tiga, 20 Maret 2011",
-                nik: "3273016203110003",
-                agama: "Islam",
-                anakKe: "3 dari 3 bersaudara",
-                alamatSiswa: "Kampung Waikam, Distrik Pulau Tiga",
-                noHpSiswa: "0824-5678-9012",
-                asalSekolah: "SD YPK Pulau Tiga",
-                namaAyah: "Cahyo Wibowo, S.E.",
-                ttlAyah: "Bandung, 12 Juli 1972",
-                pekerjaanAyah: "Wiraswasta",
-                alamatAyah: "Kampung Waikam, Distrik Pulau Tiga",
-                noHpAyah: "0814-5678-9012",
-                namaIbu: "Ratna Sari Dewi",
-                ttlIbu: "Malang, 8 September 1976",
-                pekerjaanIbu: "Ibu Rumah Tangga",
-                alamatIbu: "Kampung Waikam, Distrik Pulau Tiga",
-                noHpIbu: "0854-5678-9013",
-                status: "pending",
-                kelengkapanBerkas: "Kurang Fotokopi Ijazah"
-            },
-            {
-                no: 4,
-                namaLengkap: "Daffa Alvaro Pratama",
-                namaPanggilan: "Daffa",
-                jenisKelamin: "L",
-                tempatTglLahir: "Pulau Tiga, 15 April 2010",
-                nik: "3273011504110004",
-                agama: "Katolik",
-                anakKe: "1 dari 2 bersaudara",
-                alamatSiswa: "Kampung Komar, Distrik Pulau Tiga",
-                noHpSiswa: "0825-6789-0123",
-                asalSekolah: "SD Negeri 2 Pulau Tiga",
-                namaAyah: "Darmawan Setiawan, S.H.",
-                ttlAyah: "Surabaya, 20 Januari 1973",
-                pekerjaanAyah: "Advokat",
-                alamatAyah: "Kampung Komar, Distrik Pulau Tiga",
-                noHpAyah: "0815-6789-0123",
-                namaIbu: "Eka Fitriyani, S.Kep.",
-                ttlIbu: "Denpasar, 5 Juni 1977",
-                pekerjaanIbu: "Perawat",
-                alamatIbu: "Kampung Komar, Distrik Pulau Tiga",
-                noHpIbu: "0855-6789-0124",
-                status: "verified",
-                kelengkapanBerkas: "Lengkap"
-            },
-            {
-                no: 5,
-                namaLengkap: "Elvina Maharani",
-                namaPanggilan: "Elvi",
-                jenisKelamin: "P",
-                tempatTglLahir: "Pulau Tiga, 28 Mei 2011",
-                nik: "3273016805110005",
-                agama: "Islam",
-                anakKe: "2 dari 2 bersaudara",
-                alamatSiswa: "Kampung Nakai, Distrik Pulau Tiga",
-                noHpSiswa: "0826-7890-1234",
-                asalSekolah: "SD Inpres Nakai",
-                namaAyah: "Eko Prasetyo",
-                ttlAyah: "Semarang, 15 Desember 1971",
-                pekerjaanAyah: "Petani",
-                alamatAyah: "Kampung Nakai, Distrik Pulau Tiga",
-                noHpAyah: "0816-7890-1234",
-                namaIbu: "Farida Ulfa",
-                ttlIbu: "Padang, 10 Oktober 1978",
-                pekerjaanIbu: "Ibu Rumah Tangga",
-                alamatIbu: "Kampung Nakai, Distrik Pulau Tiga",
-                noHpIbu: "0856-7890-1235",
-                status: "review",
-                kelengkapanBerkas: "Dalam Proses Verifikasi"
-            },
-            {
-                no: 6,
-                namaLengkap: "Farel Athallah Zikri",
-                namaPanggilan: "Farel",
-                jenisKelamin: "L",
-                tempatTglLahir: "Pulau Tiga, 2 Juni 2010",
-                nik: "3273010206110006",
-                agama: "Islam",
-                anakKe: "1 dari 3 bersaudara",
-                alamatSiswa: "Kampung Waikam, Distrik Pulau Tiga",
-                noHpSiswa: "0827-8901-2345",
-                asalSekolah: "SD Negeri 1 Pulau Tiga",
-                namaAyah: "Faisal Anwar, S.T.",
-                ttlAyah: "Medan, 22 Maret 1974",
-                pekerjaanAyah: "Kontraktor",
-                alamatAyah: "Kampung Waikam, Distrik Pulau Tiga",
-                noHpAyah: "0817-8901-2345",
-                namaIbu: "Gina Sonia, A.Md.",
-                ttlIbu: "Makassar, 18 Juli 1979",
-                pekerjaanIbu: "Bidan",
-                alamatIbu: "Kampung Waikam, Distrik Pulau Tiga",
-                noHpIbu: "0857-8901-2346",
-                status: "verified",
-                kelengkapanBerkas: "Lengkap"
-            },
-            {
-                no: 7,
-                namaLengkap: "Gracia Angelina",
-                namaPanggilan: "Gracia",
-                jenisKelamin: "P",
-                tempatTglLahir: "Pulau Tiga, 23 Juli 2011",
-                nik: "3273017307110007",
-                agama: "Kristen",
-                anakKe: "2 dari 2 bersaudara",
-                alamatSiswa: "Kampung YPK, Distrik Pulau Tiga",
-                noHpSiswa: "0828-9012-3456",
-                asalSekolah: "SD YPK Pulau Tiga",
-                namaAyah: "Gabriel Manurung",
-                ttlAyah: "Medan, 5 Januari 1970",
-                pekerjaanAyah: "Guru",
-                alamatAyah: "Kampung YPK, Distrik Pulau Tiga",
-                noHpAyah: "0818-9012-3456",
-                namaIbu: "Helena Sihombing",
-                ttlIbu: "Medan, 12 Februari 1975",
-                pekerjaanIbu: "Ibu Rumah Tangga",
-                alamatIbu: "Kampung YPK, Distrik Pulau Tiga",
-                noHpIbu: "0858-9012-3457",
-                status: "pending",
-                kelengkapanBerkas: "Kurang Pas Foto"
-            },
-            {
-                no: 8,
-                namaLengkap: "Hendra Setiawan",
-                namaPanggilan: "Hendra",
-                jenisKelamin: "L",
-                tempatTglLahir: "Pulau Tiga, 19 Agustus 2010",
-                nik: "3273011908110008",
-                agama: "Islam",
-                anakKe: "1 dari 2 bersaudara",
-                alamatSiswa: "Kampung Komar, Distrik Pulau Tiga",
-                noHpSiswa: "0829-0123-4567",
-                asalSekolah: "SD Negeri 2 Pulau Tiga",
-                namaAyah: "Hendro Suwito",
-                ttlAyah: "Yogyakarta, 10 Juni 1972",
-                pekerjaanAyah: "Wiraswasta",
-                alamatAyah: "Kampung Komar, Distrik Pulau Tiga",
-                noHpAyah: "0819-0123-4567",
-                namaIbu: "Indah Lestari, S.Pd.",
-                ttlIbu: "Solo, 25 Agustus 1976",
-                pekerjaanIbu: "Guru",
-                alamatIbu: "Kampung Komar, Distrik Pulau Tiga",
-                noHpIbu: "0859-0123-4568",
-                status: "verified",
-                kelengkapanBerkas: "Lengkap"
-            },
-            {
-                no: 9,
-                namaLengkap: "Indah Puspita Sari",
-                namaPanggilan: "Indah",
-                jenisKelamin: "P",
-                tempatTglLahir: "Pulau Tiga, 16 September 2011",
-                nik: "3273016609110009",
-                agama: "Islam",
-                anakKe: "1 dari 2 bersaudara",
-                alamatSiswa: "Kampung Nakai, Distrik Pulau Tiga",
-                noHpSiswa: "0830-1234-5678",
-                asalSekolah: "SD Inpres Nakai",
-                namaAyah: "Irfan Hakim, S.Sos.",
-                ttlAyah: "Jakarta, 3 Desember 1973",
-                pekerjaanAyah: "PNS",
-                alamatAyah: "Kampung Nakai, Distrik Pulau Tiga",
-                noHpAyah: "0820-1234-5678",
-                namaIbu: "Juwita Rini, S.E.",
-                ttlIbu: "Bandung, 19 Januari 1978",
-                pekerjaanIbu: "Wiraswasta",
-                alamatIbu: "Kampung Nakai, Distrik Pulau Tiga",
-                noHpIbu: "0860-1234-5679",
-                status: "review",
-                kelengkapanBerkas: "Verifikasi Berkas"
-            },
-            {
-                no: 10,
-                namaLengkap: "Johan Fernando",
-                namaPanggilan: "Johan",
-                jenisKelamin: "L",
-                tempatTglLahir: "Pulau Tiga, 5 Oktober 2010",
-                nik: "3273010510110010",
-                agama: "Katolik",
-                anakKe: "2 dari 2 bersaudara",
-                alamatSiswa: "Kampung Waikam, Distrik Pulau Tiga",
-                noHpSiswa: "0831-2345-6789",
-                asalSekolah: "SD Negeri 1 Pulau Tiga",
-                namaAyah: "Joko Susilo",
-                ttlAyah: "Surabaya, 11 April 1971",
-                pekerjaanAyah: "Petani",
-                alamatAyah: "Kampung Waikam, Distrik Pulau Tiga",
-                noHpAyah: "0821-2345-6789",
-                namaIbu: "Kartika Sari",
-                ttlIbu: "Malang, 7 Mei 1975",
-                pekerjaanIbu: "Ibu Rumah Tangga",
-                alamatIbu: "Kampung Waikam, Distrik Pulau Tiga",
-                noHpIbu: "0861-2345-6790",
-                status: "verified",
-                kelengkapanBerkas: "Lengkap"
-            },
-            {
-                no: 11,
-                namaLengkap: "Karina Azzahra",
-                namaPanggilan: "Karina",
-                jenisKelamin: "P",
-                tempatTglLahir: "Pulau Tiga, 12 November 2011",
-                nik: "3273017001110011",
-                agama: "Islam",
-                anakKe: "1 dari 2 bersaudara",
-                alamatSiswa: "Kampung YPK, Distrik Pulau Tiga",
-                noHpSiswa: "0832-3456-7890",
-                asalSekolah: "SD YPK Pulau Tiga",
-                namaAyah: "Kurniawan Dwi, S.Kom.",
-                ttlAyah: "Malang, 8 Agustus 1974",
-                pekerjaanAyah: "Programmer",
-                alamatAyah: "Kampung YPK, Distrik Pulau Tiga",
-                noHpAyah: "0822-3456-7890",
-                namaIbu: "Lilis Mulyani",
-                ttlIbu: "Bandung, 14 Maret 1977",
-                pekerjaanIbu: "Ibu Rumah Tangga",
-                alamatIbu: "Kampung YPK, Distrik Pulau Tiga",
-                noHpIbu: "0862-3456-7891",
-                status: "pending",
-                kelengkapanBerkas: "Kurang Akta Kelahiran"
-            },
-            {
-                no: 12,
-                namaLengkap: "Lukman Hakim",
-                namaPanggilan: "Lukman",
-                jenisKelamin: "L",
-                tempatTglLahir: "Pulau Tiga, 21 Desember 2010",
-                nik: "3273012102110012",
-                agama: "Islam",
-                anakKe: "2 dari 3 bersaudara",
-                alamatSiswa: "Kampung Komar, Distrik Pulau Tiga",
-                noHpSiswa: "0833-4567-8901",
-                asalSekolah: "SD Negeri 2 Pulau Tiga",
-                namaAyah: "Lukito Hadi, S.Ag.",
-                ttlAyah: "Solo, 19 September 1972",
-                pekerjaanAyah: "Guru",
-                alamatAyah: "Kampung Komar, Distrik Pulau Tiga",
-                noHpAyah: "0823-4567-8901",
-                namaIbu: "Maya Sari, S.Pd.I.",
-                ttlIbu: "Yogyakarta, 22 November 1976",
-                pekerjaanIbu: "Guru",
-                alamatIbu: "Kampung Komar, Distrik Pulau Tiga",
-                noHpIbu: "0863-4567-8902",
-                status: "verified",
-                kelengkapanBerkas: "Lengkap"
-            },
-            {
-                no: 13,
-                namaLengkap: "Mutiara Azzahra",
-                namaPanggilan: "Mutiara",
-                jenisKelamin: "P",
-                tempatTglLahir: "Pulau Tiga, 9 Januari 2011",
-                nik: "3273015503110013",
-                agama: "Islam",
-                anakKe: "1 dari 2 bersaudara",
-                alamatSiswa: "Kampung Nakai, Distrik Pulau Tiga",
-                noHpSiswa: "0834-5678-9012",
-                asalSekolah: "SD Inpres Nakai",
-                namaAyah: "Muhammad Iqbal, S.H.",
-                ttlAyah: "Jakarta, 25 Mei 1973",
-                pekerjaanAyah: "Pengacara",
-                alamatAyah: "Kampung Nakai, Distrik Pulau Tiga",
-                noHpAyah: "0824-5678-9012",
-                namaIbu: "Nadia Permata",
-                ttlIbu: "Bandung, 30 Oktober 1977",
-                pekerjaanIbu: "Ibu Rumah Tangga",
-                alamatIbu: "Kampung Nakai, Distrik Pulau Tiga",
-                noHpIbu: "0864-5678-9013",
-                status: "pending",
-                kelengkapanBerkas: "Proses Verifikasi"
-            },
-            {
-                no: 14,
-                namaLengkap: "Naufal Al-Ghifari",
-                namaPanggilan: "Naufal",
-                jenisKelamin: "L",
-                tempatTglLahir: "Pulau Tiga, 8 Februari 2011",
-                nik: "3273010804110014",
-                agama: "Islam",
-                anakKe: "1 dari 2 bersaudara",
-                alamatSiswa: "Kampung Waikam, Distrik Pulau Tiga",
-                noHpSiswa: "0835-6789-0123",
-                asalSekolah: "SD Negeri 1 Pulau Tiga",
-                namaAyah: "Nasrullah, S.Pd.",
-                ttlAyah: "Medan, 17 April 1974",
-                pekerjaanAyah: "Guru",
-                alamatAyah: "Kampung Waikam, Distrik Pulau Tiga",
-                noHpAyah: "0825-6789-0123",
-                namaIbu: "Olivia Christy",
-                ttlIbu: "Manado, 3 Juni 1978",
-                pekerjaanIbu: "Ibu Rumah Tangga",
-                alamatIbu: "Kampung Waikam, Distrik Pulau Tiga",
-                noHpIbu: "0865-6789-0124",
-                status: "review",
-                kelengkapanBerkas: "Dokumen Kurang"
-            },
-            {
-                no: 15,
-                namaLengkap: "Olivia Febriyanti",
-                namaPanggilan: "Olivia",
-                jenisKelamin: "P",
-                tempatTglLahir: "Pulau Tiga, 25 Maret 2011",
-                nik: "3273016205110015",
-                agama: "Kristen",
-                anakKe: "2 dari 3 bersaudara",
-                alamatSiswa: "Kampung YPK, Distrik Pulau Tiga",
-                noHpSiswa: "0836-7890-1234",
-                asalSekolah: "SD YPK Pulau Tiga",
-                namaAyah: "Oscar Sitohang",
-                ttlAyah: "Medan, 9 Juli 1971",
-                pekerjaanAyah: "Wiraswasta",
-                alamatAyah: "Kampung YPK, Distrik Pulau Tiga",
-                noHpAyah: "0826-7890-1234",
-                namaIbu: "Putri Wulandari, S.S.",
-                ttlIbu: "Padang, 14 Desember 1976",
-                pekerjaanIbu: "Guru",
-                alamatIbu: "Kampung YPK, Distrik Pulau Tiga",
-                noHpIbu: "0866-7890-1235",
-                status: "verified",
-                kelengkapanBerkas: "Lengkap"
-            }
-        ];
+        let studentsData = [{
+            no: 1,
+            namaLengkap: "Donatus Bait",
+            namaPanggilan: "Donatus",
+            jenisKelamin: "L",
+            tempatTglLahir: "Nakai, 02 Juli 2013",
+            nik: "9118030207020002",
+            agama: "Kristen Protestan",
+            anakKe: "1 dari 3 bersaudara",
+            alamatSiswa: "Kampung Nakai",
+            noHpSiswa: "-",
+            asalSekolah: "SD Inpres Nakai",
+            namaAyah: "Yosep Yuak",
+            ttlAyah: "Nakai, 24 Mei 1950",
+            pekerjaanAyah: "Almarhum",
+            alamatAyah: "Kampung Nakai",
+            noHpAyah: "-",
+            namaIbu: "Ageta Tarin",
+            ttlIbu: "-",
+            pekerjaanIbu: "Almarhumah",
+            alamatIbu: "Kampung Nakai",
+            noHpIbu: "-",
+            status: "pending",
+            kelengkapanBerkas: "Berkas Belum Lengkap",
+            kk: "❌",
+            ijazah: "❌",
+            akta: "❌",
+            foto: "❌"
+        }, {
+            no: 2,
+            namaLengkap: "Boas Pipar",
+            namaPanggilan: "Boas",
+            jenisKelamin: "L",
+            tempatTglLahir: "Nakai, 02 Juni 2012",
+            nik: "9118030206080003",
+            agama: "Kristen Protestan",
+            anakKe: "1 dari 4 bersaudara",
+            alamatSiswa: "Kampung Nakai",
+            noHpSiswa: "-",
+            asalSekolah: "SD Inpres Nakai",
+            namaAyah: "Yakobus Arko",
+            ttlAyah: "-",
+            pekerjaanAyah: "Petani",
+            alamatAyah: "Kampung Nakai",
+            noHpAyah: "-",
+            namaIbu: "Sofia Berar",
+            ttlIbu: "-",
+            pekerjaanIbu: "Ibu Rumah Tangga",
+            alamatIbu: "Kampung Nakai",
+            noHpIbu: "-",
+            status: "pending",
+            kelengkapanBerkas: "Berkas Belum Lengkap",
+            kk: "❌",
+            ijazah: "❌",
+            akta: "❌",
+            foto: "❌"
+        }, {
+            no: 3,
+            namaLengkap: "Aleksander Autasar",
+            namaPanggilan: "Aleks",
+            jenisKelamin: "L",
+            tempatTglLahir: "Nakai, 01 Juli 2011",
+            nik: "9118030107040119",
+            agama: "Kristen Protestan",
+            anakKe: "1 dari 8 bersaudara",
+            alamatSiswa: "Kampung Nakai",
+            noHpSiswa: "-",
+            asalSekolah: "SD Inpres Nakai",
+            namaAyah: "Timotius Omanin",
+            ttlAyah: "Nakai, 03 Februari 1975",
+            pekerjaanAyah: "Petani",
+            alamatAyah: "Kampung Nakai",
+            noHpAyah: "-",
+            namaIbu: "Welhelmina Faya",
+            ttlIbu: "Nakai, 07 Mei 1980",
+            pekerjaanIbu: "Ibu Rumah Tangga",
+            alamatIbu: "Kampung Nakai",
+            noHpIbu: "-",
+            status: "pending",
+            kelengkapanBerkas: "Berkas Belum Lengkap",
+            kk: "✅",
+            ijazah: "❌",
+            akta: "❌",
+            foto: "❌"
+        }, {
+            no: 4,
+            namaLengkap: "Yusuf Ait",
+            namaPanggilan: "Yusuf",
+            jenisKelamin: "L",
+            tempatTglLahir: "Nakai, 02 April 2011",
+            nik: "9118030204110003",
+            agama: "Kristen Protestan",
+            anakKe: "5 dari 8 bersaudara",
+            alamatSiswa: "Kampung Nakai",
+            noHpSiswa: "-",
+            asalSekolah: "SD Inpres Nakai",
+            namaAyah: "Petrus Ait",
+            ttlAyah: "Nakai, 01 Juli 1968",
+            pekerjaanAyah: "Petani",
+            alamatAyah: "Kampung Nakai",
+            noHpAyah: "-",
+            namaIbu: "Maria Taaro",
+            ttlIbu: "Nakai, 01 Juli 1975",
+            pekerjaanIbu: "Ibu Rumah Tangga",
+            alamatIbu: "Kampung Nakai",
+            noHpIbu: "-",
+            status: "pending",
+            kelengkapanBerkas: "Berkas Belum Lengkap",
+            kk: "✅",
+            ijazah: "❌",
+            akta: "❌",
+            foto: "❌"
+        }, {
+            no: 5,
+            namaLengkap: "Abraham Aipas",
+            namaPanggilan: "Abraham",
+            jenisKelamin: "L",
+            tempatTglLahir: "Nakai, 11 Juli 2011",
+            nik: "9118031107070001",
+            agama: "Kristen Protestan",
+            anakKe: "1 dari 3 bersaudara",
+            alamatSiswa: "Kampung Nakai",
+            noHpSiswa: "-",
+            asalSekolah: "SD Inpres Nakai",
+            namaAyah: "Natalis Sop",
+            ttlAyah: "Nakai, 15 Februari 1956",
+            pekerjaanAyah: "Petani",
+            alamatAyah: "Kampung Nakai",
+            noHpAyah: "-",
+            namaIbu: "Ageta Taroo",
+            ttlIbu: "Nakai, 21 Juli 1973",
+            pekerjaanIbu: "Ibu Rumah Tangga",
+            alamatIbu: "Kampung Nakai",
+            noHpIbu: "-",
+            status: "pending",
+            kelengkapanBerkas: "Berkas Belum Lengkap",
+            kk: "✅",
+            ijazah: "❌",
+            akta: "❌",
+            foto: "❌"
+        }, {
+            no: 6,
+            namaLengkap: "Stefanus Onam",
+            namaPanggilan: "Stefanus",
+            jenisKelamin: "L",
+            tempatTglLahir: "Nakai, 08 September 2010",
+            nik: "9118030809090001",
+            agama: "Kristen Protestan",
+            anakKe: "3 dari 8 bersaudara",
+            alamatSiswa: "Kampung Nakai",
+            noHpSiswa: "-",
+            asalSekolah: "SD Inpres Nakai",
+            namaAyah: "Silvester Sita",
+            ttlAyah: "Nakai, 07 Oktober 1975",
+            pekerjaanAyah: "Petani",
+            alamatAyah: "Kampung Nakai",
+            noHpAyah: "-",
+            namaIbu: "Ema Aipas",
+            ttlIbu: "Nakai, 21 Maret 1977",
+            pekerjaanIbu: "Ibu Rumah Tangga",
+            alamatIbu: "Kampung Nakai",
+            noHpIbu: "-",
+            status: "pending",
+            kelengkapanBerkas: "Berkas Belum Lengkap",
+            kk: "✅",
+            ijazah: "❌",
+            akta: "❌",
+            foto: "❌"
+        }, {
+            no: 7,
+            namaLengkap: "Rut Bayaracot",
+            namaPanggilan: "Rut",
+            jenisKelamin: "P",
+            tempatTglLahir: "Nakai, 12 Juli 2012",
+            nik: "9118125207120001",
+            agama: "Kristen Protestan",
+            anakKe: "2 dari 7 bersaudara",
+            alamatSiswa: "Kampung Nakai",
+            noHpSiswa: "-",
+            asalSekolah: "SD Inpres Nakai",
+            namaAyah: "Yakobus Mimin",
+            ttlAyah: "Nakai, 20 Juli 1982",
+            pekerjaanAyah: "Petani",
+            alamatAyah: "Kampung Nakai",
+            noHpAyah: "-",
+            namaIbu: "Marta Sesakam",
+            ttlIbu: "Nakai, 05 Desember 1989",
+            pekerjaanIbu: "Ibu Rumah Tangga",
+            alamatIbu: "Kampung Nakai",
+            noHpIbu: "-",
+            status: "pending",
+            kelengkapanBerkas: "Berkas Belum Lengkap",
+            kk: "✅",
+            ijazah: "❌",
+            akta: "❌",
+            foto: "❌"
+        }, {
+            no: 8,
+            namaLengkap: "Linus Ser",
+            namaPanggilan: "Linus",
+            jenisKelamin: "L",
+            tempatTglLahir: "Nakai, 03 Juni 2014",
+            nik: "9118124306140001",
+            agama: "Kristen Protestan",
+            anakKe: "1 dari 4 bersaudara",
+            alamatSiswa: "Kampung Nakai",
+            noHpSiswa: "-",
+            asalSekolah: "SD Inpres Nakai",
+            namaAyah: "Linus Ser",
+            ttlAyah: "-",
+            pekerjaanAyah: "Almarhum",
+            alamatAyah: "Kampung Nakai",
+            noHpAyah: "-",
+            namaIbu: "Jael Poinam",
+            ttlIbu: "-",
+            pekerjaanIbu: "Almarhumah",
+            alamatIbu: "Kampung Nakai",
+            noHpIbu: "-",
+            status: "pending",
+            kelengkapanBerkas: "Berkas Belum Lengkap",
+            kk: "❌",
+            ijazah: "❌",
+            akta: "❌",
+            foto: "❌"
+        }, {
+            no: 9,
+            namaLengkap: "Filipus Nanim",
+            namaPanggilan: "Filipus",
+            jenisKelamin: "L",
+            tempatTglLahir: "Nakai, 30 Juni 2010",
+            nik: "9118033006100001",
+            agama: "Kristen Protestan",
+            anakKe: "2 dari 5 bersaudara",
+            alamatSiswa: "Kampung Nakai",
+            noHpSiswa: "-",
+            asalSekolah: "SD Inpres Nakai",
+            namaAyah: "Herman Amonko",
+            ttlAyah: "Nakai, 09 Mei 1976",
+            pekerjaanAyah: "Petani",
+            alamatAyah: "Kampung Nakai",
+            noHpAyah: "-",
+            namaIbu: "Elisabet Ep",
+            ttlIbu: "Nakai, 27 Januari 1977",
+            pekerjaanIbu: "Ibu Rumah Tangga",
+            alamatIbu: "Kampung Nakai",
+            noHpIbu: "-",
+            status: "pending",
+            kelengkapanBerkas: "Berkas Belum Lengkap",
+            kk: "✅",
+            ijazah: "❌",
+            akta: "❌",
+            foto: "❌"
+        }, {
+            no: 10,
+            namaLengkap: "Yuliana Manmats",
+            namaPanggilan: "Yuliana",
+            jenisKelamin: "P",
+            tempatTglLahir: "Nakai, 01 Juli 2013",
+            nik: "9118124107150014",
+            agama: "Kristen Protestan",
+            anakKe: "4 dari 7 bersaudara",
+            alamatSiswa: "Kampung Nakai",
+            noHpSiswa: "-",
+            asalSekolah: "SD Inpres Nakai",
+            namaAyah: "Kasimirus Jaum",
+            ttlAyah: "Nakai, 17 Juni 1977",
+            pekerjaanAyah: "Petani",
+            alamatAyah: "Kampung Nakai",
+            noHpAyah: "-",
+            namaIbu: "Milka Jaun",
+            ttlIbu: "Nakai, 16 Mei 1987",
+            pekerjaanIbu: "Ibu Rumah Tangga",
+            alamatIbu: "Kampung Nakai",
+            noHpIbu: "-",
+            status: "pending",
+            kelengkapanBerkas: "Berkas Belum Lengkap",
+            kk: "✅",
+            ijazah: "❌",
+            akta: "❌",
+            foto: "❌"
+        }, {
+            no: 11,
+            namaLengkap: "Moses Sas",
+            namaPanggilan: "Moses",
+            jenisKelamin: "L",
+            tempatTglLahir: "Fumiripits, 03 Agustus 2014",
+            nik: "9118120308140001",
+            agama: "Kristen Protestan",
+            anakKe: "3 dari 4 bersaudara",
+            alamatSiswa: "Kampung Nakai",
+            noHpSiswa: "-",
+            asalSekolah: "SD Inpres Nakai",
+            namaAyah: "Moses Sas",
+            ttlAyah: "-",
+            pekerjaanAyah: "Petani",
+            alamatAyah: "Fumiripits",
+            noHpAyah: "-",
+            namaIbu: "Helena Wawo",
+            ttlIbu: "-",
+            pekerjaanIbu: "Ibu Rumah Tangga",
+            alamatIbu: "Fumiripits",
+            noHpIbu: "-",
+            status: "pending",
+            kelengkapanBerkas: "Berkas Belum Lengkap",
+            kk: "❌",
+            ijazah: "❌",
+            akta: "❌",
+            foto: "❌"
+        }, {
+            no: 12,
+            namaLengkap: "Ananias Baen",
+            namaPanggilan: "Ananias",
+            jenisKelamin: "L",
+            tempatTglLahir: "Wacakam, 04 Mei 2013",
+            nik: "9109050405130001",
+            agama: "Kristen Protestan",
+            anakKe: "3 dari 6 bersaudara",
+            alamatSiswa: "Kampung Nakai",
+            noHpSiswa: "-",
+            asalSekolah: "SD Inpres Nakai",
+            namaAyah: "Bertus Watu",
+            ttlAyah: "-",
+            pekerjaanAyah: "Petani",
+            alamatAyah: "Kampung Nakai",
+            noHpAyah: "-",
+            namaIbu: "Rosa Samaor",
+            ttlIbu: "-",
+            pekerjaanIbu: "Ibu Rumah Tangga",
+            alamatIbu: "Wacakam",
+            noHpIbu: "-",
+            status: "pending",
+            kelengkapanBerkas: "Berkas Belum Lengkap",
+            kk: "❌",
+            ijazah: "❌",
+            akta: "❌",
+            foto: "❌"
+        }, {
+            no: 13,
+            namaLengkap: "Albertus Kendi",
+            namaPanggilan: "Kendi",
+            jenisKelamin: "L",
+            tempatTglLahir: "Nakai, 16 Desember 2013",
+            nik: "9118125612120001",
+            agama: "Kristen Protestan",
+            anakKe: "7 dari 10 bersaudara",
+            alamatSiswa: "Kampung Nakai",
+            noHpSiswa: "-",
+            asalSekolah: "SD Inpres Nakai",
+            namaAyah: "Yohanis Bepar",
+            ttlAyah: "Nakai, 08 Desember 1988",
+            pekerjaanAyah: "Petani",
+            alamatAyah: "Kampung Nakai",
+            noHpAyah: "-",
+            namaIbu: "Susana Sicawar",
+            ttlIbu: "Nakai, 12 Mei 1991",
+            pekerjaanIbu: "Ibu Rumah Tangga",
+            alamatIbu: "Kampung Nakai",
+            noHpIbu: "-",
+            status: "pending",
+            kelengkapanBerkas: "Berkas Belum Lengkap",
+            kk: "✅",
+            ijazah: "❌",
+            akta: "❌",
+            foto: "❌"
+        }, {
+            no: 14,
+            namaLengkap: "Marselus Osjak",
+            namaPanggilan: "Marselus",
+            jenisKelamin: "L",
+            tempatTglLahir: "Nakai, 25 Juni 2010",
+            nik: "9118032506080001",
+            agama: "Kristen Protestan",
+            anakKe: "3 dari 8 bersaudara",
+            alamatSiswa: "Kampung Nakai",
+            noHpSiswa: "-",
+            asalSekolah: "SD Inpres Nakai",
+            namaAyah: "Paulus Os",
+            ttlAyah: "-",
+            pekerjaanAyah: "Petani",
+            alamatAyah: "Kampung Nakai",
+            noHpAyah: "-",
+            namaIbu: "Makdalena Apok",
+            ttlIbu: "-",
+            pekerjaanIbu: "Ibu Rumah Tangga",
+            alamatIbu: "Kampung Nakai",
+            noHpIbu: "-",
+            status: "pending",
+            kelengkapanBerkas: "Berkas Belum Lengkap",
+            kk: "❌",
+            ijazah: "❌",
+            akta: "❌",
+            foto: "❌"
+        }];
 
-        // Variabel Global
         let currentData = [...studentsData];
         let filteredData = [...studentsData];
         let genderChart = null;
@@ -1425,7 +1478,6 @@
         let currentPage = 1;
         const rowsPerPage = 5;
 
-        // Helper Functions
         function showToast(message, isError = false) {
             const toast = document.createElement('div');
             toast.className = `toast-notif ${isError ? 'error' : ''}`;
@@ -1434,7 +1486,6 @@
             setTimeout(() => toast.remove(), 3000);
         }
 
-        // Render Functions
         function renderStats() {
             const total = filteredData.length;
             const laki = filteredData.filter(s => s.jenisKelamin === 'L').length;
@@ -1468,7 +1519,8 @@
             const pageData = filteredData.slice(start, end);
 
             if (pageData.length === 0) {
-                tbody.innerHTML = `<tr><td colspan="24" class="empty-state"><i class="fas fa-search"></i><p>Data tidak ditemukan</p></td></tr>`;
+                tbody.innerHTML =
+                    `<tr><td colspan="28" class="empty-state"><i class="fas fa-search"></i><p>Data tidak ditemukan</p></td></tr>`;
                 document.getElementById('pageInfo').textContent = `Halaman 0 dari 0`;
                 return;
             }
@@ -1481,7 +1533,9 @@
                 const jkText = siswa.jenisKelamin === 'L' ? 'Laki-laki' : 'Perempuan';
                 const jkIcon = siswa.jenisKelamin === 'L' ? '♂️' : '♀️';
 
-                let statusClass = '', statusText = '', statusIcon = '';
+                let statusClass = '',
+                    statusText = '',
+                    statusIcon = '';
                 if (siswa.status === 'verified') {
                     statusClass = 'status-verified';
                     statusText = 'Terverifikasi';
@@ -1495,6 +1549,8 @@
                     statusText = 'Dalam Review';
                     statusIcon = '📋';
                 }
+
+                const berkasClass = siswa.kelengkapanBerkas === 'Lengkap' ? 'berkas-lengkap' : 'berkas-belum';
 
                 html += `
                     <tr>
@@ -1520,7 +1576,11 @@
                         <td>${siswa.alamatIbu}</td>
                         <td>${siswa.noHpIbu}</td>
                         <td><span class="status-badge ${statusClass}">${statusIcon} ${statusText}</span></td>
-                        <td>${siswa.kelengkapanBerkas}</td>
+                        <td><span class="berkas-badge ${berkasClass}">${siswa.kelengkapanBerkas}</span></td>
+                        <td>${siswa.kk}</td>
+                        <td>${siswa.ijazah}</td>
+                        <td>${siswa.akta}</td>
+                        <td>${siswa.foto}</td>
                         <td class="action-btns">
                             <button class="btn-edit" onclick="editStudent(${siswa.no})"><i class="fas fa-edit"></i> Edit</button>
                             <button class="btn-delete" onclick="deleteStudent(${siswa.no})"><i class="fas fa-trash"></i> Hapus</button>
@@ -1530,7 +1590,6 @@
             });
             tbody.innerHTML = html;
 
-            // Update pagination buttons state
             document.getElementById('prevPageBtn').disabled = currentPage === 1;
             document.getElementById('nextPageBtn').disabled = currentPage === totalPages;
         }
@@ -1572,8 +1631,18 @@
                     responsive: true,
                     maintainAspectRatio: true,
                     plugins: {
-                        legend: { position: 'bottom', labels: { font: { size: 12, weight: '600' }, color: 'var(--text2)', usePointStyle: true } },
-                        tooltip: { callbacks: { label: (ctx) => `${ctx.label}: ${ctx.raw} (${((ctx.raw / (laki + perempuan)) * 100).toFixed(1)}%)` } }
+                        legend: {
+                            position: 'bottom', labels: {
+                                font: { size: 12, weight: '600' }, color: 'var(--text2)',
+                                usePointStyle: true
+                            }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: (ctx) =>
+                                    `${ctx.label}: ${ctx.raw} (${((ctx.raw / (laki + perempuan)) * 100).toFixed(1)}%)`
+                            }
+                        }
                     },
                     animation: { duration: 1500, easing: 'easeInOutQuart' }
                 }
@@ -1605,14 +1674,20 @@
                 options: {
                     responsive: true,
                     maintainAspectRatio: true,
-                    plugins: { legend: { display: false }, tooltip: { callbacks: { label: (ctx) => `Jumlah: ${ctx.raw} (${((ctx.raw / total) * 100).toFixed(1)}%)` } } },
+                    plugins: {
+                        legend: { display: false }, tooltip: {
+                            callbacks: {
+                                label: (ctx) =>
+                                    `Jumlah: ${ctx.raw} (${((ctx.raw / total) * 100).toFixed(1)}%)`
+                            }
+                        }
+                    },
                     scales: { y: { beginAtZero: true, ticks: { stepSize: 1, precision: 0 } } },
                     animation: { duration: 1500, easing: 'easeInOutQuart' }
                 }
             });
         }
 
-        // Pagination
         function prevPage() {
             if (currentPage > 1) {
                 currentPage--;
@@ -1628,14 +1703,14 @@
             }
         }
 
-        // Filter Functions
         function filterData() {
             const searchTerm = document.getElementById('searchInput').value.toLowerCase();
             const statusFilter = document.getElementById('filterStatus').value;
             const genderFilter = document.getElementById('filterGender').value;
 
             filteredData = studentsData.filter(siswa => {
-                const matchSearch = searchTerm === '' || siswa.namaLengkap.toLowerCase().includes(searchTerm) || siswa.nik.includes(searchTerm);
+                const matchSearch = searchTerm === '' || siswa.namaLengkap.toLowerCase().includes(searchTerm) || siswa
+                    .nik.includes(searchTerm);
                 const matchStatus = statusFilter === 'all' || siswa.status === statusFilter;
                 const matchGender = genderFilter === 'all' || siswa.jenisKelamin === genderFilter;
                 return matchSearch && matchStatus && matchGender;
@@ -1658,7 +1733,6 @@
             renderCharts();
         }
 
-        // Edit & Delete Functions
         window.editStudent = function (id) {
             const siswa = studentsData.find(s => s.no === id);
             if (!siswa) return;
@@ -1686,6 +1760,10 @@
             document.getElementById('editNoHpIbu').value = siswa.noHpIbu;
             document.getElementById('editStatus').value = siswa.status;
             document.getElementById('editKelengkapanBerkas').value = siswa.kelengkapanBerkas;
+            document.getElementById('editKK').value = siswa.kk;
+            document.getElementById('editIjazah').value = siswa.ijazah;
+            document.getElementById('editAkta').value = siswa.akta;
+            document.getElementById('editFoto').value = siswa.foto;
 
             document.getElementById('editModal').classList.add('active');
         };
@@ -1695,7 +1773,6 @@
                 const index = studentsData.findIndex(s => s.no === id);
                 if (index !== -1) {
                     studentsData.splice(index, 1);
-                    // Renumber
                     studentsData.forEach((s, i) => s.no = i + 1);
                     filteredData = [...studentsData];
                     renderStats();
@@ -1739,7 +1816,11 @@
                     alamatIbu: document.getElementById('editAlamatIbu').value,
                     noHpIbu: document.getElementById('editNoHpIbu').value,
                     status: document.getElementById('editStatus').value,
-                    kelengkapanBerkas: document.getElementById('editKelengkapanBerkas').value
+                    kelengkapanBerkas: document.getElementById('editKelengkapanBerkas').value,
+                    kk: document.getElementById('editKK').value,
+                    ijazah: document.getElementById('editIjazah').value,
+                    akta: document.getElementById('editAkta').value,
+                    foto: document.getElementById('editFoto').value
                 };
 
                 filteredData = [...studentsData];
@@ -1751,7 +1832,7 @@
             }
         });
 
-        // ===== EXPORT EXCEL DENGAN 2 SHEET + GRAFIK WARNA =====
+        // ===== EXPORT EXCEL DENGAN 2 SHEET + GRAFIK WARNA + FOOTER =====
         function exportToExcel() {
             if (filteredData.length === 0) {
                 showToast('Tidak ada data untuk diekspor', true);
@@ -1781,21 +1862,32 @@
                 'Pekerjaan Ibu': siswa.pekerjaanIbu,
                 'Alamat Ibu': siswa.alamatIbu,
                 'No. HP Ibu': siswa.noHpIbu,
-                'Status Verifikasi': siswa.status === 'verified' ? 'Terverifikasi' : (siswa.status === 'pending' ? 'Menunggu Verifikasi' : 'Dalam Review'),
-                'Kelengkapan Berkas': siswa.kelengkapanBerkas
+                'Status Verifikasi': siswa.status === 'verified' ? 'Terverifikasi' : (siswa.status === 'pending' ?
+                    'Menunggu Verifikasi' : 'Dalam Review'),
+                'Kelengkapan Berkas': siswa.kelengkapanBerkas,
+                'Foto Copy KK': siswa.kk,
+                'Foto Copy SKHUN/Ijazah SD': siswa.ijazah,
+                'Foto Copy Akta Kelahiran': siswa.akta,
+                'Pas Photo 3x4': siswa.foto
             }));
 
             const wsData = XLSX.utils.json_to_sheet(exportData);
-            wsData['!cols'] = [
-                { wch: 6 }, { wch: 28 }, { wch: 18 }, { wch: 14 }, { wch: 24 },
-                { wch: 18 }, { wch: 12 }, { wch: 16 }, { wch: 38 }, { wch: 16 },
-                { wch: 28 }, { wch: 28 }, { wch: 22 }, { wch: 18 }, { wch: 38 },
-                { wch: 16 }, { wch: 28 }, { wch: 22 }, { wch: 18 }, { wch: 38 },
-                { wch: 16 }, { wch: 20 }, { wch: 32 }
-            ];
+
+            // Auto fit width berdasarkan konten (lebih presisi)
+            const colWidths = [];
+            const keys = Object.keys(exportData[0] || {});
+            keys.forEach((key, idx) => {
+                let maxLen = key.length;
+                exportData.forEach(row => {
+                    const val = String(row[key] || '');
+                    if (val.length > maxLen) maxLen = val.length;
+                });
+                colWidths.push({ wch: Math.min(Math.max(maxLen + 4, 12), 50) });
+            });
+            wsData['!cols'] = colWidths;
             wsData['!sheetProtection'] = { sheet: true };
 
-            // ===== SHEET 2: STATISTIK DENGAN GRAFIK WARNA =====
+            // ===== SHEET 2: STATISTIK DENGAN GRAFIK WARNA + FOOTER =====
             const total = filteredData.length;
             const laki = filteredData.filter(s => s.jenisKelamin === 'L').length;
             const perempuan = filteredData.filter(s => s.jenisKelamin === 'P').length;
@@ -1820,7 +1912,16 @@
             filteredData.forEach(s => {
                 sekolahMap.set(s.asalSekolah, (sekolahMap.get(s.asalSekolah) || 0) + 1);
             });
-            const sekolahData = Array.from(sekolahMap.entries()).map(([nama, jumlah]) => ({ nama, jumlah })).sort((a, b) => b.jumlah - a.jumlah);
+            const sekolahData = Array.from(sekolahMap.entries()).map(([nama, jumlah]) => ({ nama, jumlah })).sort((a, b) => b
+                .jumlah - a.jumlah);
+
+            // Tanggal dinamis hari ini
+            const today = new Date();
+            const tanggalExport = today.toLocaleDateString('id-ID', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
 
             const statSheetData = [
                 ['', '', ''],
@@ -1862,7 +1963,7 @@
                 ['═══════════════════════════════════════════════════════════════════', '', ''],
                 ['D. INFORMASI TAMBAHAN', '', ''],
                 ['═══════════════════════════════════════════════════════════════════', '', ''],
-                ['📅 Tanggal Export', new Date().toLocaleDateString('id-ID'), ''],
+                ['📅 Tanggal Export', tanggalExport, ''],
                 ['⏰ Waktu Export', new Date().toLocaleTimeString('id-ID'), ''],
                 ['📆 Periode', 'Tahun Ajaran 2026/2027', ''],
                 ['👥 Total Data', `${total} Siswa`, ''],
@@ -1873,7 +1974,21 @@
                 ['🔴 Merah  = Perempuan', '', ''],
                 ['🟢 Hijau  = Terverifikasi', '', ''],
                 ['🟡 Kuning = Menunggu Verifikasi', '', ''],
-                ['🟠 Oranye = Dalam Review', '', '']
+                ['🟠 Oranye = Dalam Review', '', ''],
+                ['', '', ''],
+                ['', '', ''],
+                ['', '', ''],
+                [`Nakai, ${tanggalExport}`, '', ''],
+                ['Panitia PPDB,', '', ''],
+                ['', '', ''],
+                ['', '', ''],
+                ['1. Pak Yanto', '', ''],
+                ['2. Ibu Ina', '', ''],
+                ['', '', ''],
+                ['', '', ''],
+                ['TTD', '', ''],
+                ['', '', ''],
+                ['═══════════════════════════════════════════════════════════════════', '', '']
             ];
 
             const wsStat = XLSX.utils.aoa_to_sheet(statSheetData);
@@ -1888,7 +2003,12 @@
                 { s: { r: 32, c: 0 }, e: { r: 32, c: 2 } },
                 { s: { r: 34, c: 0 }, e: { r: 34, c: 2 } },
                 { s: { r: 40, c: 0 }, e: { r: 40, c: 2 } },
-                { s: { r: 42, c: 0 }, e: { r: 42, c: 2 } }
+                { s: { r: 42, c: 0 }, e: { r: 42, c: 2 } },
+                { s: { r: 52, c: 0 }, e: { r: 52, c: 2 } },
+                { s: { r: 53, c: 0 }, e: { r: 53, c: 2 } },
+                { s: { r: 52, c: 0 }, e: { r: 52, c: 2 } }, // TTD
+                { s: { r: 53, c: 0 }, e: { r: 53, c: 2 } }, // Pak Yanto
+                { s: { r: 54, c: 0 }, e: { r: 54, c: 2 } }, // Ibu Ina
             ];
             wsStat['!sheetProtection'] = { sheet: true };
 
