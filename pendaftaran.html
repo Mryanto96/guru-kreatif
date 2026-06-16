@@ -1945,9 +1945,11 @@
                 ['B. STATUS PENDAFTARAN', '', ''],
                 ['═══════════════════════════════════════════════════════════════════', '', ''],
                 ['', '', ''],
+                ['', '', ''],
                 [`✅ Terverifikasi     : ${verifiedCount} siswa (${((verifiedCount / total) * 100).toFixed(1)}%)`, '', ''],
                 [`⏳ Menunggu Verifikasi : ${pendingCount} siswa (${((pendingCount / total) * 100).toFixed(1)}%)`, '', ''],
                 [`📋 Dalam Review      : ${reviewCount} siswa (${((reviewCount / total) * 100).toFixed(1)}%)`, '', ''],
+                ['', '', ''],
                 ['', '', ''],
                 ['📊 GRAFIK STATUS PENDAFTARAN', '', ''],
                 ['', '', ''],
@@ -1955,18 +1957,20 @@
                 [`🟡 Menunggu Verifikasi : ${yellowBlock.repeat(Math.round(pendingCount / total * maxBarLength))}`, '', ''],
                 [`🟠 Dalam Review      : ${orangeBlock.repeat(Math.round(reviewCount / total * maxBarLength))}`, '', ''],
                 ['', '', ''],
+                ['', '', ''],
                 ['═══════════════════════════════════════════════════════════════════', '', ''],
                 ['C. ASAL SEKOLAH', '', ''],
                 ['═══════════════════════════════════════════════════════════════════', '', ''],
                 ...sekolahData.map(s => [`📚 ${s.nama}`, `${s.jumlah} siswa (${((s.jumlah / total) * 100).toFixed(1)}%)`, '']),
                 ['', '', ''],
+                ['', '', ''],
                 ['═══════════════════════════════════════════════════════════════════', '', ''],
                 ['D. INFORMASI TAMBAHAN', '', ''],
-                ['═══════════════════════════════════════════════════════════════════', '', ''],
                 ['📅 Tanggal Export', tanggalExport, ''],
                 ['⏰ Waktu Export', new Date().toLocaleTimeString('id-ID'), ''],
                 ['📆 Periode', 'Tahun Ajaran 2026/2027', ''],
                 ['👥 Total Data', `${total} Siswa`, ''],
+                ['', '', ''],
                 ['', '', ''],
                 ['═══════════════════════════════════════════════════════════════════', '', ''],
                 ['📌 KETERANGAN WARNA GRAFIK:', '', ''],
@@ -1977,13 +1981,12 @@
                 ['🟠 Oranye = Dalam Review', '', ''],
                 ['', '', ''],
                 ['', '', ''],
-                ['', '', ''],
                 [`Nakai, ${tanggalExport}`, '', ''],
                 ['Panitia PPDB,', '', ''],
                 ['', '', ''],
                 ['', '', ''],
-                ['1. Pak Yanto', '', ''],
-                ['2. Ibu Ina', '', ''],
+                ['1. Aurelius Santotinus Agung, S.Pd', '', ''],
+                ['2. Paulina Bara, S.Pd', '', ''],
                 ['', '', ''],
                 ['', '', ''],
                 ['TTD', '', ''],
@@ -1993,22 +1996,46 @@
 
             const wsStat = XLSX.utils.aoa_to_sheet(statSheetData);
             wsStat['!cols'] = [{ wch: 45 }, { wch: 25 }, { wch: 15 }];
+
+            // HITUNG ULANG INDEX MERGE CELLS
+            // Baris terakhir = statSheetData.length - 1
+            const lastRow = statSheetData.length - 1;
+
+            // Cari posisi footer di data
+            // Footer dimulai dari baris "Nakai, ..."
+            const footerStartIndex = statSheetData.findIndex(row =>
+                row[0] && row[0].includes && row[0].includes('Nakai,')
+            );
+
             wsStat['!merges'] = [
+                // Judul
                 { s: { r: 1, c: 0 }, e: { r: 1, c: 2 } },
                 { s: { r: 2, c: 0 }, e: { r: 2, c: 2 } },
+                // A. RINGKASAN UMUM
                 { s: { r: 7, c: 0 }, e: { r: 7, c: 2 } },
+                // GRAFIK JENIS KELAMIN
                 { s: { r: 11, c: 0 }, e: { r: 11, c: 2 } },
+                // B. STATUS PENDAFTARAN
                 { s: { r: 18, c: 0 }, e: { r: 18, c: 2 } },
-                { s: { r: 20, c: 0 }, e: { r: 20, c: 2 } },
+                // GRAFIK STATUS PENDAFTARAN
+                { s: { r: 26, c: 0 }, e: { r: 26, c: 2 } },
+                // C. ASAL SEKOLAH
                 { s: { r: 32, c: 0 }, e: { r: 32, c: 2 } },
-                { s: { r: 34, c: 0 }, e: { r: 34, c: 2 } },
-                { s: { r: 40, c: 0 }, e: { r: 40, c: 2 } },
-                { s: { r: 42, c: 0 }, e: { r: 42, c: 2 } },
-                { s: { r: 52, c: 0 }, e: { r: 52, c: 2 } },
-                { s: { r: 53, c: 0 }, e: { r: 53, c: 2 } },
-                { s: { r: 52, c: 0 }, e: { r: 52, c: 2 } }, // TTD
-                { s: { r: 53, c: 0 }, e: { r: 53, c: 2 } }, // Pak Yanto
-                { s: { r: 54, c: 0 }, e: { r: 54, c: 2 } }, // Ibu Ina
+                // D. INFORMASI TAMBAHAN
+                { s: { r: 38, c: 0 }, e: { r: 38, c: 2 } },
+                // 📌 KETERANGAN WARNA GRAFIK
+                { s: { r: 46, c: 0 }, e: { r: 46, c: 2 } },
+                // FOOTER - Merge cells untuk bagian bawah
+                // Nakai, ...
+                { s: { r: footerStartIndex, c: 0 }, e: { r: footerStartIndex, c: 2 } },
+                // Panitia PPDB,
+                { s: { r: footerStartIndex + 1, c: 0 }, e: { r: footerStartIndex + 1, c: 2 } },
+                // 1. Pak Yanto
+                { s: { r: footerStartIndex + 5, c: 0 }, e: { r: footerStartIndex + 5, c: 2 } },
+                // 2. Ibu Ina
+                { s: { r: footerStartIndex + 6, c: 0 }, e: { r: footerStartIndex + 6, c: 2 } },
+                // TTD
+                { s: { r: footerStartIndex + 9, c: 0 }, e: { r: footerStartIndex + 9, c: 2 } },
             ];
             wsStat['!sheetProtection'] = { sheet: true };
 
