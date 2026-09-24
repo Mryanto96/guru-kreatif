@@ -23,6 +23,7 @@ const MENU_STRUCTURE = [
   },
   { name: 'Kelulusan', url: 'kelulusan.html' },
   { name: 'PPDB', url: 'pendaftaran.html' },
+  { name: 'Videos', url: 'videos.html' },
   { name: 'About Me', url: 'about.html' },
   { name: 'Contact Me', url: 'contact.html' }
 ];
@@ -78,8 +79,8 @@ function renderNavbar() {
         <a href="index.html" class="logo">
           <div class="logo-icon">SMP</div>
           <div class="logo-text">
-            <span class="logo-title">Persiapan Negeri</span>
-            <span class="logo-sub">Pulau Tiga Nakai 🎓</span>
+            <span class="logo-title">NEGERI PULAU TIGA</span>
+            <span class="logo-sub">ASMAT PAPUA SELATAN</span>
           </div>
         </a>
         <ul class="nav-links">

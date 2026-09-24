@@ -14,459 +14,646 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link rel="stylesheet" href="css/style.css">
 
-<style>
-  /* =============================================
+  <style>
+    /* =============================================
        RESPONSIVE FIXES — about.html
        Mobile-first, overrides for tablet & desktop
     ============================================= */
 
-  /* --- HERO SECTION --- */
-  .about-hero {
-    padding: 70px 0 60px;
-    background: var(--bg2, #f8f9fc);
-    border-bottom: 1px solid var(--border, #e5e7eb);
-    position: relative;
-    overflow: hidden;
-  }
+    /* --- HERO SECTION --- */
+    .about-hero {
+      padding: 70px 0 60px;
+      background: var(--bg2, #f8f9fc);
+      border-bottom: 1px solid var(--border, #e5e7eb);
+      position: relative;
+      overflow: hidden;
+    }
 
-  .about-hero-inner {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 28px;
-    text-align: center;
-  }
-
-  @media (min-width: 720px) {
     .about-hero-inner {
-      display: grid;
-      grid-template-columns: auto 1fr;
-      gap: 48px;
-      align-items: center;
-      text-align: left;
-    }
-  }
-
-  /* --- PROFILE FRAME --- */
-  .profile-wrapper {
-    display: flex;
-    justify-content: center;
-    flex-shrink: 0;
-  }
-
-  .profile-frame {
-    width: 140px !important;
-    height: 140px !important;
-  }
-
-  @media (min-width: 480px) {
-    .profile-frame {
-      width: 170px !important;
-      height: 170px !important;
-    }
-  }
-
-  @media (min-width: 720px) {
-    .profile-frame {
-      width: 200px !important;
-      height: 200px !important;
-    }
-  }
-
-  /* --- HERO TEXT --- */
-  .about-hero-text h1 {
-    font-size: clamp(1.35rem, 5vw, 2.4rem);
-    font-weight: 800;
-    letter-spacing: -1px;
-    margin-bottom: 8px;
-  }
-
-  .about-hero-text p {
-    color: var(--text2, #6b7280);
-    font-size: clamp(0.85rem, 3vw, 0.95rem);
-    line-height: 1.7;
-    margin-bottom: 20px;
-    max-width: 580px;
-  }
-
-  /* --- TAGS --- */
-  .hero-tags {
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  @media (min-width: 720px) {
-    .hero-tags {
-      justify-content: flex-start;
-    }
-  }
-
-  .hero-tags .tag {
-    font-size: clamp(0.72rem, 2.5vw, 0.82rem);
-    padding: 4px 10px;
-    white-space: nowrap;
-  }
-
-  /* --- BADGE --- */
-  .about-badge {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 12px;
-  }
-
-  @media (min-width: 720px) {
-    .about-badge {
-      justify-content: flex-start;
-    }
-  }
-
-  /* --- QUOTE BOX --- */
-  .about-quote {
-    max-width: 720px;
-    margin: 0 auto 60px;
-    padding: 0 16px;
-  }
-
-  .quote-box {
-    padding: clamp(20px, 4vw, 32px) clamp(20px, 5vw, 40px) !important;
-    font-size: clamp(0.9rem, 3vw, 1.05rem);
-    line-height: 1.7;
-  }
-
-  /* --- FEATURE GRID --- */
-  .about-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 16px;
-    margin-bottom: 60px;
-  }
-
-  @media (min-width: 500px) {
-    .about-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-
-  @media (min-width: 900px) {
-    .about-grid {
-      grid-template-columns: repeat(4, 1fr);
-    }
-  }
-
-  .feature-card {
-    padding: clamp(18px, 3vw, 24px);
-  }
-
-  .feature-card h3 {
-    font-size: clamp(0.92rem, 2.5vw, 1rem);
-  }
-
-  .feature-card p {
-    font-size: clamp(0.82rem, 2.2vw, 0.88rem);
-    line-height: 1.65;
-  }
-
-  /* --- TIMELINE ZIG-ZAG (DESKTOP) & LURUS (MOBILE) --- */
-  .timeline-wrapper {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 0 4px;
-  }
-
-  .timeline-inner {
-    position: relative;
-    padding-left: 28px;
-  }
-
-  /* Garis vertikal untuk mobile */
-  .timeline-line {
-    position: absolute;
-    left: 12px;
-    top: 0;
-    bottom: 0;
-    width: 2px;
-    background: linear-gradient(to bottom, var(--c1, #ff6b6b), var(--c2, #4ecdc4), var(--c3, #45b7d1));
-    border-radius: 99px;
-  }
-
-  .timeline-item {
-    position: relative;
-    margin-bottom: 28px;
-  }
-
-  .timeline-dot {
-    position: absolute;
-    left: -22px;
-    top: 6px;
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    border: 2px solid var(--bg, #fff);
-  }
-
-  .timeline-card {
-    background: var(--card-bg, #fff);
-    border: 1px solid var(--border, #e5e7eb);
-    border-radius: var(--radius-sm, 12px);
-    padding: clamp(14px, 3vw, 20px) clamp(14px, 3vw, 22px);
-    transition: all 0.2s ease;
-  }
-
-  .timeline-card h4 {
-    font-weight: 700;
-    font-size: clamp(0.88rem, 2.5vw, 0.95rem);
-    margin-bottom: 6px;
-  }
-
-  .timeline-card p {
-    font-size: clamp(0.8rem, 2.2vw, 0.84rem);
-    color: var(--text2, #6b7280);
-    line-height: 1.6;
-  }
-
-  .timeline-label {
-    font-size: 0.72rem;
-    font-weight: 700;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    margin-bottom: 6px;
-  }
-
-  /* ---- DESKTOP ZIG-ZAG (min-width: 768px) ---- */
-  @media (min-width: 768px) {
-    .timeline-wrapper {
-      max-width: 1000px;
-    }
-
-    .timeline-inner {
-      padding-left: 0;
       display: flex;
       flex-direction: column;
-      gap: 32px;
+      align-items: center;
+      gap: 28px;
+      text-align: center;
+    }
+
+    @media (min-width: 720px) {
+      .about-hero-inner {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 60px;
+        /* gap lebih besar agar text tidak mepet foto */
+        align-items: center;
+        text-align: left;
+      }
+    }
+
+    /* --- PROFILE WRAPPER (FOTO KIRI) --- */
+    /* Efek sama seperti index.html: rounded rectangle + border loading + glow + naik */
+    .about-hero .profile-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 30px 10px;
       position: relative;
+      flex-shrink: 0;
+      transform: translateY(-20px);
     }
 
-    /* GARIS VERTIKAL TENGAH untuk desktop */
-    .timeline-inner::before {
-      content: '';
-      position: absolute;
-      left: 50%;
-      top: 20px;
-      bottom: 20px;
-      width: 2px;
-      background: linear-gradient(to bottom, var(--c1, #ff6b6b), var(--c2, #4ecdc4), var(--c3, #45b7d1), var(--c4, #f59e0b));
-      transform: translateX(-50%);
-      border-radius: 99px;
-      opacity: 0.4;
-      z-index: 0;
-    }
-
-    /* Sembunyikan garis vertikal bawaan (yang untuk mobile) */
-    .timeline-line {
-      display: none;
-    }
-
-    .timeline-item {
-      margin-bottom: 0;
+    /* Frame foto: rounded rectangle + animasi mengambang */
+    .about-hero .profile-frame {
+      position: relative;
       width: 100%;
-      position: relative;
+      max-width: 320px;
+      aspect-ratio: 16 / 10;
+      border-radius: 24px;
+      overflow: hidden;
+      background: var(--card-bg, #fff);
       z-index: 1;
+      flex-shrink: 0;
+      animation: profileFloat 5s ease-in-out infinite;
+      box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.15),
+        0 8px 20px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
-    /* Gaya untuk setiap item: bergantian posisi */
-    .timeline-item:nth-child(odd) .timeline-card {
-      margin-left: 0;
-      margin-right: auto;
-      max-width: 45%;
-      position: relative;
+    .about-hero .profile-frame:hover {
+      transform: translateY(-6px);
+      box-shadow:
+        0 28px 60px rgba(0, 0, 0, 0.18),
+        0 12px 28px rgba(0, 0, 0, 0.1);
     }
 
-    .timeline-item:nth-child(even) .timeline-card {
-      margin-left: auto;
-      margin-right: 0;
-      max-width: 45%;
-      position: relative;
-    }
-
-    /* Dot dan garis penghubung zig-zag */
-    .timeline-dot {
-      width: 18px;
-      height: 18px;
-      top: 50%;
-      transform: translateY(-50%);
-      z-index: 3;
-    }
-
-    /* Dot untuk item ganjil (kiri) - berada di sebelah kanan card */
-    .timeline-item:nth-child(odd) .timeline-dot {
-      left: auto;
-      right: -9px;
-    }
-
-    /* Dot untuk item genap (kanan) - berada di sebelah kiri card */
-    .timeline-item:nth-child(even) .timeline-dot {
-      left: -9px;
-      right: auto;
-    }
-
-    /* Garis penghubung horizontal (dari card ke garis tengah) */
-    .timeline-item:nth-child(odd) .timeline-card::before {
+    /* Cincin gradient berputar (loading keliling foto) */
+    .about-hero .profile-frame::before {
       content: '';
       position: absolute;
-      right: -32px;
-      top: 50%;
-      width: 32px;
-      height: 2px;
-      background: linear-gradient(90deg, var(--c2, #4ecdc4), var(--c3, #45b7d1));
-      transform: translateY(-50%);
-      z-index: 2;
-      border-radius: 2px;
+      inset: -6px;
+      border-radius: 30px;
+      background: conic-gradient(from 0deg,
+          var(--c1),
+          var(--c2),
+          var(--c3),
+          var(--c4),
+          var(--c5),
+          var(--c1));
+      z-index: -1;
+      animation: borderSpin 4s linear infinite;
+      filter: blur(6px);
+      opacity: 0.9;
     }
 
-    .timeline-item:nth-child(even) .timeline-card::before {
+    /* Cincin kedua: gradient lebih tipis berputar berlawanan arah */
+    .about-hero .profile-frame::after {
       content: '';
       position: absolute;
-      left: -32px;
+      inset: -3px;
+      border-radius: 28px;
+      background: conic-gradient(from 180deg,
+          var(--c3),
+          var(--c2),
+          var(--c1),
+          var(--c5),
+          var(--c4),
+          var(--c3));
+      z-index: -1;
+      animation: borderSpinReverse 6s linear infinite;
+      opacity: 0.7;
+    }
+
+    /* Glow di belakang foto */
+    .about-hero .profile-wrapper::before {
+      content: '';
+      position: absolute;
       top: 50%;
-      width: 32px;
-      height: 2px;
-      background: linear-gradient(90deg, var(--c3, #45b7d1), var(--c2, #4ecdc4));
-      transform: translateY(-50%);
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 85%;
+      height: 85%;
+      background: radial-gradient(ellipse at center,
+          rgba(78, 205, 196, 0.35) 0%,
+          rgba(255, 107, 107, 0.25) 40%,
+          rgba(255, 230, 109, 0.15) 70%,
+          transparent 100%);
+      border-radius: 50%;
+      filter: blur(50px);
+      z-index: 0;
+      animation: glowPulse 4s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    /* Gambar di dalam frame */
+    .about-hero .profile-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      border-radius: 20px;
+      position: relative;
       z-index: 2;
-      border-radius: 2px;
+      animation: none;
     }
 
-    /* Card hover effect */
-    .timeline-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 24px -12px rgba(0, 0, 0, 0.15);
-      border-color: rgba(78, 205, 196, 0.3);
-    }
-  }
-
-  /* --- Penyesuaian untuk tablet kecil (768px - 1024px) --- */
-  @media (min-width: 768px) and (max-width: 1024px) {
-
-    .timeline-item:nth-child(odd) .timeline-card,
-    .timeline-item:nth-child(even) .timeline-card {
-      max-width: 55%;
+    /* Placeholder fallback */
+    .about-hero .profile-placeholder {
+      display: none;
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, var(--c1), var(--c2), var(--c3));
+      align-items: center;
+      justify-content: center;
+      font-size: 5rem;
+      color: white;
+      border-radius: 20px;
+      z-index: 2;
     }
 
-    .timeline-item:nth-child(odd) .timeline-card::before,
-    .timeline-item:nth-child(even) .timeline-card::before {
-      width: 24px;
+    /* Keyframes khusus about page */
+    @keyframes profileFloat {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-12px);
+      }
     }
 
-    .timeline-item:nth-child(odd) .timeline-card::before {
-      right: -24px;
+    @keyframes borderSpin {
+      from {
+        transform: rotate(0deg);
+      }
+
+      to {
+        transform: rotate(360deg);
+      }
     }
 
-    .timeline-item:nth-child(even) .timeline-card::before {
-      left: -24px;
+    @keyframes borderSpinReverse {
+      from {
+        transform: rotate(360deg);
+      }
+
+      to {
+        transform: rotate(0deg);
+      }
     }
 
-    .timeline-item:nth-child(odd) .timeline-dot {
-      right: -7px;
+    @keyframes glowPulse {
+
+      0%,
+      100% {
+        opacity: 0.6;
+        transform: translate(-50%, -50%) scale(1);
+      }
+
+      50% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1.15);
+      }
     }
 
-    .timeline-item:nth-child(even) .timeline-dot {
-      left: -7px;
+    /* Ukuran foto di berbagai breakpoint */
+    @media (min-width: 480px) {
+      .about-hero .profile-frame {
+        max-width: 360px;
+      }
     }
-  }
 
-  /* Mobile: tetap tampil lurus dengan garis vertikal */
-  @media (max-width: 767px) {
+    @media (min-width: 720px) {
+      .about-hero .profile-frame {
+        max-width: 380px;
+      }
+    }
+
+    /* --- TEXT KANAN (DIGESER SEDIKIT KE KANAN) --- */
+    .about-hero-text {
+      padding-left: 0;
+    }
+
+    @media (min-width: 720px) {
+      .about-hero-text {
+        padding-left: 20px;
+        /* geser text ke kanan dikit */
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .about-hero-text {
+        padding-left: 40px;
+        /* lebih lega di desktop */
+      }
+    }
+
+    .about-hero-text h1 {
+      font-size: clamp(1.35rem, 5vw, 2.4rem);
+      font-weight: 800;
+      letter-spacing: -1px;
+      margin-bottom: 8px;
+    }
+
+    .about-hero-text p {
+      color: var(--text2, #6b7280);
+      font-size: clamp(0.85rem, 3vw, 0.95rem);
+      line-height: 1.7;
+      margin-bottom: 20px;
+      max-width: 580px;
+    }
+
+    /* --- TAGS --- */
+    .hero-tags {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    @media (min-width: 720px) {
+      .hero-tags {
+        justify-content: flex-start;
+      }
+    }
+
+    .hero-tags .tag {
+      font-size: clamp(0.72rem, 2.5vw, 0.82rem);
+      padding: 4px 10px;
+      white-space: nowrap;
+    }
+
+    /* --- BADGE --- */
+    .about-badge {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 12px;
+    }
+
+    @media (min-width: 720px) {
+      .about-badge {
+        justify-content: flex-start;
+      }
+    }
+
+    /* --- QUOTE BOX --- */
+    .about-quote {
+      max-width: 720px;
+      margin: 0 auto 60px;
+      padding: 0 16px;
+    }
+
+    .quote-box {
+      padding: clamp(20px, 4vw, 32px) clamp(20px, 5vw, 40px) !important;
+      font-size: clamp(0.9rem, 3vw, 1.05rem);
+      line-height: 1.7;
+    }
+
+    /* --- FEATURE GRID --- */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+      margin-bottom: 60px;
+    }
+
+    @media (min-width: 500px) {
+      .about-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 900px) {
+      .about-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    .feature-card {
+      padding: clamp(18px, 3vw, 24px);
+    }
+
+    .feature-card h3 {
+      font-size: clamp(0.92rem, 2.5vw, 1rem);
+    }
+
+    .feature-card p {
+      font-size: clamp(0.82rem, 2.2vw, 0.88rem);
+      line-height: 1.65;
+    }
+
+    /* --- TIMELINE ZIG-ZAG (DESKTOP) & LURUS (MOBILE) --- */
+    .timeline-wrapper {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 4px;
+    }
+
     .timeline-inner {
+      position: relative;
       padding-left: 28px;
     }
 
-    /* Sembunyikan garis vertikal tengah desktop di mobile */
-    .timeline-inner::before {
-      display: none;
-    }
-
     .timeline-line {
-      display: block;
-    }
-
-    .timeline-dot {
-      left: -22px;
-      top: 6px;
-    }
-
-    .timeline-card::before {
-      display: none;
+      position: absolute;
+      left: 12px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--c1, #ff6b6b), var(--c2, #4ecdc4), var(--c3, #45b7d1));
+      border-radius: 99px;
     }
 
     .timeline-item {
+      position: relative;
       margin-bottom: 28px;
     }
 
-    .timeline-card {
-      margin: 0;
-      max-width: 100%;
+    .timeline-dot {
+      position: absolute;
+      left: -22px;
+      top: 6px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      border: 2px solid var(--bg, #fff);
     }
-  }
 
-  /* --- CTA SECTION --- */
-  .about-cta {
-    text-align: center;
-    max-width: 520px;
-    margin: 0 auto;
-    padding: 0 16px;
-  }
+    .timeline-card {
+      background: var(--card-bg, #fff);
+      border: 1px solid var(--border, #e5e7eb);
+      border-radius: var(--radius-sm, 12px);
+      padding: clamp(14px, 3vw, 20px) clamp(14px, 3vw, 22px);
+      transition: all 0.2s ease;
+    }
 
-  .about-cta h2 {
-    font-size: clamp(1.3rem, 4.5vw, 1.8rem);
-    font-weight: 800;
-    letter-spacing: -0.8px;
-    margin-bottom: 12px;
-  }
+    .timeline-card h4 {
+      font-weight: 700;
+      font-size: clamp(0.88rem, 2.5vw, 0.95rem);
+      margin-bottom: 6px;
+    }
 
-  .about-cta p {
-    color: var(--text2, #6b7280);
-    margin-bottom: 28px;
-    font-size: clamp(0.85rem, 2.5vw, 0.95rem);
-    line-height: 1.7;
-  }
+    .timeline-card p {
+      font-size: clamp(0.8rem, 2.2vw, 0.84rem);
+      color: var(--text2, #6b7280);
+      line-height: 1.6;
+    }
 
-  .cta-buttons {
-    display: flex;
-    gap: 10px;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
+    .timeline-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
 
-  .cta-buttons .btn {
-    font-size: clamp(0.82rem, 2.5vw, 0.9rem);
-    padding: 10px 18px;
-    white-space: nowrap;
-  }
+    @media (min-width: 768px) {
+      .timeline-wrapper {
+        max-width: 1000px;
+      }
 
-  /* --- SECTION TITLE RESPONSIVE --- */
-  .section-title {
-    font-size: clamp(1.4rem, 4vw, 2rem) !important;
-  }
+      .timeline-inner {
+        padding-left: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+        position: relative;
+      }
 
-  /* --- CONTAINER PADDING ON MOBILE --- */
-  .container {
-    padding-left: max(16px, env(safe-area-inset-left));
-    padding-right: max(16px, env(safe-area-inset-right));
-  }
+      .timeline-inner::before {
+        content: '';
+        position: absolute;
+        left: 50%;
+        top: 20px;
+        bottom: 20px;
+        width: 2px;
+        background: linear-gradient(to bottom, var(--c1, #ff6b6b), var(--c2, #4ecdc4), var(--c3, #45b7d1), var(--c4, #f59e0b));
+        transform: translateX(-50%);
+        border-radius: 99px;
+        opacity: 0.4;
+        z-index: 0;
+      }
 
-  /* --- SECTION PADDING --- */
-  .section {
-    padding-top: clamp(40px, 6vw, 80px) !important;
-    padding-bottom: clamp(40px, 6vw, 80px) !important;
-  }
+      .timeline-line {
+        display: none;
+      }
 
-  /* Divider margin */
-  .divider {
-    margin: clamp(32px, 5vw, 60px) 0 !important;
-  }
-</style>
+      .timeline-item {
+        margin-bottom: 0;
+        width: 100%;
+        position: relative;
+        z-index: 1;
+      }
+
+      .timeline-item:nth-child(odd) .timeline-card {
+        margin-left: 0;
+        margin-right: auto;
+        max-width: 45%;
+        position: relative;
+      }
+
+      .timeline-item:nth-child(even) .timeline-card {
+        margin-left: auto;
+        margin-right: 0;
+        max-width: 45%;
+        position: relative;
+      }
+
+      .timeline-dot {
+        width: 18px;
+        height: 18px;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 3;
+      }
+
+      .timeline-item:nth-child(odd) .timeline-dot {
+        left: auto;
+        right: -9px;
+      }
+
+      .timeline-item:nth-child(even) .timeline-dot {
+        left: -9px;
+        right: auto;
+      }
+
+      .timeline-item:nth-child(odd) .timeline-card::before {
+        content: '';
+        position: absolute;
+        right: -32px;
+        top: 50%;
+        width: 32px;
+        height: 2px;
+        background: linear-gradient(90deg, var(--c2, #4ecdc4), var(--c3, #45b7d1));
+        transform: translateY(-50%);
+        z-index: 2;
+        border-radius: 2px;
+      }
+
+      .timeline-item:nth-child(even) .timeline-card::before {
+        content: '';
+        position: absolute;
+        left: -32px;
+        top: 50%;
+        width: 32px;
+        height: 2px;
+        background: linear-gradient(90deg, var(--c3, #45b7d1), var(--c2, #4ecdc4));
+        transform: translateY(-50%);
+        z-index: 2;
+        border-radius: 2px;
+      }
+
+      .timeline-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 24px -12px rgba(0, 0, 0, 0.15);
+        border-color: rgba(78, 205, 196, 0.3);
+      }
+    }
+
+    @media (min-width: 768px) and (max-width: 1024px) {
+
+      .timeline-item:nth-child(odd) .timeline-card,
+      .timeline-item:nth-child(even) .timeline-card {
+        max-width: 55%;
+      }
+
+      .timeline-item:nth-child(odd) .timeline-card::before,
+      .timeline-item:nth-child(even) .timeline-card::before {
+        width: 24px;
+      }
+
+      .timeline-item:nth-child(odd) .timeline-card::before {
+        right: -24px;
+      }
+
+      .timeline-item:nth-child(even) .timeline-card::before {
+        left: -24px;
+      }
+
+      .timeline-item:nth-child(odd) .timeline-dot {
+        right: -7px;
+      }
+
+      .timeline-item:nth-child(even) .timeline-dot {
+        left: -7px;
+      }
+    }
+
+    @media (max-width: 767px) {
+      .timeline-inner {
+        padding-left: 28px;
+      }
+
+      .timeline-inner::before {
+        display: none;
+      }
+
+      .timeline-line {
+        display: block;
+      }
+
+      .timeline-dot {
+        left: -22px;
+        top: 6px;
+      }
+
+      .timeline-card::before {
+        display: none;
+      }
+
+      .timeline-item {
+        margin-bottom: 28px;
+      }
+
+      .timeline-card {
+        margin: 0;
+        max-width: 100%;
+      }
+    }
+
+    /* --- CTA SECTION --- */
+    .about-cta {
+      text-align: center;
+      max-width: 520px;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+
+    .about-cta h2 {
+      font-size: clamp(1.3rem, 4.5vw, 1.8rem);
+      font-weight: 800;
+      letter-spacing: -0.8px;
+      margin-bottom: 12px;
+    }
+
+    .about-cta p {
+      color: var(--text2, #6b7280);
+      margin-bottom: 28px;
+      font-size: clamp(0.85rem, 2.5vw, 0.95rem);
+      line-height: 1.7;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .cta-buttons .btn {
+      font-size: clamp(0.82rem, 2.5vw, 0.9rem);
+      padding: 10px 18px;
+      white-space: nowrap;
+    }
+
+    /* --- SECTION TITLE RESPONSIVE --- */
+    .section-title {
+      font-size: clamp(1.4rem, 4vw, 2rem) !important;
+    }
+
+    .container {
+      padding-left: max(16px, env(safe-area-inset-left));
+      padding-right: max(16px, env(safe-area-inset-right));
+    }
+
+    .section {
+      padding-top: clamp(40px, 6vw, 80px) !important;
+      padding-bottom: clamp(40px, 6vw, 80px) !important;
+    }
+
+    .divider {
+      margin: clamp(32px, 5vw, 60px) 0 !important;
+    }
+
+    /* --- RESPONSIVE MOBILE (FOTO TETAP EFEK) --- */
+    @media (max-width: 719px) {
+      .about-hero .profile-wrapper {
+        transform: translateY(-10px);
+        padding: 24px 8px;
+      }
+
+      .about-hero .profile-frame {
+        max-width: 300px;
+        border-radius: 20px;
+      }
+
+      .about-hero .profile-frame::before {
+        inset: -5px;
+        border-radius: 26px;
+      }
+
+      .about-hero .profile-frame::after {
+        inset: -2px;
+        border-radius: 22px;
+      }
+
+      .about-hero .profile-img,
+      .about-hero .profile-placeholder {
+        border-radius: 16px;
+      }
+    }
+  </style>
 </head>
 
 <body>
@@ -482,41 +669,41 @@
             <span class="logo-sub">Pulau Tiga • Nakai</span>
           </div>
         </a>
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="documents.html">Documents</a></li>
-        <li><a href="gallery.html">Gallery</a></li>
-        <li><a href="grades.html">Students Grades</a></li>
-        <li><a href="exam.html">Ujian</a></li>
-        <li><a href="rapor.html">Rapor</a></li>
-        <li><a href="blog.html">Blog</a></li>
-        <li><a href="about.html">About Me</a></li>
-        <li><a href="https://mryanto96.github.io/ATTENDANCE-SYSTEM/" target="_blank">Absensi</a></li>
-        <li><a href="contact.html">Contact Me</a></li>
-      </ul>
-      <div class="nav-right">
-        <button class="dark-toggle" aria-label="Toggle dark mode" id="darkToggleBtn">
-          <div class="dark-toggle-ball">☀️</div>
-        </button>
-        <button class="hamburger" aria-label="Menu">
-          <span></span><span></span><span></span>
-        </button>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="documents.html">Documents</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="grades.html">Students Grades</a></li>
+          <li><a href="exam.html">Ujian</a></li>
+          <li><a href="rapor.html">Rapor</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="about.html">About Me</a></li>
+          <li><a href="https://mryanto96.github.io/ATTENDANCE-SYSTEM/" target="_blank">Absensi</a></li>
+          <li><a href="contact.html">Contact Me</a></li>
+        </ul>
+        <div class="nav-right">
+          <button class="dark-toggle" aria-label="Toggle dark mode" id="darkToggleBtn">
+            <div class="dark-toggle-ball">☀️</div>
+          </button>
+          <button class="hamburger" aria-label="Menu">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
       </div>
-      </div>
-      </div>
-      </nav>
-      <div class="mobile-menu" id="mobileMenu">
-        <a href="index.html">Home</a>
-        <a href="documents.html">Documents</a>
-        <a href="gallery.html">Gallery</a>
-        <a href="grades.html">Students Grades</a>
-        <a href="exam.html">Ujian</a>
-        <a href="rapor.html">Rapor</a>
-        <a href="blog.html">Blog</a>
-        <a href="about.html">About Me</a>
-        <a href="https://mryanto96.github.io/ATTENDANCE-SYSTEM/" target="_blank">Absensi</a>
-        <a href="contact.html">Contact Me</a>
-      </div>
+    </div>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Home</a>
+    <a href="documents.html">Documents</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="grades.html">Students Grades</a>
+    <a href="exam.html">Ujian</a>
+    <a href="rapor.html">Rapor</a>
+    <a href="blog.html">Blog</a>
+    <a href="about.html">About Me</a>
+    <a href="https://mryanto96.github.io/ATTENDANCE-SYSTEM/" target="_blank">Absensi</a>
+    <a href="contact.html">Contact Me</a>
+  </div>
 
 
   <div class="page-content">
@@ -528,18 +715,18 @@
       <div class="container">
         <div class="about-hero-inner fade-up">
 
-          <!-- Profile Image -->
+          <!-- Profile Image (efek sama seperti index.html) -->
           <div class="profile-wrapper">
             <div class="profile-frame">
               <img src="images/Kami.jpeg" alt="Aurelius Santotinus Agung, S.Pd." class="profile-img"
                 onerror="this.style.display='none';this.parentNode.querySelector('.profile-placeholder').style.display='flex'">
-              <div class="profile-placeholder"
-                style="display:none;position:absolute;inset:6px;border-radius:40% 60% 40% 60% / 50% 40% 60% 50%;background:linear-gradient(135deg,var(--c1),var(--c2),var(--c3));align-items:center;justify-content:center;font-size:4rem;color:white;animation:blobPulse 8s ease infinite,float 6s ease-in-out infinite;z-index:1;">
-                👨‍🏫</div>
+              <div class="profile-placeholder">
+                👨‍🏫
+              </div>
             </div>
           </div>
 
-          <!-- Text Content -->
+          <!-- Text Content (digeser ke kanan) -->
           <div class="about-hero-text">
             <div class="about-badge">
               <div class="badge">
@@ -651,7 +838,7 @@
               </div>
             </div>
 
-            <!-- Item 4: Saat Ini (dengan animasi pulse) -->
+            <!-- Item 4: Saat Ini -->
             <div class="timeline-item" style="margin-bottom:0;">
               <div class="timeline-dot"
                 style="background:linear-gradient(135deg,var(--c4),var(--c5));animation:pulse 2s ease infinite;"></div>

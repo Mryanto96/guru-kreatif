@@ -367,7 +367,7 @@
             font-size: 1.2rem;
         }
 
-        /* ===== SERTIFIKAT - TANPA OVERLAY ===== */
+        /* ===== SERTIFIKAT ===== */
         .sertifikat-container {
             width: 100%;
             max-width: 750px;
@@ -431,11 +431,47 @@
             animation: fadeSlide 0.4s ease forwards;
         }
 
+        /* ===== JUDUL TABEL & GRAFIK ===== */
+        .table-section-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: clamp(1rem, 2.5vw, 1.15rem);
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 16px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--border);
+        }
+
+        .table-section-title i {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, var(--c1), var(--c2));
+            color: #fff;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.95rem;
+            flex-shrink: 0;
+        }
+
+        .table-section-title .subtitle {
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: var(--text3);
+            margin-left: auto;
+            text-transform: none;
+            letter-spacing: 0;
+        }
+
         /* ===== CHART CARDS ===== */
         .chart-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 30px;
+            margin-top: 30px;
             margin-bottom: 40px;
         }
 
@@ -486,7 +522,6 @@
             margin-top: 12px;
         }
 
-        /* ===== RESPONSIVE CHART GRID ===== */
         @media (max-width: 992px) {
             .chart-grid {
                 grid-template-columns: 1fr 1fr;
@@ -499,7 +534,7 @@
                 grid-template-columns: 1fr;
                 gap: 20px;
             }
-            
+
             .chart-container {
                 height: 220px;
             }
@@ -509,11 +544,11 @@
             .chart-container {
                 height: 180px;
             }
-            
+
             .chart-card {
                 padding: 16px;
             }
-            
+
             .chart-card .chart-title h3 {
                 font-size: 0.8rem;
             }
@@ -649,13 +684,12 @@
             .ttd-wrapper {
                 justify-content: center;
             }
-            
-            /* Rekap nilai section padding */
+
             section[style*="margin-top: 60px;"] {
                 padding: 30px 0 !important;
             }
-            
-            section[style*="margin-top: 60px;"] > div {
+
+            section[style*="margin-top: 60px;"]>div {
                 padding: 0 16px !important;
             }
         }
@@ -696,7 +730,7 @@
                 padding-right: 0;
                 text-align: center;
             }
-            
+
             .ttd-wrapper {
                 flex-direction: column;
                 align-items: center;
@@ -709,7 +743,7 @@
                 gap: 6px;
                 flex-direction: column;
             }
-            
+
             .student-item .badge-lulus {
                 font-size: 0.5rem;
                 padding: 2px 8px;
@@ -858,7 +892,7 @@
                     </h1>
                     <p style="color:var(--text2);font-size:0.95rem;max-width:600px;line-height:1.7;">
                         Berikut adalah data siswa kelas 9A yang telah dinyatakan <strong>LULUS</strong> dari SMP
-                        Persiapan Negeri Pulau Tiga.
+                        Negeri Pulau Tiga.
                         Pilih nama siswa di sebelah kiri untuk melihat sertifikat kelulusan.
                     </p>
                 </div>
@@ -866,48 +900,30 @@
         </div>
 
         <!-- ===== REKAPITULASI NILAI AKHIR SISWA ===== -->
-        <section style="margin-top: 60px; padding: 50px 0; background: var(--bg2); border-radius: 24px; border: 1px solid var(--border);">
+        <section
+            style="margin-top: 60px; padding: 50px 0; background: var(--bg2); border-radius: 24px; border: 1px solid var(--border);">
             <div style="padding: 0 30px;">
                 <div class="fade-up" style="text-align: center; margin-bottom: 40px;">
-                    <p class="section-label" style="display: inline-flex;"><i class="fas fa-chart-bar"></i> Rekap Nilai</p>
-                    <h4 style="font-size: clamp(0.5rem, 2vw, 1.5rem); font-weight: 800; letter-spacing: -0.5px; color: var(--text); margin-bottom: 2px;">
+                    <p class="section-label" style="display: inline-flex;"><i class="fas fa-chart-bar"></i> Rekap Nilai
+                    </p>
+                    <h4
+                        style="font-size: clamp(0.9rem, 2.5vw, 1.5rem); font-weight: 800; letter-spacing: -0.5px; color: var(--text); margin-bottom: 2px;">
                         Rekapitulasi Nilai Akhir Siswa
                     </h4>
                     <p style="color: var(--text2); font-size: 0.8rem; font-weight: 500;">
-                        SMP Persiapan Negeri Pulau Tiga • Tahun Ajaran 2025/2026
+                        SMP Negeri Pulau Tiga • Tahun Ajaran 2025/2026
                     </p>
                 </div>
 
-                <!-- ===== GRAFIK ===== -->
-                <div class="chart-grid">
-                    <div class="chart-card fade-up">
-                        <div class="chart-title">
-                            <i class="fas fa-chart-line"></i>
-                            <h3>Perbandingan Nilai Akhir Siswa</h3>
-                        </div>
-                        <div class="chart-container">
-                            <canvas id="nilaiChart"></canvas>
-                        </div>
-                        <p class="chart-note">
-                            <i class="fas fa-chart-simple"></i> Grafik nilai akhir ijazah siswa kelas 9A
-                        </p>
-                    </div>
-
-                    <div class="chart-card fade-up">
-                        <div class="chart-title">
-                            <i class="fas fa-chart-pie"></i>
-                            <h3>Distribusi Rentang Nilai</h3>
-                        </div>
-                        <div class="chart-container">
-                            <canvas id="distribusiChart"></canvas>
-                        </div>
-                        <p class="chart-note">
-                            <i class="fas fa-chart-pie"></i> Sebaran nilai akhir siswa
-                        </p>
+                <!-- ===== TABEL NILAI (DIBERI NAMA) ===== -->
+                <div class="fade-up" style="margin-bottom: 12px;">
+                    <div class="table-section-title">
+                        <i class="fas fa-table"></i>
+                        <span>Tabel Nilai Akhir Ijazah Siswa Kelas 9A</span>
+                        <span class="subtitle"><i class="fas fa-info-circle"></i> 10 Mata Pelajaran</span>
                     </div>
                 </div>
 
-                <!-- ===== TABEL NILAI ===== -->
                 <div class="table-nilai-wrapper fade-up">
                     <table>
                         <thead>
@@ -954,16 +970,57 @@
                     </table>
                 </div>
 
+                <!-- ===== GRAFIK (SETELAH TABEL) ===== -->
+                <div class="fade-up" style="margin-top: 50px;">
+                    <div class="table-section-title" style="margin-bottom: 20px;">
+                        <i class="fas fa-chart-line"></i>
+                        <span>Visualisasi Data Nilai Akhir</span>
+                        <span class="subtitle"><i class="fas fa-chart-simple"></i> Grafik & Distribusi</span>
+                    </div>
+                </div>
+
+                <div class="chart-grid">
+                    <div class="chart-card fade-up">
+                        <div class="chart-title">
+                            <i class="fas fa-chart-line"></i>
+                            <h3>Perbandingan Nilai Akhir Siswa</h3>
+                        </div>
+                        <div class="chart-container">
+                            <canvas id="nilaiChart"></canvas>
+                        </div>
+                        <p class="chart-note">
+                            <i class="fas fa-chart-simple"></i> Grafik nilai akhir ijazah siswa kelas 9A
+                        </p>
+                    </div>
+
+                    <div class="chart-card fade-up">
+                        <div class="chart-title">
+                            <i class="fas fa-chart-pie"></i>
+                            <h3>Distribusi Rentang Nilai</h3>
+                        </div>
+                        <div class="chart-container">
+                            <canvas id="distribusiChart"></canvas>
+                        </div>
+                        <p class="chart-note">
+                            <i class="fas fa-chart-pie"></i> Sebaran nilai akhir siswa
+                        </p>
+                    </div>
+                </div>
+
                 <!-- ===== TANDA TANGAN ===== -->
                 <div class="ttd-wrapper fade-up">
                     <div class="ttd-box">
-                        <p style="font-size: 0.85rem; color: var(--text2); margin-bottom: 2px; line-height: 1.4;">Nakai, 20 Mei 2026</p>
-                        <p style="font-size: 0.85rem; color: var(--text2); font-weight: 600; margin-bottom: 25px; line-height: 1.4;">
+                        <p style="font-size: 0.85rem; color: var(--text2); margin-bottom: 2px; line-height: 1.4;">Nakai,
+                            20 Mei 2026</p>
+                        <p
+                            style="font-size: 0.85rem; color: var(--text2); font-weight: 600; margin-bottom: 25px; line-height: 1.4;">
                             Kepala Sekolah,</p><br>
-                        <p style="font-size: 0.95rem; color: var(--text); font-weight: 700; margin-bottom: 2px; line-height: 1.4;">
+                        <p
+                            style="font-size: 0.95rem; color: var(--text); font-weight: 700; margin-bottom: 2px; line-height: 1.4;">
                             Juni Nainggolan, S.Pd,. Gr</p>
                         <hr>
-                        <p style="font-size: 0.95rem; color: var(--text3); line-height: 1.4;">NIP. 19910617 202011 2 001</p>
+                        <p style="font-size: 0.95rem; color: var(--text3); line-height: 1.4;">NIP. 19910617 202011 2 001
+                        </p>
                     </div>
                 </div>
             </div>
@@ -1231,10 +1288,9 @@
         let distribusiChartInstance = null;
 
         function renderCharts() {
-            // Ambil context dengan cek apakah canvas masih ada di DOM
             const canvas1 = document.getElementById('nilaiChart');
             const canvas2 = document.getElementById('distribusiChart');
-            
+
             if (!canvas1 || !canvas2) return;
 
             const labels = nilaiData.map(s => s.nama.split(' ')[0]);
@@ -1247,15 +1303,9 @@
                 nilaiChartInstance = null;
             }
 
-            // Dapatkan warna tema
             const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
             const textColor = isDark ? '#a8a8b8' : '#6b7280';
             const gridColor = isDark ? 'rgba(255,255,255,0.06)' : 'rgba(0,0,0,0.06)';
-
-            const gradient1 = ctx1.createLinearGradient(0, 0, 0, 280);
-            gradient1.addColorStop(0, 'rgba(255, 107, 107, 0.8)');
-            gradient1.addColorStop(0.5, 'rgba(78, 205, 196, 0.6)');
-            gradient1.addColorStop(1, 'rgba(255, 230, 109, 0.4)');
 
             nilaiChartInstance = new Chart(ctx1, {
                 type: 'bar',
@@ -1291,8 +1341,8 @@
                         y: {
                             beginAtZero: true,
                             max: 100,
-                            ticks: { 
-                                stepSize: 10, 
+                            ticks: {
+                                stepSize: 10,
                                 precision: 0,
                                 color: textColor
                             },
@@ -1315,7 +1365,7 @@
                 }
             });
 
-            // Chart 2: Pie Chart - Distribusi Rentang Nilai
+            // Chart 2: Pie Chart
             const ranges = {
                 '70-73': 0,
                 '74-76': 0,
@@ -1362,11 +1412,11 @@
                     maintainAspectRatio: false,
                     plugins: {
                         legend: {
-                            position: window.innerWidth < 480 ? 'bottom' : 'bottom',
+                            position: 'bottom',
                             labels: {
-                                font: { 
-                                    size: window.innerWidth < 480 ? 10 : 11, 
-                                    weight: '600' 
+                                font: {
+                                    size: window.innerWidth < 480 ? 10 : 11,
+                                    weight: '600'
                                 },
                                 color: legendColor,
                                 usePointStyle: true,
@@ -1404,7 +1454,6 @@
                 ball.textContent = newTheme === 'light' ? '☀️' : '🌙';
             }
 
-            // Re-render charts dengan warna baru
             setTimeout(renderCharts, 200);
         }
 
@@ -1467,7 +1516,7 @@
         })();
 
         // ============================================
-        // WINDOW RESIZE - Re-render charts
+        // WINDOW RESIZE
         // ============================================
         let resizeTimer;
         window.addEventListener('resize', () => {
@@ -1478,9 +1527,8 @@
         });
 
         // ============================================
-        // PROTECTION - CEKALAH KONTEN DARI COPY & SCREENSHOT
+        // PROTEKSI KONTEN
         // ============================================
-
         function showProtectionToast(message) {
             const existingToast = document.querySelector('.protection-toast');
             if (existingToast) existingToast.remove();
@@ -1517,9 +1565,6 @@
             }, 3000);
         }
 
-        // ============================================
-        // CSS UNTUK ANIMASI TOAST
-        // ============================================
         const styleProtection = document.createElement('style');
         styleProtection.textContent = `
             @keyframes slideUp {
@@ -1546,10 +1591,6 @@
                 -ms-user-drag: none;
                 user-drag: none;
                 pointer-events: auto;
-            }
-            
-            .watermark-overlay {
-                pointer-events: none !important;
             }
         `;
         document.head.appendChild(styleProtection);

@@ -73,6 +73,331 @@
         font-size: 0.85rem;
       }
     }
+
+    /* ===== KONTEN TAMBAHAN: LAYANAN, TESTIMONI, FAQ ===== */
+
+    /* Section Layanan Tambahan */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+      margin-top: 40px;
+    }
+
+    .service-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px 24px;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--c1), var(--c2), var(--c3));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s ease;
+    }
+
+    .service-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .service-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lg);
+      border-color: transparent;
+    }
+
+    .service-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      margin-bottom: 18px;
+    }
+
+    .service-icon.si-1 {
+      background: linear-gradient(135deg, rgba(255, 107, 107, 0.15), rgba(255, 107, 107, 0.05));
+      color: var(--c1);
+    }
+
+    .service-icon.si-2 {
+      background: linear-gradient(135deg, rgba(78, 205, 196, 0.15), rgba(78, 205, 196, 0.05));
+      color: var(--c2);
+    }
+
+    .service-icon.si-3 {
+      background: linear-gradient(135deg, rgba(255, 230, 109, 0.2), rgba(255, 140, 0, 0.1));
+      color: #f59e0b;
+    }
+
+    .service-card h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: var(--text);
+    }
+
+    .service-card p {
+      font-size: 0.88rem;
+      color: var(--text2);
+      line-height: 1.7;
+      margin-bottom: 16px;
+    }
+
+    .service-card .service-tag {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 99px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      background: var(--bg3);
+      color: var(--text2);
+      border: 1px solid var(--border);
+    }
+
+    /* Testimoni */
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin-top: 40px;
+    }
+
+    .testimonial-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px 24px;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .testimonial-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .testimonial-quote-icon {
+      font-size: 2.5rem;
+      color: var(--c2);
+      opacity: 0.3;
+      line-height: 1;
+      margin-bottom: 8px;
+      font-family: Georgia, serif;
+    }
+
+    .testimonial-text {
+      font-size: 0.9rem;
+      color: var(--text2);
+      line-height: 1.75;
+      margin-bottom: 20px;
+      font-style: italic;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+
+    .testimonial-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--c1), var(--c2));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-weight: 700;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    .testimonial-author-info h4 {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 2px;
+    }
+
+    .testimonial-author-info p {
+      font-size: 0.75rem;
+      color: var(--text3);
+    }
+
+    .testimonial-stars {
+      color: #f59e0b;
+      font-size: 0.8rem;
+      margin-bottom: 8px;
+      letter-spacing: 2px;
+    }
+
+    /* FAQ Accordion */
+    .faq-list {
+      max-width: 780px;
+      margin: 40px auto 0;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .faq-item {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .faq-item.open {
+      border-color: var(--c2);
+      box-shadow: 0 8px 24px -12px rgba(78, 205, 196, 0.35);
+    }
+
+    .faq-question {
+      width: 100%;
+      padding: 18px 22px;
+      background: none;
+      border: none;
+      text-align: left;
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--text);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      transition: background 0.2s ease;
+      font-family: inherit;
+    }
+
+    .faq-question:hover {
+      background: var(--bg3);
+    }
+
+    .faq-question-icon {
+      flex-shrink: 0;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--bg3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      font-size: 0.75rem;
+      color: var(--text2);
+    }
+
+    .faq-item.open .faq-question-icon {
+      background: linear-gradient(135deg, var(--c1), var(--c2));
+      color: #fff;
+      transform: rotate(180deg);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .faq-item.open .faq-answer {
+      max-height: 500px;
+    }
+
+    .faq-answer-inner {
+      padding: 0 22px 20px 22px;
+      font-size: 0.86rem;
+      color: var(--text2);
+      line-height: 1.75;
+    }
+
+    /* Info Jam Layanan */
+    .hours-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-top: 32px;
+    }
+
+    .hours-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 22px 20px;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .hours-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+      border-color: var(--c2);
+    }
+
+    .hours-card .hours-icon {
+      width: 44px;
+      height: 44px;
+      margin: 0 auto 12px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      background: linear-gradient(135deg, rgba(78, 205, 196, 0.15), rgba(78, 205, 196, 0.05));
+      color: var(--c2);
+    }
+
+    .hours-card h4 {
+      font-size: 0.9rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+      color: var(--text);
+    }
+
+    .hours-card p {
+      font-size: 0.82rem;
+      color: var(--text2);
+      line-height: 1.6;
+    }
+
+    .hours-card .hours-status {
+      display: inline-block;
+      margin-top: 8px;
+      padding: 3px 10px;
+      border-radius: 99px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      background: rgba(16, 185, 129, 0.15);
+      color: #059669;
+    }
+
+    @media (max-width: 768px) {
+
+      .services-grid,
+      .testimonial-grid {
+        grid-template-columns: 1fr;
+      }
+    }
   </style>
 </head>
 
@@ -164,7 +489,7 @@
 
             <div class="stats-row fade-up">
               <div class="stat-card">
-                <div class="stat-value">5+</div>
+                <div class="stat-value">8+</div>
                 <div class="stat-label">Dokumen Tersedia</div>
               </div>
               <div class="stat-card">
@@ -379,6 +704,124 @@
       </div>
     </section>
 
+    <!-- ===== KONTEN BARU 1: LAYANAN TAMBAHAN ===== -->
+    <section class="section">
+      <div class="container">
+        <div style="text-align: center; margin-bottom: 8px">
+          <p class="section-label fade-up">Layanan Tambahan</p>
+          <h2 class="section-title fade-up">
+            Lebih dari Sekadar <span class="gradient-text">Unduh Dokumen</span>
+          </h2>
+          <p class="section-desc fade-up" style="margin: 0 auto">
+            Portal ini juga menyediakan layanan pendukung untuk mempermudah
+            pekerjaan administrasi operator dan guru.
+          </p>
+        </div>
+
+        <div class="services-grid">
+          <div class="service-card fade-up">
+            <div class="service-icon si-1">🖨️</div>
+            <h3>Bantuan Cetak & Scan</h3>
+            <p>
+              Butuh dokumen dicetak atau discan ulang? Kirim permintaan via
+              WhatsApp, dan kami bantu prosesnya dari sekolah.
+            </p>
+            <span class="service-tag">Gratis • GTK</span>
+          </div>
+
+          <div class="service-card fade-up">
+            <div class="service-icon si-2">📝</div>
+            <h3>Template Administrasi</h3>
+            <p>
+              Tersedia template Surat Tugas, SK, dan format administrasi
+              lainnya yang bisa langsung diedit sesuai kebutuhan.
+            </p>
+            <span class="service-tag">Siap Pakai</span>
+          </div>
+
+          <div class="service-card fade-up">
+            <div class="service-icon si-3">🔐</div>
+            <h3>Pendampingan Verifikasi</h3>
+            <p>
+              Membantu memverifikasi keaslian dokumen dan memastikan berkas
+              sesuai dengan persyaratan Dinas Pendidikan.
+            </p>
+            <span class="service-tag">Konsultasi</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== KONTEN BARU 2: TESTIMONI ===== -->
+    <section class="section"
+      style="background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+      <div class="container">
+        <div style="text-align: center; margin-bottom: 8px">
+          <p class="section-label fade-up">Testimoni</p>
+          <h2 class="section-title fade-up">
+            Apa Kata <span class="gradient-text">Pengguna</span>?
+          </h2>
+          <p class="section-desc fade-up" style="margin: 0 auto">
+            Beberapa tanggapan dari operator sekolah dan rekan guru yang
+            memanfaatkan portal ini.
+          </p>
+        </div>
+
+        <div class="testimonial-grid">
+          <div class="testimonial-card fade-up">
+            <div class="testimonial-stars">★★★★★</div>
+            <div class="testimonial-quote-icon">"</div>
+            <p class="testimonial-text">
+              Sangat membantu! Dulu saya harus minta SK berulang kali ke
+              bagian administrasi. Sekarang tinggal buka portal, klik, dan
+              unduh. Hemat waktu banget.
+            </p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar">R</div>
+              <div class="testimonial-author-info">
+                <h4>Rina Marlina</h4>
+                <p>Operator Sekolah • SMP Negeri 2 Asmat</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card fade-up">
+            <div class="testimonial-stars">★★★★★</div>
+            <div class="testimonial-quote-icon">"</div>
+            <p class="testimonial-text">
+              Aksesnya mudah, tampilannya bersih, dan yang paling penting
+              bisa dibuka dari HP. Sangat cocok untuk daerah 3T seperti kami.
+            </p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar"
+                style="background: linear-gradient(135deg, var(--c3), var(--c4)); color: #000;">Y</div>
+              <div class="testimonial-author-info">
+                <h4>Yohanes Kapisa</h4>
+                <p>Guru Kelas • SD Inpres Pulau Tiga</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card fade-up">
+            <div class="testimonial-stars">★★★★★</div>
+            <div class="testimonial-quote-icon">"</div>
+            <p class="testimonial-text">
+              Dokumentasi administrasi jadi lebih tertata. Operator baru
+              tinggal dikasih link, langsung paham. Recommended untuk sekolah
+              lain!
+            </p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar" style="background: linear-gradient(135deg, var(--c5), var(--c1));">M</div>
+              <div class="testimonial-author-info">
+                <h4>Markus Welerubun</h4>
+                <p>Kepala Sekolah • SMP Persiapan Negeri</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- ABOUT SNIPPET - PERBAIKAN: Responsive mobile -->
     <section class="section">
       <div class="container">
@@ -567,6 +1010,151 @@
       </div>
     </section>
 
+    <!-- ===== KONTEN BARU 3: JAM LAYANAN ===== -->
+    <section class="section" style="padding-top: 20px;">
+      <div class="container">
+        <div style="text-align: center; margin-bottom: 8px">
+          <p class="section-label fade-up">Jam Layanan</p>
+          <h2 class="section-title fade-up">
+            Kapan <span class="gradient-text">Kami Siap</span> Membantu?
+          </h2>
+          <p class="section-desc fade-up" style="margin: 0 auto">
+            Portal dapat diakses 24 jam, namun respon manual dari pengelola
+            mengikuti jam berikut.
+          </p>
+        </div>
+
+        <div class="hours-grid">
+          <div class="hours-card fade-up">
+            <div class="hours-icon"><i class="fas fa-sun"></i></div>
+            <h4>Senin – Jumat</h4>
+            <p>07.00 – 15.00 WIT</p>
+            <span class="hours-status">Aktif</span>
+          </div>
+
+          <div class="hours-card fade-up">
+            <div class="hours-icon"
+              style="background: linear-gradient(135deg, rgba(255, 230, 109, 0.2), rgba(255, 140, 0, 0.1)); color: #f59e0b;">
+              <i class="fas fa-clock"></i>
+            </div>
+            <h4>Sabtu</h4>
+            <p>08.00 – 12.00 WIT</p>
+            <span class="hours-status" style="background: rgba(245, 158, 11, 0.15); color: #b45309;">Terbatas</span>
+          </div>
+
+          <div class="hours-card fade-up">
+            <div class="hours-icon"
+              style="background: linear-gradient(135deg, rgba(255, 107, 107, 0.15), rgba(255, 107, 107, 0.05)); color: var(--c1);">
+              <i class="fas fa-calendar-times"></i>
+            </div>
+            <h4>Minggu & Hari Libur</h4>
+            <p>Respon via WhatsApp</p>
+            <span class="hours-status" style="background: rgba(239, 68, 68, 0.15); color: #b91c1c;">Online</span>
+          </div>
+
+          <div class="hours-card fade-up">
+            <div class="hours-icon"
+              style="background: linear-gradient(135deg, rgba(78, 205, 196, 0.15), rgba(78, 205, 196, 0.05)); color: var(--c2);">
+              <i class="fab fa-whatsapp"></i>
+            </div>
+            <h4>Respon WhatsApp</h4>
+            <p>&lt; 24 jam kerja</p>
+            <span class="hours-status">Cepat</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== KONTEN BARU 4: FAQ ===== -->
+    <section class="section" style="background: var(--bg2); border-top: 1px solid var(--border);">
+      <div class="container">
+        <div style="text-align: center; margin-bottom: 8px">
+          <p class="section-label fade-up">FAQ</p>
+          <h2 class="section-title fade-up">
+            Pertanyaan yang <span class="gradient-text">Sering Diajukan</span>
+          </h2>
+          <p class="section-desc fade-up" style="margin: 0 auto">
+            Beberapa pertanyaan umum seputar penggunaan portal dan dokumen.
+          </p>
+        </div>
+
+        <div class="faq-list">
+          <div class="faq-item fade-up">
+            <button class="faq-question" type="button" aria-expanded="false">
+              <span>Apakah saya perlu login untuk mengunduh dokumen?</span>
+              <span class="faq-question-icon"><i class="fas fa-chevron-down"></i></span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                Tidak. Semua dokumen dapat diakses dan diunduh secara bebas
+                tanpa perlu login atau akun khusus. Cukup klik tombol unduh
+                pada kartu dokumen yang diinginkan.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item fade-up">
+            <button class="faq-question" type="button" aria-expanded="false">
+              <span>Bagaimana jika dokumen yang saya butuhkan belum tersedia?</span>
+              <span class="faq-question-icon"><i class="fas fa-chevron-down"></i></span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                Silakan hubungi pengelola melalui WhatsApp atau halaman
+                Contact Me. Kami akan berusaha menyediakan atau mengarahkan
+                ke sumber dokumen yang tepat dalam waktu 1×24 jam kerja.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item fade-up">
+            <button class="faq-question" type="button" aria-expanded="false">
+              <span>Apakah dokumen di portal ini aman dan terjamin keasliannya?</span>
+              <span class="faq-question-icon"><i class="fas fa-chevron-down"></i></span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                Ya. Semua dokumen bersumber dari arsip resmi sekolah dan
+                disimpan di Google Drive dengan izin akses
+                <em>"Anyone with the link – Viewer"</em>. Untuk keperluan
+                verifikasi lebih lanjut, silakan hubungi pihak sekolah
+                langsung.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item fade-up">
+            <button class="faq-question" type="button" aria-expanded="false">
+              <span>Bisakah saya meminta dokumen dalam format tertentu (Word/Excel)?</span>
+              <span class="faq-question-icon"><i class="fas fa-chevron-down"></i></span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                Bisa. Sebagian dokumen tersedia dalam format PDF, Word, dan
+                Excel. Jika yang tersedia hanya PDF dan Anda membutuhkan
+                format lain, silakan ajukan permintaan melalui WhatsApp untuk
+                diproses sesuai ketersediaan.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item fade-up">
+            <button class="faq-question" type="button" aria-expanded="false">
+              <span>Apakah portal ini terhubung dengan sistem Dapodik?</span>
+              <span class="faq-question-icon"><i class="fas fa-chevron-down"></i></span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                Tidak. Portal ini berdiri sendiri sebagai repositori dokumen
+                administrasi. Namun data yang disajikan tetap mengacu pada
+                dokumen resmi yang juga tercatat di Dapodik sekolah.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- CTA -->
     <section style="
           padding: 60px 0;
@@ -608,11 +1196,35 @@
   <!-- FOOTER -->
   <footer>
     <div class="container">
-      <p>© 2026 SMP Persiapan Negeri Pulau Tiga. All rights are reserved</p>
+      <p>© 2026 SMP Negeri Pulau Tiga. All rights are reserved</p>
     </div>
   </footer>
-<script src="js/main.js"></script>
-<script src="js/navbar.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/navbar.js"></script>
+
+  <!-- ===== SCRIPT KECIL UNTUK FAQ ACCORDION ===== -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const faqItems = document.querySelectorAll('.faq-item');
+      faqItems.forEach(function (item) {
+        const btn = item.querySelector('.faq-question');
+        btn.addEventListener('click', function () {
+          const isOpen = item.classList.contains('open');
+          // Tutup semua item lain (opsional)
+          faqItems.forEach(function (other) {
+            other.classList.remove('open');
+            const otherBtn = other.querySelector('.faq-question');
+            if (otherBtn) otherBtn.setAttribute('aria-expanded', 'false');
+          });
+          // Toggle item yang diklik
+          if (!isOpen) {
+            item.classList.add('open');
+            btn.setAttribute('aria-expanded', 'true');
+          }
+        });
+      });
+    });
+  </script>
 </body>
 
 </html>

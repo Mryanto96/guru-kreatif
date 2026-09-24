@@ -391,16 +391,16 @@ button {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  font-size: 1.3rem;
+  font-size: 0.96rem;
   font-weight: 800;
   letter-spacing: -0.3px;
 }
 
 .logo-sub {
-  font-size: 1rem;
+  font-size: 0.8rem;
   color: var(--text2);
-  font-weight: 600;
-  letter-spacing: 0.3px;
+  font-weight: 800;
+  letter-spacing: -0.3px;
 }
 
 /* Nav Links */
@@ -841,40 +841,181 @@ footer span {
   margin-top: 6px;
 }
 
-/* ===== PROFILE IMAGE ===== */
-.profile-frame {
-  position: relative;
-  width: 400px;
-  height: 450px;
-  flex-shrink: 0;
-}
+/* =========================================================
+   ===== PROFILE IMAGE — EFEK: NAIK, GLOW, & BORDER LOADING =
+   ========================================================= */
 
-.profile-frame::before {
-  content: '';
-  position: absolute;
-  inset: -4px;
-  border-radius: 40% 60% 40% 60% / 50% 40% 60% 50%;
-  background: linear-gradient(135deg, var(--c1), var(--c2), var(--c3), var(--c4), var(--c5));
-  background-size: 300% 300%;
-  animation: gradientShift 4s ease infinite, blobPulse 8s ease infinite;
-  z-index: 0;
-}
-
-.profile-img {
-  position: absolute;
-  inset: 6px;
-  border-radius: 40% 60% 40% 60% / 50% 40% 60% 50%;
-  object-fit: cover;
-  width: calc(100% - 20px);
-  height: calc(100% - 1px);
-  animation: blobPulse 8s ease infinite, float 6s ease-in-out infinite;
-  z-index: 1;
-}
-
+/* Wrapper luar: memberi ruang untuk animasi mengambang & glow */
 .profile-wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 30px 10px;
+  position: relative;
+  /* Efek foto naik ke atas */
+  transform: translateY(-20px);
+}
+
+/* Frame foto: rounded rectangle + animasi mengambang */
+.profile-frame {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  aspect-ratio: 16 / 10;
+  border-radius: 24px;
+  overflow: hidden;
+  background: var(--card-bg);
+  z-index: 1;
+  flex-shrink: 0;
+  /* Efek foto naik turun halus (floating) */
+  animation: profileFloat 5s ease-in-out infinite;
+  /* Bayangan utama */
+  box-shadow:
+    0 20px 50px rgba(0, 0, 0, 0.15),
+    0 8px 20px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Efek hover: sedikit naik dan shadow membesar */
+.profile-frame:hover {
+  transform: translateY(-6px);
+  box-shadow:
+    0 28px 60px rgba(0, 0, 0, 0.18),
+    0 12px 28px rgba(0, 0, 0, 0.1);
+}
+
+/* ===== ANIMASI LOADING BERPUTAR KELILING FOTO ===== */
+/* Menggunakan pseudo-element ::before sebagai cincin gradient berputar */
+.profile-frame::before {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border-radius: 30px;
+  background: conic-gradient(from 0deg,
+      var(--c1),
+      var(--c2),
+      var(--c3),
+      var(--c4),
+      var(--c5),
+      var(--c1));
+  z-index: -1;
+  animation: borderSpin 4s linear infinite;
+  filter: blur(6px);
+  opacity: 0.9;
+}
+
+/* Cincin kedua: gradient lebih tebal, berputar berlawanan arah */
+.profile-frame::after {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: 28px;
+  background: conic-gradient(from 180deg,
+      var(--c3),
+      var(--c2),
+      var(--c1),
+      var(--c5),
+      var(--c4),
+      var(--c3));
+  z-index: -1;
+  animation: borderSpinReverse 6s linear infinite;
+  opacity: 0.7;
+}
+
+/* ===== BACKGROUND / CARD GLOW DI BELAKANG FOTO ===== */
+/* Efek glow besar di belakang frame */
+.profile-wrapper::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 85%;
+  height: 85%;
+  background: radial-gradient(ellipse at center,
+      rgba(78, 205, 196, 0.35) 0%,
+      rgba(255, 107, 107, 0.25) 40%,
+      rgba(255, 230, 109, 0.15) 70%,
+      transparent 100%);
+  border-radius: 50%;
+  filter: blur(50px);
+  z-index: 0;
+  animation: glowPulse 4s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* ===== FOTO ===== */
+.profile-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  border-radius: 20px;
+  position: relative;
+  z-index: 2;
+  animation: none;
+}
+
+/* Placeholder jika gambar gagal dimuat */
+.profile-placeholder {
+  display: none;
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--c1), var(--c2), var(--c3));
+  align-items: center;
+  justify-content: center;
+  font-size: 5rem;
+  color: white;
+  border-radius: 20px;
+  z-index: 2;
+}
+
+/* ===== KEYFRAMES UNTUK PROFILE ===== */
+@keyframes profileFloat {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+@keyframes borderSpin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes borderSpinReverse {
+  from {
+    transform: rotate(360deg);
+  }
+
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes glowPulse {
+
+  0%,
+  100% {
+    opacity: 0.6;
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  50% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.15);
+  }
 }
 
 /* ===== HERO ===== */
@@ -956,13 +1097,14 @@ footer span {
     justify-content: center;
   }
 
-  .profile-frame {
-    width: 260px;
-    height: 260px;
-  }
-
   .profile-wrapper {
     order: -1;
+    transform: translateY(-10px);
+  }
+
+  .profile-frame {
+    max-width: 420px;
+    width: 100%;
   }
 
   .nav-links {
@@ -1344,6 +1486,12 @@ footer span {
   margin: 0 auto 32px;
   width: 200px;
   height: 200px;
+  animation: none;
+}
+
+.about-hero .profile-frame::before,
+.about-hero .profile-frame::after {
+  display: none;
 }
 
 .about-hero h1 {
@@ -1603,9 +1751,29 @@ footer span {
     grid-template-columns: 1fr;
   }
 
+  .profile-wrapper {
+    transform: translateY(-8px);
+    padding: 24px 8px;
+  }
+
   .profile-frame {
-    width: 200px;
-    height: 200px;
+    max-width: 100%;
+    border-radius: 18px;
+  }
+
+  .profile-frame::before {
+    inset: -5px;
+    border-radius: 24px;
+  }
+
+  .profile-frame::after {
+    inset: -2px;
+    border-radius: 20px;
+  }
+
+  .profile-img,
+  .profile-placeholder {
+    border-radius: 14px;
   }
 
   .doc-grid {
@@ -1679,6 +1847,25 @@ footer span {
   .modal-btn {
     padding: 8px 16px;
     font-size: 0.8rem;
+  }
+
+  .profile-wrapper {
+    padding: 20px 6px;
+  }
+
+  .profile-frame {
+    max-width: 100%;
+    border-radius: 16px;
+  }
+
+  .profile-frame::before {
+    inset: -4px;
+    border-radius: 20px;
+  }
+
+  .profile-frame::after {
+    inset: -2px;
+    border-radius: 18px;
   }
 }
 
@@ -1766,7 +1953,6 @@ footer span {
     font-size: 0.8rem;
   }
 }
-
 
 @media (min-width: 993px) {
   .hamburger {

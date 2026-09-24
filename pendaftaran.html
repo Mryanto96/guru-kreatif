@@ -118,13 +118,77 @@
             margin-top: 8px;
         }
 
+        /* ===== PAGINATION & ROWS PER PAGE ===== */
         .pagination-container {
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
             gap: 15px;
             margin-top: 30px;
             margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .pagination-nav {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .rows-per-page-wrapper {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            padding: 6px 14px;
+            border-radius: 40px;
+            transition: all 0.3s ease;
+        }
+
+        .rows-per-page-wrapper:hover {
+            border-color: var(--c1);
+            box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.1);
+        }
+
+        .rows-label {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--text2);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin: 0;
+            white-space: nowrap;
+        }
+
+        .rows-label i {
+            color: var(--c1);
+        }
+
+        .rows-select {
+            background: transparent;
+            border: none;
+            color: var(--text);
+            font-weight: 700;
+            font-size: 0.85rem;
+            font-family: var(--font);
+            cursor: pointer;
+            outline: none;
+            padding: 4px 8px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .rows-select:hover {
+            background: var(--bg3);
+        }
+
+        .rows-select option {
+            background: var(--card-bg);
+            color: var(--text);
+            padding: 8px;
         }
 
         .pagination-btn {
@@ -764,6 +828,23 @@
             .modal-content {
                 padding: 20px;
             }
+
+            .pagination-container {
+                justify-content: center;
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .pagination-nav {
+                justify-content: center;
+                width: 100%;
+            }
+
+            .page-info {
+                order: 2;
+                flex: 1;
+                text-align: center;
+            }
         }
     </style>
 </head>
@@ -866,11 +947,30 @@
                 </table>
             </div>
 
+            <!-- ===== PAGINATION + ROWS PER PAGE ===== -->
             <div class="pagination-container" id="paginationContainer">
-                <button class="pagination-btn" id="prevPageBtn"><i class="fas fa-chevron-left"></i> Sebelumnya</button>
-                <span class="page-info" id="pageInfo">Halaman 1 dari 3</span>
-                <button class="pagination-btn" id="nextPageBtn">Selanjutnya <i
-                        class="fas fa-chevron-right"></i></button>
+                <div class="rows-per-page-wrapper">
+                    <label for="rowsPerPageSelect" class="rows-label">
+                        <i class="fas fa-list-ol"></i> Tampilkan:
+                    </label>
+                    <select id="rowsPerPageSelect" class="rows-select">
+                        <option value="5">5 data</option>
+                        <option value="10">10 data</option>
+                        <option value="25">25 data</option>
+                        <option value="50">50 data</option>
+                        <option value="all">Semua Data</option>
+                    </select>
+                </div>
+
+                <div class="pagination-nav">
+                    <button class="pagination-btn" id="prevPageBtn">
+                        <i class="fas fa-chevron-left"></i> Sebelumnya
+                    </button>
+                    <span class="page-info" id="pageInfo">Halaman 1 dari 1</span>
+                    <button class="pagination-btn" id="nextPageBtn">
+                        Selanjutnya <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
             </div>
 
             <div class="charts-section fade-up">
@@ -1476,7 +1576,7 @@
         let genderChart = null;
         let statusChart = null;
         let currentPage = 1;
-        const rowsPerPage = 5;
+        let rowsPerPage = 5; // Default 5, bisa 'all'
 
         function showToast(message, isError = false) {
             const toast = document.createElement('div');
@@ -1514,28 +1614,40 @@
 
         function renderTable() {
             const tbody = document.getElementById('tableBody');
-            const start = (currentPage - 1) * rowsPerPage;
-            const end = start + rowsPerPage;
+            const isShowAll = rowsPerPage === 'all';
+            const totalData = filteredData.length;
+            const effectiveRows = isShowAll ? totalData : rowsPerPage;
+            const totalPages = isShowAll ? 1 : Math.ceil(totalData / effectiveRows) || 1;
+
+            if (currentPage > totalPages) currentPage = totalPages;
+            if (currentPage < 1) currentPage = 1;
+
+            const start = isShowAll ? 0 : (currentPage - 1) * effectiveRows;
+            const end = isShowAll ? totalData : start + effectiveRows;
             const pageData = filteredData.slice(start, end);
 
             if (pageData.length === 0) {
                 tbody.innerHTML =
                     `<tr><td colspan="28" class="empty-state"><i class="fas fa-search"></i><p>Data tidak ditemukan</p></td></tr>`;
                 document.getElementById('pageInfo').textContent = `Halaman 0 dari 0`;
+                document.getElementById('prevPageBtn').disabled = true;
+                document.getElementById('nextPageBtn').disabled = true;
                 return;
             }
 
-            const totalPages = Math.ceil(filteredData.length / rowsPerPage);
-            document.getElementById('pageInfo').textContent = `Halaman ${currentPage} dari ${totalPages}`;
+            if (isShowAll) {
+                document.getElementById('pageInfo').textContent = `Menampilkan semua ${totalData} data`;
+            } else {
+                document.getElementById('pageInfo').textContent =
+                    `Halaman ${currentPage} dari ${totalPages} • ${start + 1}-${end} dari ${totalData}`;
+            }
 
             let html = '';
             pageData.forEach((siswa) => {
                 const jkText = siswa.jenisKelamin === 'L' ? 'Laki-laki' : 'Perempuan';
                 const jkIcon = siswa.jenisKelamin === 'L' ? '♂️' : '♀️';
 
-                let statusClass = '',
-                    statusText = '',
-                    statusIcon = '';
+                let statusClass = '', statusText = '', statusIcon = '';
                 if (siswa.status === 'verified') {
                     statusClass = 'status-verified';
                     statusText = 'Terverifikasi';
@@ -1590,8 +1702,15 @@
             });
             tbody.innerHTML = html;
 
-            document.getElementById('prevPageBtn').disabled = currentPage === 1;
-            document.getElementById('nextPageBtn').disabled = currentPage === totalPages;
+            document.getElementById('prevPageBtn').disabled = isShowAll || currentPage === 1;
+            document.getElementById('nextPageBtn').disabled = isShowAll || currentPage === totalPages;
+
+            // Redupkan navigasi saat mode "Semua Data"
+            const navWrapper = document.querySelector('.pagination-nav');
+            if (navWrapper) {
+                navWrapper.style.opacity = isShowAll ? '0.4' : '1';
+                navWrapper.style.pointerEvents = isShowAll ? 'none' : 'auto';
+            }
         }
 
         function renderCharts() {
@@ -1632,8 +1751,10 @@
                     maintainAspectRatio: true,
                     plugins: {
                         legend: {
-                            position: 'bottom', labels: {
-                                font: { size: 12, weight: '600' }, color: 'var(--text2)',
+                            position: 'bottom',
+                            labels: {
+                                font: { size: 12, weight: '600' },
+                                color: 'var(--text2)',
                                 usePointStyle: true
                             }
                         },
@@ -1675,20 +1796,27 @@
                     responsive: true,
                     maintainAspectRatio: true,
                     plugins: {
-                        legend: { display: false }, tooltip: {
+                        legend: { display: false },
+                        tooltip: {
                             callbacks: {
                                 label: (ctx) =>
                                     `Jumlah: ${ctx.raw} (${((ctx.raw / total) * 100).toFixed(1)}%)`
                             }
                         }
                     },
-                    scales: { y: { beginAtZero: true, ticks: { stepSize: 1, precision: 0 } } },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: { stepSize: 1, precision: 0 }
+                        }
+                    },
                     animation: { duration: 1500, easing: 'easeInOutQuart' }
                 }
             });
         }
 
         function prevPage() {
+            if (rowsPerPage === 'all') return;
             if (currentPage > 1) {
                 currentPage--;
                 renderTable();
@@ -1696,6 +1824,7 @@
         }
 
         function nextPage() {
+            if (rowsPerPage === 'all') return;
             const totalPages = Math.ceil(filteredData.length / rowsPerPage);
             if (currentPage < totalPages) {
                 currentPage++;
@@ -1709,8 +1838,9 @@
             const genderFilter = document.getElementById('filterGender').value;
 
             filteredData = studentsData.filter(siswa => {
-                const matchSearch = searchTerm === '' || siswa.namaLengkap.toLowerCase().includes(searchTerm) || siswa
-                    .nik.includes(searchTerm);
+                const matchSearch = searchTerm === '' ||
+                    siswa.namaLengkap.toLowerCase().includes(searchTerm) ||
+                    siswa.nik.includes(searchTerm);
                 const matchStatus = statusFilter === 'all' || siswa.status === statusFilter;
                 const matchGender = genderFilter === 'all' || siswa.jenisKelamin === genderFilter;
                 return matchSearch && matchStatus && matchGender;
@@ -1726,6 +1856,8 @@
             document.getElementById('searchInput').value = '';
             document.getElementById('filterStatus').value = 'all';
             document.getElementById('filterGender').value = 'all';
+            document.getElementById('rowsPerPageSelect').value = '5';
+            rowsPerPage = 5;
             filteredData = [...studentsData];
             currentPage = 1;
             renderStats();
@@ -1832,14 +1964,13 @@
             }
         });
 
-        // ===== EXPORT EXCEL DENGAN 2 SHEET + GRAFIK WARNA + FOOTER =====
+        // ===== EXPORT EXCEL =====
         function exportToExcel() {
             if (filteredData.length === 0) {
                 showToast('Tidak ada data untuk diekspor', true);
                 return;
             }
 
-            // ===== SHEET 1: DATA CALON SISWA =====
             const exportData = filteredData.map((siswa) => ({
                 'No': siswa.no,
                 'Nama Lengkap': siswa.namaLengkap,
@@ -1873,10 +2004,9 @@
 
             const wsData = XLSX.utils.json_to_sheet(exportData);
 
-            // Auto fit width berdasarkan konten (lebih presisi)
             const colWidths = [];
             const keys = Object.keys(exportData[0] || {});
-            keys.forEach((key, idx) => {
+            keys.forEach((key) => {
                 let maxLen = key.length;
                 exportData.forEach(row => {
                     const val = String(row[key] || '');
@@ -1887,7 +2017,6 @@
             wsData['!cols'] = colWidths;
             wsData['!sheetProtection'] = { sheet: true };
 
-            // ===== SHEET 2: STATISTIK DENGAN GRAFIK WARNA + FOOTER =====
             const total = filteredData.length;
             const laki = filteredData.filter(s => s.jenisKelamin === 'L').length;
             const perempuan = filteredData.filter(s => s.jenisKelamin === 'P').length;
@@ -1915,7 +2044,6 @@
             const sekolahData = Array.from(sekolahMap.entries()).map(([nama, jumlah]) => ({ nama, jumlah })).sort((a, b) => b
                 .jumlah - a.jumlah);
 
-            // Tanggal dinamis hari ini
             const today = new Date();
             const tanggalExport = today.toLocaleDateString('id-ID', {
                 year: 'numeric',
@@ -1997,44 +2125,24 @@
             const wsStat = XLSX.utils.aoa_to_sheet(statSheetData);
             wsStat['!cols'] = [{ wch: 45 }, { wch: 25 }, { wch: 15 }];
 
-            // HITUNG ULANG INDEX MERGE CELLS
-            // Baris terakhir = statSheetData.length - 1
-            const lastRow = statSheetData.length - 1;
-
-            // Cari posisi footer di data
-            // Footer dimulai dari baris "Nakai, ..."
             const footerStartIndex = statSheetData.findIndex(row =>
                 row[0] && row[0].includes && row[0].includes('Nakai,')
             );
 
             wsStat['!merges'] = [
-                // Judul
                 { s: { r: 1, c: 0 }, e: { r: 1, c: 2 } },
                 { s: { r: 2, c: 0 }, e: { r: 2, c: 2 } },
-                // A. RINGKASAN UMUM
                 { s: { r: 7, c: 0 }, e: { r: 7, c: 2 } },
-                // GRAFIK JENIS KELAMIN
                 { s: { r: 11, c: 0 }, e: { r: 11, c: 2 } },
-                // B. STATUS PENDAFTARAN
                 { s: { r: 18, c: 0 }, e: { r: 18, c: 2 } },
-                // GRAFIK STATUS PENDAFTARAN
                 { s: { r: 26, c: 0 }, e: { r: 26, c: 2 } },
-                // C. ASAL SEKOLAH
                 { s: { r: 32, c: 0 }, e: { r: 32, c: 2 } },
-                // D. INFORMASI TAMBAHAN
                 { s: { r: 38, c: 0 }, e: { r: 38, c: 2 } },
-                // 📌 KETERANGAN WARNA GRAFIK
                 { s: { r: 46, c: 0 }, e: { r: 46, c: 2 } },
-                // FOOTER - Merge cells untuk bagian bawah
-                // Nakai, ...
                 { s: { r: footerStartIndex, c: 0 }, e: { r: footerStartIndex, c: 2 } },
-                // Panitia PPDB,
                 { s: { r: footerStartIndex + 1, c: 0 }, e: { r: footerStartIndex + 1, c: 2 } },
-                // 1. Pak Yanto
                 { s: { r: footerStartIndex + 5, c: 0 }, e: { r: footerStartIndex + 5, c: 2 } },
-                // 2. Ibu Ina
                 { s: { r: footerStartIndex + 6, c: 0 }, e: { r: footerStartIndex + 6, c: 2 } },
-                // TTD
                 { s: { r: footerStartIndex + 9, c: 0 }, e: { r: footerStartIndex + 9, c: 2 } },
             ];
             wsStat['!sheetProtection'] = { sheet: true };
@@ -2056,7 +2164,7 @@
             window.print();
         }
 
-        // Event Listeners
+        // ===== EVENT LISTENERS =====
         document.getElementById('searchBtn').addEventListener('click', filterData);
         document.getElementById('resetBtn').addEventListener('click', resetFilter);
         document.getElementById('exportExcelBtn').addEventListener('click', exportToExcel);
@@ -2065,6 +2173,15 @@
         document.getElementById('nextPageBtn').addEventListener('click', nextPage);
         document.getElementById('closeModalBtn').addEventListener('click', closeModal);
         document.getElementById('cancelModalBtn').addEventListener('click', closeModal);
+
+        // ===== ROWS PER PAGE SELECT =====
+        document.getElementById('rowsPerPageSelect').addEventListener('change', function (e) {
+            const val = e.target.value;
+            rowsPerPage = val === 'all' ? 'all' : parseInt(val);
+            currentPage = 1;
+            renderTable();
+        });
+
         document.getElementById('searchInput').addEventListener('keypress', (e) => {
             if (e.key === 'Enter') filterData();
         });
@@ -2072,7 +2189,7 @@
             if (e.target === document.getElementById('editModal')) closeModal();
         });
 
-        // INIT
+        // ===== INIT =====
         (function init() {
             renderStats();
             renderTable();
