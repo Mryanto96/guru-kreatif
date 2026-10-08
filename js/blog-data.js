@@ -1070,7 +1070,7 @@ const BLOG_DATA = [
         date: '2026-04-29',
         tags: ['Prestasi', 'Kelulusan', 'Kelas IX', 'Inspirasi'],
         views: 0,
-        featured: false,
+        featured: true,
 
         content: `
 <p><span class="drop-cap">A</span>da pertemuan yang tidak pernah kita duga akan mengubah cara pandang kita. Ada perpisahan yang awalnya terasa berat, tapi kemudian justru menguatkan langkah.</p>
@@ -1799,7 +1799,7 @@ const BLOG_DATA = [
         date: '2026-08-08',
         tags: ['Tips', 'Pedagogi', 'Kompetensi Guru', 'Pendidikan'],
         views: 0,
-        featured: true,
+        featured: false,
 
         content: `
 <p><span class="drop-cap">P</span>ernah suatu hari, di sela-sela jam istirahat, seorang siswa menghampiri meja saya. Ia tidak membawa buku. Tidak membawa pertanyaan tentang PR. Ia hanya berdiri di sana sebentar, lalu bertanya dengan suara pelan, <em>"Pak, guru yang baik itu seperti apa, sih?"</em></p>
