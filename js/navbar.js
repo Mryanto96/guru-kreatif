@@ -18,10 +18,11 @@ const MENU_STRUCTURE = [
     dropdown: [
       { name: 'Documents', url: 'documents.html' },
       { name: 'Gallery', url: 'gallery.html' },
-      { name: 'Blog', url: 'blog.html' }
+      
     ]
   },
   { name: 'Kelulusan', url: 'kelulusan.html' },
+  { name: 'Blog', url: 'blog.html' },
   { name: 'PPDB', url: 'pendaftaran.html' },
   { name: 'Videos', url: 'videos.html' },
   { name: 'About Me', url: 'about.html' },
