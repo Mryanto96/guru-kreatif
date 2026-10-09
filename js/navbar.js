@@ -1,5 +1,6 @@
 // ============================================
 // CENTRALIZED NAVIGATION SYSTEM
+// SMP PERSIAPAN NEGERI PULAU TIGA
 // ============================================
 
 const MENU_STRUCTURE = [
@@ -73,31 +74,30 @@ function renderMobileMenu() {
 
 function renderNavbar() {
   return `
-  <nav class="navbar">
+  <nav class="navbar" aria-label="Main navigation">
     <div class="container">
       <div class="nav-inner">
-        <a href="index.html" class="logo">
-          <div class="logo-icon">SMP</div>
+        <a href="index.html" class="logo" aria-label="SMP Negeri Pulau Tiga Home">
+          <img src="images/Logosekolah.jpg" alt="Logo SMP Negeri Pulau Tiga" class="logo-img">
           <div class="logo-text">
             <span class="logo-title">NEGERI PULAU TIGA</span>
             <span class="logo-sub">ASMAT PAPUA SELATAN</span>
           </div>
         </a>
+
         <ul class="nav-links">
           ${renderNavLinks()}
         </ul>
+
         <div class="nav-right">
-          <button class="dark-toggle" aria-label="Toggle dark mode" id="darkToggleBtn">
-            <div class="dark-toggle-ball">☀️</div>
-          </button>
-          <button class="hamburger" aria-label="Menu">
+          <button class="hamburger" aria-label="Menu" aria-expanded="false" aria-controls="mobileMenu">
             <span></span><span></span><span></span>
           </button>
         </div>
       </div>
     </div>
   </nav>
-  <div class="mobile-menu" id="mobileMenu">
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
     ${renderMobileMenu()}
   </div>
   `;
@@ -125,7 +125,7 @@ function initNavigation() {
 
     attachAllEvents();
     updateActiveNavLink();
-    applyNavbarOffset(); // <-- TAMBAHAN
+    applyNavbarOffset();
 
     const newDarkToggle = document.getElementById('darkToggleBtn');
     if (newDarkToggle) {
@@ -149,7 +149,7 @@ function initNavigation() {
 
     attachAllEvents();
     updateActiveNavLink();
-    applyNavbarOffset(); // <-- TAMBAHAN
+    applyNavbarOffset();
 
     const newDarkToggle = document.getElementById('darkToggleBtn');
     if (newDarkToggle) {
@@ -160,7 +160,7 @@ function initNavigation() {
 }
 
 // ============================================
-// TAMBAHAN: Hitung tinggi navbar & set padding body
+// Hitung tinggi navbar & set padding body
 // ============================================
 function applyNavbarOffset() {
   const navbar = document.querySelector('nav.navbar');
@@ -172,9 +172,7 @@ function applyNavbarOffset() {
     document.documentElement.style.setProperty('--navbar-height', h + 'px');
   };
 
-  // Jalankan setelah render
   requestAnimationFrame(updateOffset);
-  // Update saat resize
   window.addEventListener('resize', updateOffset);
 }
 
@@ -191,6 +189,7 @@ function attachAllEvents() {
         e.stopPropagation();
         mobileMenu.classList.toggle('active');
         this.classList.toggle('active');
+        document.body.classList.toggle('menu-open', mobileMenu.classList.contains('active'));
       });
     }
 
@@ -221,6 +220,7 @@ function attachAllEvents() {
         const hamburgerBtn = document.querySelector('.hamburger');
         if (mobileMenuDiv) mobileMenuDiv.classList.remove('active');
         if (hamburgerBtn) hamburgerBtn.classList.remove('active');
+        document.body.classList.remove('menu-open');
       });
     });
   }, 50);
@@ -252,7 +252,7 @@ function injectNavbarStyles() {
 
   const styles = `
     /* ============================================
-       NAVBAR FIXED — TIDAK HIDE SAAT SCROLL
+       NAVBAR — FIXED, TIDAK HIDE SAAT SCROLL
        ============================================ */
     nav.navbar {
       position: fixed !important;
@@ -269,7 +269,6 @@ function injectNavbarStyles() {
       animation: none !important;
     }
 
-    /* Pastikan tidak ada script lain yang bisa hide */
     nav.navbar.hide,
     nav.navbar.hidden,
     nav.navbar.scroll-down {
@@ -279,77 +278,176 @@ function injectNavbarStyles() {
       opacity: 1 !important;
     }
 
+    /* Container & Inner */
+    nav.navbar .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      height: 76px;
+    }
+
+    /* ============================================
+       LOGO — Gambar + Teks
+       ============================================ */
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: inherit;
+      flex-shrink: 0;
+      padding: 0;
+    }
+
+    .logo-img {
+      width: 52px;
+      height: 52px;
+      object-fit: contain;
+      flex-shrink: 0;
+      display: block;
+      background: transparent;
+      border-radius: 0;
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 2px;
+      line-height: 1.15;
+    }
+
+    .logo-title {
+      font-size: 0.95rem;
+      font-weight: 800;
+      letter-spacing: 0.3px;
+      color: #ef4444;
+      line-height: 1.15;
+      white-space: nowrap;
+    }
+
+    .logo-sub {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      color: var(--text);
+      line-height: 1.15;
+      white-space: nowrap;
+      text-transform: uppercase;
+    }
+
+    .logo-icon {
+      display: none !important;
+    }
+
+    /* ============================================
+       NAV LINKS (Desktop)
+       ============================================ */
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      flex: 1;
+      justify-content: center;
+    }
+
+    .nav-links li {
+      position: relative;
+      list-style: none;
+    }
+
+    .nav-links > li > a {
+      display: inline-flex;
+      align-items: center;
+      padding: 9px 12px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text);
+      text-decoration: none;
+      border-radius: 6px;
+      transition: background 0.2s ease, color 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .nav-links > li > a:hover {
+      background: var(--bg2, #f3f4f6);
+      color: var(--primary, #2563eb);
+    }
+
+    .nav-links > li > a.active {
+      color: var(--primary, #2563eb);
+      background: var(--bg2, #f3f4f6);
+    }
+
     /* Dropdown */
-    .nav-links li { position: relative; }
     .dropdown-menu {
       position: absolute;
-      top: 100%;
+      top: calc(100% + 8px);
       left: 0;
       background: var(--card-bg);
       border: 1px solid var(--border);
-      border-radius: 12px;
-      min-width: 180px;
+      border-radius: 10px;
+      min-width: 190px;
       opacity: 0;
       visibility: hidden;
       transform: translateY(-10px);
-      transition: all 0.2s ease;
+      transition: all 0.25s ease;
       z-index: 1000;
-      box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1);
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.12);
       list-style: none;
       padding: 8px 0;
       margin: 0;
     }
-    .dropdown-menu li { list-style: none; }
+
+    .dropdown-menu li {
+      list-style: none;
+    }
+
     .dropdown-menu a {
       display: block;
-      padding: 10px 18px;
-      font-size: 0.85rem;
+      padding: 9px 16px;
+      font-size: 0.82rem;
       white-space: nowrap;
       color: var(--text);
       text-decoration: none;
+      transition: background 0.2s ease, color 0.2s ease;
     }
-    .dropdown-menu a:hover { background: var(--bg2); }
+
+    .dropdown-menu a:hover {
+      background: var(--bg2);
+      color: var(--primary, #2563eb);
+    }
+
     .nav-links li:hover .dropdown-menu {
       opacity: 1;
       visibility: visible;
       transform: translateY(0);
     }
+
     .has-dropdown > a::after {
       content: " ▼";
-      font-size: 0.7rem;
+      font-size: 0.6rem;
       margin-left: 4px;
+      opacity: 0.7;
     }
 
-    /* Mobile dropdown */
-    .mobile-dropdown-item { border-bottom: 1px solid var(--border); }
-    .mobile-dropdown-toggle {
+    /* Nav Right */
+    .nav-right {
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      padding: 14px 20px;
-      cursor: pointer;
-      font-weight: 500;
-      color: var(--text);
+      gap: 10px;
+      flex-shrink: 0;
     }
-    .mobile-dropdown-toggle .toggle-icon {
-      font-size: 0.7rem;
-      transition: transform 0.2s;
-    }
-    .mobile-dropdown-toggle.open .toggle-icon { transform: rotate(180deg); }
-    .mobile-submenu {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.3s ease;
-      background: var(--bg2);
-    }
-    .mobile-submenu a {
-      display: block;
-      padding: 10px 20px 10px 40px;
-      font-size: 0.85rem;
-      color: var(--text2);
-      text-decoration: none;
-    }
-    .mobile-submenu a:hover { background: var(--bg3); }
 
     /* Hamburger */
     .hamburger {
@@ -359,56 +457,297 @@ function injectNavbarStyles() {
       display: none;
       flex-direction: column;
       gap: 5px;
-      padding: 10px;
+      padding: 7px;
       z-index: 1100;
+      border-radius: 6px;
+      transition: background 0.2s ease;
     }
+
+    .hamburger:hover {
+      background: var(--bg2, #f3f4f6);
+    }
+
     .hamburger span {
       width: 22px;
-      height: 2px;
+      height: 2.5px;
       background: var(--text);
+      border-radius: 2px;
       transition: all 0.3s ease;
     }
-    .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
-    .hamburger.active span:nth-child(2) { opacity: 0; }
-    .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
 
-    /* Mobile layout */
-    @media (max-width: 992px) {
-      .nav-links { display: none !important; }
-      .hamburger { display: flex !important; }
-      .nav-inner { flex-wrap: nowrap; }
+    .hamburger.active span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
     }
 
-    /* Mobile menu — pakai CSS variable tinggi navbar */
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -5px);
+    }
+
+    /* ============================================
+       MOBILE MENU
+       ============================================ */
     .mobile-menu {
       position: fixed;
-      top: var(--navbar-height, 69px);
+      top: var(--navbar-height, 76px);
       left: -100%;
-      width: 80%;
-      max-width: 320px;
-      height: calc(100% - var(--navbar-height, 69px));
+      width: 85%;
+      max-width: 340px;
+      height: calc(100% - var(--navbar-height, 76px));
       background: var(--card-bg);
       border-right: 1px solid var(--border);
-      transition: left 0.3s ease;
+      transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       z-index: 999;
       overflow-y: auto;
-      box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+      box-shadow: 4px 0 20px rgba(0, 0, 0, 0.08);
+      -webkit-overflow-scrolling: touch;
     }
-    .mobile-menu.active { left: 0 !important; }
+
+    .mobile-menu.active {
+      left: 0 !important;
+    }
+
     .mobile-menu > a {
       display: block;
-      padding: 14px 20px;
+      padding: 13px 18px;
       border-bottom: 1px solid var(--border);
       color: var(--text);
       text-decoration: none;
-    }
-    .nav-right {
-      display: flex;
-      align-items: center;
-      gap: 12px;
+      font-size: 0.88rem;
+      font-weight: 500;
+      transition: background 0.2s ease;
     }
 
-    body.menu-open { overflow: hidden; }
+    .mobile-menu > a:hover,
+    .mobile-menu > a.active {
+      background: var(--bg2);
+      color: var(--primary, #2563eb);
+    }
+
+    /* Mobile Dropdown */
+    .mobile-dropdown-item {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .mobile-dropdown-toggle {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 13px 18px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.88rem;
+      color: var(--text);
+      transition: background 0.2s ease;
+    }
+
+    .mobile-dropdown-toggle:hover {
+      background: var(--bg2);
+    }
+
+    .mobile-dropdown-toggle .toggle-icon {
+      font-size: 0.65rem;
+      transition: transform 0.3s ease;
+      opacity: 0.7;
+    }
+
+    .mobile-dropdown-toggle.open .toggle-icon {
+      transform: rotate(180deg);
+    }
+
+    .mobile-submenu {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+      background: var(--bg2);
+    }
+
+    .mobile-submenu a {
+      display: block;
+      padding: 10px 18px 10px 36px;
+      font-size: 0.82rem;
+      color: var(--text2);
+      text-decoration: none;
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+
+    .mobile-submenu a:hover {
+      background: var(--bg3);
+      color: var(--primary, #2563eb);
+    }
+
+    body.menu-open {
+      overflow: hidden;
+    }
+
+    /* ============================================
+       RESPONSIVE
+       ============================================ */
+
+    /* Desktop (≤ 1200px) */
+    @media (max-width: 1200px) {
+      .nav-links > li > a {
+        padding: 9px 10px;
+        font-size: 0.78rem;
+      }
+    }
+
+    /* Tablet (≤ 1024px) — hamburger muncul */
+    @media (max-width: 1024px) {
+      .nav-links {
+        display: none !important;
+      }
+
+      .hamburger {
+        display: flex !important;
+      }
+
+      .nav-inner {
+        height: 72px;
+      }
+
+      .logo-img {
+        width: 46px;
+        height: 46px;
+      }
+
+      .logo-title {
+        font-size: 0.88rem;
+      }
+
+      .logo-sub {
+        font-size: 0.66rem;
+        letter-spacing: 0.4px;
+      }
+    }
+
+    /* Tablet kecil (≤ 768px) */
+    @media (max-width: 768px) {
+      nav.navbar .container {
+        padding: 0 16px;
+      }
+
+      .nav-inner {
+        height: 68px;
+        gap: 12px;
+      }
+
+      .logo {
+        gap: 10px;
+      }
+
+      .logo-img {
+        width: 44px;
+        height: 44px;
+      }
+
+      .logo-title {
+        font-size: 0.82rem;
+        letter-spacing: 0.2px;
+      }
+
+      .logo-sub {
+        font-size: 0.62rem;
+        letter-spacing: 0.4px;
+      }
+    }
+
+    /* Mobile (≤ 576px) */
+    @media (max-width: 576px) {
+      nav.navbar .container {
+        padding: 0 14px;
+      }
+
+      .nav-inner {
+        height: 64px;
+        gap: 10px;
+      }
+
+      .logo {
+        gap: 8px;
+      }
+
+      .logo-img {
+        width: 40px;
+        height: 40px;
+      }
+
+      .logo-title {
+        font-size: 0.74rem;
+        letter-spacing: 0.2px;
+      }
+
+      .logo-sub {
+        font-size: 0.56rem;
+        letter-spacing: 0.3px;
+      }
+
+      .hamburger {
+        padding: 5px;
+      }
+
+      .hamburger span {
+        width: 20px;
+        height: 2px;
+      }
+
+      .mobile-menu {
+        width: 90%;
+        max-width: none;
+      }
+    }
+
+    /* Mobile sangat kecil (≤ 400px) */
+    @media (max-width: 400px) {
+      .nav-inner {
+        height: 60px;
+      }
+
+      .logo {
+        gap: 7px;
+      }
+
+      .logo-img {
+        width: 36px;
+        height: 36px;
+      }
+
+      .logo-title {
+        font-size: 0.66rem;
+      }
+
+      .logo-sub {
+        font-size: 0.5rem;
+      }
+
+      .hamburger {
+        padding: 4px;
+      }
+
+      .hamburger span {
+        width: 18px;
+      }
+    }
+
+    /* Aksesibilitas */
+    @media (prefers-reduced-motion: reduce) {
+      .logo:hover .logo-img {
+        transform: none;
+      }
+
+      .hamburger span {
+        transition: none;
+      }
+
+      .mobile-menu,
+      .mobile-submenu,
+      .dropdown-menu {
+        transition: none;
+      }
+    }
   `;
 
   const styleSheet = document.createElement('style');
@@ -417,7 +756,9 @@ function injectNavbarStyles() {
   document.head.appendChild(styleSheet);
 }
 
+// ============================================
 // START
+// ============================================
 document.addEventListener('DOMContentLoaded', () => {
   injectNavbarStyles();
   initNavigation();
