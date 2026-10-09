@@ -90,6 +90,9 @@ function renderNavbar() {
         </ul>
 
         <div class="nav-right">
+          <button class="dark-toggle" aria-label="Toggle dark mode" id="darkToggleBtn">
+            <div class="dark-toggle-ball">☀️</div>
+          </button>
           <button class="hamburger" aria-label="Menu" aria-expanded="false" aria-controls="mobileMenu">
             <span></span><span></span><span></span>
           </button>
@@ -178,6 +181,7 @@ function applyNavbarOffset() {
 
 function attachAllEvents() {
   setTimeout(() => {
+    // ===== Hamburger toggle =====
     const hamburger = document.querySelector('.hamburger');
     const mobileMenu = document.getElementById('mobileMenu');
 
@@ -193,6 +197,7 @@ function attachAllEvents() {
       });
     }
 
+    // ===== Mobile submenu toggles =====
     const toggles = document.querySelectorAll('.mobile-dropdown-toggle');
     toggles.forEach(toggle => {
       const newToggle = toggle.cloneNode(true);
@@ -210,6 +215,7 @@ function attachAllEvents() {
       });
     });
 
+    // ===== Close mobile menu on link click =====
     const allLinks = document.querySelectorAll('#mobileMenu a');
     allLinks.forEach(link => {
       const newLink = link.cloneNode(true);
@@ -223,7 +229,47 @@ function attachAllEvents() {
         document.body.classList.remove('menu-open');
       });
     });
+
+    // ===== Dark Mode Toggle =====
+    initDarkMode();
   }, 50);
+}
+
+// ============================================
+// DARK MODE TOGGLE
+// ============================================
+function initDarkMode() {
+  const btn = document.getElementById('darkToggleBtn');
+  if (!btn) return;
+
+  const THEME_KEY = 'smp-theme';
+  const currentTheme = localStorage.getItem(THEME_KEY) || 'light';
+
+  document.documentElement.setAttribute('data-theme', currentTheme);
+  updateBallIcon(currentTheme);
+
+  // Clone & replace untuk hindari double event listener
+  const newBtn = btn.cloneNode(true);
+  btn.parentNode.replaceChild(newBtn, btn);
+
+  newBtn.addEventListener('click', function () {
+    const now = document.documentElement.getAttribute('data-theme') || 'light';
+    const next = now === 'dark' ? 'light' : 'dark';
+
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem(THEME_KEY, next);
+    updateBallIcon(next);
+
+    // Trigger event untuk komponen lain yang butuh tahu tema berubah
+    document.dispatchEvent(new CustomEvent('themeChanged', { detail: { theme: next } }));
+  });
+
+  function updateBallIcon(theme) {
+    const ball = newBtn.querySelector('.dark-toggle-ball');
+    if (ball) {
+      ball.textContent = theme === 'dark' ? '🌙' : '☀️';
+    }
+  }
 }
 
 function updateActiveNavLink() {
@@ -278,7 +324,6 @@ function injectNavbarStyles() {
       opacity: 1 !important;
     }
 
-    /* Container & Inner */
     nav.navbar .container {
       max-width: 1280px;
       margin: 0 auto;
