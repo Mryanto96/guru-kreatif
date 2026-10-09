@@ -18,7 +18,6 @@ const MENU_STRUCTURE = [
     dropdown: [
       { name: 'Documents', url: 'documents.html' },
       { name: 'Gallery', url: 'gallery.html' },
-      
     ]
   },
   { name: 'Kelulusan', url: 'kelulusan.html' },
@@ -126,6 +125,7 @@ function initNavigation() {
 
     attachAllEvents();
     updateActiveNavLink();
+    applyNavbarOffset(); // <-- TAMBAHAN
 
     const newDarkToggle = document.getElementById('darkToggleBtn');
     if (newDarkToggle) {
@@ -149,6 +149,7 @@ function initNavigation() {
 
     attachAllEvents();
     updateActiveNavLink();
+    applyNavbarOffset(); // <-- TAMBAHAN
 
     const newDarkToggle = document.getElementById('darkToggleBtn');
     if (newDarkToggle) {
@@ -158,15 +159,31 @@ function initNavigation() {
   }
 }
 
+// ============================================
+// TAMBAHAN: Hitung tinggi navbar & set padding body
+// ============================================
+function applyNavbarOffset() {
+  const navbar = document.querySelector('nav.navbar');
+  if (!navbar) return;
+
+  const updateOffset = () => {
+    const h = navbar.offsetHeight;
+    document.body.style.paddingTop = h + 'px';
+    document.documentElement.style.setProperty('--navbar-height', h + 'px');
+  };
+
+  // Jalankan setelah render
+  requestAnimationFrame(updateOffset);
+  // Update saat resize
+  window.addEventListener('resize', updateOffset);
+}
+
 function attachAllEvents() {
-  // Gunakan setTimeout untuk memastikan DOM benar-benar siap
   setTimeout(() => {
-    // Hamburger toggle
     const hamburger = document.querySelector('.hamburger');
     const mobileMenu = document.getElementById('mobileMenu');
 
     if (hamburger && mobileMenu) {
-      // Hapus listener lama dengan clone
       const newHamburger = hamburger.cloneNode(true);
       hamburger.parentNode.replaceChild(newHamburger, hamburger);
 
@@ -174,13 +191,9 @@ function attachAllEvents() {
         e.stopPropagation();
         mobileMenu.classList.toggle('active');
         this.classList.toggle('active');
-        console.log('Menu active:', mobileMenu.classList.contains('active')); // Debug
       });
-    } else {
-      console.log('ERROR: Hamburger atau mobileMenu tidak ditemukan!');
     }
 
-    // Submenu toggle di mobile
     const toggles = document.querySelectorAll('.mobile-dropdown-toggle');
     toggles.forEach(toggle => {
       const newToggle = toggle.cloneNode(true);
@@ -198,7 +211,6 @@ function attachAllEvents() {
       });
     });
 
-    // Tutup menu saat klik link
     const allLinks = document.querySelectorAll('#mobileMenu a');
     allLinks.forEach(link => {
       const newLink = link.cloneNode(true);
@@ -239,6 +251,35 @@ function injectNavbarStyles() {
   if (document.getElementById(styleId)) return;
 
   const styles = `
+    /* ============================================
+       NAVBAR FIXED — TIDAK HIDE SAAT SCROLL
+       ============================================ */
+    nav.navbar {
+      position: fixed !important;
+      top: 0 !important;
+      left: 0 !important;
+      right: 0 !important;
+      width: 100% !important;
+      z-index: 1000 !important;
+      background: var(--card-bg, #fff) !important;
+      border-bottom: 1px solid var(--border, #e5e7eb);
+      transform: none !important;
+      transition: none !important;
+      will-change: auto !important;
+      animation: none !important;
+    }
+
+    /* Pastikan tidak ada script lain yang bisa hide */
+    nav.navbar.hide,
+    nav.navbar.hidden,
+    nav.navbar.scroll-down {
+      transform: none !important;
+      top: 0 !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+    }
+
+    /* Dropdown */
     .nav-links li { position: relative; }
     .dropdown-menu {
       position: absolute;
@@ -279,6 +320,7 @@ function injectNavbarStyles() {
       margin-left: 4px;
     }
 
+    /* Mobile dropdown */
     .mobile-dropdown-item { border-bottom: 1px solid var(--border); }
     .mobile-dropdown-toggle {
       display: flex;
@@ -309,6 +351,7 @@ function injectNavbarStyles() {
     }
     .mobile-submenu a:hover { background: var(--bg3); }
 
+    /* Hamburger */
     .hamburger {
       cursor: pointer;
       background: none;
@@ -329,27 +372,21 @@ function injectNavbarStyles() {
     .hamburger.active span:nth-child(2) { opacity: 0; }
     .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
 
-    /* MOBILE LAYOUT (<= 992px) */
+    /* Mobile layout */
     @media (max-width: 992px) {
-      .nav-links {
-        display: none !important;
-      }
-      .hamburger {
-        display: flex !important;
-      }
-      .nav-inner {
-        flex-wrap: nowrap;
-      }
+      .nav-links { display: none !important; }
+      .hamburger { display: flex !important; }
+      .nav-inner { flex-wrap: nowrap; }
     }
 
-    /* MOBILE MENU - perbaikan dengan top: 69px (tinggi navbar) */
+    /* Mobile menu — pakai CSS variable tinggi navbar */
     .mobile-menu {
       position: fixed;
-      top: 69px;
+      top: var(--navbar-height, 69px);
       left: -100%;
       width: 80%;
       max-width: 320px;
-      height: calc(100% - 69px);
+      height: calc(100% - var(--navbar-height, 69px));
       background: var(--card-bg);
       border-right: 1px solid var(--border);
       transition: left 0.3s ease;
@@ -357,9 +394,7 @@ function injectNavbarStyles() {
       overflow-y: auto;
       box-shadow: 2px 0 10px rgba(0,0,0,0.1);
     }
-    .mobile-menu.active {
-      left: 0 !important;
-    }
+    .mobile-menu.active { left: 0 !important; }
     .mobile-menu > a {
       display: block;
       padding: 14px 20px;
@@ -373,10 +408,7 @@ function injectNavbarStyles() {
       gap: 12px;
     }
 
-    /* Tambahan untuk memastikan menu terlihat */
-    body.menu-open {
-      overflow: hidden;
-    }
+    body.menu-open { overflow: hidden; }
   `;
 
   const styleSheet = document.createElement('style');
