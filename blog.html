@@ -14,10 +14,11 @@
         rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     <link rel="stylesheet" href="css/style.css" />
+
     <style>
         /* ============================================================
-       HALAMAN BLOG — Layout Berita dengan Sidebar
-       ============================================================ */
+           HALAMAN BLOG — Layout Berita dengan Sidebar
+           ============================================================ */
 
         :root {
             --emerald: #10b981;
@@ -91,8 +92,8 @@
         }
 
         /* ============================================================
-       LAYOUT UTAMA — 2 KOLOM (Konten + Sidebar)
-       ============================================================ */
+           LAYOUT UTAMA — 2 KOLOM (Konten + Sidebar)
+           ============================================================ */
         .blog-layout {
             display: grid;
             grid-template-columns: 1fr;
@@ -109,13 +110,12 @@
         }
 
         /* ============================================================
-       KOLOM KIRI — Artikel Utama + Grid
-       ============================================================ */
+           KOLOM KIRI — Artikel Utama + Grid
+           ============================================================ */
         .blog-main {
             min-width: 0;
         }
 
-        /* ✅ FEATURED REVAMP — Mulai dari sini */
         /* ---------- BAGIAN ARTIKEL UTAMA ---------- */
         .featured-section {
             margin-bottom: 32px;
@@ -140,7 +140,6 @@
             background: linear-gradient(to right, var(--border), transparent);
         }
 
-        /* Featured Card — Grid 2 kolom di desktop, 1 kolom di mobile */
         .featured-card {
             display: grid;
             grid-template-columns: 1fr;
@@ -180,7 +179,6 @@
             transform: translateY(-4px);
         }
 
-        /* Media — sekarang fixed height, bukan aspect-ratio */
         .featured-media {
             position: relative;
             background: var(--bg3);
@@ -230,7 +228,6 @@
             z-index: 2;
         }
 
-        /* Body — spacing lebih rapi */
         .featured-body {
             padding: 20px 22px;
             display: flex;
@@ -311,8 +308,6 @@
             color: var(--emerald);
             font-size: 0.65rem;
         }
-
-        /* ✅ FEATURED REVAMP — Selesai */
 
         /* ---------- GRID BLOG ---------- */
         .blog-grid {
@@ -482,8 +477,8 @@
         }
 
         /* ============================================================
-       KOLOM KANAN — SIDEBAR
-       ============================================================ */
+           KOLOM KANAN — SIDEBAR
+           ============================================================ */
         .blog-sidebar {
             position: sticky;
             top: calc(var(--nav-h, 68px) + 24px);
@@ -767,7 +762,7 @@
             }
         }
 
-        /* ---------- REDUCED MOTION (Aksesibilitas) ---------- */
+        /* ---------- REDUCED MOTION ---------- */
         @media (prefers-reduced-motion: reduce) {
 
             *,
@@ -795,7 +790,6 @@
              ============================================================ -->
         <section class="blog-header">
             <div class="container">
-                <!-- <p class="section-label">Blog &amp; Artikel</p> -->
                 <h1 class="section-title">
                     Cerita dari <span class="gradient-text">SMP Negeri Pulau Tiga</span>
                 </h1>
@@ -812,7 +806,6 @@
         <section class="section" style="padding-top: 0;">
             <div class="container">
 
-                <!-- Layout 2 Kolom -->
                 <div class="blog-layout">
 
                     <!-- KIRI: Artikel Utama + Grid -->
@@ -828,9 +821,7 @@
                         </section>
 
                         <!-- Grid -->
-                        <div class="blog-grid" id="blogGrid">
-                            <!-- Kartu dimasukkan oleh JS -->
-                        </div>
+                        <div class="blog-grid" id="blogGrid"></div>
 
                         <!-- Muat Lebih Banyak -->
                         <div class="loadmore-wrap" id="loadmoreWrap" style="display:none;">
@@ -846,26 +837,20 @@
                     <!-- KANAN: Sidebar -->
                     <aside class="blog-sidebar">
 
-                        <!-- Sidebar: Artikel Terbaru -->
                         <div class="sidebar-panel">
                             <h3 class="sidebar-title">
                                 <i class="fas fa-clock"></i>
                                 Artikel Terbaru
                             </h3>
-                            <div class="sidebar-articles" id="sidebarArticles">
-                                <!-- Dimasukkan oleh JS -->
-                            </div>
+                            <div class="sidebar-articles" id="sidebarArticles"></div>
                         </div>
 
-                        <!-- Sidebar: Kategori -->
                         <div class="sidebar-panel">
                             <h3 class="sidebar-title">
                                 <i class="fas fa-tags"></i>
                                 Kategori
                             </h3>
-                            <div class="sidebar-cats" id="sidebarCategories">
-                                <!-- Dimasukkan oleh JS -->
-                            </div>
+                            <div class="sidebar-cats" id="sidebarCategories"></div>
                         </div>
 
                     </aside>
@@ -883,8 +868,7 @@
 
                     <div>
                         <h4 style="font-size: 0.85rem; font-weight: 700; margin-bottom: 10px;"
-                            data-i18n="footer_contact">
-                            Kontak</h4>
+                            data-i18n="footer_contact">Kontak</h4>
                         <p style="font-size: 0.78rem; color: var(--text2); line-height: 1.8; margin: 0;">
                             <i class="fas fa-map-marker-alt" style="color: var(--c1); width: 16px;"></i>
                             Jl. Puskesmas Nakai, Distrik Pulau Tiga,<br />Kabupaten Asmat, Papua Selatan, Indonesia
@@ -895,23 +879,9 @@
                         </p>
                     </div>
 
-                    <!-- <div>
-                        <h4 style="font-size: 0.85rem; font-weight: 700; margin-bottom: 10px;" data-i18n="footer_phone">
-                            Telepon / WhatsApp</h4>
-                        <p style="font-size: 0.78rem; color: var(--text2); line-height: 1.8; margin: 0;">
-                            <i class="fab fa-whatsapp" style="color: var(--c1); width: 16px;"></i>
-                            Tata Usaha: 08218887004
-                        </p>
-                        <p style="font-size: 0.78rem; color: var(--text2); line-height: 1.8; margin: 4px 0 0;">
-                            <i class="fab fa-whatsapp" style="color: var(--c1); width: 16px;"></i>
-                            Kesiswaan: 085691296762
-                        </p>
-                    </div> -->
-
                     <div>
                         <h4 style="font-size: 0.85rem; font-weight: 700; margin-bottom: 10px;"
-                            data-i18n="footer_institution">
-                            Institusi</h4>
+                            data-i18n="footer_institution">Institusi</h4>
                         <p style="font-size: 0.78rem; color: var(--text2); line-height: 1.8; margin: 0;">
                             SMP Negeri Pulau Tiga<br />
                             Dinas Pendidikan Kabupaten Asmat<br />
@@ -922,11 +892,11 @@
 
                     <div>
                         <h4 style="font-size: 0.85rem; font-weight: 700; margin-bottom: 10px;"
-                            data-i18n="footer_follow">Ikuti
-                            Kami</h4>
+                            data-i18n="footer_follow">Ikuti Kami</h4>
                         <div style="display: flex; gap: 10px; margin-top: 4px;">
 
-                            <a href="https://www.facebook.com/yantho.rundy6" target="_blank" rel="noopener noreferrer" aria-label="Facebook"
+                            <a href="https://www.facebook.com/yantho.rundy6" target="_blank" rel="noopener noreferrer"
+                                aria-label="Facebook"
                                 style="display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; background: var(--card-bg); border: 1px solid var(--border); color: var(--text2); text-decoration: none; font-size: 0.95rem; transition: all .25s ease;"
                                 onmouseover="this.style.background='#1877F2';this.style.color='#fff';this.style.borderColor='#1877F2';this.style.transform='translateY(-2px)';"
                                 onmouseout="this.style.background='var(--card-bg)';this.style.color='var(--text2)';this.style.borderColor='var(--border)';this.style.transform='translateY(0)';">

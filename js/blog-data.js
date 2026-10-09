@@ -331,9 +331,9 @@ const BLOG_DATA = [
 
 
     /* ============================================================
-       ARTIKEL 2 — tips
-       Mengenal 16 Tenses Bahasa Inggris
-       ============================================================ */
+    ARTIKEL 2 — tips
+    Mengenal 16 Tenses Bahasa Inggris
+    ============================================================ */
     {
         id: 'mengenal-16-tenses',
         title: 'Mengenal 16 Tenses Bahasa Inggris: Panduan Lengkap dengan Rumus dan Contoh',
@@ -347,6 +347,113 @@ const BLOG_DATA = [
         views: 2500,
         featured: false,
 
+        // ✅ QUIZ YANG BENAR — TENTANG TENSES
+        quiz: {
+            title: 'Uji Pemahamanmu tentang 16 Tenses',
+            description: 'Jawab 20 soal berikut untuk menguji pemahamanmu tentang 16 tenses bahasa Inggris. Setelah selesai, klik tombol untuk mengirim jawaban ke Facebook Mr. Yanto.',
+            questions: [
+                {
+                    question: 'Tense yang digunakan untuk menyatakan kebiasaan atau fakta umum adalah...',
+                    options: ['Simple Past Tense', 'Simple Present Tense', 'Present Continuous Tense', 'Present Perfect Tense'],
+                    answer: 1
+                },
+                {
+                    question: 'Kalimat "She is reading a book now" menggunakan tense...',
+                    options: ['Simple Present Tense', 'Present Continuous Tense', 'Present Perfect Tense', 'Simple Past Tense'],
+                    answer: 1
+                },
+                {
+                    question: 'Auxiliary verb yang digunakan dalam Present Perfect Tense adalah...',
+                    options: ['Do / Does', 'Am / Is / Are', 'Has / Have', 'Was / Were'],
+                    answer: 2
+                },
+                {
+                    question: 'Kalimat "They called their friends yesterday" menggunakan tense...',
+                    options: ['Simple Present Tense', 'Present Continuous Tense', 'Simple Past Tense', 'Past Continuous Tense'],
+                    answer: 2
+                },
+                {
+                    question: 'Tense yang digunakan untuk menyatakan kejadian yang akan sedang berlangsung di masa depan adalah...',
+                    options: ['Simple Future Tense', 'Future Continuous Tense', 'Future Perfect Tense', 'Future Perfect Continuous Tense'],
+                    answer: 1
+                },
+                {
+                    question: 'Rumus Simple Present Tense untuk subject "She" adalah...',
+                    options: ['She + Verb 1', 'She + Verb 1 (s/es)', 'She + Verb 2', 'She + Verb 3'],
+                    answer: 1
+                },
+                {
+                    question: 'Time signal yang biasa muncul di Present Continuous Tense adalah...',
+                    options: ['Yesterday', 'Last week', 'Now', 'Tomorrow'],
+                    answer: 2
+                },
+                {
+                    question: 'Kalimat "I have been thinking about it for three hours" menggunakan tense...',
+                    options: ['Present Perfect Tense', 'Present Perfect Continuous Tense', 'Past Perfect Tense', 'Simple Present Tense'],
+                    answer: 1
+                },
+                {
+                    question: 'Auxiliary verb yang digunakan dalam Past Continuous Tense adalah...',
+                    options: ['Do / Does', 'Am / Is / Are', 'Was / Were', 'Has / Have'],
+                    answer: 2
+                },
+                {
+                    question: 'Kalimat "The girl had cried before her mother came" menggunakan tense...',
+                    options: ['Simple Past Tense', 'Past Continuous Tense', 'Past Perfect Tense', 'Past Perfect Continuous Tense'],
+                    answer: 2
+                },
+                {
+                    question: 'Tense yang digunakan untuk menyatakan kejadian yang sudah selesai sebelum kejadian lain di masa lalu adalah...',
+                    options: ['Simple Past Tense', 'Past Continuous Tense', 'Past Perfect Tense', 'Simple Future Tense'],
+                    answer: 2
+                },
+                {
+                    question: 'Time signal "by tomorrow" biasanya muncul di tense...',
+                    options: ['Simple Future Tense', 'Future Continuous Tense', 'Future Perfect Tense', 'Future Perfect Continuous Tense'],
+                    answer: 2
+                },
+                {
+                    question: 'Kalimat "He will be playing basketball tomorrow morning" menggunakan tense...',
+                    options: ['Simple Future Tense', 'Future Continuous Tense', 'Future Perfect Tense', 'Present Continuous Tense'],
+                    answer: 1
+                },
+                {
+                    question: 'Auxiliary verb yang digunakan dalam Future Perfect Tense adalah...',
+                    options: ['Will', 'Will Be', 'Will Have', 'Will Have Been'],
+                    answer: 2
+                },
+                {
+                    question: 'Kalimat "In December, I will have been working here for one year" menggunakan tense...',
+                    options: ['Future Continuous Tense', 'Future Perfect Tense', 'Future Perfect Continuous Tense', 'Simple Future Tense'],
+                    answer: 2
+                },
+                {
+                    question: 'Kalimat "She said she would forgive you" menggunakan tense...',
+                    options: ['Simple Future Tense', 'Simple Past Future Tense', 'Past Future Continuous Tense', 'Past Future Perfect Tense'],
+                    answer: 1
+                },
+                {
+                    question: 'Auxiliary verb yang digunakan dalam Simple Past Future Tense adalah...',
+                    options: ['Will', 'Would', 'Would Be', 'Would Have'],
+                    answer: 1
+                },
+                {
+                    question: 'Kalimat "I would be studying at your house yesterday" menggunakan tense...',
+                    options: ['Past Future Tense', 'Past Future Continuous Tense', 'Past Future Perfect Tense', 'Simple Past Tense'],
+                    answer: 1
+                },
+                {
+                    question: 'Kalimat "Mina would have finished her homework if she hadn\'t gone shopping" menggunakan tense...',
+                    options: ['Past Future Tense', 'Past Future Continuous Tense', 'Past Future Perfect Tense', 'Past Perfect Tense'],
+                    answer: 2
+                },
+                {
+                    question: 'Berapa jumlah tenses dalam bahasa Inggris?',
+                    options: ['8 tenses', '12 tenses', '16 tenses', '20 tenses'],
+                    answer: 2
+                }
+            ]
+        },
         content: `
 <p><span class="drop-cap">1</span>6 Tenses? 😭 Banyak Amat, Sih? Tenang, Saya Ajak Kamu Ngobrol Perlahan.</p>
 
@@ -1397,7 +1504,112 @@ const BLOG_DATA = [
         tags: ['Tips', 'Grammar', 'Bahasa Inggris', 'Belajar'],
         views: 1800,
         featured: false,
-
+                quiz: {
+            title: 'Uji Pemahamanmu tentang Degree of Comparison',
+            description: 'Jawab 20 soal berikut untuk menguji pemahamanmu tentang Degree of Comparison. Setelah selesai, klik tombol untuk mengirim jawaban ke Facebook Mr. Yanto.',
+            questions: [
+                {
+                    question: 'Degree of Comparison adalah istilah untuk...',
+                    options: ['Tiga tingkatan membandingkan sesuatu', 'Tiga jenis kata kerja', 'Tiga waktu dalam bahasa Inggris', 'Tiga jenis kalimat'],
+                    answer: 0
+                },
+                {
+                    question: 'Kalimat "Kue ini enak" termasuk dalam...',
+                    options: ['Comparative Degree', 'Superlative Degree', 'Positive Degree', 'Passive Degree'],
+                    answer: 2
+                },
+                {
+                    question: 'Kalimat "Kue ini lebih enak daripada kue kemarin" termasuk...',
+                    options: ['Positive Degree', 'Comparative Degree', 'Superlative Degree', 'Irregular Degree'],
+                    answer: 1
+                },
+                {
+                    question: 'Kalimat "Kue ini adalah kue paling enak yang pernah saya makan" termasuk...',
+                    options: ['Positive Degree', 'Comparative Degree', 'Superlative Degree', 'Regular Degree'],
+                    answer: 2
+                },
+                {
+                    question: 'Rumus Positive Degree adalah...',
+                    options: ['Subject + to be + adjective', 'Subject + Verb + Object', 'Subject + to be + adjective + -er', 'Subject + the + adjective + -est'],
+                    answer: 0
+                },
+                {
+                    question: 'Untuk kata sifat pendek (1 suku kata), bentuk comparative ditambah...',
+                    options: ['more', 'most', '-er', '-est'],
+                    answer: 2
+                },
+                {
+                    question: 'Untuk kata sifat panjang (3 suku kata atau lebih), bentuk comparative ditambah...',
+                    options: ['-er', '-est', 'more', 'most'],
+                    answer: 2
+                },
+                {
+                    question: 'Bentuk comparative dari "big" adalah...',
+                    options: ['biger', 'bigger', 'more big', 'biggest'],
+                    answer: 1
+                },
+                {
+                    question: 'Bentuk comparative dari "beautiful" adalah...',
+                    options: ['beautifuler', 'beautifulest', 'more beautiful', 'most beautiful'],
+                    answer: 2
+                },
+                {
+                    question: 'Bentuk superlative dari "happy" adalah...',
+                    options: ['happyer', 'happier', 'the happiest', 'more happy'],
+                    answer: 2
+                },
+                {
+                    question: 'Apa itu suku kata (syllable)?',
+                    options: ['Jumlah huruf dalam kata', 'Satuan bunyi dari satu kali hembusan napas', 'Jumlah vokal dalam kata', 'Panjang pendeknya kata'],
+                    answer: 1
+                },
+                {
+                    question: 'Kata "KOPI" terdiri dari berapa suku kata?',
+                    options: ['1 suku kata', '2 suku kata', '3 suku kata', '4 suku kata'],
+                    answer: 1
+                },
+                {
+                    question: 'Kata "BEAUTIFUL" terdiri dari berapa suku kata?',
+                    options: ['1 suku kata', '2 suku kata', '3 suku kata', '4 suku kata'],
+                    answer: 2
+                },
+                {
+                    question: 'Kata sifat 2 suku kata yang berakhiran -y, -er, -ow, -le biasanya pakai...',
+                    options: ['more/most', '-er/-est', 'the + adjective', 'tanpa perubahan'],
+                    answer: 1
+                },
+                {
+                    question: 'Bentuk comparative dari "simple" adalah...',
+                    options: ['more simple', 'simpler', 'simplest', 'simply'],
+                    answer: 1
+                },
+                {
+                    question: 'Bentuk comparative dari "honest" adalah...',
+                    options: ['honester', 'honestest', 'more honest', 'most honest'],
+                    answer: 2
+                },
+                {
+                    question: 'Kata sifat yang berakhiran huruf Y, ubah Y menjadi...',
+                    options: ['A', 'E', 'I', 'U'],
+                    answer: 2
+                },
+                {
+                    question: 'Bentuk superlative dari "good" adalah...',
+                    options: ['gooder', 'goodest', 'better', 'the best'],
+                    answer: 3
+                },
+                {
+                    question: 'Bentuk comparative dari "bad" adalah...',
+                    options: ['badder', 'worse', 'worst', 'more bad'],
+                    answer: 1
+                },
+                {
+                    question: 'Mana yang BENAR di antara kalimat berikut?',
+                    options: ['She is more taller than me.', 'She is taller than me.', 'She is most taller than me.', 'She is more tall than me.'],
+                    answer: 1
+                }
+            ]
+        },
         content: `
 <p><span class="drop-cap">J</span>angan Katakan Kami Tidak Memperingatkan Anda</p>
 
@@ -1914,10 +2126,10 @@ const BLOG_DATA = [
 <p><strong>Menjadi guru bukan tentang menjadi sempurna. Menjadi guru adalah tentang hadir, setiap hari, dengan sebaik yang kita bisa.</strong> 🌿</p>
 `
     },
-        /* ============================================================
-       ARTIKEL 8 — pengalaman
-       Menjadi Guru di Daerah 3T
-       ============================================================ */
+    /* ============================================================
+   ARTIKEL 8 — pengalaman
+   Menjadi Guru di Daerah 3T
+   ============================================================ */
     {
         id: 'menjadi-guru-di-daerah-3t',
         title: 'Menjadi Guru di Daerah 3T: Tantangan, Cerita, dan Kebahagiaan Kecil',
@@ -2091,6 +2303,112 @@ const BLOG_DATA = [
         tags: ['Tips', 'Grammar', 'Active Voice', 'Passive Voice'],
         views: 2471,
         featured: false,
+        quiz: {
+            title: 'Uji Pemahamanmu tentang Active & Passive Voice',
+            description: 'Jawab 20 soal berikut untuk menguji pemahamanmu tentang kalimat aktif dan pasif. Setelah selesai, klik tombol untuk mengirim jawaban ke Facebook Mr. Yanto.',
+            questions: [
+                {
+                    question: 'Kalimat aktif adalah kalimat di mana...',
+                    options: ['Yang dilakukan berada di depan', 'Yang melakukan berada di depan', 'Yang melakukan tidak disebutkan', 'Kata kerjanya selalu Verb 3'],
+                    answer: 1
+                },
+                {
+                    question: 'Kalimat pasif adalah kalimat di mana...',
+                    options: ['Yang melakukan berada di depan', 'Yang dilakukan berada di depan', 'Hanya ada subject dan verb', 'Tidak ada object'],
+                    answer: 1
+                },
+                {
+                    question: 'Rumus kalimat aktif adalah...',
+                    options: ['Object + To Be + Verb 3', 'Subject + Verb + Object', 'Object + Verb + Subject', 'To Be + Subject + Verb'],
+                    answer: 1
+                },
+                {
+                    question: 'Rumus kalimat pasif adalah...',
+                    options: ['Subject + Verb + Object', 'Object + To Be + Verb 3 + By + Subject', 'Subject + To Be + Verb 1', 'Object + Verb + Subject'],
+                    answer: 1
+                },
+                {
+                    question: 'Kalimat "Ibu memasak nasi" termasuk kalimat...',
+                    options: ['Pasif', 'Aktif', 'Tanya', 'Perintah'],
+                    answer: 1
+                },
+                {
+                    question: 'Kalimat "Nasi dimasak ibu" termasuk kalimat...',
+                    options: ['Aktif', 'Pasif', 'Tanya', 'Seru'],
+                    answer: 1
+                },
+                {
+                    question: 'Apa itu Verb 3 dari "eat"?',
+                    options: ['Ate', 'Eaten', 'Eating', 'Eats'],
+                    answer: 1
+                },
+                {
+                    question: 'Apa itu Verb 3 dari "write"?',
+                    options: ['Wrote', 'Writed', 'Written', 'Writing'],
+                    answer: 2
+                },
+                {
+                    question: 'Apa itu Verb 3 dari "make"?',
+                    options: ['Maked', 'Making', 'Made', 'Makes'],
+                    answer: 2
+                },
+                {
+                    question: 'Apa itu Verb 3 dari "see"?',
+                    options: ['Saw', 'Seen', 'Seeing', 'Sees'],
+                    answer: 1
+                },
+                {
+                    question: 'Bentuk pasif dari "Adik eats the bread" adalah...',
+                    options: ['The bread eats Adik.', 'The bread is eaten by Adik.', 'The bread was eating by Adik.', 'The bread eaten by Adik.'],
+                    answer: 1
+                },
+                {
+                    question: 'Bentuk pasif dari "She reads a book" adalah...',
+                    options: ['A book is read by her.', 'A book was read by her.', 'A book reads by her.', 'A book read by her.'],
+                    answer: 0
+                },
+                {
+                    question: 'Bentuk pasif dari "They play football" adalah...',
+                    options: ['Football is played by them.', 'Football was played by them.', 'Football plays by them.', 'Football played by them.'],
+                    answer: 0
+                },
+                {
+                    question: 'Kalimat pasif dipakai kalau...',
+                    options: ['Kita tahu siapa yang melakukan', 'Kita tidak tahu siapa yang melakukan', 'Kita ingin menonjolkan yang melakukan', 'Kita ingin menonjolkan subject'],
+                    answer: 1
+                },
+                {
+                    question: 'Kalimat "The window was broken" adalah kalimat pasif yang dipakai karena...',
+                    options: ['Kita tahu siapa yang memecahkan', 'Kita tidak tahu siapa yang memecahkan', 'Kita ingin menonjolkan yang memecahkan', 'Kita ingin menonjolkan waktu'],
+                    answer: 1
+                },
+                {
+                    question: 'Kalimat pasif "The book is read by Maria" menggunakan tense...',
+                    options: ['Simple Past Tense', 'Simple Present Tense', 'Simple Future Tense', 'Present Perfect Tense'],
+                    answer: 1
+                },
+                {
+                    question: 'Kalimat pasif "The book was read by Maria" menggunakan tense...',
+                    options: ['Simple Present Tense', 'Simple Past Tense', 'Simple Future Tense', 'Present Perfect Tense'],
+                    answer: 1
+                },
+                {
+                    question: 'Kalimat pasif "The book will be read by Maria" menggunakan tense...',
+                    options: ['Simple Present Tense', 'Simple Past Tense', 'Simple Future Tense', 'Present Perfect Tense'],
+                    answer: 2
+                },
+                {
+                    question: 'Kesalahan umum dalam kalimat pasif adalah...',
+                    options: ['Pakai "to be"', 'Pakai Verb 3', 'Lupa pakai "by"', 'Pakai subject di depan'],
+                    answer: 2
+                },
+                {
+                    question: 'Kapan "by" TIDAK dipakai dalam kalimat pasif?',
+                    options: ['Kalau yang melakukan penting', 'Kalau yang melakukan tidak penting', 'Kalau subjectnya panjang', 'Kalau objectnya benda'],
+                    answer: 1
+                }
+            ]
+        },
 
         content: `
 <p><span class="drop-cap">H</span>alo, teman-teman!</p>
@@ -2377,6 +2695,112 @@ const BLOG_DATA = [
         tags: ['Tips', 'Writing', 'Jenis Text', 'Bahasa Inggris'],
         views: 1200,
         featured: false,
+        quiz: {
+            title: 'Uji Pemahamanmu tentang 6 Jenis Text',
+            description: 'Jawab 20 soal berikut untuk menguji pemahamanmu tentang 6 jenis text dalam bahasa Inggris. Setelah selesai, klik tombol untuk mengirim jawaban ke Facebook Mr. Yanto.',
+            questions: [
+                {
+                    question: 'Teks yang menggambarkan sesuatu (orang, tempat, benda, hewan) dengan detail disebut...',
+                    options: ['Recount Text', 'Descriptive Text', 'Narrative Text', 'Procedure Text'],
+                    answer: 1
+                },
+                {
+                    question: 'Teks yang menceritakan kembali pengalaman masa lalu disebut...',
+                    options: ['Descriptive Text', 'Report Text', 'Recount Text', 'News Item'],
+                    answer: 2
+                },
+                {
+                    question: 'Teks yang menceritakan cerita (dongeng, legenda) disebut...',
+                    options: ['Procedure Text', 'Report Text', 'Narrative Text', 'News Item'],
+                    answer: 2
+                },
+                {
+                    question: 'Teks yang memberi petunjuk cara membuat sesuatu disebut...',
+                    options: ['Narrative Text', 'Report Text', 'Procedure Text', 'Recount Text'],
+                    answer: 2
+                },
+                {
+                    question: 'Teks yang melaporkan hasil observasi tentang sesuatu secara umum disebut...',
+                    options: ['Report Text', 'Recount Text', 'Descriptive Text', 'Narrative Text'],
+                    answer: 0
+                },
+                {
+                    question: 'Teks yang memberitakan kejadian atau peristiwa disebut...',
+                    options: ['Narrative Text', 'News Item', 'Recount Text', 'Procedure Text'],
+                    answer: 1
+                },
+                {
+                    question: 'Struktur Descriptive Text ada dua, yaitu...',
+                    options: ['Orientation - Events', 'Identification - Description', 'Goal - Steps', 'Orientation - Complication'],
+                    answer: 1
+                },
+                {
+                    question: 'Struktur Recount Text ada tiga, yaitu...',
+                    options: ['Orientation - Events - Reorientation', 'Goal - Materials - Steps', 'Orientation - Complication - Resolution', 'General Classification - Description'],
+                    answer: 0
+                },
+                {
+                    question: 'Struktur Narrative Text ada tiga, yaitu...',
+                    options: ['Orientation - Events - Reorientation', 'Goal - Materials - Steps', 'Orientation - Complication - Resolution', 'Identification - Description'],
+                    answer: 2
+                },
+                {
+                    question: 'Struktur Procedure Text ada tiga, yaitu...',
+                    options: ['Orientation - Events - Reorientation', 'Goal - Materials - Steps', 'Orientation - Complication - Resolution', 'Identification - Description'],
+                    answer: 1
+                },
+                {
+                    question: 'Struktur Report Text ada dua, yaitu...',
+                    options: ['Identification - Description', 'General Classification - Description', 'Orientation - Events', 'Goal - Steps'],
+                    answer: 1
+                },
+                {
+                    question: 'Struktur News Item ada tiga, yaitu...',
+                    options: ['Orientation - Events - Reorientation', 'Newsworthy Event - Background Events - Sources', 'Goal - Materials - Steps', 'Orientation - Complication - Resolution'],
+                    answer: 1
+                },
+                {
+                    question: 'Tense yang dipakai dalam Descriptive Text adalah...',
+                    options: ['Simple Past Tense', 'Simple Present Tense', 'Present Continuous Tense', 'Future Tense'],
+                    answer: 1
+                },
+                {
+                    question: 'Tense yang dipakai dalam Recount Text adalah...',
+                    options: ['Simple Present Tense', 'Simple Past Tense', 'Future Tense', 'Present Perfect Tense'],
+                    answer: 1
+                },
+                {
+                    question: 'Tense yang dipakai dalam Narrative Text adalah...',
+                    options: ['Simple Present Tense', 'Simple Past Tense', 'Future Tense', 'Present Perfect Tense'],
+                    answer: 1
+                },
+                {
+                    question: 'Ciri bahasa Procedure Text adalah banyak menggunakan...',
+                    options: ['Kata sifat', 'Kalimat perintah (imperative)', 'Dialog', 'Kata kerja lampau'],
+                    answer: 1
+                },
+                {
+                    question: 'Teks "My School" termasuk jenis...',
+                    options: ['Recount Text', 'Descriptive Text', 'Narrative Text', 'Procedure Text'],
+                    answer: 1
+                },
+                {
+                    question: 'Teks "My Holiday" termasuk jenis...',
+                    options: ['Descriptive Text', 'Recount Text', 'Narrative Text', 'Report Text'],
+                    answer: 1
+                },
+                {
+                    question: 'Teks "How to Make a Cup of Tea" termasuk jenis...',
+                    options: ['Narrative Text', 'Procedure Text', 'Recount Text', 'Report Text'],
+                    answer: 1
+                },
+                {
+                    question: 'Teks "Timun Mas" termasuk jenis...',
+                    options: ['Recount Text', 'Descriptive Text', 'Narrative Text', 'Report Text'],
+                    answer: 2
+                }
+            ]
+        },
 
         content: `
 <p><span class="drop-cap">P</span>ernah tidak, kamu membaca sebuah teks bahasa Inggris, lalu bertanya-tanya: "Ini sebenarnya teks apa, ya?"</p>

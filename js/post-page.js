@@ -3,6 +3,7 @@
    - Baca ?id= dari URL
    - Cari artikel di BLOG_DATA
    - Render article lengkap + KaTeX
+   - Render QUIZ (kalau artikel punya properti `quiz`)
    - Related articles
    - Views counter (localStorage)
    - Reading progress bar
@@ -14,15 +15,18 @@
     /* ============================================================
        CONFIG
        ============================================================ */
-    const PLACEHOLDER_IMG = 'images/blog/placeholder.jpg';
+    const FACEBOOK_PROFILE_URL = 'https://www.facebook.com/yantho.rundy6';
+    const PLACEHOLDER_IMG = 'images/blog/Video.png';
 
+    // Mapping kategori — pakai bahasa Indonesia
     const CATEGORY_INFO = {
-        news: { label: 'News', color: '#3b82f6' },
-        event: { label: 'Event', color: '#f59e0b' },
-        achievement: { label: 'Achievement', color: '#ef4444' },
-        activity: { label: 'Activity', color: '#8b5cf6' },
+        berita: { label: 'Berita', color: '#3b82f6' },
+        acara: { label: 'Acara', color: '#f59e0b' },
+        prestasi: { label: 'Prestasi', color: '#ef4444' },
+        kegiatan: { label: 'Kegiatan', color: '#8b5cf6' },
         workshop: { label: 'Workshop', color: '#06b6d4' },
-        tips: { label: 'Tips', color: '#10b981' }
+        tips: { label: 'Tips', color: '#10b981' },
+        pengalaman: { label: 'Pengalaman', color: '#ec4899' }
     };
 
     /* ============================================================
@@ -39,15 +43,15 @@
 
     function formatDateLong(isoDate) {
         if (!isoDate) return '';
-        const months = ['January', 'February', 'March', 'April', 'May', 'June',
-            'July', 'August', 'September', 'October', 'November', 'December'];
+        const months = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni',
+            'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
         const d = new Date(isoDate);
         if (isNaN(d.getTime())) return isoDate;
         return `${d.getDate()} ${months[d.getMonth()]} ${d.getFullYear()}`;
     }
 
     function getCategoryInfo(cat) {
-        return CATEGORY_INFO[cat] || { label: 'Article', color: '#64748b' };
+        return CATEGORY_INFO[cat] || { label: 'Lainnya', color: '#64748b' };
     }
 
     function getInitials(name) {
@@ -66,7 +70,7 @@
         const plain = String(text || '').replace(/<[^>]+>/g, ' ');
         const words = plain.trim().split(/\s+/).filter(Boolean).length;
         const minutes = Math.max(1, Math.round(words / 200));
-        return `${minutes} min read`;
+        return `${minutes} menit baca`;
     }
 
     function stripHtml(html) {
@@ -81,7 +85,6 @@
     function getViews(articleId) {
         const key = `skb_blog_views_${articleId}`;
         const stored = parseInt(localStorage.getItem(key), 10) || 0;
-        // Base views from article object
         const article = (typeof BLOG_DATA !== 'undefined') ?
             BLOG_DATA.find(a => a.id === articleId) : null;
         const base = (article && article.views) || 0;
@@ -92,7 +95,6 @@
         const key = `skb_blog_views_${articleId}`;
         const viewedKey = `skb_blog_viewed_${articleId}`;
 
-        // Only increment once per browser
         if (localStorage.getItem(viewedKey)) {
             return getViews(articleId);
         }
@@ -111,18 +113,7 @@
         const container = document.getElementById('articleContainer');
         if (!container) return;
 
-        document.title = 'Not Found | English Prime Course';
-
-        const breadcrumb = document.getElementById('breadcrumb');
-        if (breadcrumb) {
-            breadcrumb.innerHTML = `
-                <a href="index.html">Home</a>
-                <i class="fas fa-chevron-right"></i>
-                <a href="blog.html">Blog</a>
-                <i class="fas fa-chevron-right"></i>
-                <span>Not found</span>
-            `;
-        }
+        document.title = 'Tidak Ditemukan | SMP Negeri Pulau Tiga';
 
         container.innerHTML = `
             <div class="error-state">
@@ -133,7 +124,7 @@
                 <p>${escapeHtml(message)}</p>
                 <a href="blog.html" class="back-btn">
                     <i class="fas fa-arrow-left"></i>
-                    Back to Blog
+                    Kembali ke Blog
                 </a>
             </div>
         `;
@@ -144,33 +135,17 @@
        ============================================================ */
     function renderArticle(article) {
         const container = document.getElementById('articleContainer');
-        const breadcrumb = document.getElementById('breadcrumb');
         if (!container) return;
 
-        // Update document title & meta description
-        document.title = `${article.title} | English Prime Course`;
+        document.title = `${article.title} | SMP Negeri Pulau Tiga`;
         const metaDesc = document.querySelector('meta[name="description"]');
         if (metaDesc) metaDesc.setAttribute('content', article.excerpt || '');
 
-        // Views
         const views = incrementViews(article.id);
-
-        // Breadcrumb
-        if (breadcrumb) {
-            const cat = getCategoryInfo(article.category);
-            breadcrumb.innerHTML = `
-                <a href="index.html">Home</a>
-                <i class="fas fa-chevron-right"></i>
-                <a href="blog.html">Blog</a>
-                <i class="fas fa-chevron-right"></i>
-                <span>${escapeHtml(cat.label)}</span>
-            `;
-        }
-
         const cat = getCategoryInfo(article.category);
         const initials = getInitials(article.author || 'Admin');
         const rt = readingTime(article.content || article.excerpt);
-        const authorRole = article.authorRole || 'Contributor';
+        const authorRole = article.authorRole || 'Kontributor';
 
         const tagsHtml = (article.tags || []).length
             ? `<div class="article-tags">
@@ -223,13 +198,13 @@
                 </figure>
 
                 <div class="article-content" id="articleBody">
-                    ${article.content || '<p>Content not available.</p>'}
+                    ${article.content || '<p>Konten tidak tersedia.</p>'}
                 </div>
 
                 ${tagsHtml}
 
                 <div class="article-share">
-                    <span class="article-share-label">Share this article</span>
+                    <span class="article-share-label">Bagikan artikel ini</span>
                     <div class="article-share-buttons">
                         <a class="share-btn"
                            href="https://wa.me/?text=${encodeURIComponent(shareTitle + ' ' + shareUrl)}"
@@ -255,7 +230,7 @@
                 <div class="article-bottom">
                     <a href="blog.html" class="back-btn">
                         <i class="fas fa-arrow-left"></i>
-                        Back to all articles
+                        Kembali ke semua artikel
                     </a>
                 </div>
 
@@ -271,7 +246,6 @@
                     copyBtn.innerHTML = '<i class="fas fa-check"></i>';
                     setTimeout(() => { copyBtn.innerHTML = original; }, 1500);
                 }).catch(() => {
-                    // Fallback
                     const tmp = document.createElement('textarea');
                     tmp.value = shareUrl;
                     document.body.appendChild(tmp);
@@ -290,8 +264,192 @@
             renderKatexWhenReady(bodyEl);
         }
 
+        // ✅ RENDER QUIZ — kalau artikel punya properti quiz
+        if (article.quiz && article.quiz.questions && article.quiz.questions.length > 0) {
+            renderQuiz(article.quiz);
+        } else {
+            const quizContainer = document.getElementById('quizContainer');
+            if (quizContainer) quizContainer.style.display = 'none';
+        }
+
         // Render related articles
         renderRelated(article);
+    }
+
+    /* ============================================================
+       QUIZ RENDERER
+       ============================================================ */
+    function renderQuiz(quizData) {
+        const container = document.getElementById('quizContainer');
+        if (!container) return;
+
+        if (!quizData || !quizData.questions || quizData.questions.length === 0) {
+            container.style.display = 'none';
+            return;
+        }
+
+        const title = quizData.title || 'Uji Pemahamanmu';
+        const desc = quizData.description || 'Jawab soal berikut untuk menguji pemahamanmu.';
+        const questions = quizData.questions;
+
+        // Build soal
+        let questionsHTML = '';
+        questions.forEach((q, idx) => {
+            const num = idx + 1;
+            let optionsHTML = '';
+            q.options.forEach((opt, optIdx) => {
+                const letter = String.fromCharCode(65 + optIdx); // A, B, C, D
+                optionsHTML += `
+                    <label class="quiz-option">
+                        <input type="radio" name="q${num}" value="${optIdx}">
+                        <span>${letter}. ${escapeHtml(opt)}</span>
+                    </label>
+                `;
+            });
+
+            questionsHTML += `
+                <div class="quiz-question">
+                    <div class="quiz-question-header">
+                        <span class="quiz-question-number">${num}</span>
+                        <p class="quiz-question-text">${escapeHtml(q.question)}</p>
+                    </div>
+                    <div class="quiz-options">
+                        ${optionsHTML}
+                    </div>
+                </div>
+            `;
+        });
+
+        container.innerHTML = `
+            <div class="quiz-wrapper">
+                <div class="quiz-section">
+                    <div class="quiz-header">
+                        <div class="quiz-header-icon">
+                            <i class="fas fa-question"></i>
+                        </div>
+                        <div>
+                            <h3 class="quiz-title">${escapeHtml(title)}</h3>
+                            <span class="quiz-subtitle">Quiz Interaktif</span>
+                        </div>
+                    </div>
+                    <p class="quiz-desc">${escapeHtml(desc)}</p>
+
+                    <form id="quizForm">
+                        ${questionsHTML}
+
+                        <div class="quiz-actions">
+                            <button type="button" class="quiz-submit-btn" id="quizSubmitBtn">
+                                <i class="fab fa-facebook"></i>
+                                Kirim Jawaban ke Facebook
+                            </button>
+                            <button type="button" class="quiz-reset-btn" id="quizResetBtn">
+                                <i class="fas fa-redo"></i>
+                                Ulangi
+                            </button>
+                        </div>
+
+                        <p class="quiz-note">
+                            <i class="fas fa-info-circle"></i>
+                            <span>Jawabanmu akan otomatis tersalin. Setelah Facebook terbuka, tinggal tempel (paste) di kolom komentar atau pesan.</span>
+                        </p>
+
+                        <div class="quiz-score" id="quizScore"></div>
+                    </form>
+                </div>
+            </div>
+        `;
+
+        container.style.display = 'block';
+
+        // ===== QUIZ LOGIC =====
+        const form = document.getElementById('quizForm');
+        const submitBtn = document.getElementById('quizSubmitBtn');
+        const resetBtn = document.getElementById('quizResetBtn');
+        const scoreBox = document.getElementById('quizScore');
+        const toast = document.getElementById('quizToast');
+
+        function showToast(message, duration = 3000) {
+            if (!toast) return;
+            toast.textContent = message;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), duration);
+        }
+
+        submitBtn.addEventListener('click', async function () {
+            const formData = new FormData(form);
+            const total = questions.length;
+            let answered = 0;
+            let correct = 0;
+            const userAnswers = [];
+
+            for (let i = 0; i < total; i++) {
+                const num = i + 1;
+                const val = formData.get('q' + num);
+                if (val !== null) {
+                    answered++;
+                    const answerIdx = parseInt(val, 10);
+                    userAnswers.push(answerIdx);
+                    if (answerIdx === questions[i].answer) correct++;
+                } else {
+                    userAnswers.push(null);
+                }
+            }
+
+            if (answered < total) {
+                showToast(`Masih ada ${total - answered} soal yang belum dijawab.`);
+                return;
+            }
+
+            const score = Math.round((correct / total) * 100);
+
+            scoreBox.classList.remove('good', 'average', 'low');
+            if (score >= 80) {
+                scoreBox.classList.add('good');
+                scoreBox.innerHTML = `🎉 Hebat! Skor kamu: <strong>${correct}/${total} (${score})</strong>`;
+            } else if (score >= 60) {
+                scoreBox.classList.add('average');
+                scoreBox.innerHTML = `👍 Bagus! Skor kamu: <strong>${correct}/${total} (${score})</strong>`;
+            } else {
+                scoreBox.classList.add('low');
+                scoreBox.innerHTML = `💪 Semangat! Skor kamu: <strong>${correct}/${total} (${score})</strong>`;
+            }
+            scoreBox.classList.add('show');
+
+            // Buat teks jawaban
+            let answerText = `Jawaban Quiz — ${document.title}\n\n`;
+            userAnswers.forEach((ans, idx) => {
+                const letter = ans !== null ? String.fromCharCode(65 + ans) : '-';
+                answerText += `${idx + 1}. ${letter}\n`;
+            });
+            answerText += `\nSkor: ${correct}/${total} (${score})`;
+
+            // Copy ke clipboard
+            try {
+                await navigator.clipboard.writeText(answerText);
+                showToast('✅ Jawaban tersalin! Facebook akan terbuka...');
+            } catch (err) {
+                const textarea = document.createElement('textarea');
+                textarea.value = answerText;
+                textarea.style.position = 'fixed';
+                textarea.style.opacity = '0';
+                document.body.appendChild(textarea);
+                textarea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textarea);
+                showToast('✅ Jawaban tersalin! Facebook akan terbuka...');
+            }
+
+            // Buka Facebook
+            setTimeout(() => {
+                window.open(FACEBOOK_PROFILE_URL, '_blank');
+            }, 1000);
+        });
+
+        resetBtn.addEventListener('click', function () {
+            form.reset();
+            scoreBox.classList.remove('show', 'good', 'average', 'low');
+            showToast('Quiz direset. Silakan coba lagi.');
+        });
     }
 
     /* ============================================================
@@ -327,12 +485,10 @@
         const container = document.getElementById('relatedContainer');
         if (!container || typeof BLOG_DATA === 'undefined') return;
 
-        // Filter same category (exclude current)
         let related = BLOG_DATA
             .filter(a => a.id !== currentArticle.id)
             .filter(a => a.category === currentArticle.category);
 
-        // If less than 3, add from other categories
         if (related.length < 3) {
             const others = BLOG_DATA
                 .filter(a => a.id !== currentArticle.id)
@@ -361,7 +517,7 @@
                         <h4>${escapeHtml(a.title)}</h4>
                         <span class="related-date">
                             <i class="fas fa-calendar"></i>
-                            ${formatDateLong(a.date).split(',')[0]}
+                            ${formatDateLong(a.date)}
                         </span>
                     </div>
                 </a>
@@ -372,7 +528,7 @@
             <section class="related-section">
                 <h2 class="related-title">
                     <i class="fas fa-book-open"></i>
-                    Related Articles
+                    Artikel Terkait
                 </h2>
                 <div class="related-grid">
                     ${cards}
@@ -404,20 +560,20 @@
        ============================================================ */
     function boot() {
         if (typeof BLOG_DATA === 'undefined') {
-            renderError('Data not loaded', 'Blog data could not be loaded. Please refresh the page.');
+            renderError('Data tidak dimuat', 'Data blog tidak dapat dimuat. Silakan refresh halaman.');
             console.error('❌ BLOG_DATA tidak ditemukan.');
             return;
         }
 
         const id = getQueryParam('id');
         if (!id) {
-            renderError('No article selected', 'Please choose an article from the blog page.');
+            renderError('Tidak ada artikel dipilih', 'Silakan pilih artikel dari halaman blog.');
             return;
         }
 
         const article = BLOG_DATA.find(a => a.id === id);
         if (!article) {
-            renderError('Article not found', `The article with ID "${id}" does not exist or has been removed.`);
+            renderError('Artikel tidak ditemukan', `Artikel dengan ID "${id}" tidak tersedia atau sudah dihapus.`);
             return;
         }
 
