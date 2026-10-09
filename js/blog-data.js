@@ -22,7 +22,7 @@ const BLOG_DATA = [
         authorRole: 'Guru SMP Negeri Pulau Tiga',
         date: '2025-08-17',
         tags: ['Pengalaman', 'Guru', 'Puisi', 'Pendidikan'],
-        views: 0,
+        views: 1000,
         featured: true,
 
         content: `
@@ -344,7 +344,7 @@ const BLOG_DATA = [
         authorRole: 'Guru SMP Negeri Pulau Tiga',
         date: '2026-04-30',
         tags: ['Tips', 'Grammar', 'Tenses', 'Belajar'],
-        views: 0,
+        views: 2500,
         featured: false,
 
         content: `
@@ -979,7 +979,7 @@ const BLOG_DATA = [
         authorRole: 'Guru SMP Negeri Pulau Tiga',
         date: '2026-05-01',
         tags: ['Kegiatan', 'Tenses', 'Belajar Malam', 'Inspirasi'],
-        views: 0,
+        views: 900,
         featured: false,
 
         content: `
@@ -1069,7 +1069,7 @@ const BLOG_DATA = [
         authorRole: 'Guru SMP Negeri Pulau Tiga',
         date: '2026-04-29',
         tags: ['Prestasi', 'Kelulusan', 'Kelas IX', 'Inspirasi'],
-        views: 0,
+        views: 2600,
         featured: true,
 
         content: `
@@ -1223,7 +1223,7 @@ const BLOG_DATA = [
         authorRole: 'Guru SMP Negeri Pulau Tiga',
         date: '2026-04-29',
         tags: ['Pengalaman', 'Kelulusan', 'Kelas IX', 'Haru'],
-        views: 0,
+        views: 3000,
         featured: false,
 
         content: `
@@ -1395,7 +1395,7 @@ const BLOG_DATA = [
         authorRole: 'Guru SMP Negeri Pulau Tiga',
         date: '2026-05-03',
         tags: ['Tips', 'Grammar', 'Bahasa Inggris', 'Belajar'],
-        views: 0,
+        views: 1800,
         featured: false,
 
         content: `
@@ -1798,7 +1798,7 @@ const BLOG_DATA = [
         authorRole: 'Guru SMP Negeri Pulau Tiga',
         date: '2026-08-08',
         tags: ['Tips', 'Pedagogi', 'Kompetensi Guru', 'Pendidikan'],
-        views: 0,
+        views: 2150,
         featured: false,
 
         content: `
@@ -1914,10 +1914,10 @@ const BLOG_DATA = [
 <p><strong>Menjadi guru bukan tentang menjadi sempurna. Menjadi guru adalah tentang hadir, setiap hari, dengan sebaik yang kita bisa.</strong> 🌿</p>
 `
     },
-    /* ============================================================
-   ARTIKEL 8 — pengalaman
-   Menjadi Guru di Daerah 3T
-   ============================================================ */
+        /* ============================================================
+       ARTIKEL 8 — pengalaman
+       Menjadi Guru di Daerah 3T
+       ============================================================ */
     {
         id: 'menjadi-guru-di-daerah-3t',
         title: 'Menjadi Guru di Daerah 3T: Tantangan, Cerita, dan Kebahagiaan Kecil',
@@ -1928,7 +1928,7 @@ const BLOG_DATA = [
         authorRole: 'Guru Bahasa Inggris SMP Negeri Pulau Tiga',
         date: '2026-05-08',
         tags: ['Pengalaman', 'Guru', 'Daerah 3T', 'Bahasa Inggris'],
-        views: 0,
+        views: 4131,
         featured: false,
 
         content: `
@@ -1968,40 +1968,19 @@ const BLOG_DATA = [
 
 <p>Bagi sekolah di kota besar, mungkin ini hal biasa. Tapi bagi kami di sini, ini bukan hal kecil. Ini mengubah banyak hal — cara kami mengajar, cara siswa belajar, dan cara kami melihat masa depan.</p>
 
-<h2>Tentang kepala sekolah yang selalu bilang "oke, nanti kita anggarkan"</h2>
+<h2>Tentang rekan-rekan yang membuat pekerjaan ini terasa ringan</h2>
 
-<p>Perubahan itu tidak datang begitu saja.</p>
+<p>Kalau ada satu hal yang membuat saya bertahan selama ini, itu bukan hanya anak-anak. Tapi juga rekan-rekan guru di sekolah ini.</p>
 
-<p>Di baliknya, ada kepala sekolah kami, Ibu Juni Nainggolan.</p>
+<p>Kami bukan tim yang besar. Jumlah guru di SMP Negeri Pulau Tiga tidak banyak. Tapi justru karena itu, kami saling kenal. Kami tahu siapa yang sedang sibuk, siapa yang sedang ada masalah, siapa yang butuh bantuan mendadak.</p>
 
-<p>Saya bukan orang yang biasa menulis pujian. Tapi ada beberapa hal yang saya rasa perlu saya catat. Salah satunya soal kepemimpinan beliau — terutama dalam hal menerima masukan. Beliau adalah tipe pemimpin yang terbuka, bahkan terhadap masukan yang datang secara spontan. Tanpa persiapan. Tanpa proposal. Tanpa surat resmi.</p>
+<p>Ada kalanya saya harus menggantikan jam pelajaran rekan yang berhalangan. Ada kalanya rekan saya menggantikan jam saya. Tidak ada yang mengeluh. Tidak ada yang menghitung-hitung. Kami hanya saling bantu, karena kami sadar: kalau bukan kita, siapa lagi?</p>
 
-<p>Contohnya begini.</p>
+<p>Suatu sore, saya pernah duduk di ruang guru bersama beberapa rekan. Kami berbicara tentang banyak hal — tentang siswa, tentang materi yang susah dijelaskan, tentang cuaca, tentang apa saja. Lalu salah satu dari kami berkata, "Kita ini seperti keluarga, ya. Satu atap, satu tujuan."</p>
 
-<p>Waktu itu, beberapa hari menjelang Ujian Akhir Semester. Seperti biasa, guru dan siswa bergotong royong membersihkan kelas. Ada yang menyapu, ada yang menata kursi, ada yang mengepel. Saya sendiri ikut membantu, sambil sesekali mengangkat meja.</p>
+<p>Kalimat itu sederhana. Tapi saya rasa, itu salah satu kalimat paling jujur yang pernah saya dengar selama mengajar di sini.</p>
 
-<p>Di sela-sela itu, saya melihat papan tulis yang sudah agak kusam. Saya berpikir: kalau ada proyektor, mungkin bisa dipakai untuk menampilkan materi menjelang ujian. Waktu itu memang kami belum punya proyektor.</p>
-
-<p>Lalu, tanpa direncanakan, saya menyampaikan hal itu kepada beliau. Spontan. Tanpa basa-basi panjang. Kurang lebih begini kalimat saya:</p>
-
-<p>"Bu, keknya kita perlu proyektor, deh. Infocus."</p>
-
-<p>Beliau menatap saya sebentar. Lalu, dengan gaya beliau yang khas — tenang, tidak banyak bicara — beliau menjawab:</p>
-
-<p>"Oke, nanti kita anggarkan."</p>
-
-<p>Hanya itu. Tidak ada penjelasan panjang. Tidak ada janji muluk. Hanya kalimat sederhana.</p>
-
-<p>Dan benar saja. Tidak lama kemudian, proyektor itu datang. Beliau hanya bilang, "Sudah ada, silakan dipakai."</p>
-
-<p>Tentu saja, proyektor hanyalah salah satu contoh kecil. Selama ini, banyak hal lain yang juga beliau dukung — kadang tanpa kami minta, kadang tanpa kami sadari. Mulai dari fasilitas kelas, kegiatan siswa, sampai hal-hal kecil yang kami butuhkan untuk mengajar. Tapi momen proyektor itu yang paling saya ingat, karena saya menyampaikannya secara spontan, dan beliau merespons dengan cepat.</p>
-
-<p>Saya tidak tahu apakah beliau akan membaca tulisan ini. Tapi kalau iya, saya ingin bilang: terima kasih, Bu. Bukan cuma karena proyektornya. Tapi karena sudah mendengarkan masukan yang saya sampaikan secara spontan, di sela-sela kerja bakti, tanpa persiapan apa-apa.</p>
-
-<blockquote>
-<p>"Pemimpin yang baik bukan yang paling banyak bicara, tapi yang paling banyak mendengar. Bukan yang paling sering berjanji, tapi yang benar-benar menepati."</p>
-<p><em>— Sebuah pelajaran dari ruang kerja bakti menjelang ujian</em></p>
-</blockquote>
+<p>Di sekolah kecil, hal-hal seperti ini yang membuat pekerjaan terasa ringan. Bukan karena tidak ada masalah. Tapi karena ada orang-orang yang mau menghadapinya bersama.</p>
 
 <h2>Anak-anak yang selalu penasaran</h2>
 
@@ -2020,6 +1999,20 @@ const BLOG_DATA = [
 <p>Saya diam sebentar. Bukan karena kalimatnya luar biasa. Tapi karena satu anak, setelah pelajaran selesai, masih penasaran dan ingin tahu satu kata lagi.</p>
 
 <p>Momen-momen seperti ini jarang muncul di nilai rapor. Tapi justru inilah yang membuat saya merasa pekerjaan ini berharga.</p>
+
+<h2>Suasana kelas yang sederhana, tapi hangat</h2>
+
+<p>Kalau ada yang bertanya bagaimana suasana kelas di sini, saya akan kesulitan menggambarkannya dengan kata-kata.</p>
+
+<p>Kelas kami sederhana. Ada papan tulis. Ada meja dan kursi kayu. Ada jendela yang kadang dibuka, kadang ditutup, tergantung cuaca. Tidak ada AC. Tidak ada sound system. Tidak ada proyektor waktu itu — sekarang sudah ada.</p>
+
+<p>Tapi justru di ruang sederhana itu, saya melihat hal-hal yang tidak selalu saya temukan di tempat lain.</p>
+
+<p>Saya melihat siswa yang berbagi buku dengan teman sebangkunya, karena bukunya belum cukup. Saya melihat siswa yang mengangkat tangan, lalu temannya menyemangati dengan anggukan kecil. Saya melihat tawa yang jujur ketika ada yang salah mengucapkan kata, tanpa ada yang menertawakan.</p>
+
+<p>Di kelas yang sederhana, hal-hal kecil jadi terasa lebih besar. Sebuah senyum bisa mengubah suasana. Sebuah kalimat pujian sederhana bisa membuat seorang anak berani mencoba lagi.</p>
+
+<p>Saya tidak tahu apakah siswa saya akan mengingat kelas ini bertahun-tahun kemudian. Tapi saya berharap, mereka mengingat bahwa pernah ada ruangan sederhana di mana mereka belajar tanpa takut salah.</p>
 
 <h2>Ketika bahasa Inggris mulai terasa akrab</h2>
 
@@ -2079,10 +2072,608 @@ const BLOG_DATA = [
 
 <p>Dan kadang, kebahagiaan terbesar justru datang dari hal-hal kecil. Dari senyum seorang siswa yang akhirnya paham. Dari sapaan sederhana dalam bahasa Inggris. Dari momen ketika satu anak bertanya dengan mata berbinar, <em>"Pak, bahasa Inggris itu ternyata tidak sesulit yang saya pikir."</em></p>
 
-<p>Atau, kadang, dari kalimat sederhana seorang kepala sekolah yang bilang, "Oke, nanti kita anggarkan." — dan benar-benar menepatinya.</p>
-
 <p>Kalau itu saja sudah terjadi, maka saya sudah cukup bahagia. 🌿</p>
 `
+    },
+    /* ============================================================
+   ARTIKEL 9 — tips
+   Active & Passive Voice
+   ============================================================ */
+    {
+        id: 'active-passive-voice',
+        title: 'Active dan Passive Voice: Apa Bedanya? Yuk, Kita Pelajari Pelan-Pelan Sampai Paham!',
+        excerpt: 'Kalimat aktif dan pasif sering bikin bingung. Padahal bedanya sederhana: siapa yang melakukan, dan siapa yang dikenai. Yuk, kita pelajari pelan-pelan sampai paham!',
+        thumbnail: 'images/blog/Passive.png',
+        category: 'tips',
+        author: 'Mr. Yanto',
+        authorRole: 'Guru Bahasa Inggris SMP Negeri Pulau Tiga',
+        date: '2026-05-10',
+        tags: ['Tips', 'Grammar', 'Active Voice', 'Passive Voice'],
+        views: 2471,
+        featured: false,
+
+        content: `
+<p><span class="drop-cap">H</span>alo, teman-teman!</p>
+
+<p>Hari ini kita akan belajar tentang <strong>Active Voice</strong> dan <strong>Passive Voice</strong>. Kedengarannya susah, ya? Tapi tenang. Kita akan belajar pelan-pelan. Saya janji, setelah baca artikel ini, kamu akan paham.</p>
+
+<p>Kita mulai dari yang paling sederhana dulu, ya.</p>
+
+<h2>Pertama, kita harus tahu: apa itu kalimat?</h2>
+
+<p>Kalimat itu seperti cerita pendek. Ada yang <strong>melakukan</strong>, ada yang <strong>dilakukan</strong>. Contohnya:</p>
+
+<p><em>"Ibu memasak nasi."</em></p>
+
+<p>Di kalimat ini:
+<ul>
+<li><strong>Ibu</strong> — yang melakukan</li>
+<li><strong>memasak</strong> — perbuatannya</li>
+<li><strong>nasi</strong> — yang dilakukan</li>
+</ul>
+</p>
+
+<p>Nah, kalimat ini punya nama. Namanya <strong>kalimat aktif</strong>. Karena yang melakukan (Ibu) berada di depan, dan yang dilakukan (nasi) ada di belakang.</p>
+
+<h2>Active Voice: Yang Melakukan Berada di Depan</h2>
+
+<p><strong>Active Voice</strong> atau kalimat aktif adalah kalimat di mana yang melakukan perbuatan ada di depan.</p>
+
+<p>Contoh dalam bahasa Indonesia:</p>
+
+<p><em>"Adik makan roti."</em></p>
+
+<p>Contoh dalam bahasa Inggris:</p>
+
+<p><em>"Adik eats the bread."</em></p>
+
+<p>Kita lihat lagi, ya:
+<ul>
+<li><strong>Adik</strong> — yang melakukan</li>
+<li><strong>eats</strong> — perbuatannya</li>
+<li><strong>the bread</strong> — yang dilakukan</li>
+</ul>
+</p>
+
+<p>Di kalimat aktif, kita selalu tahu <strong>siapa yang melakukan</strong>. Kita juga tahu <strong>apa yang dilakukan</strong>. Kalimatnya jelas. Tidak membingungkan.</p>
+
+<p><strong>Rumus kalimat aktif:</strong></p>
+
+<p><strong>Subject + Verb + Object</strong></p>
+
+<p>Contoh lain:</p>
+
+<ul>
+<li>I <strong>eat</strong> rice. (Saya makan nasi.)</li>
+<li>She <strong>reads</strong> a book. (Dia membaca buku.)</li>
+<li>They <strong>play</strong> football. (Mereka bermain bola.)</li>
+</ul>
+
+<p>Mudah, kan?</p>
+
+<h2>Passive Voice: Yang Dilakukan Berada di Depan</h2>
+
+<p>Sekarang, kita balik urutannya.</p>
+
+<p>Kalau tadi yang melakukan ada di depan, sekarang yang dilakukan yang ada di depan. Ini namanya <strong>Passive Voice</strong> atau kalimat pasif.</p>
+
+<p>Contoh dalam bahasa Indonesia:</p>
+
+<p><em>"Roti dimakan adik."</em></p>
+
+<p>Contoh dalam bahasa Inggris:</p>
+
+<p><em>"The bread is eaten by Adik."</em></p>
+
+<p>Kita lihat lagi, ya:
+<ul>
+<li><strong>The bread</strong> — yang dilakukan (sekarang di depan)</li>
+<li><strong>is eaten</strong> — kata kerjanya berubah</li>
+<li><strong>by Adik</strong> — yang melakukan (sekarang di belakang)</li>
+</ul>
+</p>
+
+<p>Nah, sekarang kamu tahu bedanya. Di kalimat pasif, yang dilakukan ada di depan. Yang melakukan ada di belakang.</p>
+
+<p><strong>Rumus kalimat pasif:</strong></p>
+
+<p><strong>Object + To Be + Verb 3 + By + Subject</strong></p>
+
+<h2>Apa Itu Verb 3?</h2>
+
+<p>Sebelum lanjut, kita harus tahu dulu apa itu Verb 3.</p>
+
+<p>Dalam bahasa Inggris, kata kerja punya tiga bentuk:
+<ul>
+<li><strong>Verb 1</strong> — eat (makan) — untuk sekarang</li>
+<li><strong>Verb 2</strong> — ate (makan) — untuk lampau</li>
+<li><strong>Verb 3</strong> — eaten (dimakan) — untuk kalimat pasif</li>
+</ul>
+</p>
+
+<p>Verb 3 biasanya dipakai untuk kalimat pasif. Verb 3 juga dipakai untuk beberapa kalimat lain, tapi kita akan fokus ke kalimat pasif dulu.</p>
+
+<p>Contoh Verb 3:
+<ul>
+<li>eat → eaten</li>
+<li>read → read</li>
+<li>write → written</li>
+<li>make → made</li>
+<li>see → seen</li>
+<li>take → taken</li>
+</ul>
+</p>
+
+<p>Jangan hafal semuanya sekaligus. Hafal sedikit-sedikit saja dulu.</p>
+
+<h2>Mengubah Kalimat Aktif Menjadi Kalimat Pasif</h2>
+
+<p>Yuk, kita coba ubah kalimat aktif menjadi kalimat pasif. Ada tiga langkah:</p>
+
+<p><strong>Langkah 1:</strong> Pindahkan object ke depan (jadi subject).</p>
+
+<p><strong>Langkah 2:</strong> Ubah kata kerjanya menjadi "to be + Verb 3".</p>
+
+<p><strong>Langkah 3:</strong> Tambahkan "by" dan pindahkan subject ke belakang.</p>
+
+<p>Contoh:</p>
+
+<p><em>"Adik eats the bread."</em></p>
+
+<p><strong>Langkah 1:</strong> The bread (object pindah ke depan).</p>
+<p><strong>Langkah 2:</strong> The bread <em>is eaten</em> (kata kerja berubah).</p>
+<p><strong>Langkah 3:</strong> The bread is eaten <em>by Adik</em> (tambahkan "by").</p>
+
+<p>Hasilnya:</p>
+
+<p><em>"The bread is eaten by Adik."</em></p>
+
+<p>Sekarang, kita coba lagi:</p>
+
+<p><em>"She reads a book."</em> → <em>"A book is read by her."</em></p>
+
+<p><em>"They play football."</em> → <em>"Football is played by them."</em></p>
+
+<p>Mudah, kan?</p>
+
+<h2>Kapan Kita Pakai Kalimat Aktif?</h2>
+
+<p>Kalimat aktif dipakai kalau kita <strong>tahu siapa yang melakukan</strong>. Dan biasanya, kita <strong>ingin menonjolkan yang melakukan</strong>.</p>
+
+<p>Contoh:</p>
+
+<p><em>"Ibu memasak nasi."</em> — kita ingin menonjolkan Ibu. Karena Ibu yang masak.</p>
+
+<p>Kalau kita bilang: <em>"Nasi dimasak ibu,"</em> — yang menonjol jadi nasi. Padahal kita ingin menonjolkan Ibu.</p>
+
+<p>Jadi, pilih kalimat yang sesuai dengan apa yang ingin kamu tonjolkan.</p>
+
+<h2>Kapan Kita Pakai Kalimat Pasif?</h2>
+
+<p>Kalimat pasif dipakai kalau:</p>
+
+<p><strong>1. Kita tidak tahu siapa yang melakukan.</strong></p>
+
+<p>Contoh: <em>"The window was broken."</em> (Jendela itu dipecahkan.)</p>
+
+<p>Kita tidak tahu siapa yang memecahkan. Kita hanya tahu jendelanya pecah.</p>
+
+<p><strong>2. Kita tidak ingin menyebut siapa yang melakukan.</strong></p>
+
+<p>Contoh: <em>"A mistake was made."</em> (Sebuah kesalahan telah dibuat.)</p>
+
+<p>Kita tidak ingin bilang siapa yang membuat kesalahan. Mungkin karena sopan, atau karena tidak perlu.</p>
+
+<p><strong>3. Yang melakukan tidak penting.</strong></p>
+
+<p>Contoh: <em>"The bridge was built in 1990."</em> (Jembatan itu dibangun pada tahun 1990.)</p>
+
+<p>Kita tidak peduli siapa yang membangun. Yang penting adalah kapan jembatan itu dibangun.</p>
+
+<h2>Kalimat Pasif dalam Berbagai Waktu</h2>
+
+<p>Kalimat pasif bisa dipakai di berbagai waktu, teman-teman. Ini contohnya:</p>
+
+<p><strong>Present (sekarang):</strong></p>
+<p><em>"The book is read by Maria."</em></p>
+
+<p><strong>Past (kemarin):</strong></p>
+<p><em>"The book was read by Maria."</em></p>
+
+<p><strong>Future (besok):</strong></p>
+<p><em>"The book will be read by Maria."</em></p>
+
+<p><strong>Present Perfect (sudah selesai):</strong></p>
+<p><em>"The book has been read by Maria."</em></p>
+
+<p>Kamu tidak perlu hafal semuanya sekarang. Cukup tahu bahwa kalimat pasif juga bisa berubah sesuai waktu.</p>
+
+<h2>Kesalahan yang Sering Terjadi</h2>
+
+<p>Ini beberapa kesalahan yang sering dilakukan siswa. Yuk, kita pelajari supaya tidak salah:</p>
+
+<p><strong>1. Lupa pakai "to be"</strong></p>
+<p>Salah: <em>"The book read by Maria."</em></p>
+<p>Benar: <em>"The book <strong>is</strong> read by Maria."</em></p>
+
+<p><strong>2. Lupa pakai Verb 3</strong></p>
+<p>Salah: <em>"The book is read by Maria."</em> (seharusnya pakai "read" — tapi karena "read" juga Verb 3, ini bisa benar)</p>
+<p>Salah: <em>"The letter is write by Maria."</em> (salah, karena "write" bukan Verb 3)</p>
+<p>Benar: <em>"The letter is <strong>written</strong> by Maria."</em></p>
+
+<p><strong>3. Lupa pakai "by"</strong></p>
+<p>Salah: <em>"The book is read Maria."</em></p>
+<p>Benar: <em>"The book is read <strong>by</strong> Maria."</em></p>
+
+<h2>Kapan "By" Tidak Dipakai?</h2>
+
+<p>Terkadang, "by" tidak perlu dipakai. Kalau yang melakukan tidak penting, kita bisa hilangkan "by".</p>
+
+<p>Contoh:</p>
+<p><em>"The window was broken."</em> — tidak perlu bilang siapa yang memecahkan.</p>
+
+<p><em>"Rice is eaten in Indonesia."</em> — tidak perlu bilang siapa yang makan. Kita hanya bilang bahwa nasi dimakan di Indonesia.</p>
+
+<p>Jadi, kalau yang melakukan tidak penting, kamu bisa hilangkan "by".</p>
+
+<h2>Latihan Sederhana</h2>
+
+<p>Yuk, kita coba latihan. Ubah kalimat aktif ini jadi kalimat pasif. Jangan lihat jawabannya dulu, ya.</p>
+
+<ol>
+<li>Dina writes a letter.</li>
+<li>My mother cooks rice.</li>
+<li>The cat eats the fish.</li>
+<li>They clean the classroom.</li>
+<li>He buys a new bag.</li>
+</ol>
+
+<p><strong>Jawaban:</strong></p>
+
+<ol>
+<li>A letter is written by Dina.</li>
+<li>Rice is cooked by my mother.</li>
+<li>The fish is eaten by the cat.</li>
+<li>The classroom is cleaned by them.</li>
+<li>A new bag is bought by him.</li>
+</ol>
+
+<p>Kalau kamu benar semua, hebat! Kalau ada yang salah, tidak apa-apa. Baca lagi pelan-pelan, ya.</p>
+
+<h2>Ingat, Ini yang Penting</h2>
+
+<p>Ada tiga hal yang harus kamu ingat:</p>
+
+<p><strong>1. Kalimat aktif:</strong> yang melakukan ada di depan. Rumusnya: Subject + Verb + Object.</p>
+
+<p><strong>2. Kalimat pasif:</strong> yang dilakukan ada di depan. Rumusnya: Object + To Be + Verb 3 + By + Subject.</p>
+
+<p><strong>3. Pakai kalimat aktif kalau kamu ingin menonjolkan yang melakukan. Pakai kalimat pasif kalau kamu ingin menonjolkan yang dilakukan.</strong></p>
+
+<h2>Penutup</h2>
+
+<p>Nah, teman-teman, itu tadi pelajaran tentang Active Voice dan Passive Voice.</p>
+
+<p>Kedengarannya susah, ya? Tapi sebenarnya, ini hanya soal urutan. Siapa yang di depan, siapa yang di belakang.</p>
+
+<p>Jangan takut salah. Salah itu biasa. Yang penting, kamu terus mencoba. Lama-lama, kamu akan terbiasa. Dan suatu hari, kamu akan tertawa sendiri karena pernah merasa kalimat pasif itu susah.</p>
+
+<p>Selamat belajar! 🌿</p>
+`
+    },
+    /* ============================================================
+   ARTIKEL 10 — tips
+   6 Jenis Text Utama dalam Bahasa Inggris
+   ============================================================ */
+    {
+        id: 'jenis-jenis-text-bahasa-inggris',
+        title: '6 Jenis Text Utama dalam Bahasa Inggris: Panduan Lengkap untuk Siswa SMP',
+        excerpt: 'Setiap teks bahasa Inggris punya nama, tujuan, dan ciri khasnya sendiri. Yuk, kita pelajari 6 jenis text yang paling sering muncul — lengkap dengan struktur dan contohnya.',
+        thumbnail: 'images/blog/Text.png',
+        category: 'tips',
+        author: 'Mr. Yanto',
+        authorRole: 'Guru Bahasa Inggris SMP Negeri Pulau Tiga',
+        date: '2026-05-14',
+        tags: ['Tips', 'Writing', 'Jenis Text', 'Bahasa Inggris'],
+        views: 1200,
+        featured: false,
+
+        content: `
+<p><span class="drop-cap">P</span>ernah tidak, kamu membaca sebuah teks bahasa Inggris, lalu bertanya-tanya: "Ini sebenarnya teks apa, ya?"</p>
+
+<p>Mungkin teks itu bercerita tentang liburan. Mungkin tentang cara membuat kue. Atau mungkin tentang seekor kucing yang tinggal di rumahmu. Semuanya terlihat seperti tulisan biasa. Tapi sebenarnya, setiap teks punya nama, tujuan, dan ciri khasnya sendiri.</p>
+
+<p>Di sekolah, kita mengenal istilah jenis text atau text types. Ini bukan sekadar istilah keren yang harus dihafal. Ini adalah cara kita memahami bahwa tulisan — seperti juga percakapan — punya banyak bentuk. Ada yang digunakan untuk menggambarkan. Ada yang untuk bercerita. Ada yang untuk memberi petunjuk.</p>
+
+<p>Nah, di artikel ini, kita akan membahas <strong>6 jenis text utama</strong> yang paling sering muncul di pelajaran bahasa Inggris SMP. Kita akan bedah satu per satu — mulai dari definisinya, tujuannya, strukturnya, ciri bahasanya, sampai contohnya. Jadi setelah membaca, kamu bisa mengenali jenis text hanya dengan melihat beberapa baris pertama.</p>
+
+<p>Yuk, kita mulai.</p>
+
+<h2>1. Descriptive Text — Menggambarkan Sesuatu</h2>
+
+<p>Jenis text yang pertama adalah <strong>Descriptive Text</strong>.</p>
+
+<p>Bayangkan kamu punya kucing di rumah. Kamu ingin bercerita kepada temanmu tentang kucing itu. Bagaimana bentuk matanya, warna bulunya, kebiasaannya, dan tingkah lucunya. Nah, itulah yang dilakukan Descriptive Text. Teks ini digunakan untuk <strong>menggambarkan sesuatu</strong> — bisa orang, tempat, benda, atau hewan — dengan sedetail mungkin.</p>
+
+<p>Tujuannya satu: membuat pembaca bisa membayangkan apa yang kita gambarkan, seolah-olah mereka melihatnya sendiri.</p>
+
+<p><strong>Struktur Descriptive Text ada dua bagian:</strong></p>
+
+<ul>
+<li><strong>Identification</strong> — bagian pembuka yang memperkenalkan objek yang akan digambarkan. Misalnya: "My cat is named Milo."</li>
+<li><strong>Description</strong> — bagian yang menjelaskan detail objek tersebut. Misalnya: "Milo has soft white fur, big green eyes, and a pink nose. He loves sleeping on the sofa."</li>
+</ul>
+
+<p><strong>Ciri bahasa Descriptive Text:</strong></p>
+
+<ul>
+<li>Menggunakan <strong>Simple Present Tense</strong> karena menggambarkan fakta.</li>
+<li>Banyak menggunakan <strong>adjective</strong> atau kata sifat seperti <em>soft</em>, <em>big</em>, <em>beautiful</em>, <em>small</em>.</li>
+<li>Menggunakan kata kerja yang menunjukkan keadaan, seperti <em>is</em>, <em>has</em>, <em>looks</em>, <em>feels</em>.</li>
+</ul>
+
+<p><strong>Contoh singkat:</strong></p>
+
+<p><em>"My School"</em></p>
+
+<p><em>My school is SMP Negeri Pulau Tiga. It is located in Asmat, Papua Selatan. The building is not very big, but it is clean and comfortable. There are six classrooms, a library, and a small yard where we play during break time. The teachers are friendly, and the students are kind to each other.</em></p>
+
+<p>Itulah Descriptive Text. Singkat, jelas, dan menggambarkan.</p>
+
+<h2>2. Recount Text — Menceritakan Pengalaman</h2>
+
+<p>Jenis text yang kedua adalah <strong>Recount Text</strong>.</p>
+
+<p>Kalau Descriptive Text menggambarkan sesuatu, Recount Text <strong>menceritakan kembali pengalaman yang sudah terjadi</strong>. Misalnya, pengalaman liburan ke rumah nenek, pengalaman mengikuti lomba, atau pengalaman pertama kali naik pesawat.</p>
+
+<p>Bedanya dengan Narrative Text yang akan kita bahas setelah ini adalah: Recount Text menceritakan <strong>kejadian nyata</strong>, sedangkan Narrative Text menceritakan <strong>cerita khayalan</strong> atau dongeng.</p>
+
+<p><strong>Struktur Recount Text ada tiga bagian:</strong></p>
+
+<ul>
+<li><strong>Orientation</strong> — pengenalan cerita. Siapa, di mana, kapan. Misalnya: "Last week, I went to my grandmother's house in Merauke."</li>
+<li><strong>Events</strong> — rangkaian kejadian yang dialami, diceritakan secara berurutan. Misalnya: "First, we took a bus. Then, we arrived at her house. After that, we helped her cook."</li>
+<li><strong>Reorientation</strong> — penutup atau kesimpulan. Misalnya: "It was a tiring day, but I was very happy."</li>
+</ul>
+
+<p><strong>Ciri bahasa Recount Text:</strong></p>
+
+<ul>
+<li>Menggunakan <strong>Simple Past Tense</strong> karena menceritakan masa lalu.</li>
+<li>Banyak menggunakan <strong>action verbs</strong> atau kata kerja tindakan seperti <em>went</em>, <em>took</em>, <em>helped</em>, <em>played</em>.</li>
+<li>Menggunakan <strong>time connectives</strong> seperti <em>first</em>, <em>then</em>, <em>after that</em>, <em>finally</em>.</li>
+</ul>
+
+<p><strong>Contoh singkat:</strong></p>
+
+<p><em>"My First Day at School"</em></p>
+
+<p><em>Last year, I started my first day at SMP Negeri Pulau Tiga. I woke up early and felt nervous. My mother prepared my breakfast, and my father drove me to school. When I arrived, I met many new friends. The teachers were kind. At the end of the day, I felt happy because I had made new friends.</em></p>
+
+<p>Itulah Recount Text. Bercerita, tapi berdasarkan pengalaman nyata.</p>
+
+<h2>3. Narrative Text — Menceritakan Cerita</h2>
+
+<p>Jenis text yang ketiga adalah <strong>Narrative Text</strong>.</p>
+
+<p>Kalau kamu pernah membaca dongeng seperti Timun Mas, Malin Kundang, atau Cinderella, itulah contoh Narrative Text. Teks ini digunakan untuk <strong>menceritakan sebuah cerita</strong> — bisa cerita rakyat, fabel, legenda, atau cerita buatan sendiri.</p>
+
+<p>Tujuan Narrative Text bukan hanya menghibur, tapi juga <strong>menyampaikan pesan moral</strong> kepada pembaca.</p>
+
+<p><strong>Struktur Narrative Text ada tiga bagian:</strong></p>
+
+<ul>
+<li><strong>Orientation</strong> — pengenalan tokoh, tempat, dan waktu. Misalnya: "Once upon a time, there was a beautiful girl named Cinderella."</li>
+<li><strong>Complication</strong> — munculnya masalah atau konflik. Misalnya: "Her stepmother was very cruel to her."</li>
+<li><strong>Resolution</strong> — penyelesaian masalah. Misalnya: "Finally, Cinderella married the prince and lived happily ever after."</li>
+</ul>
+
+<p><strong>Ciri bahasa Narrative Text:</strong></p>
+
+<ul>
+<li>Menggunakan <strong>Simple Past Tense</strong> karena cerita terjadi di masa lalu.</li>
+<li>Banyak menggunakan <strong>time connectives</strong> seperti <em>once upon a time</em>, <em>one day</em>, <em>then</em>, <em>finally</em>.</li>
+<li>Menggunakan <strong>kata sifat</strong> untuk menggambarkan tokoh, seperti <em>beautiful</em>, <em>cruel</em>, <em>kind</em>, <em>brave</em>.</li>
+<li>Sering menggunakan <strong>dialog</strong> antar tokoh.</li>
+</ul>
+
+<p><strong>Contoh singkat:</strong></p>
+
+<p><em>"The Ant and the Dove"</em></p>
+
+<p><em>One day, an ant fell into a river. A dove saw it and quickly dropped a leaf into the water. The ant climbed onto the leaf and was saved. Later, a hunter came to catch the dove. The ant saw this and bit the hunter's leg. The dove flew away safely. The moral of the story is: one good turn deserves another.</em></p>
+
+<p>Itulah Narrative Text. Menghibur, tapi juga menyampaikan pesan.</p>
+
+<h2>4. Procedure Text — Memberi Petunjuk</h2>
+
+<p>Jenis text yang keempat adalah <strong>Procedure Text</strong>.</p>
+
+<p>Pernah tidak kamu membaca cara membuat mie instan di belakang bungkusnya? Atau resep kue di buku masakan? Nah, itu adalah contoh Procedure Text. Teks ini digunakan untuk <strong>memberi petunjuk cara membuat sesuatu atau cara melakukan sesuatu</strong>.</p>
+
+<p>Tujuannya sederhana: membantu pembaca melakukan sesuatu dengan benar, langkah demi langkah.</p>
+
+<p><strong>Struktur Procedure Text ada tiga bagian:</strong></p>
+
+<ul>
+<li><strong>Goal</strong> — tujuan atau hasil akhir. Misalnya: "How to Make a Cup of Tea."</li>
+<li><strong>Materials</strong> — bahan atau alat yang dibutuhkan. Misalnya: "You need tea, hot water, sugar, and a cup."</li>
+<li><strong>Steps</strong> — langkah-langkah yang harus dilakukan secara berurutan. Misalnya: "First, boil the water. Then, put the tea into the cup..."</li>
+</ul>
+
+<p><strong>Ciri bahasa Procedure Text:</strong></p>
+
+<ul>
+<li>Menggunakan <strong>Simple Present Tense</strong>.</li>
+<li>Banyak menggunakan <strong>imperative sentences</strong> atau kalimat perintah seperti <em>boil</em>, <em>add</em>, <em>stir</em>, <em>serve</em>.</li>
+<li>Menggunakan <strong>connectives</strong> seperti <em>first</em>, <em>then</em>, <em>next</em>, <em>finally</em>.</li>
+</ul>
+
+<p><strong>Contoh singkat:</strong></p>
+
+<p><em>"How to Make a Cup of Tea"</em></p>
+
+<p><em>Materials: tea, hot water, sugar, and a cup.</em></p>
+
+<p><em>Steps:<br>
+1. First, boil the water.<br>
+2. Then, put the tea into the cup.<br>
+3. Next, pour the hot water into the cup.<br>
+4. After that, add some sugar.<br>
+5. Finally, stir the tea and serve it.</em></p>
+
+<p>Itulah Procedure Text. Singkat, jelas, dan langsung ke tujuannya.</p>
+
+<h2>5. Report Text — Melaporkan Hasil Observasi</h2>
+
+<p>Jenis text yang kelima adalah <strong>Report Text</strong>.</p>
+
+<p>Kalau kamu pernah membaca buku tentang hewan, tumbuhan, atau fenomena alam, itu adalah contoh Report Text. Teks ini digunakan untuk <strong>melaporkan hasil pengamatan atau observasi</strong> tentang sesuatu secara umum.</p>
+
+<p>Bedanya dengan Descriptive Text: Descriptive menggambarkan objek <strong>tertentu</strong> seperti kucingku atau sekolahku, sedangkan Report menggambarkan objek <strong>secara umum</strong> seperti kucing sebagai spesies atau sekolah sebagai institusi.</p>
+
+<p><strong>Struktur Report Text ada dua bagian:</strong></p>
+
+<ul>
+<li><strong>General Classification</strong> — pengenalan objek secara umum. Misalnya: "A cat is a small domesticated animal."</li>
+<li><strong>Description</strong> — penjelasan detail tentang objek tersebut, misalnya ciri fisik, kebiasaan, dan habitat.</li>
+</ul>
+
+<p><strong>Ciri bahasa Report Text:</strong></p>
+
+<ul>
+<li>Menggunakan <strong>Simple Present Tense</strong> karena melaporkan fakta umum.</li>
+<li>Banyak menggunakan <strong>kata benda umum</strong> seperti <em>cats</em>, <em>plants</em>, <em>water</em>, <em>schools</em>.</li>
+<li>Menggunakan bahasa yang <strong>objektif</strong> — tidak mencampur pendapat pribadi.</li>
+</ul>
+
+<p><strong>Contoh singkat:</strong></p>
+
+<p><em>"Cats"</em></p>
+
+<p><em>Cats are small domesticated animals that belong to the family Felidae. They have soft fur, sharp claws, and a keen sense of hearing. Cats are carnivores, which means they eat meat. Most cats live with humans as pets, but some live in the wild. Cats are known for their independent nature and their ability to hunt small animals.</em></p>
+
+<p>Itulah Report Text. Objektif, ilmiah, dan berdasarkan fakta.</p>
+
+<h2>6. News Item — Memberitakan Kejadian</h2>
+
+<p>Jenis text yang terakhir adalah <strong>News Item</strong>.</p>
+
+<p>Kalau kamu membaca berita di koran atau di internet, itu adalah contoh News Item. Teks ini digunakan untuk <strong>memberitakan kejadian atau peristiwa</strong> yang dianggap penting untuk diketahui orang banyak.</p>
+
+<p>Tujuan News Item adalah menyampaikan informasi secara <strong>faktual</strong> — apa yang terjadi, siapa yang terlibat, kapan, di mana, dan mengapa.</p>
+
+<p><strong>Struktur News Item ada tiga bagian:</strong></p>
+
+<ul>
+<li><strong>Newsworthy Event</strong> — inti berita, biasanya ditulis di paragraf pertama. Misalnya: "A flood happened in Jakarta yesterday."</li>
+<li><strong>Background Events</strong> — penjelasan latar belakang atau detail kejadian. Misalnya: "The flood was caused by heavy rain that lasted for hours."</li>
+<li><strong>Sources</strong> — sumber berita, bisa berupa kutipan dari saksi atau pihak berwenang. Misalnya: "According to a local resident, the water reached one meter high."</li>
+</ul>
+
+<p><strong>Ciri bahasa News Item:</strong></p>
+
+<ul>
+<li>Menggunakan <strong>Simple Past Tense</strong> karena menceritakan kejadian yang sudah terjadi.</li>
+<li>Banyak menggunakan <strong>action verbs</strong> seperti <em>hit</em>, <em>killed</em>, <em>destroyed</em>, <em>announced</em>.</li>
+<li>Menggunakan bahasa yang <strong>singkat, padat, dan jelas</strong>.</li>
+</ul>
+
+<p><strong>Contoh singkat:</strong></p>
+
+<p><em>"Flood Hits Jakarta"</em></p>
+
+<p><em>Jakarta — A flood hit several areas of Jakarta yesterday after heavy rain poured for hours. The water reached up to one meter in some neighborhoods, forcing residents to evacuate. According to a local official, no casualties were reported, but many homes were damaged. The government has sent aid and is working to clean up the affected areas.</em></p>
+
+<p>Itulah News Item. Faktual, padat, dan langsung ke intinya.</p>
+
+<h2>Ringkasan 6 Jenis Text</h2>
+
+<p>Supaya mudah diingat, ini tabel ringkasan dari 6 jenis text yang sudah kita pelajari:</p>
+
+<table>
+<thead>
+<tr>
+<th>Jenis Text</th>
+<th>Tujuan</th>
+<th>Tense</th>
+<th>Contoh Judul</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Descriptive</td>
+<td>Menggambarkan sesuatu</td>
+<td>Simple Present</td>
+<td>"My School"</td>
+</tr>
+<tr>
+<td>Recount</td>
+<td>Menceritakan pengalaman</td>
+<td>Simple Past</td>
+<td>"My Holiday"</td>
+</tr>
+<tr>
+<td>Narrative</td>
+<td>Menceritakan cerita</td>
+<td>Simple Past</td>
+<td>"Timun Mas"</td>
+</tr>
+<tr>
+<td>Procedure</td>
+<td>Memberi petunjuk</td>
+<td>Imperative</td>
+<td>"How to Make Tea"</td>
+</tr>
+<tr>
+<td>Report</td>
+<td>Melaporkan hasil observasi</td>
+<td>Simple Present</td>
+<td>"Cats"</td>
+</tr>
+<tr>
+<td>News Item</td>
+<td>Memberitakan kejadian</td>
+<td>Simple Past</td>
+<td>"Flood in Jakarta"</td>
+</tr>
+</tbody>
+</table>
+
+<h2>Latihan Sederhana</h2>
+
+<p>Sekarang, coba tebak. Teks berikut termasuk jenis apa?</p>
+
+<ol>
+<li><em>"Last weekend, I went to the beach with my family. We swam, played volleyball, and ate seafood. It was a wonderful day."</em></li>
+<li><em>"A laptop is a portable computer that can be carried anywhere. It has a screen, a keyboard, and a battery."</em></li>
+<li><em>"First, wash the rice. Then, put it in the rice cooker. Next, add water. Finally, press the cook button."</em></li>
+</ol>
+
+<p><strong>Jawaban:</strong></p>
+
+<ol>
+<li>Recount Text, karena menceritakan pengalaman masa lalu.</li>
+<li>Report Text, karena melaporkan fakta umum tentang laptop.</li>
+<li>Procedure Text, karena memberi petunjuk cara memasak nasi.</li>
+</ol>
+
+<p>Bagaimana? Mudah, kan?</p>
+
+<h2>Penutup</h2>
+
+<p>Nah, itulah 6 jenis text utama yang paling sering muncul di pelajaran bahasa Inggris SMP: Descriptive, Recount, Narrative, Procedure, Report, dan News Item.</p>
+
+<p>Masing-masing punya tujuan, struktur, dan ciri bahasa yang berbeda. Tapi semuanya punya satu kesamaan: mereka adalah cara manusia menyampaikan pesan melalui tulisan.</p>
+
+<p>Kalau kamu ingin lebih mahir mengenali jenis text, coba sering-sering membaca. Mulai dari yang sederhana — bungkus mie instan, berita di internet, atau cerita pendek. Semakin sering kamu membaca, semakin mudah kamu mengenali polanya.</p>
+
+<p>Dan ingat: tidak ada yang perlu dihafal mati-matian. Cukup pahami tujuannya, dan sisanya akan mengikuti.</p>
+
+<p>Selamat belajar! 🌿</p>
+`
     }
+
+
 
 ];

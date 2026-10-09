@@ -20,13 +20,15 @@
     const SIDEBAR_LIMIT = 5;
     const PLACEHOLDER_IMG = 'images/blog/Video.png';
 
+    // ✅ SUDAH DIPERBAIKI — pakai bahasa Indonesia
     const CATEGORY_INFO = {
-        news: { label: 'News', color: '#3b82f6' },
-        event: { label: 'Event', color: '#f59e0b' },
-        achievement: { label: 'Achievement', color: '#ef4444' },
-        activity: { label: 'Activity', color: '#8b5cf6' },
+        berita: { label: 'Berita', color: '#3b82f6' },
+        acara: { label: 'Acara', color: '#f59e0b' },
+        prestasi: { label: 'Prestasi', color: '#ef4444' },
+        kegiatan: { label: 'Kegiatan', color: '#8b5cf6' },
         workshop: { label: 'Workshop', color: '#06b6d4' },
-        tips: { label: 'Tips', color: '#10b981' }
+        tips: { label: 'Tips', color: '#10b981' },
+        pengalaman: { label: 'Pengalaman', color: '#ec4899' }
     };
 
     /* ============================================================
@@ -51,15 +53,16 @@
 
     function formatDate(isoDate) {
         if (!isoDate) return '';
-        const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-            'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+        const months = ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun',
+            'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des'];
         const d = new Date(isoDate);
         if (isNaN(d.getTime())) return isoDate;
         return `${d.getDate()} ${months[d.getMonth()]} ${d.getFullYear()}`;
     }
 
+    // ✅ SUDAH DIPERBAIKI — default label jadi "Lainnya"
     function getCategoryInfo(cat) {
-        return CATEGORY_INFO[cat] || { label: 'Article', color: '#64748b' };
+        return CATEGORY_INFO[cat] || { label: 'Lainnya', color: '#64748b' };
     }
 
     function getReadingTime(content) {
@@ -113,7 +116,7 @@
                 <div class="featured-media">
                     <span class="featured-badge">
                         <i class="fas fa-star"></i>
-                        Featured
+                        Artikel Utama
                     </span>
                     <img src="${escapeHtml(featured.thumbnail || PLACEHOLDER_IMG)}"
                          alt="${escapeHtml(featured.title)}"
@@ -129,7 +132,7 @@
                     <div class="featured-meta">
                         <span><i class="fas fa-user"></i> ${escapeHtml(featured.author || 'Admin')}</span>
                         <span><i class="fas fa-calendar"></i> ${formatDate(featured.date)}</span>
-                        <span><i class="fas fa-clock"></i> ${readingTime} min read</span>
+                        <span><i class="fas fa-clock"></i> ${readingTime} menit baca</span>
                     </div>
                 </div>
             </a>
@@ -250,8 +253,8 @@
             grid.innerHTML = `
                 <div class="empty-state">
                     <i class="fas fa-newspaper"></i>
-                    <h3>No articles yet</h3>
-                    <p>Check back later for new articles.</p>
+                    <h3>Belum ada artikel</h3>
+                    <p>Silakan cek kembali nanti untuk artikel baru.</p>
                 </div>
             `;
             if (loadmoreWrap) loadmoreWrap.style.display = 'none';
@@ -269,7 +272,7 @@
         }
         if (loadmoreBtn) loadmoreBtn.disabled = !hasMore;
         if (counter) {
-            counter.innerHTML = `Showing <strong>${visible.length}</strong> of <strong>${filteredArticles.length}</strong> articles`;
+            counter.innerHTML = `Menampilkan <strong>${visible.length}</strong> dari <strong>${filteredArticles.length}</strong> artikel`;
         }
     }
 
@@ -293,7 +296,7 @@
                     <p class="blog-card-excerpt">${escapeHtml(item.excerpt || stripHtml(item.content).slice(0, 120))}</p>
                     <div class="blog-card-footer">
                         <span><i class="fas fa-calendar"></i> ${formatDate(item.date)}</span>
-                        <span><i class="fas fa-clock"></i> ${readingTime} min</span>
+                        <span><i class="fas fa-clock"></i> ${readingTime} menit</span>
                     </div>
                 </div>
             </a>
