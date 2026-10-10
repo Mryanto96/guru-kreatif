@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Panduan Input Nilai Rapor | Kelas 9A | SMP Persiapan Negeri Pulau Tiga</title>
+    <title>Panduan Input Nilai Rapor | SMP Persiapan Negeri Pulau Tiga</title>
     <meta name="description"
-        content="Panduan bagi Bapak/Ibu guru dalam mengisi nilai rapor siswa Kelas 9A semester ganjil tahun ajaran 2023/2024. Lengkap dengan aturan deskripsi, KKM, dan tautan spreadsheet.">
+        content="Panduan bagi Bapak/Ibu guru dalam mengisi nilai rapor siswa SMP Persiapan Negeri Pulau Tiga. Lengkap dengan aturan deskripsi, KKM, dan tautan spreadsheet.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
@@ -15,221 +15,785 @@
     <link rel="stylesheet" href="css/style.css">
 
     <style>
-        /* =============================================
-           CUSTOM STYLES FOR RAPOR.HTML
-           Professional, clean, responsive
-        ============================================= */
+        /* ============================================================
+           RAPOR PAGE — Professional UI + Emerald Brand
+           ============================================================ */
 
-        /* Hero Section */
-        .hero-section {
-            padding: 48px 0 32px;
-            background: linear-gradient(135deg, #f0f9ff 0%, #eef2ff 100%);
-            border-bottom: 1px solid var(--border, #e2e8f0);
+        :root {
+            --emerald: #10b981;
+            --emerald-dark: #059669;
+            --emerald-soft: rgba(16, 185, 129, 0.08);
+            --emerald-ring: rgba(16, 185, 129, 0.18);
+
+            --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+            --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
-        .hero-badge {
+        /* ---------- SUBTLE GRID LINES ---------- */
+        body {
+            position: relative;
+            background: var(--bg, #ffffff);
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image:
+                linear-gradient(to right, rgba(15, 23, 42, 0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(15, 23, 42, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            pointer-events: none;
+            z-index: 0;
+            mask-image: radial-gradient(ellipse at center, black 40%, transparent 85%);
+            -webkit-mask-image: radial-gradient(ellipse at center, black 40%, transparent 85%);
+        }
+
+        .page-content,
+        .navbar,
+        .mobile-menu,
+        footer {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ============================================================
+           PAGE HEADER — Dekat dengan Tab
+           ============================================================ */
+        .rapor-header {
+            padding: 28px 0 24px;
+            border-bottom: 1px solid var(--border);
+            background: transparent;
+        }
+
+        .rapor-header-inner {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        .rapor-header-left {
+            flex: 1 1 480px;
+            min-width: 0;
+        }
+
+        .rapor-header-right {
+            flex-shrink: 0;
+            align-self: center;
+        }
+
+        .rapor-eyebrow {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: #dbeafe;
-            color: #1e40af;
-            padding: 6px 14px;
-            border-radius: 40px;
             font-size: 0.7rem;
             font-weight: 700;
-            letter-spacing: 0.5px;
-            margin-bottom: 20px;
+            color: var(--emerald-dark);
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            margin-bottom: 10px;
         }
 
-        .hero-title {
-            font-size: clamp(1.6rem, 5vw, 2.2rem);
+        .rapor-eyebrow::before {
+            content: '';
+            width: 20px;
+            height: 2px;
+            background: var(--emerald);
+            border-radius: 2px;
+        }
+
+        .rapor-title {
+            font-size: clamp(1.4rem, 1.1rem + 1.2vw, 1.85rem);
             font-weight: 800;
             line-height: 1.2;
-            margin-bottom: 16px;
-            color: var(--text, #0f172a);
+            letter-spacing: -0.5px;
+            color: var(--text);
+            margin-bottom: 8px;
         }
 
-        .hero-title .highlight {
-            background: linear-gradient(135deg, #2563eb, #1e40af);
-            background-clip: text;
-            -webkit-background-clip: text;
-            color: transparent;
+        .rapor-title .accent {
+            color: var(--emerald);
         }
 
-        .hero-desc {
-            font-size: clamp(0.9rem, 3vw, 1rem);
-            color: var(--text2, #475569);
-            max-width: 600px;
+        .rapor-subtitle {
+            font-size: 0.875rem;
+            color: var(--text2);
             line-height: 1.6;
+            max-width: 580px;
+            margin: 0;
         }
 
-        /* Alert / Info Cards */
-        .alert-info {
-            background: #eff6ff;
-            border-left: 4px solid #2563eb;
-            border-radius: 16px;
-            padding: 18px 22px;
-            margin: 24px 0;
+        /* ============================================================
+           MAIN LAYOUT
+           ============================================================ */
+        .rapor-layout {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 32px;
+            padding: 28px 0 56px;
+            align-items: start;
         }
 
-        .alert-warning {
-            background: #fffbeb;
-            border-left: 4px solid #f59e0b;
-            border-radius: 16px;
-            padding: 18px 22px;
-            margin: 24px 0;
+        @media (min-width: 1024px) {
+            .rapor-layout {
+                grid-template-columns: minmax(0, 1fr) 320px;
+                gap: 40px;
+            }
         }
 
-        .rule-card {
-            background: var(--card-bg, #ffffff);
-            border: 1px solid var(--border, #e2e8f0);
-            border-radius: 20px;
-            padding: 20px 24px;
-            margin-bottom: 24px;
-            transition: all 0.2s;
+        .rapor-main {
+            min-width: 0;
         }
 
-        .rule-card:hover {
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+        /* ============================================================
+           BLOCK / SECTION HEADING
+           ============================================================ */
+        .block {
+            margin-bottom: 32px;
         }
 
-        .rule-title {
-            font-weight: 800;
-            font-size: 1rem;
-            margin-bottom: 16px;
+        .block:last-child {
+            margin-bottom: 0;
+        }
+
+        .block-heading {
             display: flex;
             align-items: center;
             gap: 10px;
-            color: var(--text, #0f172a);
+            margin-bottom: 14px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border);
         }
 
-        .rule-title i {
-            color: #2563eb;
-            font-size: 1.2rem;
+        .block-heading i {
+            color: var(--emerald);
+            font-size: 0.95rem;
+            transition: transform 0.4s var(--ease-bounce);
         }
 
+        .block-heading:hover i {
+            transform: rotate(-8deg) scale(1.1);
+        }
+
+        .block-heading h2 {
+            font-size: 0.95rem;
+            font-weight: 800;
+            color: var(--text);
+            letter-spacing: 0.5px;
+            margin: 0;
+            text-transform: uppercase;
+        }
+
+        /* ============================================================
+           PANEL — Kartu Standar
+           ============================================================ */
+        .panel {
+            background: var(--card-bg, #ffffff);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 18px 22px;
+            transition:
+                border-color 0.25s var(--ease-standard),
+                box-shadow 0.25s var(--ease-standard),
+                transform 0.25s var(--ease-standard);
+        }
+
+        .panel:hover {
+            border-color: var(--emerald);
+            box-shadow: 0 4px 16px rgba(16, 185, 129, 0.08);
+            transform: translateY(-2px);
+        }
+
+        .panel+.panel {
+            margin-top: 12px;
+        }
+
+        .panel-desc {
+            font-size: 0.82rem;
+            color: var(--text2);
+            line-height: 1.65;
+            margin: 0;
+        }
+
+        /* ============================================================
+           CALLOUT
+           ============================================================ */
+        .callout {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+            padding: 14px 16px;
+            border-radius: 6px;
+            border-left: 3px solid;
+            background: var(--bg2, #f8fafc);
+            margin: 12px 0;
+            transition:
+                border-left-width 0.25s var(--ease-standard),
+                padding-left 0.25s var(--ease-standard),
+                background 0.25s var(--ease-standard);
+        }
+
+        .callout:hover {
+            border-left-width: 5px;
+            padding-left: 18px;
+        }
+
+        .callout-icon {
+            flex-shrink: 0;
+            font-size: 0.95rem;
+            margin-top: 2px;
+        }
+
+        .callout-body {
+            font-size: 0.82rem;
+            color: var(--text2);
+            line-height: 1.65;
+            margin: 0;
+        }
+
+        .callout-body strong {
+            color: var(--text);
+        }
+
+        .callout.is-info {
+            border-left-color: var(--emerald);
+        }
+
+        .callout.is-info .callout-icon {
+            color: var(--emerald);
+        }
+
+        .callout.is-info:hover {
+            background: rgba(16, 185, 129, 0.05);
+        }
+
+        .callout.is-warn {
+            border-left-color: #f59e0b;
+        }
+
+        .callout.is-warn .callout-icon {
+            color: #f59e0b;
+        }
+
+        .callout.is-warn:hover {
+            background: rgba(245, 158, 11, 0.05);
+        }
+
+        /* ============================================================
+           RULE LIST
+           ============================================================ */
         .rule-list {
             list-style: none;
-            padding-left: 0;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
         }
 
         .rule-list li {
-            margin-bottom: 12px;
             display: flex;
-            gap: 12px;
-            align-items: baseline;
-            font-size: 0.85rem;
-            color: var(--text2, #475569);
-            line-height: 1.5;
+            gap: 10px;
+            align-items: flex-start;
+            font-size: 0.82rem;
+            color: var(--text2);
+            line-height: 1.6;
+            transition:
+                transform 0.2s var(--ease-standard),
+                color 0.2s var(--ease-standard);
         }
 
-        .rule-list li i {
-            color: #10b981;
-            font-size: 0.8rem;
-            margin-top: 3px;
-            min-width: 18px;
+        .rule-list li::before {
+            content: '';
+            flex-shrink: 0;
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: var(--emerald);
+            margin-top: 9px;
+            transition:
+                transform 0.3s var(--ease-bounce),
+                background 0.2s var(--ease-standard);
         }
 
-        /* Button Spreadsheet */
-        .btn-spreadsheet {
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            background: linear-gradient(135deg, #1e40af, #2563eb);
-            color: white;
-            padding: 12px 28px;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 0.9rem;
-            text-decoration: none;
-            transition: all 0.2s ease;
-            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
-            border: none;
-            cursor: pointer;
+        .rule-list li:hover {
+            transform: translateX(4px);
+            color: var(--text);
         }
 
-        .btn-spreadsheet:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(37, 99, 235, 0.35);
+        .rule-list li:hover::before {
+            transform: scale(1.8);
+            background: var(--emerald-dark);
         }
 
-        .btn-outline-small {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: transparent;
-            border: 1px solid var(--border, #e2e8f0);
-            padding: 8px 16px;
-            border-radius: 40px;
-            font-size: 0.75rem;
-            font-weight: 500;
-            color: var(--text2, #475569);
-            text-decoration: none;
-            transition: all 0.2s;
+        .rule-list li strong {
+            color: var(--text);
+            font-weight: 700;
         }
 
-        .btn-outline-small:hover {
-            border-color: #2563eb;
-            color: #2563eb;
-        }
-
-        /* Table KKM */
-        .kkm-table-wrapper {
+        /* ============================================================
+           TABLE KKM
+           ============================================================ */
+        .table-wrap {
             overflow-x: auto;
-            margin: 16px 0;
+            border: 1px solid var(--border);
+            border-radius: 6px;
         }
 
-        .kkm-table {
+        .data-table {
             width: 100%;
             border-collapse: collapse;
-            font-size: 0.8rem;
+            font-size: 0.82rem;
             min-width: 300px;
         }
 
-        .kkm-table th,
-        .kkm-table td {
-            padding: 10px 12px;
+        .data-table thead {
+            background: var(--bg2, #f8fafc);
+        }
+
+        .data-table thead th {
+            padding: 10px 14px;
             text-align: left;
-            border-bottom: 1px solid var(--border, #e2e8f0);
-        }
-
-        .kkm-table th {
-            background: var(--light, #f8fafc);
             font-weight: 700;
-            color: var(--text, #0f172a);
+            font-size: 0.7rem;
+            color: var(--text2);
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            border-bottom: 1px solid var(--border);
+            white-space: nowrap;
         }
 
-        /* Example Card */
-        .example-card {
-            background: var(--light, #f8fafc);
-            border-radius: 14px;
-            padding: 14px 18px;
-            margin: 12px 0;
+        .data-table thead th:last-child {
+            text-align: center;
+            width: 80px;
         }
 
-        .example-bad {
-            background: #fef2f2;
-            border-left: 3px solid #ef4444;
+        .data-table tbody tr {
+            transition: background 0.2s var(--ease-standard);
+        }
+
+        .data-table tbody tr:hover {
+            background: var(--emerald-soft);
+        }
+
+        .data-table tbody td {
+            padding: 9px 14px;
+            border-bottom: 1px solid var(--border);
+            color: var(--text);
+            transition: color 0.2s var(--ease-standard);
+        }
+
+        .data-table tbody tr:hover td:first-child {
+            color: var(--emerald-dark);
+            font-weight: 600;
+        }
+
+        .data-table tbody td:last-child {
+            text-align: center;
+            font-weight: 700;
+            color: var(--emerald-dark);
+            font-variant-numeric: tabular-nums;
+        }
+
+        .data-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* ============================================================
+           PREDICATE LIST
+           ============================================================ */
+        .predicate-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .predicate-row {
+            display: grid;
+            grid-template-columns: 80px 44px 1fr;
+            gap: 12px;
+            align-items: center;
+            padding: 10px 14px;
+            background: var(--bg2, #f8fafc);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            font-size: 0.82rem;
+            transition:
+                border-color 0.25s var(--ease-standard),
+                background 0.25s var(--ease-standard),
+                transform 0.25s var(--ease-standard),
+                box-shadow 0.25s var(--ease-standard);
+        }
+
+        .predicate-row:hover {
+            border-color: var(--emerald);
+            background: var(--emerald-soft);
+            transform: translateX(4px);
+            box-shadow: 0 2px 8px rgba(16, 185, 129, 0.08);
+        }
+
+        .predicate-range {
+            font-weight: 700;
+            color: var(--text);
+            font-variant-numeric: tabular-nums;
+        }
+
+        .predicate-letter {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 26px;
+            height: 26px;
+            border-radius: 4px;
+            font-weight: 800;
+            font-size: 0.78rem;
+            color: #fff;
+            transition:
+                transform 0.3s var(--ease-bounce),
+                box-shadow 0.25s var(--ease-standard);
+        }
+
+        .predicate-row:hover .predicate-letter {
+            transform: scale(1.15) rotate(-4deg);
+            box-shadow: 0 4px 10px rgba(15, 23, 42, 0.15);
+        }
+
+        .predicate-letter.a {
+            background: #10b981;
+        }
+
+        .predicate-letter.b {
+            background: #3b82f6;
+        }
+
+        .predicate-letter.c {
+            background: #f59e0b;
+        }
+
+        .predicate-letter.d {
+            background: #ef4444;
+        }
+
+        .predicate-desc {
+            color: var(--text2);
+            line-height: 1.4;
+        }
+
+        /* ============================================================
+           EXAMPLE BOX
+           ============================================================ */
+        .example {
+            padding: 12px 16px;
+            border-radius: 6px;
+            font-size: 0.82rem;
+            line-height: 1.6;
+            border-left: 3px solid;
+            margin-bottom: 8px;
+            transition:
+                border-left-width 0.25s var(--ease-standard),
+                padding-left 0.25s var(--ease-standard),
+                transform 0.25s var(--ease-standard),
+                background 0.25s var(--ease-standard);
+        }
+
+        .example:last-child {
+            margin-bottom: 0;
+        }
+
+        .example:hover {
+            border-left-width: 5px;
+            padding-left: 18px;
+            transform: translateX(2px);
+        }
+
+        .example-label {
+            display: block;
+            font-weight: 700;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
         }
 
         .example-good {
-            background: #ecfdf5;
-            border-left: 3px solid #10b981;
+            background: rgba(16, 185, 129, 0.05);
+            border-left-color: #10b981;
+            color: var(--text2);
         }
 
-        /* Responsive Grid */
-        .info-grid {
+        .example-good:hover {
+            background: rgba(16, 185, 129, 0.09);
+        }
+
+        .example-good .example-label {
+            color: #059669;
+        }
+
+        .example-bad {
+            background: rgba(239, 68, 68, 0.05);
+            border-left-color: #ef4444;
+            color: var(--text2);
+        }
+
+        .example-bad:hover {
+            background: rgba(239, 68, 68, 0.09);
+        }
+
+        .example-bad .example-label {
+            color: #dc2626;
+        }
+
+        /* ============================================================
+           BUTTON ACTION
+           ============================================================ */
+        .btn-action {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 11px 22px;
+            background: var(--emerald);
+            color: #fff;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition:
+                background 0.25s var(--ease-standard),
+                transform 0.25s var(--ease-bounce),
+                box-shadow 0.25s var(--ease-standard);
+        }
+
+        .btn-action:hover {
+            background: var(--emerald-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(16, 185, 129, 0.3);
+        }
+
+        .btn-action:active {
+            transform: translateY(0) scale(0.98);
+            box-shadow: 0 2px 8px rgba(16, 185, 129, 0.2);
+        }
+
+        .btn-action i {
+            font-size: 0.85rem;
+        }
+
+        .btn-action i:last-child {
+            transition: transform 0.25s var(--ease-standard);
+        }
+
+        .btn-action:hover i:last-child {
+            transform: translateX(3px);
+        }
+
+        /* ============================================================
+           SIDEBAR
+           ============================================================ */
+        .rapor-sidebar {
+            position: sticky;
+            top: calc(var(--nav-h, 68px) + 16px);
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        @media (max-width: 1023px) {
+            .rapor-sidebar {
+                position: static;
+            }
+        }
+
+        .sidebar-box {
+            background: var(--card-bg, #ffffff);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 18px;
+            transition:
+                border-color 0.25s var(--ease-standard),
+                box-shadow 0.25s var(--ease-standard);
+        }
+
+        .sidebar-box:hover {
+            border-color: var(--emerald);
+            box-shadow: 0 4px 14px rgba(16, 185, 129, 0.06);
+        }
+
+        .sidebar-box-title {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.72rem;
+            font-weight: 800;
+            color: var(--text);
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            margin-bottom: 14px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .sidebar-box-title i {
+            color: var(--emerald);
+            font-size: 0.85rem;
+        }
+
+        .sidebar-stats {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 24px;
-            margin: 32px 0;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
         }
 
-        /* Fade Up Animation */
+        .stat-item {
+            padding: 10px 12px;
+            background: var(--bg2, #f8fafc);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            text-align: center;
+            transition:
+                border-color 0.25s var(--ease-standard),
+                background 0.25s var(--ease-standard),
+                transform 0.25s var(--ease-standard);
+        }
+
+        .stat-item:hover {
+            border-color: var(--emerald);
+            background: var(--emerald-soft);
+            transform: translateY(-2px);
+        }
+
+        .stat-value {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--emerald-dark);
+            line-height: 1;
+            display: block;
+            margin-bottom: 4px;
+            font-variant-numeric: tabular-nums;
+            transition: transform 0.3s var(--ease-bounce);
+        }
+
+        .stat-item:hover .stat-value {
+            transform: scale(1.1);
+        }
+
+        .stat-label {
+            font-size: 0.65rem;
+            color: var(--text3);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
+        }
+
+        .sidebar-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .sidebar-list li {
+            font-size: 0.8rem;
+            color: var(--text2);
+            line-height: 1.55;
+            display: flex;
+            gap: 8px;
+            align-items: flex-start;
+            transition:
+                transform 0.2s var(--ease-standard),
+                color 0.2s var(--ease-standard);
+        }
+
+        .sidebar-list li i {
+            color: var(--emerald);
+            font-size: 0.7rem;
+            margin-top: 5px;
+            flex-shrink: 0;
+            transition: transform 0.3s var(--ease-bounce);
+        }
+
+        .sidebar-list li:hover {
+            transform: translateX(4px);
+            color: var(--text);
+        }
+
+        .sidebar-list li:hover i {
+            transform: scale(1.2);
+        }
+
+        /* ============================================================
+           CLOSING
+           ============================================================ */
+        .closing {
+            background: var(--bg2, #f8fafc);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 32px 28px;
+            text-align: center;
+            margin-top: 32px;
+            transition:
+                border-color 0.25s var(--ease-standard),
+                box-shadow 0.25s var(--ease-standard);
+        }
+
+        .closing:hover {
+            border-color: var(--emerald);
+            box-shadow: 0 6px 20px rgba(16, 185, 129, 0.06);
+        }
+
+        .closing-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 8px;
+            background: var(--emerald-soft);
+            color: var(--emerald-dark);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            margin-bottom: 14px;
+            transition:
+                transform 0.4s var(--ease-bounce),
+                background 0.3s var(--ease-standard),
+                color 0.3s var(--ease-standard);
+        }
+
+        .closing:hover .closing-icon {
+            transform: scale(1.1) rotate(-6deg);
+            background: var(--emerald);
+            color: #fff;
+        }
+
+        .closing h3 {
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: var(--text);
+            margin-bottom: 8px;
+            letter-spacing: -0.2px;
+        }
+
+        .closing p {
+            font-size: 0.85rem;
+            color: var(--text2);
+            line-height: 1.7;
+            max-width: 500px;
+            margin: 0 auto 20px;
+        }
+
+        /* ============================================================
+           FADE-UP
+           ============================================================ */
         .fade-up {
             opacity: 0;
             transform: translateY(20px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
+            transition:
+                opacity 0.6s var(--ease-standard),
+                transform 0.6s var(--ease-standard);
         }
 
         .fade-up.visible {
@@ -237,59 +801,44 @@
             transform: translateY(0);
         }
 
-        /* Section Styles */
-        .section {
-            padding: 48px 0;
-        }
-
-        .section-title {
-            font-size: clamp(1.3rem, 4vw, 1.8rem);
-            font-weight: 800;
-            margin-bottom: 16px;
-        }
-
-        .section-subtitle {
-            color: var(--text2, #475569);
-            margin-bottom: 32px;
-            font-size: 0.9rem;
-        }
-
-        .divider {
-            height: 1px;
-            background: var(--border, #e2e8f0);
-            margin: 48px 0;
-        }
-
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
-            .hero-section {
-                padding: 32px 0 24px;
-            }
-
-            .rule-card {
-                padding: 16px 18px;
-            }
-
-            .btn-spreadsheet {
-                padding: 10px 20px;
-                font-size: 0.85rem;
-            }
-
-            .section {
-                padding: 32px 0;
-            }
-        }
-
-        /* Custom container override for consistency */
-        .container {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
+        /* ============================================================
+           RESPONSIVE
+           ============================================================ */
         @media (max-width: 640px) {
-            .container {
-                padding: 0 16px;
+            .rapor-header {
+                padding: 20px 0 20px;
+            }
+
+            .rapor-layout {
+                padding: 20px 0 40px;
+                gap: 24px;
+            }
+
+            .panel {
+                padding: 16px;
+            }
+
+            .predicate-row {
+                grid-template-columns: 70px 36px 1fr;
+                gap: 10px;
+                padding: 9px 12px;
+            }
+
+            .closing {
+                padding: 24px 18px;
+            }
+        }
+
+        /* ============================================================
+           REDUCED MOTION
+           ============================================================ */
+        @media (prefers-reduced-motion: reduce) {
+
+            *,
+            *::before,
+            *::after {
+                transition-duration: 0.01ms !important;
+                animation-duration: 0.01ms !important;
             }
         }
     </style>
@@ -297,7 +846,7 @@
 
 <body>
 
-    <!-- NAVBAR - same as other pages -->
+    <!-- ===== NAVBAR ===== -->
     <nav class="navbar">
         <div class="container">
             <div class="nav-inner">
@@ -344,247 +893,357 @@
         <a href="contact.html">Contact Me</a>
     </div>
 
-    <!-- MAIN CONTENT -->
+    <!-- ===== MAIN CONTENT ===== -->
     <div class="page-content">
 
-        <!-- HERO SECTION -->
-        <section class="hero-section">
+        <!-- PAGE HEADER -->
+        <section class="rapor-header">
             <div class="container">
-                <div class="fade-up">
-                    <div class="hero-badge">
-                        <i class="fas fa-graduation-cap"></i> TAHUN AJARAN 2025/2026 • SEMESTER GENAP
+                <div class="rapor-header-inner">
+                    <div class="rapor-header-left">
+                        <span class="rapor-eyebrow">Panduan Guru • TA 2025/2026</span>
+                        <h1 class="rapor-title">
+                            Panduan Pengisian Nilai Rapor
+                            <span class="accent">SMP Negeri Pulau Tiga</span>
+                        </h1>
+                        <p class="rapor-subtitle">
+                            Bersama kita wujudkan rapor yang akurat, informatif, dan berkualitas
+                            bagi putra-putri daerah yang telah menyelesaikan pendidikan di
+                            SMP Persiapan Negeri Pulau Tiga.
+                        </p>
                     </div>
-                    <h1 class="hero-title">
-                        Panduan Pengisian Nilai Rapor<br>
-                        <span class="highlight">Kelas 9A (Lulusan Terbaru)</span>
-                    </h1>
-                    <p class="hero-desc">
-                        Bersama kita wujudkan rapor yang akurat, informatif, dan berkualitas bagi putra-putri daerah
-                        yang telah menyelesaikan pendidikan di SMP Persiapan Negeri Pulau Tiga.
-                    </p>
+                    <div class="rapor-header-right">
+                        <a href="https://docs.google.com/spreadsheets/d/1ivcuAoFTTc66tmeXuCZuT_-YojT-hAee90u47bjn7rA/edit?usp=sharing"
+                            target="_blank" rel="noopener noreferrer" class="btn-action">
+                            <i class="fas fa-table"></i>
+                            Buka Spreadsheet
+                        </a>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <div class="container">
+        <!-- 2-COLUMN LAYOUT -->
+        <section class="section" style="padding: 0;">
+            <div class="container">
+                <div class="rapor-layout">
 
-            <!-- Tom Akses Spreadsheet -->
-            <div class="fade-up" style="margin: 24px 0 16px;">
-                <a href="https://docs.google.com/spreadsheets/d/1paOxXwCDW7QNnNlSNuLU5U9G2_khcL6usxtBzI-oJIw/edit?usp=sharing"
-                    target="_blank" class="btn-spreadsheet">
-                    <i class="fas fa-table"></i> Buka Spreadsheet Nilai Rapor
-                    <i class="fas fa-arrow-right"></i>
-                </a>
-                <p style="font-size: 0.7rem; color: var(--text2, #64748b); margin-top: 12px;">
-                    <i class="fas fa-lock"></i> Pastikan untuk mengecek struktur tabel di Spreadsheet sebelum mulai
-                    mengisi nilai. Jangan ubah format atau header untuk menjaga konsistensi data.
-                </p>
-            </div>
+                    <!-- KIRI: KONTEN UTAMA -->
+                    <div class="rapor-main">
 
-            <!-- Informasi Penting -->
-            <div class="fade-up alert-info">
-                <div style="display: flex; gap: 14px; align-items: flex-start;">
-                    <i class="fas fa-clock" style="color: #2563eb; font-size: 1.3rem;"></i>
-                    <div>
-                        <strong style="font-size: 0.9rem;">Informasi Penting untuk Bapak/Ibu Guru</strong><br>
-                        <span style="font-size: 0.85rem; color: #334155;">
-                            Mengingat siswa Kelas 9A telah menyelesaikan studi dan akan melanjutkan ke jenjang
-                            pendidikan berikutnya,
-                            rapor akhir perlu segera diterbitkan. Kami mengharapkan partisipasi aktif Bapak/Ibu untuk
-                            melengkapi
-                            nilai pengetahuan dan keterampilan paling lambat <strong>5 hari kerja</strong> sejak hari
-                            ini.
-                            Terima kasih atas dedikasi dan kerja samanya.
-                        </span>
+                        <!-- INFO PENTING -->
+                        <div class="block fade-up">
+                            <div class="block-heading">
+                                <i class="fas fa-circle-info"></i>
+                                <h2>Informasi Penting</h2>
+                            </div>
+                            <div class="callout is-warn">
+                                <i class="fas fa-clock callout-icon"></i>
+                                <p class="callout-body">
+                                    <strong>Batas waktu pengisian:</strong> Mengingat siswa Kelas 9A telah
+                                    menyelesaikan studi dan akan melanjutkan ke jenjang pendidikan berikutnya,
+                                    rapor akhir perlu segera diterbitkan. Mohon melengkapi nilai pengetahuan
+                                    dan keterampilan paling lambat <strong>5 hari kerja</strong> sejak hari ini.
+                                    Terima kasih atas dedikasi dan kerja samanya.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- PEDOMAN DESKRIPSI -->
+                        <div class="block fade-up">
+                            <div class="block-heading">
+                                <i class="fas fa-pen-fancy"></i>
+                                <h2>Pedoman Deskripsi Rapor</h2>
+                            </div>
+                            <div class="panel">
+                                <p class="panel-desc" style="margin-bottom: 14px;">
+                                    Deskripsi yang baik mencerminkan capaian siswa secara objektif dan konstruktif.
+                                </p>
+                                <ul class="rule-list">
+                                    <li>
+                                        <span><strong>Maksimal 20 kata</strong> per deskripsi (K3 &amp; K4) untuk
+                                            menjaga kerapian rapor.</span>
+                                    </li>
+                                    <li>
+                                        <span>Gunakan <strong>kalimat deskriptif</strong> yang menggambarkan kompetensi
+                                            spesifik siswa.</span>
+                                    </li>
+                                    <li>
+                                        <span>Perhatikan <strong>ejaan, tanda baca, dan konjungsi</strong> — baca ulang
+                                            sebelum menyimpan.</span>
+                                    </li>
+                                    <li>
+                                        <span>Hindari frasa umum seperti "anak ini pintar" — sebutkan kemampuan
+                                            spesifik.</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- KKM -->
+                        <div class="block fade-up">
+                            <div class="block-heading">
+                                <i class="fas fa-chart-line"></i>
+                                <h2>KKM &amp; Kriteria Ketuntasan Minimal</h2>
+                            </div>
+                            <div class="panel">
+                                <div class="table-wrap">
+                                    <table class="data-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Mata Pelajaran</th>
+                                                <th>KKM</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Bahasa Inggris</td>
+                                                <td>65</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Pendidikan Agama Katolik</td>
+                                                <td>70</td>
+                                            </tr>
+                                            <tr>
+                                                <td>PKN</td>
+                                                <td>70</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Bahasa Indonesia</td>
+                                                <td>65</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Matematika</td>
+                                                <td>60</td>
+                                            </tr>
+                                            <tr>
+                                                <td>IPA</td>
+                                                <td>65</td>
+                                            </tr>
+                                            <tr>
+                                                <td>IPS</td>
+                                                <td>70</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Seni Budaya</td>
+                                                <td>70</td>
+                                            </tr>
+                                            <tr>
+                                                <td>PJOK</td>
+                                                <td>70</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Prakarya</td>
+                                                <td>70</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="callout is-info" style="margin-top: 14px;">
+                                    <i class="fas fa-circle-info callout-icon"></i>
+                                    <p class="callout-body">
+                                        Siswa dinyatakan tuntas jika nilai mencapai atau melampaui KKM.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- RENTANG NILAI -->
+                        <div class="block fade-up">
+                            <div class="block-heading">
+                                <i class="fas fa-star"></i>
+                                <h2>Rentang Nilai &amp; Predikat</h2>
+                            </div>
+                            <div class="panel">
+                                <div class="predicate-list">
+                                    <div class="predicate-row">
+                                        <span class="predicate-range">90 – 100</span>
+                                        <span class="predicate-letter a">A</span>
+                                        <span class="predicate-desc">Sangat Baik — melampaui ekspektasi</span>
+                                    </div>
+                                    <div class="predicate-row">
+                                        <span class="predicate-range">75 – 89</span>
+                                        <span class="predicate-letter b">B</span>
+                                        <span class="predicate-desc">Baik — sesuai target kurikulum</span>
+                                    </div>
+                                    <div class="predicate-row">
+                                        <span class="predicate-range">60 – 74</span>
+                                        <span class="predicate-letter c">C</span>
+                                        <span class="predicate-desc">Cukup — perlu pendampingan</span>
+                                    </div>
+                                    <div class="predicate-row">
+                                        <span class="predicate-range">&lt; 60</span>
+                                        <span class="predicate-letter d">D</span>
+                                        <span class="predicate-desc">Kurang — belum mencapai ketuntasan</span>
+                                    </div>
+                                </div>
+                                <div class="callout is-info" style="margin-top: 14px;">
+                                    <i class="fas fa-balance-scale callout-icon"></i>
+                                    <p class="callout-body">
+                                        <strong>Prinsip Obyektivitas:</strong> Berikan nilai sesuai bukti riil
+                                        (tugas, ulangan, proyek). Hindari rekayasa nilai agar mutu lulusan tetap
+                                        terjaga.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- CONTOH DESKRIPSI -->
+                        <div class="block fade-up">
+                            <div class="block-heading">
+                                <i class="fas fa-lightbulb"></i>
+                                <h2>Contoh Penulisan Deskripsi</h2>
+                            </div>
+                            <div class="panel">
+                                <div class="example example-good">
+                                    <span class="example-label">Baik — ≤20 kata</span>
+                                    "Mampu mengidentifikasi ide pokok dalam teks prosedur dengan tepat."
+                                </div>
+                                <div class="example example-good">
+                                    <span class="example-label">Baik — keterampilan</span>
+                                    "Terampil menyusun laporan percobaan IPA secara sistematis dan runtut."
+                                </div>
+                                <div class="example example-bad">
+                                    <span class="example-label">Kurang baik — terlalu panjang</span>
+                                    "Anak ini sangat rajin dan baik serta selalu mengerjakan tugas walaupun kadang
+                                    terlambat dan nilai kurang memuaskan." <em>(24 kata)</em>
+                                </div>
+                                <div class="callout is-info" style="margin-top: 14px;">
+                                    <i class="fas fa-lightbulb callout-icon"></i>
+                                    <p class="callout-body">
+                                        <strong>Tips:</strong> Gunakan kata kerja operasional (menganalisis, menyajikan,
+                                        membedakan, mempraktikkan). Akhiri dengan tanda titik. Pastikan tidak ada typo
+                                        sebelum menyimpan.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- CEK AKHIR -->
+                        <div class="block fade-up">
+                            <div class="block-heading">
+                                <i class="fas fa-spell-check"></i>
+                                <h2>Cek Akhir Sebelum Menyimpan</h2>
+                            </div>
+                            <div class="panel">
+                                <ul class="rule-list">
+                                    <li>
+                                        <span>Apakah deskripsi sudah maksimal <strong>20 kata</strong>?</span>
+                                    </li>
+                                    <li>
+                                        <span>Apakah <strong>tanda baca</strong> (terutama titik di akhir kalimat) sudah
+                                            tepat?</span>
+                                    </li>
+                                    <li>
+                                        <span>Apakah <strong>konjungsi</strong> yang digunakan logis (sehingga, namun,
+                                            serta)?</span>
+                                    </li>
+                                    <li>
+                                        <span>Apakah nilai yang diberikan <strong>sesuai bukti kompetensi</strong>
+                                            siswa?</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- CLOSING -->
+                        <div class="closing fade-up">
+                            <div class="closing-icon">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                            <h3>Terima Kasih atas Dedikasi Bapak/Ibu Guru</h3>
+                            <p>
+                                Semangat mengabdi di daerah 3T adalah anugerah yang luar biasa.
+                                Mari selesaikan pengisian rapor ini dengan penuh tanggung jawab —
+                                karena ini adalah bekal penting bagi masa depan ananda tercinta.
+                            </p>
+                            <a href="https://docs.google.com/spreadsheets/d/1ivcuAoFTTc66tmeXuCZuT_-YojT-hAee90u47bjn7rA/edit?usp=sharing"
+                                target="_blank" rel="noopener noreferrer" class="btn-action">
+                                <i class="fas fa-edit"></i>
+                                Lanjut ke Spreadsheet
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+
                     </div>
+
+                    <!-- KANAN: SIDEBAR -->
+                    <aside class="rapor-sidebar fade-up">
+
+                        <div class="sidebar-box">
+                            <h3 class="sidebar-box-title">
+                                <i class="fas fa-chart-simple"></i>
+                                Ringkasan
+                            </h3>
+                            <div class="sidebar-stats">
+                                <div class="stat-item">
+                                    <span class="stat-value">10</span>
+                                    <span class="stat-label">Mapel</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-value">20</span>
+                                    <span class="stat-label">Max Kata</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-value">5</span>
+                                    <span class="stat-label">Hari</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-value">4</span>
+                                    <span class="stat-label">Predikat</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="sidebar-box">
+                            <h3 class="sidebar-box-title">
+                                <i class="fas fa-list-check"></i>
+                                Checklist
+                            </h3>
+                            <ul class="sidebar-list">
+                                <li><i class="fas fa-check"></i><span>Deskripsi maksimal 20 kata</span></li>
+                                <li><i class="fas fa-check"></i><span>Nilai sesuai bukti riil</span></li>
+                                <li><i class="fas fa-check"></i><span>Tanda baca lengkap</span></li>
+                                <li><i class="fas fa-check"></i><span>Konjungsi logis</span></li>
+                                <li><i class="fas fa-check"></i><span>Tidak ada typo</span></li>
+                                <li><i class="fas fa-check"></i><span>Cek ulang sebelum simpan</span></li>
+                            </ul>
+                        </div>
+
+                        <div class="sidebar-box">
+                            <h3 class="sidebar-box-title">
+                                <i class="fas fa-table-list"></i>
+                                KKM Ringkas
+                            </h3>
+                            <ul class="sidebar-list">
+                                <li><i class="fas fa-circle"></i><span><strong>60</strong> — Matematika</span></li>
+                                <li><i class="fas fa-circle"></i><span><strong>65</strong> — B. Inggris, B. Indonesia,
+                                        IPA</span></li>
+                                <li><i class="fas fa-circle"></i><span><strong>70</strong> — Agama, PKN, IPS, Seni,
+                                        PJOK, Prakarya</span></li>
+                            </ul>
+                        </div>
+
+                        <div class="sidebar-box">
+                            <h3 class="sidebar-box-title">
+                                <i class="fas fa-headset"></i>
+                                Bantuan
+                            </h3>
+                            <p style="font-size: 0.8rem; color: var(--text2); line-height: 1.65; margin: 0;">
+                                Ada pertanyaan terkait pengisian rapor?
+                                Hubungi tim kurikulum atau wali kelas untuk klarifikasi.
+                            </p>
+                        </div>
+
+                    </aside>
+
                 </div>
             </div>
+        </section>
 
-            <!-- Grid Informasi -->
-            <div class="info-grid">
-                <!-- Aturan Deskripsi -->
-                <div class="fade-up rule-card">
-                    <div class="rule-title">
-                        <i class="fas fa-pen-fancy"></i> Pedoman Deskripsi Rapor
-                    </div>
-                    <p style="font-size: 0.85rem; margin-bottom: 14px; color: var(--text2);">
-                        Deskripsi yang baik mencerminkan capaian siswa secara objektif dan konstruktif.
-                    </p>
-                    <ul class="rule-list">
-                        <li><i class="fas fa-check-circle"></i> <strong>Maksimal 20 kata</strong> per deskripsi (K3 &
-                            K4) untuk menjaga kerapian rapor.</li>
-                        <li><i class="fas fa-check-circle"></i> Gunakan <strong>kalimat deskriptif</strong> yang
-                            menggambarkan kompetensi spesifik siswa.</li>
-                        <li><i class="fas fa-check-circle"></i> Perhatikan <strong>ejaan, tanda baca, dan
-                                konjungsi</strong> — baca ulang sebelum menyimpan.</li>
-                        <li><i class="fas fa-check-circle"></i> Hindari frasa umum seperti "anak ini pintar" — lebih
-                            baik sebutkan kemampuan spesifik.</li>
-                    </ul>
-                </div>
-
-                <!-- KKM & Predikat -->
-                <div class="fade-up rule-card">
-                    <div class="rule-title">
-                        <i class="fas fa-chart-line"></i> KKM & Kriteria Ketuntasan
-                    </div>
-                    <div class="kkm-table-wrapper">
-                        <table class="kkm-table">
-                            <thead>
-                                <tr>
-                                    <th>Mata Pelajaran</th>
-                                    <th>KKM</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Bahasa Inggris</td>
-                                    <td>65</td>
-                                </tr>
-                                <tr>
-                                    <td>Pendidikan Agama Katolik</td>
-                                    <td>70</td>
-                                </tr>
-                                <tr>
-                                    <td>PKN</td>
-                                    <td>70</td>
-                                </tr>
-                                <tr>
-                                    <td>Bahasa Indonesia</td>
-                                    <td>65</td>
-                                </tr>
-                                <tr>
-                                    <td>Matematika</td>
-                                    <td>60</td>
-                                </tr>
-                                <tr>
-                                    <td>IPA</td>
-                                    <td>65</td>
-                                </tr>
-                                <tr>
-                                    <td>IPS</td>
-                                    <td>70</td>
-                                </tr>
-                                <tr>
-                                    <td>Bahasa Inggris</td>
-                                    <td>65</td>
-                                </tr>
-                                <tr>
-                                    <td>Seni Budaya</td>
-                                    <td>70</td>
-                                </tr>
-                                <tr>
-                                    <td>PJOK</td>
-                                    <td>70</td>
-                                </tr>
-                                <tr>
-                                    <td>Prakarya</td>
-                                    <td>70</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <p style="font-size: 0.75rem; margin-top: 10px; color: var(--text2);">
-                        <i class="fas fa-info-circle"></i> Siswa dinyatakan tuntas jika nilai mencapai atau melampaui
-                        KKM.
-                    </p>
-                </div>
-
-                <!-- Rentang Nilai -->
-                <div class="fade-up rule-card">
-                    <div class="rule-title">
-                        <i class="fas fa-star-of-life"></i> Contoh Rentang Nilai & Predikat (Sesuaikan dengan KKM Mapel
-                        yang diampu)
-                    </div>
-                    <ul class="rule-list">
-                        <li><i class="fas fa-check-circle" style="color: #10b981;"></i> 90 – 100 : <strong>A (Sangat
-                                Baik)</strong> — Penguasaan materi sangat baik, melampaui ekspektasi.</li>
-                        <li><i class="fas fa-check-circle" style="color: #3b82f6;"></i> 75 – 89 : <strong>B
-                                (Baik)</strong> — Penguasaan materi baik, sesuai target kurikulum.</li>
-                        <li><i class="fas fa-check-circle" style="color: #f59e0b;"></i> 60 – 74 : <strong>C
-                                (Cukup)</strong> — Penguasaan materi cukup, perlu pendampingan.</li>
-                        <li><i class="fas fa-check-circle" style="color: #ef4444;"></i> &lt; 60 : <strong>D
-                                (Kurang)</strong> — Belum mencapai ketuntasan minimal.</li>
-                    </ul>
-                    <p
-                        style="font-size: 0.75rem; margin-top: 12px; background: #fef3c7; padding: 8px 12px; border-radius: 12px;">
-                        <i class="fas fa-balance-scale"></i> <strong>Prinsip Obyektivitas:</strong> Berikan nilai sesuai
-                        bukti riil (tugas, ulangan, proyek). Hindari rekayasa nilai agar mutu lulusan tetap terjaga.
-                    </p>
-                </div>
-            </div>
-
-            <!-- Contoh Deskripsi yang Baik & Kurang -->
-            <div class="fade-up rule-card">
-                <div class="rule-title">
-                    <i class="fas fa-lightbulb"></i> Contoh Penulisan Deskripsi yang Informatif
-                </div>
-                <div class="example-card example-good">
-                    <i class="fas fa-thumbs-up" style="color: #10b981; margin-right: 8px;"></i>
-                    <strong>Contoh Baik (≤20 kata, deskriptif):</strong><br>
-                    “Mampu mengidentifikasi ide pokok dalam teks prosedur dengan tepat.”
-                </div>
-                <div class="example-card example-good">
-                    <i class="fas fa-thumbs-up" style="color: #10b981; margin-right: 8px;"></i>
-                    <strong>Contoh Baik untuk Keterampilan:</strong><br>
-                    “Terampil menyusun laporan percobaan IPA secara sistematis dan runtut.”
-                </div>
-                <div class="example-card example-bad">
-                    <i class="fas fa-thumbs-down" style="color: #ef4444; margin-right: 8px;"></i>
-                    <strong>Contoh Kurang Baik (terlalu panjang, tidak fokus):</strong><br>
-                    “Anak ini sangat rajin dan baik serta selalu mengerjakan tugas walaupun kadang terlambat dan nilai
-                    kurang memuaskan.” (24 kata)
-                </div>
-                <p style="font-size: 0.8rem; margin-top: 12px; color: var(--text2);">
-                    <i class="fas fa-smile-wink"></i> <strong>Tips:</strong> Gunakan kata kerja operasional
-                    (menganalisis, menyajikan, membedakan, mempraktikkan).
-                    Akhiri dengan tanda titik. Pastikan tidak ada typo sebelum menyimpan.
-                </p>
-            </div>
-
-            <!-- Panduan Tambahan -->
-            <div class="fade-up alert-warning">
-                <div style="display: flex; gap: 14px; align-items: flex-start;">
-                    <i class="fas fa-spell-check" style="color: #f59e0b; font-size: 1.3rem;"></i>
-                    <div>
-                        <strong style="font-size: 0.9rem;">Cek Akhir Sebelum Menyimpan</strong><br>
-                        <ul style="margin-top: 8px; margin-left: 20px; font-size: 0.85rem; color: #334155;">
-                            <li>✓ Apakah deskripsi sudah maksimal 20 kata?</li>
-                            <li>✓ Apakah tanda baca (terutama titik di akhir kalimat) sudah tepat?</li>
-                            <li>✓ Apakah konjungsi yang digunakan logis (sehingga, namun, serta)?</li>
-                            <li>✓ Apakah nilai yang diberikan sesuai dengan bukti kompetensi siswa?</li>
-                        </ul>
-                        <p style="margin-top: 10px; font-size: 0.8rem;">
-                            Dengan memperhatikan hal-hal di atas, rapor siswa akan terlihat profesional dan mencerminkan
-                            kualitas pendidikan di SMP Persiapan Negeri Pulau Tiga.
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Penutup & Harapan -->
-            <div class="fade-up"
-                style="text-align: center; margin: 48px 0 32px; padding: 24px; background: #f0fdf4; border-radius: 24px;">
-                <i class="fas fa-heart"
-                    style="color: #16a34a; font-size: 2rem; margin-bottom: 12px; display: inline-block;"></i>
-                <h3 style="font-weight: 700; margin-bottom: 8px;">Terima Kasih atas Dedikasi Bapak/Ibu Guru</h3>
-                <p style="color: #475569; max-width: 500px; margin: 0 auto; font-size: 0.9rem;">
-                    Semangat mengabdi di daerah 3T adalah anugerah yang luar biasa. Mari selesaikan pengisian rapor ini
-                    dengan penuh tanggung jawab,
-                    karena ini adalah bekal penting bagi masa depan ananda tercinta.
-                </p>
-                <div style="margin-top: 24px;">
-                    <a href="https://docs.google.com/spreadsheets/d/1paOxXwCDW7QNnNlSNuLU5U9G2_khcL6usxtBzI-oJIw/edit?usp=sharing"
-                        target="_blank" class="btn-spreadsheet" style="background: #16a34a;">
-                        <i class="fas fa-edit"></i> Lanjut ke Spreadsheet
-                        <i class="fas fa-external-link-alt"></i>
-                    </a>
-                </div>
-            </div>
-
-        </div>
     </div>
 
-    <!-- ===== FOOTER ===== -->
+    <!-- ===== FOOTER — TIDAK DIUBAH ===== -->
     <footer style="border-top: 1px solid var(--border); background: var(--bg2);">
         <div class="container">
             <div
@@ -602,19 +1261,6 @@
                         Jam Operasional: 07.00 - 13.00 WIT
                     </p>
                 </div>
-
-                <!-- <div>
-                            <h4 style="font-size: 0.85rem; font-weight: 700; margin-bottom: 10px;" data-i18n="footer_phone">
-                                Telepon / WhatsApp</h4>
-                            <p style="font-size: 0.78rem; color: var(--text2); line-height: 1.8; margin: 0;">
-                                <i class="fab fa-whatsapp" style="color: var(--c1); width: 16px;"></i>
-                                Tata Usaha: 08218887004
-                            </p>
-                            <p style="font-size: 0.78rem; color: var(--text2); line-height: 1.8; margin: 4px 0 0;">
-                                <i class="fab fa-whatsapp" style="color: var(--c1); width: 16px;"></i>
-                                Kesiswaan: 085691296762
-                            </p>
-                        </div> -->
 
                 <div>
                     <h4 style="font-size: 0.85rem; font-weight: 700; margin-bottom: 10px;"
@@ -634,7 +1280,8 @@
                         Kami</h4>
                     <div style="display: flex; gap: 10px; margin-top: 4px;">
 
-                        <a href="https://www.facebook.com/yantho.rundy6" target="_blank" rel="noopener noreferrer" aria-label="Facebook"
+                        <a href="https://www.facebook.com/yantho.rundy6" target="_blank" rel="noopener noreferrer"
+                            aria-label="Facebook"
                             style="display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; background: var(--card-bg); border: 1px solid var(--border); color: var(--text2); text-decoration: none; font-size: 0.95rem; transition: all .25s ease;"
                             onmouseover="this.style.background='#1877F2';this.style.color='#fff';this.style.borderColor='#1877F2';this.style.transform='translateY(-2px)';"
                             onmouseout="this.style.background='var(--card-bg)';this.style.color='var(--text2)';this.style.borderColor='var(--border)';this.style.transform='translateY(0)';">
@@ -674,50 +1321,26 @@
             </div>
         </div>
     </footer>
+
     <script src="js/main.js"></script>
     <script src="js/navbar.js"></script>
     <script>
-        // Hamburger menu toggle (consistent with other pages)
-        const hamburger = document.querySelector('.hamburger');
-        const mobileMenu = document.getElementById('mobileMenu');
-        if (hamburger) {
-            hamburger.addEventListener('click', () => {
-                if (mobileMenu.style.display === 'flex') {
-                    mobileMenu.style.display = 'none';
-                } else {
-                    mobileMenu.style.display = 'flex';
-                }
-            });
-        }
-
-        // Dark mode toggle - disabled (keep light mode as requested)
-        const darkToggle = document.getElementById('darkToggleBtn');
-        if (darkToggle) {
-            darkToggle.addEventListener('click', () => {
-                // No action - keep default light mode
-                // Silently ignore to maintain consistency
-            });
-        }
-
         // Scroll animation (fade-up)
         const fadeElements = document.querySelectorAll('.fade-up');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.1, rootMargin: "0px 0px -20px 0px" });
+        if ('IntersectionObserver' in window) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1, rootMargin: "0px 0px -20px 0px" });
 
-        fadeElements.forEach(el => observer.observe(el));
-
-        // Responsive: close mobile menu on window resize
-        window.addEventListener('resize', function () {
-            if (window.innerWidth > 768) {
-                if (mobileMenu) mobileMenu.style.display = 'none';
-            }
-        });
+            fadeElements.forEach(el => observer.observe(el));
+        } else {
+            fadeElements.forEach(el => el.classList.add('visible'));
+        }
     </script>
 </body>
 
