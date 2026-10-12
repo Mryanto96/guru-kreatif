@@ -3111,7 +3111,7 @@ const BLOG_DATA = [
         authorRole: 'Guru SMP Negeri Pulau Tiga',
         date: '2026-10-12',
         tags: ['Kegiatan', 'BDR', 'Tugas', 'Kabut Asap', 'Belajar dari Rumah'],
-        views: 0,
+        views: 23,
         featured: true,
 
         content: `
@@ -4641,7 +4641,7 @@ e. They do not go to school today.</li>
         authorRole: 'Guru SMP Negeri Pulau Tiga',
         date: '2026-10-7',
         tags: ['Pengalaman', 'Keberanian', 'Siswa', 'Pendidikan', 'Bahasa Inggris'],
-        views: 0,
+        views: 453,
         featured: false,
 
         content: `
