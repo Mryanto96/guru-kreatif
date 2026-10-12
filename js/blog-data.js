@@ -1504,7 +1504,7 @@ const BLOG_DATA = [
         tags: ['Tips', 'Grammar', 'Bahasa Inggris', 'Belajar'],
         views: 1800,
         featured: false,
-                quiz: {
+        quiz: {
             title: 'Uji Pemahamanmu tentang Degree of Comparison',
             description: 'Jawab 20 soal berikut untuk menguji pemahamanmu tentang Degree of Comparison. Setelah selesai, klik tombol untuk mengirim jawaban ke Facebook Mr. Yanto.',
             questions: [
@@ -3096,8 +3096,1696 @@ const BLOG_DATA = [
 
 <p>Selamat belajar! 🌿</p>
 `
-    }
+    },
+    /* ============================================================
+   ARTIKEL 11 — kegiatan
+   TUGAS BDR: Belajar dari Rumah — 13 s.d. 21 Oktober 2026
+   ============================================================ */
+    {
+        id: 'tugas-bdr-oktober-2026',
+        title: 'Tugas BDR: Belajar dari Rumah — 13 s.d. 21 Oktober 2026',
+        excerpt: 'Kabut asap tidak menyurutkan semangat belajar! Mulai 13–21 Oktober 2026, kita Belajar Dari Rumah (BDR). Materi dan tugas lengkap untuk Bahasa Inggris kelas 7, 8, 9, dan Agama Kristen kelas 7. Baca materi di web, salin catatan, kerjakan soal, lalu kumpulkan di sekolah.',
+        thumbnail: 'images/blog/Bdr.png',
+        category: 'kegiatan',
+        author: 'Mr. Yanto',
+        authorRole: 'Guru SMP Negeri Pulau Tiga',
+        date: '2026-10-12',
+        tags: ['Kegiatan', 'BDR', 'Tugas', 'Kabut Asap', 'Belajar dari Rumah'],
+        views: 0,
+        featured: true,
 
+        content: `
+<style>
+.bdr-table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 0.95em; }
+.bdr-table th, .bdr-table td { border: 1px solid #d1d5db; padding: 8px 10px; text-align: left; vertical-align: top; }
+.bdr-table th { color: #fff; }
+.bdr-k7 th { background: #2563eb; }
+.bdr-k8 th { background: #16a34a; }
+.bdr-k9 th { background: #7c3aed; }
+.bdr-ag th { background: #ea580c; }
+.bdr-k7 { border-left: 4px solid #2563eb; padding-left: 12px; }
+.bdr-k8 { border-left: 4px solid #16a34a; padding-left: 12px; }
+.bdr-k9 { border-left: 4px solid #7c3aed; padding-left: 12px; }
+.bdr-ag { border-left: 4px solid #ea580c; padding-left: 12px; }
+.bdr-box { background: #f3f4f6; border-left: 4px solid #6b7280; padding: 12px 16px; margin: 16px 0; border-radius: 4px; }
+.bdr-date { background: #fef3c7; border-left: 4px solid #f59e0b; padding: 6px 12px; margin: 8px 0 16px 0; font-size: 0.9em; border-radius: 4px; }
+</style>
+
+<p><span class="drop-cap">H</span>alo anak-anakku, apa kabar? 👋</p>
+
+<p>Semoga kalian semua sehat dan tetap semangat, ya. Bapak tahu, kabut asap di daerah kita sedang parah. Karena itu, sesuai arahan dari Dinas Pendidikan dan Bapak Bupati, mulai <strong>13 sampai 21 Oktober 2026</strong>, kita akan melaksanakan <strong>Belajar Dari Rumah (BDR)</strong>.</p>
+
+<p>Tapi dengarkan dulu, ya. BDR ini bukan libur. Kita tetap belajar, hanya saja tempatnya di rumah. Semua <strong>materi dan soal sudah Bapak siapkan di web ini</strong>. Kalian tinggal baca, salin catatannya, lalu kerjakan soalnya di rumah.</p>
+
+<p><strong>Begini cara kerjanya:</strong></p>
+<ol>
+<li>Semua materi dan soal ada di web ini. Kalian <strong>tidak perlu mengambil tugas</strong> di sekolah.</li>
+<li>Baca materi di web, salin catatan ke buku tulis, kerjakan soal di rumah.</li>
+<li>Datang ke sekolah <strong>hanya untuk mengumpulkan tugas</strong> sesuai jadwal kelasmu.</li>
+<li><strong>Setelah kalian kumpulkan tugas, kalian boleh langsung pulang.</strong> Tidak perlu menunggu lama-lama di sekolah. Ingat, kabut asap sedang parah, jadi jangan banyak berada di luar rumah.</li>
+<li>Tugas yang kalian kumpulkan akan Bapak foto sebagai bukti laporan ke Dinas Pendidikan.</li>
+</ol>
+
+<div class="bdr-box">
+<p><strong>Pesan Bapak:</strong> Kerjakan tugasmu di rumah dengan jujur. Jangan menyalin pekerjaan teman. Kalau ada yang belum jelas, tulis pertanyaanmu di buku, nanti kita bahas saat tatap muka.</p>
+</div>
+
+<hr>
+
+<h2>📅 Jadwal Pengumpulan Tugas</h2>
+
+<table class="bdr-table">
+<thead>
+<tr>
+<th>Hari</th>
+<th>Tanggal</th>
+<th>Mapel & Kelas</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Selasa</td>
+<td>13 Okt 2026</td>
+<td>Bahasa Inggris Kelas 8 & Agama Kristen Kelas 7</td>
+</tr>
+<tr>
+<td>Kamis</td>
+<td>15 Okt 2026</td>
+<td>Bahasa Inggris Kelas 7, 8, 9</td>
+</tr>
+<tr>
+<td>Senin</td>
+<td>19 Okt 2026</td>
+<td>Bahasa Inggris Kelas 9 & Kelas 7</td>
+</tr>
+<tr>
+<td>Rabu</td>
+<td>21 Okt 2026</td>
+<td><strong>Kembali Tatap Muka</strong> (jika asap membaik)</td>
+</tr>
+</tbody>
+</table>
+
+<p><em>Catatan: Jadwal dapat berubah sesuai kondisi kabut asap dan arahan kepala sekolah.</em></p>
+
+<hr>
+
+<h1>📘 SESI 1 — Selasa, 13 Oktober 2026</h1>
+
+<div class="bdr-k8">
+
+<h2>Bahasa Inggris — Kelas 8</h2>
+<h3>📖 Catatan Materi: Descriptive Text</h3>
+
+<div class="bdr-date"><strong>Tanggal:</strong> Selasa, 13 Oktober 2026</div>
+
+<p><strong>Instruksi:</strong> Salin catatan berikut ke buku tulismu. Tulis dengan rapi.</p>
+
+<h4>A. Pengertian Descriptive Text</h4>
+<p>Descriptive Text adalah teks yang menggambarkan orang, tempat, benda, atau hewan. Tujuan teks ini adalah membuat pembaca bisa membayangkan apa yang kita gambarkan.</p>
+
+<h4>B. Struktur Descriptive Text</h4>
+
+<table class="bdr-table bdr-k8">
+<thead>
+<tr>
+<th>No</th>
+<th>Struktur</th>
+<th>Penjelasan</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Identification</td>
+<td>Pengenalan objek yang akan digambarkan</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Description</td>
+<td>Penjelasan detail objek (ciri fisik, sifat, kebiasaan)</td>
+</tr>
+</tbody>
+</table>
+
+<h4>C. Ciri Bahasa Descriptive Text</h4>
+
+<table class="bdr-table bdr-k8">
+<thead>
+<tr>
+<th>No</th>
+<th>Ciri</th>
+<th>Penjelasan</th>
+<th>Contoh</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Simple Present Tense</td>
+<td>Menggambarkan fakta yang masih berlaku</td>
+<td>My cat has soft fur.</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Adjective (kata sifat)</td>
+<td>Memperjelas gambaran objek</td>
+<td>big, small, clean, beautiful</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Kata kerja keadaan</td>
+<td>Menghubungkan subject dengan sifat</td>
+<td>is, are, has, have</td>
+</tr>
+</tbody>
+</table>
+
+<h4>D. Daftar Adjective (Kata Sifat)</h4>
+
+<table class="bdr-table bdr-k8">
+<thead>
+<tr>
+<th>No</th>
+<th>Adjective</th>
+<th>Arti</th>
+<th>No</th>
+<th>Adjective</th>
+<th>Arti</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>big</td>
+<td>besar</td>
+<td>6</td>
+<td>soft</td>
+<td>lembut</td>
+</tr>
+<tr>
+<td>2</td>
+<td>small</td>
+<td>kecil</td>
+<td>7</td>
+<td>tall</td>
+<td>tinggi</td>
+</tr>
+<tr>
+<td>3</td>
+<td>clean</td>
+<td>bersih</td>
+<td>8</td>
+<td>bright</td>
+<td>terang</td>
+</tr>
+<tr>
+<td>4</td>
+<td>beautiful</td>
+<td>cantik/indah</td>
+<td>9</td>
+<td>comfortable</td>
+<td>nyaman</td>
+</tr>
+<tr>
+<td>5</td>
+<td>friendly</td>
+<td>ramah</td>
+<td>10</td>
+<td>kind</td>
+<td>baik</td>
+</tr>
+</tbody>
+</table>
+
+<h4>E. Contoh Descriptive Text</h4>
+
+<p><strong>My School</strong></p>
+<p>My school is SMP Negeri Pulau Tiga. It is in Asmat, Papua Selatan. The school is not very big, but it is clean and comfortable. There are six classrooms and a small yard. The walls are white. The teachers are friendly. The students are kind. I love my school.</p>
+
+<p><strong>Terjemahan:</strong></p>
+<p>Sekolahku adalah SMP Negeri Pulau Tiga. Ada di Asmat, Papua Selatan. Sekolahnya tidak terlalu besar, tapi bersih dan nyaman. Ada enam ruang kelas dan halaman kecil. Dindingnya putih. Guru-gurunya ramah. Murid-muridnya baik. Aku suka sekolahku.</p>
+
+<h3>✍️ Soal — Bahasa Inggris Kelas 8</h3>
+
+<p><strong>Instruksi:</strong> Kerjakan di buku tulis. Tulis soal dan jawaban.</p>
+
+<ol>
+<li>Apa itu Descriptive Text? Tulis dengan bahasamu sendiri.</li>
+<li>Sebutkan dua struktur Descriptive Text!</li>
+<li>Tense apa yang dipakai dalam Descriptive Text?</li>
+<li>Tuliskan 5 kata sifat (adjective) dalam bahasa Inggris beserta artinya!</li>
+<li>Buatlah Descriptive Text singkat tentang sekolahmu (SMP Negeri Pulau Tiga) minimal 5 kalimat!</li>
+</ol>
+
+</div>
+
+<hr>
+
+<div class="bdr-ag">
+
+<h2>Agama Kristen — Kelas 7</h2>
+<h3>📖 Catatan Materi: Indahnya Mengampuni</h3>
+
+<div class="bdr-date"><strong>Tanggal:</strong> Selasa, 13 Oktober 2026</div>
+
+<p><strong>Instruksi:</strong> Salin catatan berikut ke buku tulismu. Tulis dengan rapi.</p>
+
+<h4>A. Pengertian Mengampuni</h4>
+<p>Mengampuni berarti melepaskan rasa sakit hati, dendam, atau kesalahan orang lain terhadap kita. Dalam iman Kristen, mengampuni bukan pilihan, melainkan perintah Tuhan. Yesus sendiri mengajarkan bahwa pengampunan adalah tanda bahwa kita adalah anak-anak Allah.</p>
+
+<h4>B. Ayat Alkitab tentang Mengampuni</h4>
+
+<blockquote>
+<p><strong>Matius 6:14-15</strong></p>
+<p><em>"Karena jikalau kamu mengampuni kesalahan orang, Bapamu yang di sorga akan mengampuni kamu juga. Tetapi jikalau kamu tidak mengampuni orang, Bapamu juga tidak akan mengampuni kesalahanmu."</em></p>
+</blockquote>
+
+<blockquote>
+<p><strong>Matius 18:21-22</strong></p>
+<p><em>"Kemudian datanglah Petrus dan berkata kepada Yesus: 'Tuhan, sampai berapa kali aku harus mengampuni saudaraku jika ia berbuat dosa terhadap aku? Sampai tujuh kali?' Yesus berkata kepadanya: 'Bukan! Aku berkata kepadamu: Bukan sampai tujuh kali, melainkan sampai tujuh puluh kali tujuh kali.'"</em></p>
+</blockquote>
+
+<h4>C. Mengapa Kita Harus Mengampuni?</h4>
+
+<table class="bdr-table bdr-ag">
+<thead>
+<tr>
+<th>No</th>
+<th>Alasan</th>
+<th>Penjelasan</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Karena Allah lebih dulu mengampuni kita</td>
+<td>Allah mengampuni dosa kita melalui Yesus Kristus. Kita harus meneladani kasih Allah.</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Karena perintah Tuhan</td>
+<td>Yesus mengajarkan kita untuk mengampuni tanpa batas.</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Karena mengampuni membebaskan kita</td>
+<td>Dendam hanya menyakiti diri sendiri. Mengampuni membawa damai sejahtera.</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Karena kita juga butuh diampuni</td>
+<td>Tidak ada manusia yang sempurna. Kita pun pernah salah kepada orang lain.</td>
+</tr>
+</tbody>
+</table>
+
+<h4>D. Bagaimana Cara Mengampuni?</h4>
+
+<table class="bdr-table bdr-ag">
+<thead>
+<tr>
+<th>No</th>
+<th>Langkah</th>
+<th>Penjelasan</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Mengakui perasaan kita</td>
+<td>Sadari bahwa kita terluka. Jangan berpura-pura tidak apa-apa.</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Berdoa memohon kekuatan</td>
+<td>Minta kepada Tuhan agar hati kita dilembutkan untuk mengampuni.</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Melepaskan hak untuk membalas</td>
+<td>Serahkan penghakiman kepada Tuhan. Balas dendam bukan tugas kita.</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Berbuat baik kepada orang yang menyakiti</td>
+<td>Ini langkah tersulit, tapi inilah bukti kasih yang sejati.</td>
+</tr>
+</tbody>
+</table>
+
+<h4>E. Contoh Perumpamaan Yesus</h4>
+<p>Yesus menceritakan perumpamaan tentang hamba yang tidak mau mengampuni (Matius 18:23-35). Seorang hamba telah diampuni utangnya yang sangat besar oleh tuannya. Tetapi ketika hamba itu bertemu temannya yang berutang kecil, ia tidak mau mengampuni. Tuan itu marah dan menyerahkan hamba tersebut untuk dihukum. Perumpamaan ini mengajarkan bahwa kita harus mengampuni, karena kita sendiri telah diampuni oleh Tuhan.</p>
+
+<h3>✍️ Soal — Agama Kristen Kelas 7</h3>
+
+<p><strong>Instruksi:</strong> Kerjakan di buku tulis. Tulis soal dan jawaban.</p>
+
+<ol>
+<li>Apa yang dimaksud dengan mengampuni? Tulis dengan bahasamu sendiri.</li>
+<li>Tuliskan ayat Matius 6:14-15 tentang mengampuni!</li>
+<li>Sebutkan 3 alasan mengapa kita harus mengampuni!</li>
+<li>Sebutkan 3 langkah yang bisa dilakukan untuk mengampuni seseorang!</li>
+<li>Ceritakan pengalamanmu ketika kamu mengampuni seseorang atau ketika kamu diampuni. Apa yang kamu rasakan? (minimal 5 kalimat)</li>
+</ol>
+
+</div>
+
+<hr>
+
+<h1>📘 SESI 2 — Kamis, 15 Oktober 2026</h1>
+
+<div class="bdr-k7">
+
+<h2>Bahasa Inggris — Kelas 7</h2>
+<h3>📖 Catatan Materi: Numbers, Greetings, Leave Taking, Days, Months, dan Demonstrative Pronoun</h3>
+
+<div class="bdr-date"><strong>Tanggal:</strong> Kamis, 15 Oktober 2026</div>
+
+<p><strong>Instruksi:</strong> Salin catatan berikut ke buku tulismu. Tulis dengan rapi.</p>
+
+<h4>A. Numbers (Angka)</h4>
+
+<table class="bdr-table bdr-k7">
+<thead>
+<tr>
+<th>Angka</th>
+<th>English</th>
+<th>Arti</th>
+<th>Angka</th>
+<th>English</th>
+<th>Arti</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>one</td>
+<td>satu</td>
+<td>11</td>
+<td>eleven</td>
+<td>sebelas</td>
+</tr>
+<tr>
+<td>2</td>
+<td>two</td>
+<td>dua</td>
+<td>12</td>
+<td>twelve</td>
+<td>dua belas</td>
+</tr>
+<tr>
+<td>3</td>
+<td>three</td>
+<td>tiga</td>
+<td>13</td>
+<td>thirteen</td>
+<td>tiga belas</td>
+</tr>
+<tr>
+<td>4</td>
+<td>four</td>
+<td>empat</td>
+<td>14</td>
+<td>fourteen</td>
+<td>empat belas</td>
+</tr>
+<tr>
+<td>5</td>
+<td>five</td>
+<td>lima</td>
+<td>15</td>
+<td>fifteen</td>
+<td>lima belas</td>
+</tr>
+<tr>
+<td>6</td>
+<td>six</td>
+<td>enam</td>
+<td>16</td>
+<td>sixteen</td>
+<td>enam belas</td>
+</tr>
+<tr>
+<td>7</td>
+<td>seven</td>
+<td>tujuh</td>
+<td>17</td>
+<td>seventeen</td>
+<td>tujuh belas</td>
+</tr>
+<tr>
+<td>8</td>
+<td>eight</td>
+<td>delapan</td>
+<td>18</td>
+<td>eighteen</td>
+<td>delapan belas</td>
+</tr>
+<tr>
+<td>9</td>
+<td>nine</td>
+<td>sembilan</td>
+<td>19</td>
+<td>nineteen</td>
+<td>sembilan belas</td>
+</tr>
+<tr>
+<td>10</td>
+<td>ten</td>
+<td>sepuluh</td>
+<td>20</td>
+<td>twenty</td>
+<td>dua puluh</td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>Puluhan:</strong> 30 thirty, 40 forty, 50 fifty, 60 sixty, 70 seventy, 80 eighty, 90 ninety, 100 one hundred.</p>
+
+<h4>B. Greetings (Sapaan)</h4>
+
+<table class="bdr-table bdr-k7">
+<thead>
+<tr>
+<th>Greeting</th>
+<th>Arti</th>
+<th>Waktu</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Good morning</td>
+<td>Selamat pagi</td>
+<td>Pagi (00.00–12.00)</td>
+</tr>
+<tr>
+<td>Good afternoon</td>
+<td>Selamat siang</td>
+<td>Siang (12.00–18.00)</td>
+</tr>
+<tr>
+<td>Good evening</td>
+<td>Selamat malam</td>
+<td>Malam (18.00–00.00)</td>
+</tr>
+<tr>
+<td>Hello</td>
+<td>Halo</td>
+<td>Kapan saja</td>
+</tr>
+<tr>
+<td>Hi</td>
+<td>Hai</td>
+<td>Kapan saja</td>
+</tr>
+<tr>
+<td>How are you?</td>
+<td>Apa kabar?</td>
+<td>Kapan saja</td>
+</tr>
+<tr>
+<td>I am fine, thank you</td>
+<td>Aku baik, terima kasih</td>
+<td>Jawaban</td>
+</tr>
+</tbody>
+</table>
+
+<h4>C. Leave Taking (Pamitan)</h4>
+
+<table class="bdr-table bdr-k7">
+<thead>
+<tr>
+<th>Leave Taking</th>
+<th>Arti</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Goodbye</td>
+<td>Selamat tinggal</td>
+</tr>
+<tr>
+<td>Bye</td>
+<td>Dadah</td>
+</tr>
+<tr>
+<td>See you later</td>
+<td>Sampai jumpa nanti</td>
+</tr>
+<tr>
+<td>See you tomorrow</td>
+<td>Sampai jumpa besok</td>
+</tr>
+<tr>
+<td>Good night</td>
+<td>Selamat malam (sebelum tidur)</td>
+</tr>
+<tr>
+<td>Take care</td>
+<td>Jaga dirimu</td>
+</tr>
+</tbody>
+</table>
+
+<h4>D. Names of the Day (Nama Hari)</h4>
+
+<table class="bdr-table bdr-k7">
+<thead>
+<tr>
+<th>English</th>
+<th>Indonesia</th>
+<th>English</th>
+<th>Indonesia</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Monday</td>
+<td>Senin</td>
+<td>Friday</td>
+<td>Jumat</td>
+</tr>
+<tr>
+<td>Tuesday</td>
+<td>Selasa</td>
+<td>Saturday</td>
+<td>Sabtu</td>
+</tr>
+<tr>
+<td>Wednesday</td>
+<td>Rabu</td>
+<td>Sunday</td>
+<td>Minggu</td>
+</tr>
+<tr>
+<td>Thursday</td>
+<td>Kamis</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<h4>E. Names of the Month (Nama Bulan)</h4>
+
+<table class="bdr-table bdr-k7">
+<thead>
+<tr>
+<th>English</th>
+<th>Indonesia</th>
+<th>English</th>
+<th>Indonesia</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>January</td>
+<td>Januari</td>
+<td>July</td>
+<td>Juli</td>
+</tr>
+<tr>
+<td>February</td>
+<td>Februari</td>
+<td>August</td>
+<td>Agustus</td>
+</tr>
+<tr>
+<td>March</td>
+<td>Maret</td>
+<td>September</td>
+<td>September</td>
+</tr>
+<tr>
+<td>April</td>
+<td>April</td>
+<td>October</td>
+<td>Oktober</td>
+</tr>
+<tr>
+<td>May</td>
+<td>Mei</td>
+<td>November</td>
+<td>November</td>
+</tr>
+<tr>
+<td>June</td>
+<td>Juni</td>
+<td>December</td>
+<td>Desember</td>
+</tr>
+</tbody>
+</table>
+
+<h4>F. Demonstrative Pronoun (Kata Tunjuk)</h4>
+
+<table class="bdr-table bdr-k7">
+<thead>
+<tr>
+<th>Kata Tunjuk</th>
+<th>Arti</th>
+<th>Digunakan untuk</th>
+<th>Contoh</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>This</td>
+<td>Ini</td>
+<td>Benda dekat, tunggal</td>
+<td>This is a book.</td>
+</tr>
+<tr>
+<td>These</td>
+<td>Ini (jamak)</td>
+<td>Benda dekat, banyak</td>
+<td>These are books.</td>
+</tr>
+<tr>
+<td>That</td>
+<td>Itu</td>
+<td>Benda jauh, tunggal</td>
+<td>That is a pen.</td>
+</tr>
+<tr>
+<td>Those</td>
+<td>Itu (jamak)</td>
+<td>Benda jauh, banyak</td>
+<td>Those are pens.</td>
+</tr>
+</tbody>
+</table>
+
+<h3>✍️ Soal — Bahasa Inggris Kelas 7</h3>
+
+<p><strong>Instruksi:</strong> Kerjakan di buku tulis. Tulis soal dan jawaban.</p>
+
+<ol>
+<li>Tuliskan angka 1 sampai 20 dalam bahasa Inggris!</li>
+<li>Tuliskan 3 contoh greetings dan 3 contoh leave taking dalam bahasa Inggris beserta artinya!</li>
+<li>Tuliskan nama-nama hari (Monday sampai Sunday) dalam bahasa Inggris beserta artinya!</li>
+<li>Tuliskan nama-nama bulan (January sampai December) dalam bahasa Inggris beserta artinya!</li>
+<li>Lengkapi dengan this, these, that, atau those:<br>
+a. ___ is my book. (dekat, satu)<br>
+b. ___ are my books. (dekat, banyak)<br>
+c. ___ is your pen. (jauh, satu)<br>
+d. ___ are your pens. (jauh, banyak)<br>
+e. ___ is my school bag.</li>
+</ol>
+
+</div>
+
+<hr>
+
+<div class="bdr-k8">
+
+<h2>Bahasa Inggris — Kelas 8</h2>
+<h3>📖 Catatan Materi: Recount Text</h3>
+
+<div class="bdr-date"><strong>Tanggal:</strong> Kamis, 15 Oktober 2026</div>
+
+<p><strong>Instruksi:</strong> Salin catatan berikut ke buku tulismu. Tulis dengan rapi.</p>
+
+<h4>A. Pengertian Recount Text</h4>
+<p>Recount Text adalah teks yang menceritakan kembali pengalaman atau kejadian yang sudah terjadi. Teks ini menceritakan kejadian nyata, bukan cerita khayalan.</p>
+
+<h4>B. Struktur Recount Text</h4>
+
+<table class="bdr-table bdr-k8">
+<thead>
+<tr>
+<th>No</th>
+<th>Struktur</th>
+<th>Penjelasan</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Orientation</td>
+<td>Pengenalan cerita (siapa, di mana, kapan)</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Events</td>
+<td>Rangkaian kejadian yang dialami, diceritakan berurutan</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Reorientation</td>
+<td>Penutup atau kesimpulan</td>
+</tr>
+</tbody>
+</table>
+
+<h4>C. Ciri Bahasa Recount Text</h4>
+
+<table class="bdr-table bdr-k8">
+<thead>
+<tr>
+<th>No</th>
+<th>Ciri</th>
+<th>Penjelasan</th>
+<th>Contoh</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Simple Past Tense</td>
+<td>Menceritakan masa lalu</td>
+<td>went, took, helped, played</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Action Verbs</td>
+<td>Kata kerja tindakan</td>
+<td>cooked, studied, watched</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Time Connectives</td>
+<td>Kata penghubung waktu</td>
+<td>first, then, after that, finally</td>
+</tr>
+</tbody>
+</table>
+
+<h4>D. Perubahan Verb 1 → Verb 2</h4>
+
+<table class="bdr-table bdr-k8">
+<thead>
+<tr>
+<th>Verb 1</th>
+<th>Verb 2</th>
+<th>Arti</th>
+<th>Verb 1</th>
+<th>Verb 2</th>
+<th>Arti</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>go</td>
+<td>went</td>
+<td>pergi</td>
+<td>play</td>
+<td>played</td>
+<td>bermain</td>
+</tr>
+<tr>
+<td>eat</td>
+<td>ate</td>
+<td>makan</td>
+<td>read</td>
+<td>read</td>
+<td>membaca</td>
+</tr>
+<tr>
+<td>study</td>
+<td>studied</td>
+<td>belajar</td>
+<td>write</td>
+<td>wrote</td>
+<td>menulis</td>
+</tr>
+<tr>
+<td>watch</td>
+<td>watched</td>
+<td>menonton</td>
+<td>sleep</td>
+<td>slept</td>
+<td>tidur</td>
+</tr>
+<tr>
+<td>help</td>
+<td>helped</td>
+<td>membantu</td>
+<td>buy</td>
+<td>bought</td>
+<td>membeli</td>
+</tr>
+</tbody>
+</table>
+
+<h4>E. Contoh Recount Text</h4>
+
+<p><strong>My Holiday at Home</strong></p>
+<p>Last week, I stayed at home because of the haze. First, I helped my mother cook. Then, I studied English. After that, I watched TV with my family. Finally, I went to bed early. It was boring, but I was safe.</p>
+
+<p><strong>Terjemahan:</strong></p>
+<p>Minggu lalu, aku tinggal di rumah karena kabut asap. Pertama, aku membantu ibuku memasak. Lalu, aku belajar bahasa Inggris. Setelah itu, aku menonton TV bersama keluargaku. Akhirnya, aku tidur lebih awal. Itu membosankan, tapi aku aman.</p>
+
+<h3>✍️ Soal — Bahasa Inggris Kelas 8</h3>
+
+<p><strong>Instruksi:</strong> Kerjakan di buku tulis. Tulis soal dan jawaban.</p>
+
+<ol>
+<li>Apa itu Recount Text? Tulis dengan bahasamu sendiri.</li>
+<li>Sebutkan 3 struktur Recount Text!</li>
+<li>Tense apa yang dipakai dalam Recount Text?</li>
+<li>Ubah ke Verb 2: go, eat, study, watch, help!</li>
+<li>Buatlah Recount Text singkat tentang pengalamanmu selama libur kabut asap minimal 5 kalimat!</li>
+</ol>
+
+</div>
+
+<hr>
+
+<div class="bdr-k9">
+
+<h2>Bahasa Inggris — Kelas 9</h2>
+<h3>📖 Catatan Materi: Procedure Text</h3>
+
+<div class="bdr-date"><strong>Tanggal:</strong> Kamis, 15 Oktober 2026</div>
+
+<p><strong>Instruksi:</strong> Salin catatan berikut ke buku tulismu. Tulis dengan rapi.</p>
+
+<h4>A. Pengertian Procedure Text</h4>
+<p>Procedure Text adalah teks yang memberikan petunjuk cara membuat atau melakukan sesuatu. Tujuannya membantu pembaca melakukan sesuatu dengan benar, langkah demi langkah.</p>
+
+<h4>B. Struktur Procedure Text</h4>
+
+<table class="bdr-table bdr-k9">
+<thead>
+<tr>
+<th>No</th>
+<th>Struktur</th>
+<th>Penjelasan</th>
+<th>Contoh</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Goal</td>
+<td>Tujuan atau hasil akhir</td>
+<td>How to Make a Cup of Tea</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Materials</td>
+<td>Bahan atau alat yang dibutuhkan</td>
+<td>tea, hot water, sugar, a cup</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Steps</td>
+<td>Langkah-langkah berurutan</td>
+<td>First, boil the water.</td>
+</tr>
+</tbody>
+</table>
+
+<h4>C. Ciri Bahasa Procedure Text</h4>
+
+<table class="bdr-table bdr-k9">
+<thead>
+<tr>
+<th>No</th>
+<th>Ciri</th>
+<th>Penjelasan</th>
+<th>Contoh</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Simple Present Tense</td>
+<td>Memberi petunjuk</td>
+<td>boil, put, pour, add, stir</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Imperative Sentences</td>
+<td>Kalimat perintah</td>
+<td>Boil the water! Add sugar!</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Connectives</td>
+<td>Kata penghubung urutan</td>
+<td>first, then, next, finally</td>
+</tr>
+</tbody>
+</table>
+
+<h4>D. Contoh Kalimat Imperative</h4>
+
+<table class="bdr-table bdr-k9">
+<thead>
+<tr>
+<th>Imperative</th>
+<th>Arti</th>
+<th>Imperative</th>
+<th>Arti</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Boil the water.</td>
+<td>Didihkan air.</td>
+<td>Add some sugar.</td>
+<td>Tambahkan gula.</td>
+</tr>
+<tr>
+<td>Put the tea into the cup.</td>
+<td>Masukkan teh ke cangkir.</td>
+<td>Stir the tea.</td>
+<td>Aduk tehnya.</td>
+</tr>
+<tr>
+<td>Pour the hot water.</td>
+<td>Tuangkan air panas.</td>
+<td>Serve it.</td>
+<td>Sajikan.</td>
+</tr>
+</tbody>
+</table>
+
+<h4>E. Contoh Procedure Text</h4>
+
+<p><strong>How to Make a Cup of Tea</strong></p>
+<p><strong>Materials:</strong> tea, hot water, sugar, and a cup.</p>
+<p><strong>Steps:</strong></p>
+<ol>
+<li>First, boil the water.</li>
+<li>Then, put the tea into the cup.</li>
+<li>Next, pour the hot water into the cup.</li>
+<li>After that, add some sugar.</li>
+<li>Finally, stir the tea and serve it.</li>
+</ol>
+
+<p><strong>Terjemahan:</strong></p>
+<p><strong>Bahan:</strong> teh, air panas, gula, dan cangkir.</p>
+<p><strong>Langkah-langkah:</strong></p>
+<ol>
+<li>Pertama, didihkan air.</li>
+<li>Lalu, masukkan teh ke dalam cangkir.</li>
+<li>Selanjutnya, tuangkan air panas ke dalam cangkir.</li>
+<li>Setelah itu, tambahkan gula.</li>
+<li>Akhirnya, aduk tehnya dan sajikan.</li>
+</ol>
+
+<h3>✍️ Soal — Bahasa Inggris Kelas 9</h3>
+
+<p><strong>Instruksi:</strong> Kerjakan di buku tulis. Tulis soal dan jawaban.</p>
+
+<ol>
+<li>Apa itu Procedure Text? Tulis dengan bahasamu sendiri.</li>
+<li>Sebutkan 3 struktur Procedure Text!</li>
+<li>Apa ciri bahasa Procedure Text? (sebutkan 2)</li>
+<li>Tuliskan 5 kalimat perintah (imperative) dalam bahasa Inggris beserta artinya!</li>
+<li>Buatlah Procedure Text singkat tentang cara membuat minuman sederhana (teh, kopi, atau jus) minimal 5 langkah!</li>
+</ol>
+
+</div>
+
+<hr>
+
+<h1>📘 SESI 3 — Senin, 19 Oktober 2026</h1>
+
+<div class="bdr-k9">
+
+<h2>Bahasa Inggris — Kelas 9</h2>
+<h3>📖 Catatan Materi: Active Voice, Passive Voice, Tenses, dan Question Tag</h3>
+
+<div class="bdr-date"><strong>Tanggal:</strong> Senin, 19 Oktober 2026</div>
+
+<p><strong>Instruksi:</strong> Salin catatan berikut ke buku tulismu. Tulis dengan rapi.</p>
+
+<h4>A. Active Voice dan Passive Voice</h4>
+
+<table class="bdr-table bdr-k9">
+<thead>
+<tr>
+<th>Jenis</th>
+<th>Penjelasan</th>
+<th>Contoh</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Active Voice</td>
+<td>Yang melakukan ada di depan</td>
+<td>Adik eats the bread.</td>
+</tr>
+<tr>
+<td>Passive Voice</td>
+<td>Yang dilakukan ada di depan</td>
+<td>The bread is eaten by Adik.</td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>Rumus Passive Voice:</strong> Object + To Be + Verb 3 + By + Subject</p>
+
+<table class="bdr-table bdr-k9">
+<thead>
+<tr>
+<th>To Be</th>
+<th>Digunakan untuk</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>am</td>
+<td>I (present)</td>
+</tr>
+<tr>
+<td>is</td>
+<td>He, She, It (present)</td>
+</tr>
+<tr>
+<td>are</td>
+<td>You, We, They (present)</td>
+</tr>
+<tr>
+<td>was</td>
+<td>I, He, She, It (past)</td>
+</tr>
+<tr>
+<td>were</td>
+<td>You, We, They (past)</td>
+</tr>
+</tbody>
+</table>
+
+<h4>B. Daftar Verb 3</h4>
+
+<table class="bdr-table bdr-k9">
+<thead>
+<tr>
+<th>Verb 1</th>
+<th>Verb 2</th>
+<th>Verb 3</th>
+<th>Arti</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>eat</td>
+<td>ate</td>
+<td>eaten</td>
+<td>makan</td>
+</tr>
+<tr>
+<td>write</td>
+<td>wrote</td>
+<td>written</td>
+<td>menulis</td>
+</tr>
+<tr>
+<td>make</td>
+<td>made</td>
+<td>made</td>
+<td>membuat</td>
+</tr>
+<tr>
+<td>see</td>
+<td>saw</td>
+<td>seen</td>
+<td>melihat</td>
+</tr>
+<tr>
+<td>buy</td>
+<td>bought</td>
+<td>bought</td>
+<td>membeli</td>
+</tr>
+<tr>
+<td>read</td>
+<td>read</td>
+<td>read</td>
+<td>membaca</td>
+</tr>
+<tr>
+<td>cook</td>
+<td>cooked</td>
+<td>cooked</td>
+<td>memasak</td>
+</tr>
+<tr>
+<td>clean</td>
+<td>cleaned</td>
+<td>cleaned</td>
+<td>membersihkan</td>
+</tr>
+<tr>
+<td>help</td>
+<td>helped</td>
+<td>helped</td>
+<td>membantu</td>
+</tr>
+<tr>
+<td>wash</td>
+<td>washed</td>
+<td>washed</td>
+<td>mencuci</td>
+</tr>
+</tbody>
+</table>
+
+<h4>C. Contoh Perubahan Aktif → Pasif</h4>
+
+<table class="bdr-table bdr-k9">
+<thead>
+<tr>
+<th>Active Voice</th>
+<th>Passive Voice</th>
+<th>Arti</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>She reads a book.</td>
+<td>A book is read by her.</td>
+<td>Sebuah buku dibaca olehnya.</td>
+</tr>
+<tr>
+<td>They play football.</td>
+<td>Football is played by them.</td>
+<td>Bola dimainkan oleh mereka.</td>
+</tr>
+<tr>
+<td>My mother cooked rice.</td>
+<td>Rice was cooked by my mother.</td>
+<td>Nasi dimasak oleh ibuku.</td>
+</tr>
+<tr>
+<td>Dina writes a letter.</td>
+<td>A letter is written by Dina.</td>
+<td>Sebuah surat ditulis oleh Dina.</td>
+</tr>
+</tbody>
+</table>
+
+<h4>D. Tenses (Ringkasan)</h4>
+
+<table class="bdr-table bdr-k9">
+<thead>
+<tr>
+<th>Tense</th>
+<th>Rumus</th>
+<th>Contoh</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Simple Present</td>
+<td>S + Verb 1 (s/es) + O</td>
+<td>She eats rice.</td>
+</tr>
+<tr>
+<td>Present Continuous</td>
+<td>S + am/is/are + Verb-ing + O</td>
+<td>She is eating rice.</td>
+</tr>
+<tr>
+<td>Simple Past</td>
+<td>S + Verb 2 + O</td>
+<td>She ate rice.</td>
+</tr>
+<tr>
+<td>Past Continuous</td>
+<td>S + was/were + Verb-ing + O</td>
+<td>She was eating rice.</td>
+</tr>
+<tr>
+<td>Simple Future</td>
+<td>S + will + Verb 1 + O</td>
+<td>She will eat rice.</td>
+</tr>
+<tr>
+<td>Present Perfect</td>
+<td>S + has/have + Verb 3 + O</td>
+<td>She has eaten rice.</td>
+</tr>
+</tbody>
+</table>
+
+<h4>E. Question Tag</h4>
+
+<p>Question Tag adalah pertanyaan pendek di akhir kalimat. Fungsinya untuk meminta persetujuan atau konfirmasi.</p>
+
+<p><strong>Aturan:</strong></p>
+<ul>
+<li>Kalau kalimatnya positif, tag-nya negatif.</li>
+<li>Kalau kalimatnya negatif, tag-nya positif.</li>
+<li>Tag menggunakan auxiliary verb yang sama dengan kalimatnya.</li>
+</ul>
+
+<table class="bdr-table bdr-k9">
+<thead>
+<tr>
+<th>Kalimat</th>
+<th>Question Tag</th>
+<th>Arti</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>You are a student,</td>
+<td>aren't you?</td>
+<td>Kamu seorang siswa, kan?</td>
+</tr>
+<tr>
+<td>She is your sister,</td>
+<td>isn't she?</td>
+<td>Dia saudarimu, kan?</td>
+</tr>
+<tr>
+<td>They play football,</td>
+<td>don't they?</td>
+<td>Mereka bermain bola, kan?</td>
+</tr>
+<tr>
+<td>He doesn't like tea,</td>
+<td>does he?</td>
+<td>Dia tidak suka teh, kan?</td>
+</tr>
+<tr>
+<td>We will come,</td>
+<td>won't we?</td>
+<td>Kita akan datang, kan?</td>
+</tr>
+<tr>
+<td>You can swim,</td>
+<td>can't you?</td>
+<td>Kamu bisa berenang, kan?</td>
+</tr>
+</tbody>
+</table>
+
+<h3>✍️ Soal — Bahasa Inggris Kelas 9</h3>
+
+<p><strong>Instruksi:</strong> Kerjakan di buku tulis. Tulis soal dan jawaban.</p>
+
+<ol>
+<li>Apa perbedaan kalimat aktif dan pasif? Jelaskan!</li>
+<li>Tuliskan rumus kalimat pasif!</li>
+<li>Ubah ke bentuk pasif: "Dina writes a letter." dan "My mother cooked rice."</li>
+<li>Lengkapi question tag berikut:<br>
+a. You are a student, ___?<br>
+b. She is your sister, ___?<br>
+c. They play football, ___?<br>
+d. He doesn't like tea, ___?<br>
+e. We will come, ___?</li>
+<li>Buatlah 3 kalimat pasif tentang kegiatan di rumah selama BDR!</li>
+</ol>
+
+</div>
+
+<hr>
+
+<div class="bdr-k7">
+
+<h2>Bahasa Inggris — Kelas 7</h2>
+<h3>📖 Catatan Materi: Simple Present Tense dan Demonstrative Pronoun</h3>
+
+<div class="bdr-date"><strong>Tanggal:</strong> Senin, 19 Oktober 2026</div>
+
+<p><strong>Instruksi:</strong> Salin catatan berikut ke buku tulismu. Tulis dengan rapi.</p>
+
+<h4>A. Penggunaan Simple Present Tense</h4>
+<p>Simple Present Tense digunakan untuk menyatakan kebiasaan (habit) dan fakta umum (general fact).</p>
+
+<h4>B. Rumus Simple Present Tense</h4>
+
+<table class="bdr-table bdr-k7">
+<thead>
+<tr>
+<th>Bentuk</th>
+<th>Rumus</th>
+<th>Contoh</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>(+) Positif</td>
+<td>Subject + Verb 1 (s/es) + Object</td>
+<td>She eats rice.</td>
+</tr>
+<tr>
+<td>(-) Negatif</td>
+<td>Subject + do/does + not + Verb 1 + Object</td>
+<td>She does not eat rice.</td>
+</tr>
+<tr>
+<td>(?) Tanya</td>
+<td>Do/Does + Subject + Verb 1 + Object?</td>
+<td>Does she eat rice?</td>
+</tr>
+</tbody>
+</table>
+
+<h4>C. Aturan Penambahan s/es</h4>
+
+<table class="bdr-table bdr-k7">
+<thead>
+<tr>
+<th>Subject</th>
+<th>Verb</th>
+<th>Contoh</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>I, You, We, They</td>
+<td>Verb 1 (tanpa s/es)</td>
+<td>I eat, They go</td>
+</tr>
+<tr>
+<td>He, She, It</td>
+<td>Verb 1 + s/es</td>
+<td>She eats, He goes</td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>Aturan penambahan:</strong></p>
+<ul>
+<li>Umumnya tambah <strong>-s</strong>: eat → eats, read → reads, play → plays.</li>
+<li>Berakhiran <strong>-ch, -sh, -ss, -x, -o</strong> tambah <strong>-es</strong>: watch → watches, go → goes.</li>
+<li>Berakhiran <strong>konsonan + y</strong>, ubah y jadi i + es: study → studies, fly → flies.</li>
+</ul>
+
+<h4>D. Demonstrative Pronoun (Kata Tunjuk)</h4>
+
+<table class="bdr-table bdr-k7">
+<thead>
+<tr>
+<th>Kata Tunjuk</th>
+<th>Arti</th>
+<th>Digunakan untuk</th>
+<th>Contoh</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>This</td>
+<td>Ini</td>
+<td>Benda dekat, tunggal</td>
+<td>This is a book.</td>
+</tr>
+<tr>
+<td>These</td>
+<td>Ini (jamak)</td>
+<td>Benda dekat, banyak</td>
+<td>These are books.</td>
+</tr>
+<tr>
+<td>That</td>
+<td>Itu</td>
+<td>Benda jauh, tunggal</td>
+<td>That is a pen.</td>
+</tr>
+<tr>
+<td>Those</td>
+<td>Itu (jamak)</td>
+<td>Benda jauh, banyak</td>
+<td>Those are pens.</td>
+</tr>
+</tbody>
+</table>
+
+<h4>E. Contoh Kalimat</h4>
+
+<table class="bdr-table bdr-k7">
+<thead>
+<tr>
+<th>Kalimat</th>
+<th>Arti</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>My father works every day.</td>
+<td>Ayahku bekerja setiap hari.</td>
+</tr>
+<tr>
+<td>My mother cooks in the morning.</td>
+<td>Ibuku memasak di pagi hari.</td>
+</tr>
+<tr>
+<td>My sister studies English.</td>
+<td>Saudara perempuanku belajar bahasa Inggris.</td>
+</tr>
+<tr>
+<td>I help my parents at home.</td>
+<td>Aku membantu orang tuaku di rumah.</td>
+</tr>
+<tr>
+<td>They do not go to school today.</td>
+<td>Mereka tidak pergi ke sekolah hari ini.</td>
+</tr>
+</tbody>
+</table>
+
+<h3>✍️ Soal — Bahasa Inggris Kelas 7</h3>
+
+<p><strong>Instruksi:</strong> Kerjakan di buku tulis. Tulis soal dan jawaban.</p>
+
+<ol>
+<li>Kapan kita menggunakan Simple Present Tense? Jelaskan!</li>
+<li>Lengkapi dengan Verb yang benar:<br>
+a. My sister ___ (read) a book every day.<br>
+b. They ___ (not/go) to school today.<br>
+c. He ___ (watch) TV in the evening.<br>
+d. I ___ (help) my mother at home.<br>
+e. She ___ (study) English every night.</li>
+<li>Lengkapi dengan this, these, that, atau those:<br>
+a. ___ is my book.<br>
+b. ___ are my books.<br>
+c. ___ is your pen.<br>
+d. ___ are your pens.<br>
+e. ___ is my school bag.</li>
+<li>Buatlah 5 kalimat tentang kebiasaan anggota keluargamu di rumah menggunakan Simple Present Tense!</li>
+<li>Terjemahkan ke bahasa Indonesia:<br>
+a. My father works every day.<br>
+b. My mother cooks in the morning.<br>
+c. My sister studies English.<br>
+d. I help my parents at home.<br>
+e. They do not go to school today.</li>
+</ol>
+
+</div>
+
+<hr>
+
+<h1>📋 Ringkasan Jadwal & Pengumpulan Tugas</h1>
+
+<table class="bdr-table">
+<thead>
+<tr>
+<th>Sesi</th>
+<th>Hari/Tanggal</th>
+<th>Mapel & Kelas</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Selasa, 13 Okt 2026</td>
+<td>B. Inggris 8, Agama Kristen 7</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Kamis, 15 Okt 2026</td>
+<td>B. Inggris 7, 8, 9</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Senin, 19 Okt 2026</td>
+<td>B. Inggris 9, 7</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Rabu, 21 Okt 2026</td>
+<td><strong>Kembali Tatap Muka</strong></td>
+</tr>
+</tbody>
+</table>
+
+<hr>
+
+<h1>💬 Pesan Penutup dari Mr. Yanto</h1>
+
+<div class="bdr-box">
+<p><em>"Anak-anakku yang saya banggakan,</em></p>
+<p><em>Kabut asap ini membuat kita tidak bisa bertemu di kelas. Tapi belajar tidak hanya terjadi di dalam kelas. Belajar bisa terjadi di rumah, di dapur, di halaman, bahkan di kamar tidurmu.</em></p>
+<p><em>Baca materi di web ini, salin catatannya, kerjakan soalnya dengan jujur. Datang ke sekolah hanya untuk mengumpulkan tugas sesuai jadwal. Setelah kalian kumpulkan tugas, kalian boleh langsung pulang. Jangan lupa jaga kesehatan.</em></p>
+<p><em>Saya tunggu hasil pekerjaan kalian. Insya Allah, kita bertemu lagi di kelas pada Rabu, 21 Oktober 2026 — jika kondisi asap sudah membaik.</em></p>
+<p><em>Tetap semangat! Tetap sehat! Tetap belajar!</em></p>
+<p><strong>— Mr. Yanto</strong> 🌿"</p>
+</div>
+
+<hr>
+
+<p><em>Artikel ini disusun sebagai panduan tugas BDR selama periode 13–21 Oktober 2026. Jika ada pertanyaan, silakan hubungi Mr. Yanto atau tanyakan langsung saat pengumpulan tugas di sekolah.</em></p>
+`
+    },
+    /* ============================================================
+       ARTIKEL 12 — pengalaman
+       Ketika Mereka Berani Mengangkat Tangan
+       ============================================================ */
+    {
+        id: 'ketika-mereka-berani-mengangkat-tangan',
+        title: 'Ketika Mereka Berani Mengangkat Tangan: Catatan tentang Memberi Kesempatan, Bukan Hanya Nilai',
+        excerpt: 'Ada momen di kelas yang tidak pernah masuk ke dalam nilai rapor. Momen ketika seorang siswa mengangkat tangan, berdiri, dan menjawab — dengan suara pelan, tapi penuh keberanian. Ini cerita tentang Biri, siswa kelas 8 SMP Negeri Pulau Tiga, dan tentang mengapa kesempatan jauh lebih berharga daripada nilai.',
+        thumbnail: 'images/blog/Biri.jpeg',
+        category: 'pengalaman',
+        author: 'Mr. Yanto',
+        authorRole: 'Guru SMP Negeri Pulau Tiga',
+        date: '2026-10-7',
+        tags: ['Pengalaman', 'Keberanian', 'Siswa', 'Pendidikan', 'Bahasa Inggris'],
+        views: 0,
+        featured: false,
+
+        content: `
+<p><span class="drop-cap">A</span>da momen di kelas yang tidak pernah masuk ke dalam nilai rapor.</p>
+
+<p>Momen itu tidak tercatat di buku penilaian. Tidak muncul di daftar hadir. Tidak diumumkan di atas panggung saat pembagian rapor. Tidak ada kolom khusus untuknya di aplikasi e-rapor. Tidak ada predikat "A" atau "B" untuk hal seperti itu. Tapi justru momen-momen seperti itulah yang membuat saya percaya bahwa menjadi guru adalah pekerjaan paling berharga di dunia.</p>
+
+<p>Momen itu terjadi beberapa waktu lalu, di dalam kelas Bahasa Inggris kelas 8. Papan tulis penuh dengan coretan. Ada pola kalimat Simple Present Tense yang saya tulis dengan spidol hitam. Ada tanda S, P, O di bawah setiap kata. Ada kotak berisi <em>do</em> dan <em>does</em> di sudut kanan atas. Ada contoh kalimat <em>"Erlin makan Sagu"</em> yang saya tulis sebagai jembatan antara bahasa Inggris dan bahasa sehari-hari anak-anak. Ada juga catatan <em>"Yes, she does"</em> dan <em>"No, she doesn't"</em> yang saya tulis miring di sisi kiri papan. Semuanya berantakan, tapi justru itulah yang membuatnya hidup.</p>
+
+<p>Dan di depan papan tulis itu, berdiri seorang siswa kelas 8 bernama <strong>Sadrak Biri</strong> — yang akrab saya panggil <strong>Biri</strong>.</p>
+
+<p>Biri bukan siswa yang paling menonjol di kelas. Bukan yang paling vokal. Bukan yang paling sering mengangkat tangan duluan. Bukan juga yang selalu mendapat nilai tertinggi. Tapi ada sesuatu dalam dirinya yang membuat saya selalu memperhatikan — <strong>kecepatan pemahamannya</strong>. Ketika saya menjelaskan sebuah konsep, saya bisa melihat matanya bergerak. Ia tidak langsung bertanya. Ia tidak langsung mengangguk. Ia diam sebentar, mencerna, lalu — hampir selalu — ia mengangkat tangan.</p>
+
+<p>Dan ketika saya memintanya maju, ia tidak menolak. Tidak menghela napas. Tidak pura-pura tidak mendengar. Tidak menunduk berharap saya memilih orang lain. Ia berdiri, berjalan ke depan, dan berdiri di samping papan tulis. Kadang dengan tangan yang masih sedikit gugup. Kadang dengan suara yang pelan. Kadang dengan tatapan yang masih ragu. Tapi ia selalu mencoba.</p>
+
+<p>Itulah Biri. Siswa kelas 8 yang mungkin tidak akan pernah saya lupakan.</p>
+
+<hr>
+
+<h2>Ketika Saya Bertanya, dan Ia Mengangkat Tangan</h2>
+
+<p>Hari itu, saya sedang mengajarkan <em>Simple Present Tense</em> kepada kelas 8. Materi ini bukan materi yang mudah untuk anak-anak di pedalaman. Mereka terbiasa dengan bahasa Indonesia dan bahasa daerah. Bahasa Inggris masih terasa asing — terutama ketika harus memahami bahwa kata kerja bisa berubah bentuk tergantung siapa yang melakukannya.</p>
+
+<p>Di papan tulis, saya menulis tiga pola kalimat:</p>
+
+<blockquote>
+<p><strong>She reads a book.</strong><br>
+<strong>She does not read a book.</strong><br>
+<strong>Does she read a book?</strong></p>
+</blockquote>
+
+<p>Saya menjelaskan bahwa ketika subject-nya <em>She</em>, kata kerjanya harus ditambah <strong>-s</strong>. Saya menjelaskan bahwa dalam kalimat negatif, kata kerjanya kembali ke bentuk dasar karena sudah ada <em>does</em> yang membawa makna orang ketiga. Saya menjelaskan bahwa dalam kalimat tanya, <em>Does</em> maju ke depan, dan kata kerjanya kembali ke bentuk dasar. Saya juga menjelaskan bahwa <em>do</em> dipakai untuk I, You, We, They — sedangkan <em>does</em> dipakai untuk He, She, It. Saya menggambar kotak di papan tulis, membagi dua kolom, dan menuliskan aturannya dengan jelas.</p>
+
+<p>Beberapa siswa mengangguk. Beberapa mencatat. Beberapa hanya diam, mungkin masih bingung. Beberapa menoleh ke temannya, mencari kepastian. Beberapa menunduk, berharap tidak ditunjuk. Saya bisa merasakan suasana kelas yang tegang — bukan karena takut, tapi karena mereka sadar bahwa materi ini butuh perhatian ekstra.</p>
+
+<p>Lalu saya bertanya ke seluruh kelas:</p>
+
+<p><em>"Coba, siapa yang bisa buat kalimat positif dari kata kerja 'write' dengan subject 'He'?"</em></p>
+
+<p>Kelas hening. Beberapa siswa menunduk. Beberapa melihat ke temannya. Beberapa mulai membuka buku untuk mencari jawaban. Tidak ada yang mengangkat tangan.</p>
+
+<p>Saya menunggu. Saya tidak langsung menunjuk siapa pun. Saya memberi mereka waktu. Sepuluh detik pertama, tidak ada yang bergerak. Lima belas detik. Dua puluh detik. Saya hampir membuka mulut untuk menunjuk salah satu siswa. Tapi kemudian — saya melihat Biri.</p>
+
+<p>Ia tidak langsung mengangkat tangan. Ia melihat ke papan tulis dulu. Menggerakkan bibirnya pelan, seperti sedang mencoba merangkai kalimat di dalam kepala. Matanya bergerak dari kotak <em>do</em> ke kotak <em>does</em>. Ia membaca contoh kalimat di papan. Lalu — perlahan — ia mengangkat tangannya. Tidak tinggi. Hanya setinggi bahu. Tidak yakin. Tapi cukup untuk saya lihat.</p>
+
+<p><em>"Ya, Biri. Silakan maju."</em></p>
+
+<p>Ia berdiri. Berjalan ke depan. Berdiri di samping papan tulis. Mengambil spidol. Dan dengan suara yang sedikit pelan, ia berkata:</p>
+
+<p><em>"He writes a poem."</em></p>
+
+<p>Kalimat itu sederhana. Hanya tiga kata. Empat, kalau dihitung dengan subject. Tapi saya tahu, di dalam kepala Biri, ada proses panjang yang baru saja terjadi. Ia harus mengingat aturan penambahan <strong>-s</strong>. Ia harus memilih kata kerja yang tepat. Ia harus menyusun kalimat dengan urutan yang benar. Ia harus memastikan bahwa subject-nya <em>He</em>, bukan <em>She</em> atau <em>They</em>. Dan ia harus berani berdiri di depan teman-temannya, dengan risiko salah.</p>
+
+<p>Saya tersenyum. <em>"Betul, Biri. Hebat."</em></p>
+
+<p>Ia kembali ke tempat duduknya. Wajahnya biasa saja. Tidak sombong. Tidak juga malu. Tapi saya bisa melihat ada sesuatu di matanya — sesuatu yang tidak bisa saya jelaskan dengan kata-kata. Sesuatu yang hanya bisa dipahami oleh seorang guru yang melihat muridnya berani mencoba.</p>
+
+<hr>
+
+<h2>Keberanian yang Tidak Tercatat di Rapor</h2>
+
+<p>Saya sering berpikir tentang momen-momen seperti ini.</p>
+
+<p>Dalam sistem pendidikan kita, nilai adalah segalanya. Ada angka. Ada peringkat. Ada predikat. Ada ranking. Ada daftar siswa berprestasi. Tapi tidak ada kolom untuk "keberanian mengangkat tangan". Tidak ada nilai untuk "kemauan mencoba meskipun takut salah". Tidak ada rapor untuk "kesediaan maju ke depan kelas meskipun suara gemetar". Tidak ada penghargaan untuk "kecepatan memahami konsep dan keberanian menunjukkan bahwa ia paham".</p>
+
+<p>Padahal, justru hal-hal itulah yang paling menentukan masa depan seorang anak.</p>
+
+<p>Biri mungkin tidak akan mengingat rumus Simple Present Tense bertahun-tahun kemudian. Ia mungkin lupa kapan harus menambah <em>-s</em>, kapan harus memakai <em>does</em>, dan kapan kata kerja harus kembali ke bentuk dasar. Ia mungkin lupa bahwa <em>do</em> dipakai untuk I, You, We, They. Ia mungkin lupa contoh kalimat tentang <em>Erlin makan Sagu</em>.</p>
+
+<p>Tapi saya berharap, ia tidak lupa <strong>rasa berani</strong> yang ia rasakan saat mengangkat tangan itu. Saya berharap, ia tidak lupa bahwa dulu — di sebuah kelas sederhana di SMP Negeri Pulau Tiga — ia pernah berdiri di depan, memegang spidol, dan menjawab pertanyaan guru dengan suara pelan tapi penuh keberanian.</p>
+
+<p>Karena keberanian itu akan ia bawa seumur hidup. Keberanian itu akan ia pakai ketika ia harus berbicara di depan banyak orang. Keberanian itu akan ia pakai ketika ia harus mengambil keputusan sulit. Keberanian itu akan ia pakai ketika ia harus mencoba sesuatu yang belum pernah ia coba sebelumnya. Keberanian itu akan ia pakai ketika ia harus gagal, bangkit, dan mencoba lagi.</p>
+
+<p><strong>Keberanian itu jauh lebih berharga daripada nilai seratus.</strong></p>
+
+<p>Dan saya bersyukur, hari itu, saya memberi Biri kesempatan untuk merasakan keberanian itu.</p>
+
+<hr>
+
+<h2>Mengapa Saya Selalu Memberi Kesempatan</h2>
+
+<p>Ada alasan mengapa saya selalu memberi kesempatan kepada siswa untuk maju dan menjawab.</p>
+
+<p>Bukan karena saya ingin mencari siapa yang paling pintar. Bukan karena saya ingin menilai siapa yang paling cepat. Bukan karena saya ingin membanding-bandingkan siswa satu dengan yang lain. Tapi karena saya percaya bahwa <strong>setiap anak butuh ruang untuk mencoba</strong>.</p>
+
+<p>Di rumah, mungkin mereka tidak punya ruang itu. Mungkin orang tua mereka sibuk bekerja mencari nafkah. Mungkin mereka tidak punya kakak yang bisa diajak bertanya. Mungkin mereka tidak punya buku tambahan untuk belajar. Mungkin mereka tidak punya akses internet untuk mencari jawaban. Mungkin mereka harus membantu orang tua di kebun sebelum berangkat sekolah. Mungkin mereka harus berjalan jauh untuk sampai ke sekolah.</p>
+
+<p>Tapi di kelas, mereka punya saya. Dan selama saya masih berdiri di depan papan tulis itu, saya ingin memastikan bahwa <strong>tidak ada anak yang pulang tanpa pernah mencoba</strong>.</p>
+
+<p>Itulah sebabnya saya selalu bertanya ke seluruh kelas, bukan hanya ke anak-anak yang biasanya mengangkat tangan. Itulah sebabnya saya selalu memberi waktu beberapa detik sebelum menunjuk siapa yang harus menjawab. Itulah sebabnya saya selalu bilang <em>"betul"</em> atau <em>"hampir betul"</em> dengan senyum, bukan dengan kerutan dahi. Itulah sebabnya saya tidak pernah menertawakan jawaban yang salah. Itulah sebabnya saya selalu bilang <em>"tidak apa-apa, coba lagi"</em> ketika ada yang keliru.</p>
+
+<p>Karena saya tahu, satu kalimat yang salah bisa membuat anak menutup diri selama bertahun-tahun. Tapi satu kalimat yang diterima dengan hangat bisa membuat anak berani mencoba seumur hidup.</p>
+
+<hr>
+
+<h2>Tentang Biri, dan Anak-Anak Lain Seperti Dia</h2>
+
+<p>Biri adalah satu dari sekian banyak anak di SMP Negeri Pulau Tiga yang punya potensi besar, tapi mungkin tidak akan pernah terlihat kalau tidak diberi kesempatan.</p>
+
+<p>Ia bukan anak yang suka menonjolkan diri. Ia bukan anak yang suka berbicara panjang. Ia bukan anak yang selalu tampil di depan. Tapi ia punya sesuatu yang jarang saya temukan: <strong>kecepatan memahami konsep, dan keberanian untuk menunjukkan bahwa ia paham</strong>.</p>
+
+<p>Saya tidak tahu apa yang akan Biri jadi nanti. Mungkin ia akan menjadi guru. Mungkin ia akan menjadi nelayan. Mungkin ia akan menjadi pemimpin. Mungkin ia akan menjadi petani. Mungkin ia akan menjadi apa saja yang ia impikan.</p>
+
+<p>Tapi saya tahu satu hal: <strong>apa pun yang ia jadi nanti, ia sudah punya bekal yang tidak akan pernah hilang — keberanian untuk mencoba.</strong></p>
+
+<p>Dan saya berharap, di sepanjang hidupnya, ia selalu menemukan orang-orang yang mau memberi kesempatan kepadanya. Seperti saya memberi kesempatan kepadanya hari itu. Seperti guru-gurunya yang lain. Seperti orang tua dan keluarganya.</p>
+
+<p>Karena pada akhirnya, setiap anak — termasuk Biri — hanya butuh satu hal: <strong>seseorang yang percaya pada mereka, lebih dulu dari mereka percaya pada diri sendiri.</strong></p>
+
+<hr>
+
+<h2>Pelajaran yang Saya Dapat dari Biri</h2>
+
+<p>Kalau ada satu hal yang paling saya syukuri dari momen itu, itu bukan karena Biri menjawab dengan benar. Tapi karena Biri <strong>berani mencoba</strong>.</p>
+
+<p>Saya belajar tentang kesabaran. Karena tidak semua anak bisa langsung mengangkat tangan. Ada yang butuh waktu. Ada yang butuh didorong pelan. Ada yang butuh melihat temannya berani dulu, baru kemudian ia berani.</p>
+
+<p>Saya belajar tentang keberanian. Karena keberanian bukan hanya milik orang dewasa. Keberanian juga milik anak-anak yang duduk di bangku kayu sederhana, dengan seragam putih biru yang mungkin sudah agak lusuh, dan dengan buku tulis yang halamannya hampir habis.</p>
+
+<p>Saya belajar tentang arti hadir. Bukan hadir sebagai guru yang harus selalu benar, tapi hadir sebagai seseorang yang mau mendengar, mau memberi waktu, dan mau percaya bahwa setiap anak punya potensinya masing-masing.</p>
+
+<p>Dan saya belajar tentang kerendahan hati. Karena kadang, yang paling berharga di dalam kelas bukanlah jawaban yang benar — tapi keberanian untuk mencoba menjawab.</p>
+
+<hr>
+
+<h2>Penutup: Tentang Papan Tulis yang Menjadi Saksi</h2>
+
+<p>Papan tulis itu masih ada di kelas yang sama. Tulisan saya mungkin sudah dihapus. Spidolnya mungkin sudah habis. Kertas catatan saya mungkin sudah terlipat di dalam tas. Tapi jejak momen itu — momen ketika Biri mengangkat tangan dan maju ke depan — tidak akan pernah hilang dari ingatan saya.</p>
+
+<p>Saya sering melihat foto papan tulis itu. Dan setiap kali saya melihatnya, saya ingat wajah Biri. Saya ingat suara pelannya. Saya ingat caranya berdiri di samping papan, dengan spidol di tangan, dan cara ia mengucapkan kalimat itu:</p>
+
+<p><em>"He writes a poem."</em></p>
+
+<p>Kalimat yang sederhana. Tiga kata. Tapi bagi saya, kalimat itu adalah bukti bahwa <strong>pendidikan bukan tentang mengisi kepala anak dengan rumus, tapi tentang memberi mereka keberanian untuk berdiri dan mencoba.</strong></p>
+
+<p>Terima kasih, Biri. Kamu mungkin tidak tahu, tapi hari itu, kamu mengajarkan saya sesuatu yang tidak ada di buku pelajaran mana pun. Kamu mengajarkan saya bahwa <strong>keberanian adalah pelajaran yang paling penting — dan paling jarang dinilai.</strong></p>
+
+<p>Teruslah berani, Biri. Teruslah mencoba. Teruslah mengangkat tangan, meskipun suaramu pelan. Teruslah maju ke depan, meskipun kakimu gemetar. Dan jangan pernah lupa, bahwa dulu — di sebuah kelas sederhana di SMP Negeri Pulau Tiga — kamu pernah berdiri di depan, mengangkat tangan, dan menjawab.</p>
+
+<p><strong>Dan itu sudah lebih dari cukup.</strong> 🌿</p>
+
+<p><em>Ditulis dengan bangga, untuk Sadrak Biri — siswa kelas 8 SMP Negeri Pulau Tiga, yang berani mengangkat tangan ketika yang lain masih ragu.</em></p>
+`
+    },
 
 
 ];
