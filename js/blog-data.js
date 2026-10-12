@@ -3112,7 +3112,7 @@ const BLOG_DATA = [
         date: '2026-10-12',
         tags: ['Kegiatan', 'BDR', 'Tugas', 'Kabut Asap', 'Belajar dari Rumah'],
         views: 23,
-        featured: true,
+        featured: false,
 
         content: `
 <style>
