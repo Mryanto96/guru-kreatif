@@ -80,8 +80,8 @@ function renderNavbar() {
         <a href="index.html" class="logo" aria-label="SMP Negeri Pulau Tiga Home">
           <img src="images/Logosekolah.jpg" alt="Logo SMP Negeri Pulau Tiga" class="logo-img">
           <div class="logo-text">
-            <span class="logo-title">NEGERI PULAU TIGA</span>
-            <span class="logo-sub">ASMAT PAPUA SELATAN</span>
+            <span class="logo-title">SMP NEGERI PULAU TIGA</span>
+            <span class="logo-sub">ASMAT PAPUA SELATAN-NAKAI</span>
           </div>
         </a>
 
