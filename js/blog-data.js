@@ -23,7 +23,7 @@ const BLOG_DATA = [
         date: '2025-08-17',
         tags: ['Pengalaman', 'Guru', 'Puisi', 'Pendidikan'],
         views: 1000,
-        featured: true,
+        featured: false,
 
         content: `
 <p><span class="drop-cap">D</span>ulu,</p>
@@ -345,7 +345,7 @@ const BLOG_DATA = [
         date: '2026-04-30',
         tags: ['Tips', 'Grammar', 'Tenses', 'Belajar'],
         views: 2500,
-        featured: false,
+        featured: true,
 
         // ✅ QUIZ YANG BENAR — TENTANG TENSES
         quiz: {
