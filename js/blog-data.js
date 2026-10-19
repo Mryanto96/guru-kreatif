@@ -4786,6 +4786,809 @@ e. They do not go to school today.</li>
 <p><em>Ditulis dengan bangga, untuk Sadrak Biri — siswa kelas 8 SMP Negeri Pulau Tiga, yang berani mengangkat tangan ketika yang lain masih ragu.</em></p>
 `
     },
+    /* ============================================================
+   ARTIKEL 13 — tips
+   Bicara Bahasa Inggris Tanpa Panik
+   ============================================================ */
+    {
+        id: 'bicara-bahasa-inggris-tanpa-panik',
+        title: 'Jangan Cuma Bisa Grammar! 5 Ekspresi Ini Bikin Bahasa Inggrismu Terdengar Pro',
+        excerpt: 'Banyak yang bisa grammar, tapi diam saja saat diajak bicara. Kenapa? Karena takut salah. Yuk, pelajari 5 ekspresi dasar bahasa Inggris yang paling sering dipakai bule sehari-hari. Dijelaskan dengan bahasa super sederhana, lengkap dengan artinya!',
+        thumbnail: 'images/blog/Expressions.png',
+        category: 'tips',
+        author: 'Mr. Yanto',
+        authorRole: 'Guru SMP Negeri Pulau Tiga',
+        date: '2026-10-20',
+        tags: ['Tips', 'Speaking', 'Expressions', 'Bahasa Inggris'],
+        views: 52,
+        featured: false,
+
+        quiz: {
+            title: 'Uji Pemahamanmu tentang 5 Ekspresi Dasar',
+            description: 'Jawab 20 soal berikut untuk menguji pemahamanmu. Setelah selesai, klik tombol untuk mengirim jawaban ke Facebook Mr. Yanto.',
+            questions: [
+                {
+                    question: 'Jika temanmu bertanya, "What do you think about this movie?", apa yang ia minta?',
+                    options: ['Meminta bantuan', 'Meminta pendapat', 'Memberi instruksi', 'Menyatakan setuju'],
+                    answer: 1
+                },
+                {
+                    question: 'Kalimat "In my opinion, English is fun" digunakan untuk...',
+                    options: ['Meminta pendapat', 'Memberi pendapat', 'Meminta bantuan', 'Memberi instruksi'],
+                    answer: 1
+                },
+                {
+                    question: 'Apa arti dari "Do you need any help?"',
+                    options: ['Apakah kamu butuh bantuan?', 'Bisakah kamu membantu saya?', 'Apakah kamu sudah makan?', 'Mau ke mana?'],
+                    answer: 0
+                },
+                {
+                    question: 'Kalimat yang tepat untuk menawarkan bantuan adalah...',
+                    options: ['Can I help you?', 'Can you help me?', 'I need help.', 'Help me, please.'],
+                    answer: 0
+                },
+                {
+                    question: 'Apa arti dari "Open the door, please"?',
+                    options: ['Tolong tutup pintunya.', 'Tolong buka pintunya.', 'Tolong jangan buka pintunya.', 'Pintunya terbuka.'],
+                    answer: 1
+                },
+                {
+                    question: 'Jika gurumu bilang "Please sit down", apa yang harus kamu lakukan?',
+                    options: ['Berdiri', 'Duduk', 'Keluar kelas', 'Mengambil buku'],
+                    answer: 1
+                },
+                {
+                    question: 'Kalimat "I agree with you" berarti...',
+                    options: ['Saya tidak setuju denganmu', 'Saya setuju denganmu', 'Saya tidak peduli', 'Saya benci kamu'],
+                    answer: 1
+                },
+                {
+                    question: 'Bagaimana cara menyatakan TIDAK SETUJU (disagreement)?',
+                    options: ['I agree.', 'I think so.', 'I don\'t think so.', 'That\'s right.'],
+                    answer: 2
+                },
+                {
+                    question: 'Kalimat "Can you tell me where the library is?" digunakan untuk...',
+                    options: ['Meminta pendapat', 'Meminta informasi', 'Menawarkan bantuan', 'Memberi perintah'],
+                    answer: 1
+                },
+                {
+                    question: 'Respons yang tepat jika seseorang menawarkan bantuan "Can I help you?" dan kamu mau dibantu adalah...',
+                    options: ['No, thanks.', 'Yes, please.', 'I am sorry.', 'Goodbye.'],
+                    answer: 1
+                },
+                {
+                    question: 'Apa arti dari kalimat "What is your opinion?"',
+                    options: ['Apa pendapatmu?', 'Siapa namamu?', 'Di mana rumahmu?', 'Mau ke mana?'],
+                    answer: 0
+                },
+                {
+                    question: 'Ungkapan "Could you give me a hand?" memiliki arti...',
+                    options: ['Bisakah kamu memberikan tanganmu?', 'Bisakah kamu membantuku?', 'Bisakah kamu melambaikan tangan?', 'Bisakah kamu berjabat tangan?'],
+                    answer: 1
+                },
+                {
+                    question: 'Kalimat "Don\'t be noisy!" termasuk ke dalam ekspresi...',
+                    options: ['Meminta informasi', 'Memberi instruksi', 'Memberi pendapat', 'Menawarkan bantuan'],
+                    answer: 1
+                },
+                {
+                    question: 'Bagaimana cara bertanya dengan sopan di mana letak toilet?',
+                    options: ['Toilet where?', 'Give me toilet!', 'Can you tell me where the toilet is?', 'I need toilet now.'],
+                    answer: 2
+                },
+                {
+                    question: 'Kalimat "I couldn\'t agree more" digunakan untuk menyatakan...',
+                    options: ['Sangat setuju', 'Sangat tidak setuju', 'Tidak peduli', 'Ragu-ragu'],
+                    answer: 0
+                },
+                {
+                    question: 'Jika kamu tidak setuju dengan pendapat temanmu, cara paling sopan untuk mengatakannya adalah...',
+                    options: ['You are stupid.', 'I am sorry, but I have a different opinion.', 'Shut up!', 'No, you are wrong!'],
+                    answer: 1
+                },
+                {
+                    question: 'Apa arti dari "What can I do for you?"',
+                    options: ['Apa yang bisa saya lakukan untukmu?', 'Apa yang sedang kamu lakukan?', 'Apa yang kamu inginkan dariku?', 'Mengapa kamu melakukan itu?'],
+                    answer: 0
+                },
+                {
+                    question: 'Kalimat "Turn off your phone" berarti...',
+                    options: ['Nyalakan HP-mu', 'Matikan HP-mu', 'Beli HP baru', 'Jual HP-mu'],
+                    answer: 1
+                },
+                {
+                    question: 'Respons yang tepat jika temanmu mengucapkan "Thank you" setelah kamu membantunya adalah...',
+                    options: ['Yes, I am.', 'You\'re welcome.', 'I am sorry.', 'Good morning.'],
+                    answer: 1
+                },
+                {
+                    question: 'Ungkapan "I see your point, but..." biasanya digunakan saat kita...',
+                    options: ['Sangat setuju', 'Ingin menyatakan tidak setuju dengan sopan', 'Ingin meminta bantuan', 'Ingin memberi instruksi'],
+                    answer: 1
+                }
+            ]
+        },
+        content: `
+<style>
+.bdr-table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 0.95em; background-color: #fff; }
+.bdr-table th, .bdr-table td { border: 1px solid #e5e7eb; padding: 10px 14px; text-align: left; vertical-align: middle; }
+.bdr-table th { background-color: #10b981; color: #fff; font-weight: 600; }
+.bdr-table tbody tr:nth-child(even) { background-color: #f9fafb; }
+</style>
+
+<p><span class="drop-cap">H</span>alo anak-anakku, apa kabar? Semoga kalian semua sehat dan tetap semangat, ya. Kembali lagi bersama saya, Mr. Yanto, yang sedang duduk manis sambil menikmati secangkir kopi di rumah dan menyiapkan catatan baru dan tugas untuk kalian selama BDR yach...</p>
+
+<p>Oh iya, pernah tidak kalian merasa sudah belajar bahasa Inggris bertahun-tahun, sudah menghafal banyak kosakata, sudah paham rumus <em>tenses</em>... tapi begitu bertemu orang asing (bule), kalian malah diam membeku seperti patung yang sedang berpose?</p>
+
+<p>Atau mungkin, ada teman yang mengajakmu ngobrol pakai bahasa Inggris, tapi kamu cuma bisa tersenyum kecil sambil mengangguk-angguk, padahal di dalam kepala bingung mau jawab apa? Kalau iya, selamat! Kamu bukan alien. Kamu hanya manusia normal yang belum tahu "kunci" rahasianya.</p>
+
+<p>Kita sering kali panik bukan karena kita bodoh, tapi karena kita tidak tahu <strong>ekspresi</strong> atau kalimat apa yang harus dipakai. Bayangkan saja seperti ini: Kalau kamu pergi ke pasar untuk membeli ikan, kamu pasti tahu harus bilang apa ke penjualnya, kan? "Bang, beli ikan satu." Kamu tidak perlu memikirkan tata bahasa yang rumit. Kamu hanya butuh kalimat yang biasa dipakai orang.</p>
+
+<p>Nah, dalam bahasa Inggris, kalimat yang biasa dipakai orang ini namanya <strong>Expressions</strong> (Ekspresi).</p>
+
+<p>Di artikel kali ini, Mr. Yanto akan mengajak kalian belajar 5 ekspresi dasar bahasa Inggris yang paling sering dipakai di kehidupan sehari-hari. Setiap ekspresi akan kita bedah 10 ungkapan yang paling sering dipakai. Mr. Yanto akan menjelaskan pakai bahasa yang sangat sederhana, biar mudah dimengerti, bahkan oleh adik-adik kita yang masih SD. Yuk, kita mulai!</p>
+
+<hr>
+
+<h2>1. Asking and Giving Opinion (Meminta dan Memberi Pendapat)</h2>
+
+<p>Setiap hari, kita pasti punya pendapat tentang sesuatu. Mulai dari "Film itu bagus, lho!" sampai "Makanan ini terlalu pedas, bikin lidah terbakar!" Kadang, kita juga butuh mendengar pendapat orang lain sebelum mengambil keputusan. Misalnya, saat kita bingung mau membeli baju warna biru atau merah, kita pasti bertanya ke teman, "Menurutmu, yang mana yang lebih bagus?" Nah, dalam bahasa Inggris, cara meminta dan memberi pendapat inilah yang disebut <em>Asking and Giving Opinion</em>.</p>
+
+<h3>A. Cara Meminta Pendapat (Asking for Opinion)</h3>
+<p>Kalau kamu ingin tahu apa pendapat temanmu tentang sesuatu, kamu bisa pakai 10 kalimat ini:</p>
+
+<table class="bdr-table">
+<thead>
+<tr>
+<th>English Expression</th>
+<th>Arti dalam Bahasa Indonesia</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>What do you think about...?</td>
+<td>Apa pendapatmu tentang...?</td>
+</tr>
+<tr>
+<td>What is your opinion?</td>
+<td>Apa pendapatmu?</td>
+</tr>
+<tr>
+<td>How do you feel about...?</td>
+<td>Bagaimana perasaanmu tentang...?</td>
+</tr>
+<tr>
+<td>Do you have any idea?</td>
+<td>Apakah kamu punya ide/pendapat?</td>
+</tr>
+<tr>
+<td>Is it a good idea?</td>
+<td>Apakah itu ide yang bagus?</td>
+</tr>
+<tr>
+<td>What do you say about...?</td>
+<td>Apa pendapatmu tentang...?</td>
+</tr>
+<tr>
+<td>Do you think it is a good choice?</td>
+<td>Apakah menurutmu ini pilihan yang bagus?</td>
+</tr>
+<tr>
+<td>What are your thoughts on this?</td>
+<td>Apa pemikiranmu tentang ini?</td>
+</tr>
+<tr>
+<td>Could you give me your opinion?</td>
+<td>Bisakah kamu memberiku pendapatmu?</td>
+</tr>
+<tr>
+<td>How do you see this situation?</td>
+<td>Bagaimana kamu melihat situasi ini?</td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>Contoh Dialog:</strong><br>
+<strong>Mr. Yanto:</strong> <em>What do you think about our school?</em> (Apa pendapatmu tentang sekolah kita?)<br>
+<strong>Tinakas:</strong> <em>It is clean and beautiful.</em> (Sekolahnya bersih dan indah.)</p>
+
+<h3>B. Cara Memberi Pendapat (Giving for Opinion)</h3>
+<p>Kalau kamu ingin menjawab pertanyaan di atas dan memberikan pendapatmu, ini 10 kalimat yang bisa kamu pakai:</p>
+
+<table class="bdr-table">
+<thead>
+<tr>
+<th>English Expression</th>
+<th>Arti dalam Bahasa Indonesia</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>In my opinion...</td>
+<td>Menurut pendapat saya...</td>
+</tr>
+<tr>
+<td>I think...</td>
+<td>Saya pikir...</td>
+</tr>
+<tr>
+<td>I believe...</td>
+<td>Saya percaya/yakin...</td>
+</tr>
+<tr>
+<td>Personally, I feel...</td>
+<td>Secara pribadi, saya merasa...</td>
+</tr>
+<tr>
+<td>To my mind...</td>
+<td>Di pikiran saya (Menurut saya)...</td>
+</tr>
+<tr>
+<td>As far as I know...</td>
+<td>Sejauh yang saya tahu...</td>
+</tr>
+<tr>
+<td>From my point of view...</td>
+<td>Dari sudut pandang saya...</td>
+</tr>
+<tr>
+<td>I would say that...</td>
+<td>Saya akan mengatakan bahwa...</td>
+</tr>
+<tr>
+<td>It seems to me that...</td>
+<td>Sepertinya bagi saya bahwa...</td>
+</tr>
+<tr>
+<td>Speaking for myself...</td>
+<td>Berbicara untuk diri saya sendiri...</td>
+</tr>
+</tbody>
+</table>
+
+<p>Nah, dengan 20 kalimat ini, kalian sudah bisa berdiskusi dengan teman tentang film, makanan, atau pelajaran. Tapi, bagaimana jika temanmu terlihat kebingungan membawa tumpukan buku yang tinggi sampai tubuhnya hampir tidak kelihatan? Tentu saja kamu tidak bisa hanya bilang "In my opinion, buku kamu banyak." Kamu harus bergerak menawarkan bantuan. Yuk, kita lihat caranya!</p>
+
+<hr>
+
+<h2>2. Asking and Offering Help (Meminta dan Menawarkan Bantuan)</h2>
+
+<p>Manusia adalah makhluk sosial. Kita pasti pernah butuh bantuan orang lain, dan kita juga pasti pernah menawarkan bantuan. Entah itu membawakan tas, meminjamkan pulpen, atau mengajarkan PR yang bikin pusing tujuh keliling.</p>
+
+<p>Membantu orang lain itu baik, tapi kita harus tahu cara menawarkannya dengan sopan. Jangan sampai niat baik kita terdengar seperti memaksa. Begitu juga saat kita yang butuh bantuan, kita harus memintanya dengan cara yang santun, bukan seperti preman pasar.</p>
+
+<h3>A. Menawarkan Bantuan (Offering Help)</h3>
+<p>Kalau kamu ingin menolong teman, gunakan 10 kalimat ini:</p>
+
+<table class="bdr-table">
+<thead>
+<tr>
+<th>English Expression</th>
+<th>Arti dalam Bahasa Indonesia</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Can I help you?</td>
+<td>Bisakah saya membantumu?</td>
+</tr>
+<tr>
+<td>May I help you?</td>
+<td>Bolehkah saya membantumu?</td>
+</tr>
+<tr>
+<td>Do you need any help?</td>
+<td>Apakah kamu butuh bantuan?</td>
+</tr>
+<tr>
+<td>Let me help you.</td>
+<td>Biarkan saya membantumu.</td>
+</tr>
+<tr>
+<td>What can I do for you?</td>
+<td>Apa yang bisa saya lakukan untukmu?</td>
+</tr>
+<tr>
+<td>Would you like me to help you?</td>
+<td>Apakah kamu ingin saya membantumu?</td>
+</tr>
+<tr>
+<td>Is there anything I can do?</td>
+<td>Apakah ada yang bisa saya lakukan?</td>
+</tr>
+<tr>
+<td>Shall I help you with that?</td>
+<td>Haruskah saya membantumu dengan itu?</td>
+</tr>
+<tr>
+<td>Do you need a hand?</td>
+<td>Apakah kamu butuh bantuan? (tangan = bantuan)</td>
+</tr>
+<tr>
+<td>Let me give you a hand.</td>
+<td>Biarkan saya membantumu.</td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>Cara Menjawabnya (Jika Mau Dibantu):</strong><br>
+- <em>"Yes, please. Thank you."</em> (Ya, tolong. Terima kasih.)<br>
+- <em>"That would be great, thank you."</em> (Itu akan sangat membantu, terima kasih.)<br>
+- <em>"Yes, I really need your help."</em> (Ya, saya sangat butuh bantuanmu.)</p>
+<p><strong>Cara Menjawabnya (Jika Tidak Mau Dibantu):</strong><br>
+- <em>"No, thank you. I can do it myself."</em> (Tidak, terima kasih. Saya bisa melakukannya sendiri.)<br>
+- <em>"It's okay, thanks."</em> (Tidak apa-apa, terima kasih.)<br>
+- <em>"Don't worry, I am fine."</em> (Jangan khawatir, saya baik-baik saja.)</p>
+
+<h3>B. Meminta Bantuan (Asking for Help)</h3>
+<p>Kalau kamu yang butuh bantuan, jangan malu bertanya. Ini 10 kalimatnya:</p>
+
+<table class="bdr-table">
+<thead>
+<tr>
+<th>English Expression</th>
+<th>Arti dalam Bahasa Indonesia</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Can you help me, please?</td>
+<td>Bisakah kamu membantuku, tolong?</td>
+</tr>
+<tr>
+<td>Could you give me a hand?</td>
+<td>Bisakah kamu membantuku?</td>
+</tr>
+<tr>
+<td>I need some help.</td>
+<td>Saya butuh bantuan.</td>
+</tr>
+<tr>
+<td>Would you mind helping me?</td>
+<td>Apakah kamu keberatan membantuku?</td>
+</tr>
+<tr>
+<td>Can you do me a favor?</td>
+<td>Bisakah kamu membantuku? (melakukan kebaikan)</td>
+</tr>
+<tr>
+<td>Could you help me out?</td>
+<td>Bisakah kamu menolongku keluar dari masalah ini?</td>
+</tr>
+<tr>
+<td>I was wondering if you could help me.</td>
+<td>Saya ingin tahu apakah kamu bisa membantuku.</td>
+</tr>
+<tr>
+<td>Please assist me with this.</td>
+<td>Tolong bantu saya dengan ini.</td>
+</tr>
+<tr>
+<td>Can I ask for your help?</td>
+<td>Bolehkah saya meminta bantuanmu?</td>
+</tr>
+<tr>
+<td>I really need your assistance.</td>
+<td>Saya sangat membutuhkan bantuanmu.</td>
+</tr>
+</tbody>
+</table>
+
+<p>Sekarang, kalian tidak akan kebingungan lagi jika harus menawarkan bantuan. Tapi, berbicara soal bantuan, kadang saat kita membantu seseorang, kita juga perlu memberi tahu orang itu apa yang harus dilakukan. Misalnya, saat mengajari teman menggunakan komputer, atau saat memberitahu adik cara memakai sepatu. Di sinilah kita butuh yang namanya instruksi.</p>
+
+<hr>
+
+<h2>3. Asking and Giving Instructions (Meminta dan Memberi Instruksi)</h2>
+
+<p>Instruksi adalah perintah atau petunjuk untuk melakukan sesuatu. Saat Mr. Yanto menyuruh kalian "Buka buku halaman 10", itu namanya instruksi. Instruksi biasanya berupa kalimat perintah (imperative).</p>
+
+<p>Selain di sekolah, instruksi juga sering kita dengar di jalan raya (seperti tulisan "Stop" atau "Turn Left"), di bungkus makanan (cara memasak mie instan), atau saat kita mengajari adik kita cara mengikat tali sepatu. Intinya, instruksi membantu orang lain melakukan sesuatu dengan benar dan berurutan tanpa tersesat.</p>
+
+<h3>A. Memberi Instruksi (Giving Instructions)</h3>
+<p>Ini adalah 10 kalimat instruksi yang paling sering dipakai:</p>
+
+<table class="bdr-table">
+<thead>
+<tr>
+<th>English Expression</th>
+<th>Arti dalam Bahasa Indonesia</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Open the door, please.</td>
+<td>Tolong buka pintunya.</td>
+</tr>
+<tr>
+<td>Close your book.</td>
+<td>Tutup bukumu.</td>
+</tr>
+<tr>
+<td>Sit down, please.</td>
+<td>Silakan duduk / Tolong duduk.</td>
+</tr>
+<tr>
+<td>Stand up!</td>
+<td>Berdiri!</td>
+</tr>
+<tr>
+<td>Listen to me carefully.</td>
+<td>Dengarkan saya dengan hati-hati.</td>
+</tr>
+<tr>
+<td>Don't be noisy!</td>
+<td>Jangan berisik!</td>
+</tr>
+<tr>
+<td>Turn on the lamp.</td>
+<td>Nyalakan lampunya.</td>
+</tr>
+<tr>
+<td>Turn off your phone.</td>
+<td>Matikan HP-mu.</td>
+</tr>
+<tr>
+<td>Write this down in your book.</td>
+<td>Tulis ini di bukumu.</td>
+</tr>
+<tr>
+<td>Look at the whiteboard.</td>
+<td>Lihat ke papan tulis.</td>
+</tr>
+</tbody>
+</table>
+
+<p><em>Catatan: Kata "Please" (Tolong) sangat penting. Menambahkan kata "please" membuat perintah kita terdengar lebih sopan, tidak seperti sedang marah atau membentak. Ingat, kita ingin dianggap sopan, bukan seperti komandan upacara.</em></p>
+
+<h3>B. Meminta Instruksi (Asking for Instructions)</h3>
+<p>Kalau kamu bingung dan butuh petunjuk, ini 10 kalimat yang bisa kamu pakai:</p>
+
+<table class="bdr-table">
+<thead>
+<tr>
+<th>English Expression</th>
+<th>Arti dalam Bahasa Indonesia</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>How do I use this?</td>
+<td>Bagaimana cara saya menggunakan ini?</td>
+</tr>
+<tr>
+<td>What should I do next?</td>
+<td>Apa yang harus saya lakukan selanjutnya?</td>
+</tr>
+<tr>
+<td>Can you show me how to do it?</td>
+<td>Bisakah kamu menunjukkan bagaimana melakukannya?</td>
+</tr>
+<tr>
+<td>Please tell me what to do.</td>
+<td>Tolong beri tahu saya apa yang harus dilakukan.</td>
+</tr>
+<tr>
+<td>How does this work?</td>
+<td>Bagaimana ini bekerja/digunakan?</td>
+</tr>
+<tr>
+<td>Could you explain the steps?</td>
+<td>Bisakah kamu menjelaskan langkah-langkahnya?</td>
+</tr>
+<tr>
+<td>What is the first step?</td>
+<td>Apa langkah pertamanya?</td>
+</tr>
+<tr>
+<td>Do you know how to operate this?</td>
+<td>Apakah kamu tahu cara mengoperasikan ini?</td>
+</tr>
+<tr>
+<td>I need clear instructions.</td>
+<td>Saya butuh instruksi yang jelas.</td>
+</tr>
+<tr>
+<td>Could you guide me?</td>
+<td>Bisakah kamu membimbing saya?</td>
+</tr>
+</tbody>
+</table>
+
+<p>Kalian sudah paham cara memberi dan meminta instruksi. Nah, di dalam sebuah instruksi, atau saat kita sedang menanyakan petunjuk, pasti ada saatnya kita membutuhkan informasi yang lebih detail. Misalnya, menanyakan di mana suatu tempat atau jam berapa sesuatu dimulai. Dan berbicara soal informasi, ini membawa kita ke materi keempat.</p>
+
+<hr>
+
+<h2>4. Asking and Giving Information (Meminta dan Memberi Informasi)</h2>
+
+<p>Informasi adalah kabar atau keterangan. Contohnya: menanyakan arah, menanyakan harga, atau menanyakan jadwal. Di sini, kita akan belajar pakai kata tanya 5W+1H (What, Where, When, Who, Why, How).</p>
+
+<p>Bayangkan jika kita tersesat di tempat baru, atau ingin membeli sesuatu tapi tidak tahu harganya, atau ingin tahu kapan bus akan berangkat. Kita pasti membutuhkan informasi. Jika kita tidak tahu cara bertanya, kita bisa tersesat atau malah salah naik bus ke arah yang salah. Oleh karena itu, belajar meminta dan memberi informasi sangat penting.</p>
+
+<h3>A. Meminta Informasi (Asking for Information)</h3>
+<p>Ini 10 kalimat untuk menanyakan informasi:</p>
+
+<table class="bdr-table">
+<thead>
+<tr>
+<th>English Expression</th>
+<th>Arti dalam Bahasa Indonesia</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Where is the library?</td>
+<td>Di mana perpustakaannya?</td>
+</tr>
+<tr>
+<td>What time does the class start?</td>
+<td>Jam berapa kelasnya dimulai?</td>
+</tr>
+<tr>
+<td>Who is your favorite teacher?</td>
+<td>Siapa guru favoritmu?</td>
+</tr>
+<tr>
+<td>How much is this book?</td>
+<td>Berapa harga buku ini?</td>
+</tr>
+<tr>
+<td>Can you tell me where the toilet is?</td>
+<td>Bisakah kamu memberitahu saya di mana toiletnya?</td>
+</tr>
+<tr>
+<td>Excuse me, could you tell me the way to the market?</td>
+<td>Permisi, bisakah kamu menunjukkan jalan ke pasar?</td>
+</tr>
+<tr>
+<td>Do you know when the bus arrives?</td>
+<td>Apakah kamu tahu kapan busnya datang?</td>
+</tr>
+<tr>
+<td>May I ask where you live?</td>
+<td>Bolehkah saya bertanya di mana kamu tinggal?</td>
+</tr>
+<tr>
+<td>Could you give me some information?</td>
+<td>Bisakah kamu memberiku beberapa informasi?</td>
+</tr>
+<tr>
+<td>What is the name of this place?</td>
+<td>Apa nama tempat ini?</td>
+</tr>
+</tbody>
+</table>
+
+<h3>B. Memberi Informasi (Giving Information)</h3>
+<p>Jika ada yang bertanya, kamu bisa menjawab dengan memberikan informasinya secara langsung. Berikut adalah contoh cara menjawab atau memberi informasi:</p>
+
+<table class="bdr-table">
+<thead>
+<tr>
+<th>English Expression</th>
+<th>Arti dalam Bahasa Indonesia</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>It is next to the library.</td>
+<td>Itu ada di sebelah perpustakaan.</td>
+</tr>
+<tr>
+<td>The class starts at 8 AM.</td>
+<td>Kelasnya dimulai jam 8 pagi.</td>
+</tr>
+<tr>
+<td>My favorite teacher is Mr. Yanto.</td>
+<td>Guru favorit saya adalah Mr. Yanto.</td>
+</tr>
+<tr>
+<td>It is about fifty thousand rupiahs.</td>
+<td>Harganya sekitar lima puluh ribu rupiah.</td>
+</tr>
+<tr>
+<td>Go straight and turn left.</td>
+<td>Jalan lurus dan belok kiri.</td>
+</tr>
+<tr>
+<td>I am sorry, I don't know.</td>
+<td>Maaf, saya tidak tahu.</td>
+</tr>
+<tr>
+<td>I think it is on the second floor.</td>
+<td>Saya rasa itu ada di lantai dua.</td>
+</tr>
+<tr>
+<td>You can find it near the gate.</td>
+<td>Kamu bisa menemukannya di dekat gerbang.</td>
+</tr>
+<tr>
+<td>It is a very famous place.</td>
+<td>Itu tempat yang sangat terkenal.</td>
+</tr>
+<tr>
+<td>Let me show you the way.</td>
+<td>Biarkan saya menunjukkan jalannya.</td>
+</tr>
+</tbody>
+</table>
+
+<p>Nah, sekarang kalian sudah pandai memberi dan meminta informasi. Lalu, bagaimana jika setelah mendapatkan informasi atau mendengar pendapat orang lain, kita ingin merespons? Kadang kita setuju, kadang juga tidak. Untuk itulah kita perlu belajar ekspresi yang terakhir. Yuk, kita bahas!</p>
+
+<hr>
+
+<h2>5. Expressing Agreement and Disagreement (Menyatakan Setuju dan Tidak Setuju)</h2>
+
+<p>Ekspresi terakhir ini adalah tentang bagaimana merespons pendapat orang lain. Ketika seseorang memberikan pendapat, kita bebas mau setuju atau tidak setuju. Kita tidak boleh memaksakan pendapat kita. Tapi kita juga harus bisa mengungkapkan rasa setuju atau tidak setuju kita dengan cara yang sopan.</p>
+
+<p>Jika kita setuju, kita bisa memberikan dukungan. Tapi jika kita tidak setuju, bukan berarti kita harus bertengkar atau adu jotos. Kita bisa menyampaikan ketidaksetujuan kita dengan bahasa yang santun, sehingga orang lain tidak tersinggung. Berikut adalah ungkapannya:</p>
+
+<h3>A. Menyatakan Setuju (Agreement)</h3>
+<p>Ini 10 kalimat yang bisa kamu pakai untuk menyatakan setuju:</p>
+
+<table class="bdr-table">
+<thead>
+<tr>
+<th>English Expression</th>
+<th>Arti dalam Bahasa Indonesia</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>I agree with you.</td>
+<td>Saya setuju denganmu.</td>
+</tr>
+<tr>
+<td>That is a good idea.</td>
+<td>Itu ide yang bagus.</td>
+</tr>
+<tr>
+<td>You are absolutely right.</td>
+<td>Kamu benar sekali.</td>
+</tr>
+<tr>
+<td>I think so too.</td>
+<td>Saya juga berpikir begitu.</td>
+</tr>
+<tr>
+<td>Exactly!</td>
+<td>Tepat sekali!</td>
+</tr>
+<tr>
+<td>I couldn't agree more.</td>
+<td>Saya sangat setuju.</td>
+</tr>
+<tr>
+<td>That's true.</td>
+<td>Itu benar.</td>
+</tr>
+<tr>
+<td>I am with you.</td>
+<td>Saya bersamamu (setuju).</td>
+</tr>
+<tr>
+<td>No doubt about it.</td>
+<td>Tidak ada keraguan tentang itu.</td>
+</tr>
+<tr>
+<td>You have a point there.</td>
+<td>Kamu punya poin yang bagus di situ.</td>
+</tr>
+</tbody>
+</table>
+
+<h3>B. Menyatakan Tidak Setuju (Disagreement)</h3>
+<p>Kalau tidak setuju, jangan pakai kata-kata kasar. Gunakan 10 kalimat sopan ini:</p>
+
+<table class="bdr-table">
+<thead>
+<tr>
+<th>English Expression</th>
+<th>Arti dalam Bahasa Indonesia</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>I don't think so.</td>
+<td>Saya rasa tidak begitu.</td>
+</tr>
+<tr>
+<td>I disagree with you.</td>
+<td>Saya tidak setuju denganmu.</td>
+</tr>
+<tr>
+<td>I am sorry, but I have a different opinion.</td>
+<td>Maaf, tapi saya punya pendapat yang berbeda.</td>
+</tr>
+<tr>
+<td>I see your point, but...</td>
+<td>Saya mengerti maksudmu, tapi...</td>
+</tr>
+<tr>
+<td>That's not entirely true.</td>
+<td>Itu tidak sepenuhnya benar.</td>
+</tr>
+<tr>
+<td>I am afraid I disagree.</td>
+<td>Saya khawatir saya tidak setuju.</td>
+</tr>
+<tr>
+<td>I don't share that view.</td>
+<td>Saya tidak berbagi pandangan itu.</td>
+</tr>
+<tr>
+<td>I have to say the opposite.</td>
+<td>Saya harus mengatakan sebaliknya.</td>
+</tr>
+<tr>
+<td>I can't say I agree with that.</td>
+<td>Saya tidak bisa bilang saya setuju dengan itu.</td>
+</tr>
+<tr>
+<td>That's one way to look at it, but...</td>
+<td>Itu salah satu cara memandangnya, tapi...</td>
+</tr>
+</tbody>
+</table>
+
+<hr>
+
+<h2>Tips: Bagaimana Cara Berlatih agar Tidak Panik?</h2>
+
+<p>Banyak anak bertanya, <em>"Mr. Yanto, saya sudah hafal kalimatnya, tapi pas mau ngomong tetap panik. Gimana dong?"</em></p>
+
+<p>Ini tipsnya dari Mr. Yanto:</p>
+<ol>
+<li><strong>Jangan takut salah.</strong> Orang asing (bule) itu justru senang kalau kita berusaha bicara bahasa mereka. Kalau salah, mereka tidak akan menertawakan kita. Mereka biasanya malah membantu membetulkan. Ingat, mereka juga tidak bisa bahasa Indonesia dengan sempurna. Jadi kita sama-sama belajar.</li>
+<li><strong>Latihan ngobrol di depan cermin.</strong> Tersenyumlah ke cermin, lalu ucapkan kalimat-kalimat di atas. Ini melatih otot mulutmu agar terbiasa. Awalnya mungkin terasa aneh atau lucu, tapi lama-lama akan terbiasa.</li>
+<li><strong>Ajak temanmu berlatih dialog.</strong> Pura-pura kamu penjual dan temanmu pembeli. Pura-pura kamu guru dan temanmu murid. Latihan peran (role play) ini sangat menyenangkan dan bisa mengurangi rasa gugup.</li>
+<li><strong>Mulai dari kalimat pendek.</strong> Tidak perlu kalimat yang panjang-panjang. Cukup bilang <em>"Can I help you?"</em> atau <em>"I agree."</em> Itu sudah sangat bagus! Kalau sudah lancar, baru coba kalimat yang lebih panjang.</li>
+<li><strong>Dengarkan lagu atau film bahasa Inggris.</strong> Perhatikan bagaimana aktor atau penyanyi mengucapkan kalimat-kalimat tersebut. Tirukan cara mereka bicara. Ini akan melatih pendengaranmu sekaligus pengucapanmu.</li>
+</ol>
+
+<hr>
+
+<h2>Latihan Soal (20 Soal)</h2>
+
+<p>Yuk, uji pemahamanmu! Kerjakan 20 soal di bawah ini di buku tulismu. Tulis soal dan jawabannya.</p>
+
+<ol>
+<li>Apa bahasa Inggris dari "Menurut pendapat saya, bahasa Inggris itu menyenangkan"?</li>
+<li>Jika temanmu bertanya "What is your opinion?", apa artinya?</li>
+<li>Tuliskan 3 kalimat untuk menanyakan pendapat dalam bahasa Inggris!</li>
+<li>Tuliskan 3 kalimat untuk memberi pendapat dalam bahasa Inggris beserta artinya!</li>
+<li>Jika kamu melihat ibu guru membawa banyak buku, apa kalimat yang tepat untuk menawarkan bantuan?</li>
+<li>Apa arti dari kalimat "Do you need a hand?"</li>
+<li>Tuliskan 2 kalimat untuk meminta bantuan dalam bahasa Inggris!</li>
+<li>Bagaimana cara menolak tawaran bantuan dengan sopan dalam bahasa Inggris?</li>
+<li>Buatlah satu kalimat instruksi (perintah) dalam bahasa Inggris untuk menyuruh temanmu membuka jendela!</li>
+<li>Mengapa kita harus menambahkan kata "Please" saat memberi instruksi?</li>
+<li>Tuliskan 2 kalimat untuk meminta instruksi (petunjuk) dalam bahasa Inggris!</li>
+<li>Bagaimana cara bertanya "Di mana kantin?" dalam bahasa Inggris?</li>
+<li>Apa arti dari "Excuse me, could you tell me the way to the market?"</li>
+<li>Tuliskan 3 kata tanya (5W+1H) yang biasa dipakai untuk meminta informasi!</li>
+<li>Jika temanmu bilang "I think this book is boring" (Saya pikir buku ini membosankan), dan kamu setuju, apa yang harus kamu katakan?</li>
+<li>Bagaimana cara menyatakan tidak setuju dengan sopan jika temanmu bilang "English is very difficult"?</li>
+<li>Tuliskan 3 kalimat untuk menyatakan setuju (Agreement) dalam bahasa Inggris!</li>
+<li>Tuliskan 3 kalimat untuk menyatakan tidak setuju (Disagreement) dalam bahasa Inggris!</li>
+<li>Apa perbedaan antara "I agree with you" dan "I don't think so"?</li>
+<li>Menurutmu, mengapa belajar ekspresi ini penting untuk kehidupan sehari-hari? Jelaskan dengan bahasamu sendiri!</li>
+</ol>
+
+<hr>
+
+<h2>Opss...sebelum saya Tutup</h2>
+
+<p>Nah, teman-teman, itulah 5 ekspresi dasar bahasa Inggris yang harus kalian kuasai. Mulai dari meminta pendapat, menawarkan bantuan, memberi instruksi, bertanya informasi, sampai menyatakan setuju atau tidak setuju. Kelima ekspresi ini saling berkaitan. Dalam satu percakapan, bisa jadi kita menggunakan semuanya secara bergantian.</p>
+
+<p>Ingatlah, bahasa Inggris itu bukan pelajaran yang hanya ada di buku atau di soal ujian. Bahasa Inggris adalah <strong>alat untuk berkomunikasi</strong>. Kalau kalian bisa memakai kalimat-kalimat di atas saat mengobrol dengan teman atau guru, berarti kalian sudah selangkah lebih maju.</p>
+
+<p>Jangan pernah malu untuk mencoba. Jangan pernah takut untuk salah. Kesalahan adalah bagian dari proses belajar. Seperti kata pepatah: <em>Practice makes perfect</em> (Latihan membuat sempurna).</p>
+
+<p>Selamat berlatih, dan sampai jumpa di artikel selanjutnya! 🌿</p>
+
+<p><em><strong>Catatan:</strong> untuk anak-anak hebat SMP Negeri Pulau Tiga dan siapa pun yang sedang belajar bahasa Inggris, ayo mulai sekarang harus katakan pada diri sendiri "aku suka belajar bahasa Inggris!" Harus lantang tanpa rasa panik dan takut.</em></p>
+`
+    },
 
 
 ];
