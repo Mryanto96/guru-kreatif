@@ -22,6 +22,7 @@ const MENU_STRUCTURE = [
     ]
   },
   { name: 'Kelulusan', url: 'kelulusan.html' },
+  { name: 'Alumni', url: 'alumni.html' },
   { name: 'Blog', url: 'blog.html' },
   { name: 'PPDB', url: 'pendaftaran.html' },
   { name: 'Videos', url: 'videos.html' },

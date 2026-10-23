@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="light">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Direktori Alumni | SMP Negeri Pulau Tiga</title>
+    <meta name="description" content="Direktori dan galeri alumni SMP Negeri Pulau Tiga." />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+
+    <style>
+        /* ============================================================
+           STYLE KHUSUS HALAMAN ALUMNI
+           ============================================================ */
+
+        .page-content {
+            position: relative;
+            z-index: 1;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* ============================================================
+           SEKSI HERO / PENCARIAN
+           ============================================================ */
+        .search-section {
+            padding: 40px 20px 50px;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            background: transparent;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 16px;
+            background: var(--bg3);
+            border: 1px solid var(--border);
+            border-radius: 99px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+            box-shadow: var(--shadow);
+        }
+
+        .search-section h2 {
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            font-weight: 800;
+            margin-bottom: 12px;
+            letter-spacing: -1px;
+            color: var(--text);
+            line-height: 1.2;
+        }
+
+        .search-section p {
+            font-size: 1rem;
+            color: var(--text2);
+            max-width: 540px;
+            margin: 0 auto 40px;
+            line-height: 1.7;
+        }
+
+        /* ============================================================
+           FORM PENCARIAN
+           ============================================================ */
+        .search-form {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 10;
+            background: var(--card-bg);
+            padding: 16px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--border);
+        }
+
+        /* Wrapper untuk input nama agar ikon + dropdown bisa diletakkan */
+        .input-wrapper {
+            position: relative;
+            width: 100%;
+        }
+
+        .input-wrapper>i {
+            position: absolute;
+            left: 18px;
+            top: 24px;
+            transform: translateY(-50%);
+            color: var(--text3);
+            font-size: 1rem;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .search-form input,
+        .search-form select {
+            width: 100%;
+            padding: 14px 18px;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border);
+            font-family: var(--font);
+            font-size: 0.95rem;
+            color: var(--text);
+            background: var(--bg);
+            outline: none;
+            appearance: none;
+            transition: all 0.3s ease;
+        }
+
+        .input-wrapper input {
+            padding-left: 46px;
+        }
+
+        .search-form input:focus,
+        .search-form select:focus {
+            border-color: var(--accent);
+            background: var(--card-bg);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+        }
+
+        .select-wrapper {
+            position: relative;
+            width: 100%;
+        }
+
+        .select-wrapper::after {
+            content: '\f107';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            right: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text3);
+            pointer-events: none;
+        }
+
+        .btn-search {
+            padding: 14px 32px;
+            border-radius: var(--radius-sm);
+            border: none;
+            background-color: var(--accent);
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-family: var(--font);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn-search:hover {
+            background-color: var(--accent2);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+        }
+
+        /* ============================================================
+           AUTOCOMPLETE DROPDOWN
+           ============================================================ */
+        .suggestion-box {
+            position: absolute;
+            top: calc(100% + 8px);
+            left: 0;
+            right: 0;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            box-shadow: var(--shadow-lg);
+            max-height: 280px;
+            overflow-y: auto;
+            z-index: 60;
+            display: none;
+            padding: 6px;
+            text-align: left;
+            animation: fadeUp 0.15s ease;
+        }
+
+        .suggestion-box.show {
+            display: block;
+        }
+
+        .suggestion-item {
+            padding: 10px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            transition: background 0.12s ease;
+            user-select: none;
+        }
+
+        .suggestion-item:hover,
+        .suggestion-item.active {
+            background: var(--bg3);
+        }
+
+        .suggestion-item .sug-name {
+            font-weight: 600;
+            flex: 1;
+            min-width: 0;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .suggestion-item .sug-meta {
+            font-size: 0.7rem;
+            color: var(--text3);
+            font-weight: 700;
+            white-space: nowrap;
+            letter-spacing: 0.3px;
+            text-transform: uppercase;
+        }
+
+        .suggestion-item .sug-name mark {
+            background: rgba(37, 99, 235, 0.18);
+            color: inherit;
+            padding: 0 2px;
+            border-radius: 2px;
+        }
+
+        [data-theme="dark"] .suggestion-item .sug-name mark {
+            background: rgba(59, 130, 246, 0.3);
+        }
+
+        .suggestion-empty {
+            padding: 14px 12px;
+            font-size: 0.85rem;
+            color: var(--text3);
+            text-align: center;
+        }
+
+        .suggestion-box::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .suggestion-box::-webkit-scrollbar-thumb {
+            background: var(--border);
+            border-radius: 99px;
+        }
+
+        .suggestion-box::-webkit-scrollbar-thumb:hover {
+            background: var(--text3);
+        }
+
+        /* ============================================================
+           HASIL PENCARIAN / KARTU PROFIL
+           ============================================================ */
+        .result-section {
+            padding: 0 20px 80px;
+            display: flex;
+            justify-content: center;
+            position: relative;
+            z-index: 2;
+            flex: 1;
+        }
+
+        .profile-card {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            padding: 32px 24px;
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--border);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s ease;
+            animation: fadeUp 0.5s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .profile-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, var(--accent), var(--c2));
+        }
+
+        .profile-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .profile-photo {
+            width: 100%;
+            aspect-ratio: 4/5;
+            border-radius: var(--radius-sm);
+            overflow: hidden;
+            margin: 0 auto 24px;
+            background: var(--bg3);
+            border: 4px solid var(--bg3);
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .profile-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+        }
+
+        .profile-name {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--text);
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            letter-spacing: 0.5px;
+            line-height: 1.3;
+        }
+
+        .profile-major {
+            font-size: 0.85rem;
+            font-weight: 800;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+            background: rgba(37, 99, 235, 0.1);
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 99px;
+        }
+
+        [data-theme="dark"] .profile-major {
+            color: var(--accent2);
+            background: rgba(59, 130, 246, 0.15);
+        }
+
+        .profile-year {
+            font-size: 1rem;
+            color: var(--text2);
+            font-weight: 600;
+        }
+
+        .empty-state {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            padding: 50px 40px;
+            text-align: center;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--border);
+            color: var(--text2);
+            animation: fadeUp 0.4s ease;
+        }
+
+        .empty-state i {
+            font-size: 3.5rem;
+            color: var(--border);
+            margin-bottom: 20px;
+        }
+
+        /* ============================================================
+           RESPONSIVE
+           ============================================================ */
+        @media (min-width: 768px) {
+            .search-section {
+                padding: 60px 20px 60px;
+            }
+
+            .search-form {
+                flex-direction: row;
+                align-items: center;
+                padding: 12px;
+            }
+
+            .input-wrapper {
+                flex: 2.5;
+            }
+
+            .search-form input,
+            .search-form select {
+                padding: 12px 16px;
+            }
+
+            .input-wrapper input {
+                padding-left: 42px;
+            }
+
+            .input-wrapper>i {
+                top: 50%;
+                left: 16px;
+            }
+
+            .select-wrapper {
+                flex: 2;
+            }
+
+            .btn-search {
+                flex: 1.5;
+                white-space: nowrap;
+                padding: 12px 24px;
+            }
+
+            .profile-card {
+                padding: 40px 32px;
+                max-width: 440px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-inner">
+                <a href="index.html" class="logo">
+                    <div class="logo-icon">SMP</div>
+                    <div class="logo-text">
+                        <span class="logo-title">Persiapan Negeri</span>
+                        <span class="logo-sub">Pulau Tiga • Nakai</span>
+                    </div>
+                </a>
+
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="alumni.html" class="active">Alumni</a></li>
+                </ul>
+
+                <div class="nav-right">
+                    <button class="dark-toggle" aria-label="Toggle dark mode" id="darkToggleBtn">
+                        <div class="dark-toggle-ball">☀️</div>
+                    </button>
+                    <button class="hamburger" aria-label="Menu">
+                        <span></span><span></span><span></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="page-content">
+        <!-- ===== SEKSI PENCARIAN (HERO) ===== -->
+        <section class="search-section">
+            <div class="hero-badge">
+                <i class="fas fa-graduation-cap"></i> Direktori Alumni
+            </div>
+            <h2>Cari Data Alumni</h2>
+            <p>Kami masih terus mengumpulkan dan memperbarui data alumni SMP Negeri Pulau Tiga untuk memudahkan
+                silaturahmi dan pelacakan lulusan.</p>
+
+            <div class="search-form">
+                <!-- Input dengan ikon + dropdown saran di dalam wrapper -->
+                <div class="input-wrapper">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="searchName" placeholder="Ketik atau pilih nama alumni..." autocomplete="off"
+                        aria-autocomplete="list" aria-controls="suggestionBox" />
+                    <div class="suggestion-box" id="suggestionBox" role="listbox" aria-label="Saran nama alumni"></div>
+                </div>
+
+                <div class="select-wrapper">
+                    <select id="filterKelas">
+                        <option value="all">Pilih Kelas</option>
+                        <option value="IX-A">Kelas IX-A</option>
+                        <option value="IX-B">Kelas IX-B</option>
+                        <option value="IX-C">Kelas IX-C</option>
+                    </select>
+                </div>
+
+                <div class="select-wrapper">
+                    <select id="filterTahun">
+                        <option value="all">Pilih Angkatan</option>
+                        <option value="2023">Tahun 2023</option>
+                        <option value="2024">Tahun 2024</option>
+                        <option value="2025">Tahun 2025</option>
+                    </select>
+                </div>
+
+                <button class="btn-search" id="btnSearch">
+                    <i class="fas fa-search"></i> Cari
+                </button>
+            </div>
+        </section>
+
+        <!-- ===== HASIL PENCARIAN ===== -->
+        <section class="result-section" id="resultContainer">
+            <!-- Kartu profil akan di-render oleh JS di sini -->
+        </section>
+    </div>
+
+    <!-- ===== FOOTER ===== -->
+    <footer style="border-top: 1px solid var(--border); background: var(--bg2); position: relative; z-index: 1;">
+        <div class="container">
+            <div
+                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; padding: 32px 0 16px; text-align: left;">
+
+                <div>
+                    <h4 style="font-size: 0.85rem; font-weight: 700; margin-bottom: 10px; color: var(--text);"
+                        data-i18n="footer_contact">
+                        Kontak</h4>
+                    <p style="font-size: 0.78rem; color: var(--text2); line-height: 1.8; margin: 0;">
+                        <i class="fas fa-map-marker-alt" style="color: var(--c1); width: 16px;"></i>
+                        Jl. Puskesmas Nakai, Distrik Pulau Tiga,<br />Kabupaten Asmat, Papua Selatan, Indonesia
+                    </p>
+                    <p style="font-size: 0.78rem; color: var(--text2); line-height: 1.8; margin: 8px 0 0;">
+                        <i class="fas fa-clock" style="color: var(--c1); width: 16px;"></i>
+                        Jam Operasional: 07.00 - 13.00 WIT
+                    </p>
+                </div>
+
+                <div>
+                    <h4 style="font-size: 0.85rem; font-weight: 700; margin-bottom: 10px; color: var(--text);"
+                        data-i18n="footer_institution">
+                        Institusi</h4>
+                    <p style="font-size: 0.78rem; color: var(--text2); line-height: 1.8; margin: 0;">
+                        SMP Negeri Pulau Tiga<br />
+                        Dinas Pendidikan Kabupaten Asmat<br />
+                        <em>Pendidikan Dasar &amp; Menengah</em><br />
+                        Provinsi Papua Selatan
+                    </p>
+                </div>
+
+                <div>
+                    <h4 style="font-size: 0.85rem; font-weight: 700; margin-bottom: 10px; color: var(--text);"
+                        data-i18n="footer_follow">
+                        Ikuti Kami</h4>
+                    <div style="display: flex; gap: 10px; margin-top: 4px;">
+                        <a href="https://www.facebook.com/yantho.rundy6" target="_blank" rel="noopener noreferrer"
+                            aria-label="Facebook"
+                            style="display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; background: var(--card-bg); border: 1px solid var(--border); color: var(--text2); text-decoration: none; font-size: 0.95rem; transition: all .25s ease;"
+                            onmouseover="this.style.background='#1877F2';this.style.color='#fff';this.style.borderColor='#1877F2';this.style.transform='translateY(-2px)';"
+                            onmouseout="this.style.background='var(--card-bg)';this.style.color='var(--text2)';this.style.borderColor='var(--border)';this.style.transform='translateY(0)';">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Instagram"
+                            style="display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; background: var(--card-bg); border: 1px solid var(--border); color: var(--text2); text-decoration: none; font-size: 0.95rem; transition: all .25s ease;"
+                            onmouseover="this.style.background='#E4405F';this.style.color='#fff';this.style.borderColor='#E4405F';this.style.transform='translateY(-2px)';"
+                            onmouseout="this.style.background='var(--card-bg)';this.style.color='var(--text2)';this.style.borderColor='var(--border)';this.style.transform='translateY(0)';">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" target="_blank" rel="noopener noreferrer" aria-label="YouTube"
+                            style="display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; background: var(--card-bg); border: 1px solid var(--border); color: var(--text2); text-decoration: none; font-size: 0.95rem; transition: all .25s ease;"
+                            onmouseover="this.style.background='#FF0000';this.style.color='#fff';this.style.borderColor='#FF0000';this.style.transform='translateY(-2px)';"
+                            onmouseout="this.style.background='var(--card-bg)';this.style.color='var(--text2)';this.style.borderColor='var(--border)';this.style.transform='translateY(0)';">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div style="border-top: 1px solid var(--border); padding-top: 16px; text-align: center;">
+                <p style="font-size: 0.78rem; color: var(--text2); margin: 0;">
+                    © <span data-year>2026</span> SMP Negeri Pulau Tiga. Hak Cipta Dilindungi.
+                </p>
+                <p style="font-size: 0.72rem; margin-top: 6px; color: var(--text3);">
+                    Didesain oleh
+                    <a href="https://guru-kreatif.vercel.app/" target="_blank" rel="noopener noreferrer"
+                        class="footer-credit-link" style="color: var(--c1); text-decoration: none; font-weight: 600;">
+                        <strong>Yantho Rundy</strong> 💗
+                    </a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // ============================================
+        // DATA ALUMNI
+        // ============================================
+        const alumniData = [
+            { nama: "Aurelius Santotinus Agung", kelas: "IX-A", tahun: "2023", foto: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=400&auto=format&fit=crop" },
+            { nama: "Maria Womsiwor", kelas: "IX-A", tahun: "2023", foto: "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?q=80&w=400&auto=format&fit=crop" },
+            { nama: "Yohanes Amoy", kelas: "IX-B", tahun: "2023", foto: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=400&auto=format&fit=crop" },
+            { nama: "Agustina Kambuaya", kelas: "IX-C", tahun: "2023", foto: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=400&auto=format&fit=crop" },
+            { nama: "Petrus Fumtakyau", kelas: "IX-A", tahun: "2024", foto: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=400&auto=format&fit=crop" },
+            { nama: "Theresia Basik", kelas: "IX-A", tahun: "2024", foto: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=400&auto=format&fit=crop" },
+            { nama: "Markus Kowe", kelas: "IX-B", tahun: "2024", foto: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=400&auto=format&fit=crop" },
+            { nama: "Elisabeth Kaize", kelas: "IX-C", tahun: "2024", foto: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=400&auto=format&fit=crop" },
+            { nama: "Simon Waker", kelas: "IX-A", tahun: "2025", foto: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=400&auto=format&fit=crop" },
+            { nama: "Kristina Ayar", kelas: "IX-A", tahun: "2025", foto: "https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=400&auto=format&fit=crop" },
+            { nama: "Bernadus Pepu", kelas: "IX-B", tahun: "2025", foto: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=400&auto=format&fit=crop" },
+            { nama: "Sarlota Wamu", kelas: "IX-C", tahun: "2025", foto: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=400&auto=format&fit=crop" }
+        ];
+
+        // ============================================
+        // DOM REFS
+        // ============================================
+        const resultContainer = document.getElementById('resultContainer');
+        const searchInput = document.getElementById('searchName');
+        const suggestionBox = document.getElementById('suggestionBox');
+        const filterKelasEl = document.getElementById('filterKelas');
+        const filterTahunEl = document.getElementById('filterTahun');
+
+        let activeIndex = -1;
+        let currentSuggestions = [];
+
+        // ============================================
+        // RENDER KARTU PROFIL
+        // ============================================
+        function renderResult(data) {
+            if (data.length === 0) {
+                resultContainer.innerHTML = `
+                    <div class="empty-state">
+                        <i class="fas fa-search"></i>
+                        <h3 style="margin-bottom: 8px; color: var(--text); font-weight:800;">Tidak Ditemukan</h3>
+                        <p>Data alumni yang Anda cari tidak ada.<br>Silakan coba kata kunci atau filter lain.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            const alumni = data[0];
+            resultContainer.innerHTML = `
+                <div class="profile-card">
+                    <div class="profile-photo">
+                        <img src="${alumni.foto}" alt="Foto ${alumni.nama}" loading="lazy">
+                    </div>
+                    <h3 class="profile-name">${alumni.nama}</h3>
+                    <p class="profile-major">Kelas ${alumni.kelas}</p>
+                    <p class="profile-year">Angkatan: ${alumni.tahun}</p>
+                </div>
+            `;
+        }
+
+        // ============================================
+        // HIGHLIGHT KATA YANG COCOK
+        // ============================================
+        function highlight(text, keyword) {
+            if (!keyword) return text;
+            const safe = keyword.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+            const regex = new RegExp(`(${safe})`, 'gi');
+            return text.replace(regex, '<mark>$1</mark>');
+        }
+
+        // ============================================
+        // TAMPILKAN DROPDOWN SARAN
+        // ============================================
+        function showSuggestions(keyword = '') {
+            const kw = keyword.toLowerCase().trim();
+
+            currentSuggestions = alumniData.filter(a =>
+                !kw || a.nama.toLowerCase().includes(kw)
+            );
+
+            activeIndex = -1;
+
+            if (currentSuggestions.length === 0) {
+                suggestionBox.innerHTML = `<div class="suggestion-empty">Tidak ada nama yang cocok</div>`;
+            } else {
+                suggestionBox.innerHTML = currentSuggestions.map((a, i) => `
+                    <div class="suggestion-item" data-index="${i}" role="option">
+                        <span class="sug-name">${highlight(a.nama, kw)}</span>
+                        <span class="sug-meta">${a.kelas} • ${a.tahun}</span>
+                    </div>
+                `).join('');
+            }
+
+            suggestionBox.classList.add('show');
+        }
+
+        function hideSuggestions() {
+            suggestionBox.classList.remove('show');
+            activeIndex = -1;
+        }
+
+        // ============================================
+        // PILIH SARAN → INPUT TERISI OTOMATIS
+        // ============================================
+        function pickSuggestion(index) {
+            const item = currentSuggestions[index];
+            if (!item) return;
+
+            // Autocomplete: isi input dengan nama yang dipilih
+            searchInput.value = item.nama;
+
+            // Tutup dropdown & tampilkan kartu profil
+            hideSuggestions();
+            renderResult([item]);
+        }
+
+        // ============================================
+        // FILTER DATA
+        // ============================================
+        function getFiltered(keyword) {
+            const kw = (keyword !== undefined ? keyword : searchInput.value).toLowerCase().trim();
+            const kelas = filterKelasEl.value;
+            const tahun = filterTahunEl.value;
+
+            return alumniData.filter(alumni => {
+                const matchName = alumni.nama.toLowerCase().includes(kw);
+                const matchKelas = kelas === 'all' || alumni.kelas === kelas;
+                const matchTahun = tahun === 'all' || alumni.tahun === tahun;
+                return matchName && matchKelas && matchTahun;
+            });
+        }
+
+        function performSearch() {
+            const filtered = getFiltered();
+            hideSuggestions();
+            renderResult(filtered);
+        }
+
+        // ============================================
+        // EVENT: HOVER & FOCUS → tampilkan semua nama
+        // ============================================
+        searchInput.addEventListener('mouseenter', () => {
+            if (!suggestionBox.classList.contains('show')) {
+                showSuggestions(searchInput.value);
+            }
+        });
+
+        searchInput.addEventListener('focus', () => {
+            showSuggestions(searchInput.value);
+        });
+
+        // ============================================
+        // EVENT: INPUT → filter dropdown + live preview
+        // ============================================
+        let debounceTimer = null;
+        searchInput.addEventListener('input', () => {
+            const kw = searchInput.value;
+            showSuggestions(kw);
+
+            clearTimeout(debounceTimer);
+            debounceTimer = setTimeout(() => {
+                const filtered = getFiltered(kw);
+                if (filtered.length > 0) renderResult(filtered);
+            }, 200);
+        });
+
+        // ============================================
+        // EVENT: KEYBOARD NAVIGATION
+        // ============================================
+        searchInput.addEventListener('keydown', (e) => {
+            const items = suggestionBox.querySelectorAll('.suggestion-item');
+
+            if (e.key === 'ArrowDown') {
+                e.preventDefault();
+                if (!suggestionBox.classList.contains('show')) {
+                    showSuggestions(searchInput.value);
+                    return;
+                }
+                activeIndex = Math.min(activeIndex + 1, items.length - 1);
+                updateActive(items);
+
+            } else if (e.key === 'ArrowUp') {
+                e.preventDefault();
+                activeIndex = Math.max(activeIndex - 1, 0);
+                updateActive(items);
+
+            } else if (e.key === 'Enter') {
+                e.preventDefault();
+                if (activeIndex >= 0 && currentSuggestions[activeIndex]) {
+                    pickSuggestion(activeIndex);
+                } else {
+                    performSearch();
+                }
+
+            } else if (e.key === 'Escape') {
+                hideSuggestions();
+            }
+        });
+
+        function updateActive(items) {
+            items.forEach((el, i) => el.classList.toggle('active', i === activeIndex));
+            const activeEl = items[activeIndex];
+            if (activeEl) activeEl.scrollIntoView({ block: 'nearest' });
+        }
+
+        // ============================================
+        // EVENT: KLIK / MOUSEDOWN PADA SARAN
+        // ============================================
+        // Gunakan mousedown + preventDefault agar input tidak kehilangan
+        // fokus sebelum handler selesai — ini yang membuat autocomplete
+        // benar-benar berfungsi saat nama diklik.
+        suggestionBox.addEventListener('mousedown', (e) => {
+            const item = e.target.closest('.suggestion-item');
+            if (!item) return;
+            e.preventDefault();
+            pickSuggestion(parseInt(item.dataset.index, 10));
+        });
+
+        // ============================================
+        // EVENT: KLIK DI LUAR → tutup dropdown
+        // ============================================
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.input-wrapper')) {
+                hideSuggestions();
+            }
+        });
+
+        // ============================================
+        // EVENT: TOMBOL CARI & SELECT FILTER
+        // ============================================
+        document.getElementById('btnSearch').addEventListener('click', performSearch);
+        filterKelasEl.addEventListener('change', performSearch);
+        filterTahunEl.addEventListener('change', performSearch);
+
+        // ============================================
+        // DARK MODE
+        // ============================================
+        const darkToggleBtn = document.getElementById('darkToggleBtn');
+        const htmlElement = document.documentElement;
+
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        htmlElement.setAttribute('data-theme', savedTheme);
+        updateDarkToggleIcon(savedTheme);
+
+        if (darkToggleBtn) {
+            darkToggleBtn.addEventListener('click', () => {
+                const currentTheme = htmlElement.getAttribute('data-theme');
+                const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+                htmlElement.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+                updateDarkToggleIcon(newTheme);
+            });
+        }
+
+        function updateDarkToggleIcon(theme) {
+            const ball = document.querySelector('.dark-toggle-ball');
+            if (ball) ball.textContent = theme === 'light' ? '☀️' : '🌙';
+        }
+
+        // ============================================
+        // INIT
+        // ============================================
+        (function init() {
+            renderResult([alumniData[0]]);
+        })();
+    </script>
+
+    <script src="js/main.js"></script>
+    <script src="js/navbar.js"></script>
+</body>
+
+</html>
