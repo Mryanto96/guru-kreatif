@@ -7,15 +7,25 @@
     <title>Direktori Alumni | SMP Negeri Pulau Tiga</title>
     <meta name="description" content="Direktori dan galeri alumni SMP Negeri Pulau Tiga." />
 
-    <!-- Fonts & Icons -->
+    <!-- ============ OPTIMASI: Preconnect & Preload ============ -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com" />
+
+    <!-- Font: tampilkan fallback dulu, baru swap -->
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap"
         rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
 
-    <!-- CSS UTAMA ANDA (Untuk Navbar & Global) -->
+    <!-- Font Awesome: NON-BLOCKING (load async, tidak menahan render) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+        media="print" onload="this.media='all'" />
+    <noscript>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    </noscript>
+
+    <!-- CSS UTAMA ANDA -->
     <link rel="stylesheet" href="css/style.css" />
 
     <style>
@@ -33,7 +43,6 @@
             --shadow-xl: 0 20px 60px rgba(0, 0, 0, 0.4);
         }
 
-        /* Reset hanya untuk konten halaman ini agar tidak bentrok dengan Navbar */
         .page-content *,
         .page-content *::before,
         .page-content *::after,
@@ -58,21 +67,15 @@
             padding: 0 24px;
         }
 
-        /* ============================================================
-           PAGE CONTENT
-           ============================================================ */
         .page-content {
             display: flex;
             flex-direction: column;
             min-height: calc(100vh - 80px);
-            /* Asumsi tinggi navbar 80px */
             background: var(--bg);
             transition: background var(--transition), color var(--transition);
         }
 
-        /* ============================================================
-           HERO / SEARCH SECTION
-           ============================================================ */
+        /* ===== HERO / SEARCH ===== */
         .search-section {
             padding: 64px 24px 48px;
             text-align: center;
@@ -116,9 +119,7 @@
             font-weight: 400;
         }
 
-        /* ============================================================
-           SEARCH FORM
-           ============================================================ */
+        /* ===== SEARCH FORM ===== */
         .search-form {
             display: flex;
             flex-direction: column;
@@ -234,9 +235,7 @@
             transform: translateY(0);
         }
 
-        /* ============================================================
-           AUTOCOMPLETE SUGGESTION BOX
-           ============================================================ */
+        /* ===== SUGGESTION BOX ===== */
         .suggestion-box {
             position: absolute;
             top: calc(100% + 6px);
@@ -339,9 +338,7 @@
             background: var(--text3);
         }
 
-        /* ============================================================
-           RESULT / PROFILE CARD
-           ============================================================ */
+        /* ===== RESULT / PROFILE CARD ===== */
         .result-section {
             padding: 0 24px 96px;
             display: flex;
@@ -391,6 +388,7 @@
             }
         }
 
+        /* ============ OPTIMASI FOTO: aspect-ratio + placeholder ============ */
         .profile-photo {
             width: 100%;
             aspect-ratio: 4/5;
@@ -399,6 +397,7 @@
             margin: 0 auto 24px;
             background: var(--bg3);
             border: 3px solid var(--bg3);
+            position: relative;
         }
 
         .profile-photo img {
@@ -407,6 +406,7 @@
             object-fit: cover;
             object-position: center;
             display: block;
+            background: var(--bg3);
         }
 
         .profile-name {
@@ -476,9 +476,7 @@
             color: var(--text2);
         }
 
-        /* ============================================================
-           FOOTER (Hanya style dasar, warna brand dipertahankan)
-           ============================================================ */
+        /* ===== FOOTER ===== */
         .site-footer {
             border-top: 1px solid var(--border);
             background: var(--bg2);
@@ -544,7 +542,6 @@
             transform: translateY(-2px);
         }
 
-        /* Warna Brand Asli */
         .social-links a.fb:hover {
             background: #1877F2;
             color: #fff;
@@ -591,9 +588,7 @@
             text-decoration: underline;
         }
 
-        /* ============================================================
-           RESPONSIVE
-           ============================================================ */
+        /* ===== RESPONSIVE ===== */
         @media (min-width: 768px) {
             .search-section {
                 padding: 80px 24px 56px;
@@ -667,15 +662,14 @@
 <body>
 
     <!-- ============================================================
-         NAVBAR KONSISTEN (Mengikuti Gambar & Halaman Lain)
+         NAVBAR KONSISTEN
          ============================================================ -->
     <nav class="navbar">
         <div class="container">
             <div class="nav-inner">
-                <!-- Logo disesuaikan dengan gambar -->
                 <a href="index.html" class="logo">
                     <img src="images/logo-smp.png" alt="Logo SMP Negeri Pulau Tiga"
-                        style="height: 40px; width: auto; object-fit: contain;">
+                        style="height: 40px; width: auto; object-fit: contain;" loading="eager" fetchpriority="high">
                     <div class="logo-text">
                         <span class="logo-title"
                             style="color: #4A9B68; font-weight: 800; font-size: 1rem; letter-spacing: 0.5px;">SMP NEGERI
@@ -685,7 +679,6 @@
                     </div>
                 </a>
 
-                <!-- Menu Link sesuai gambar -->
                 <ul class="nav-links">
                     <li><a href="index.html">Home</a></li>
                     <li><a href="#">Akademik ▾</a></li>
@@ -699,7 +692,6 @@
                     <li><a href="#">Contact Me</a></li>
                 </ul>
 
-                <!-- Toggle Dark Mode -->
                 <div class="nav-right">
                     <button class="dark-toggle" aria-label="Toggle dark mode" id="darkToggleBtn">
                         <span class="dark-toggle-ball">☀️</span>
@@ -717,7 +709,6 @@
          ============================================================ -->
     <div class="page-content">
 
-        <!-- ===== HERO / SEARCH ===== -->
         <section class="search-section">
             <div class="hero-badge">
                 <i class="fas fa-graduation-cap"></i> Direktori Alumni
@@ -733,8 +724,6 @@
                         aria-autocomplete="list" aria-controls="suggestionBox" aria-label="Cari nama alumni" />
                     <div class="suggestion-box" id="suggestionBox" role="listbox" aria-label="Saran nama alumni"></div>
                 </div>
-
-                <!-- Bagian select kelas TELAH DIHAPUS -->
 
                 <div class="select-wrapper">
                     <select id="filterTahun" aria-label="Filter angkatan">
@@ -753,12 +742,12 @@
             </div>
         </section>
 
-        <!-- ===== RESULT ===== -->
         <section class="result-section" id="resultContainer" aria-live="polite">
             <!-- Dirender oleh JS -->
         </section>
 
     </div>
+
     <!-- ===== FOOTER ===== -->
     <footer style="border-top: 1px solid var(--border); background: var(--bg2);">
         <div class="container">
@@ -777,19 +766,6 @@
                         Jam Operasional: 07.00 - 13.00 WIT
                     </p>
                 </div>
-
-                <!-- <div>
-                            <h4 style="font-size: 0.85rem; font-weight: 700; margin-bottom: 10px;" data-i18n="footer_phone">
-                                Telepon / WhatsApp</h4>
-                            <p style="font-size: 0.78rem; color: var(--text2); line-height: 1.8; margin: 0;">
-                                <i class="fab fa-whatsapp" style="color: var(--c1); width: 16px;"></i>
-                                Tata Usaha: 08218887004
-                            </p>
-                            <p style="font-size: 0.78rem; color: var(--text2); line-height: 1.8; margin: 4px 0 0;">
-                                <i class="fab fa-whatsapp" style="color: var(--c1); width: 16px;"></i>
-                                Kesiswaan: 085691296762
-                            </p>
-                        </div> -->
 
                 <div>
                     <h4 style="font-size: 0.85rem; font-weight: 700; margin-bottom: 10px;"
@@ -858,9 +834,6 @@
         (function () {
             'use strict';
 
-            // ============================================
-            // PETA ANGKATAN
-            // ============================================
             const angkatanMap = {
                 "2026": "Angkatan I (Pertama) • 2026",
                 "2027": "Angkatan II (Kedua) • 2027",
@@ -873,9 +846,6 @@
                 return angkatanMap[tahun] || `Angkatan • ${tahun}`;
             }
 
-            // ============================================
-            // DATA ALUMNI
-            // ============================================
             const alumniData = [
                 { nama: "ADAM AMSAKAT", kelas: "IX-A", tahun: "2026", foto: "images/alumni/1.png" },
                 { nama: "BENEDIKTUS JOM", kelas: "IX-A", tahun: "2026", foto: "images/alumni/2.png" },
@@ -893,9 +863,6 @@
                 { nama: "MARIA MAGDALENA", kelas: "IX-C", tahun: "2026", foto: "images/alumni/14.png" }
             ];
 
-            // ============================================
-            // DOM REFS
-            // ============================================
             const resultContainer = document.getElementById('resultContainer');
             const searchInput = document.getElementById('searchName');
             const suggestionBox = document.getElementById('suggestionBox');
@@ -907,9 +874,6 @@
             let isComposing = false;
             let debounceTimer = null;
 
-            // ============================================
-            // RENDER
-            // ============================================
             function renderResult(data) {
                 if (!data || data.length === 0) {
                     resultContainer.innerHTML = `
@@ -926,7 +890,9 @@
                 resultContainer.innerHTML = `
                     <div class="profile-card" role="region" aria-label="Profil alumni">
                         <div class="profile-photo">
-                            <img src="${alumni.foto}" alt="Foto ${alumni.nama}" loading="lazy"
+                            <img src="${alumni.foto}" alt="Foto ${alumni.nama}"
+                                 loading="lazy" decoding="async"
+                                 width="400" height="500"
                                  onerror="this.onerror=null;this.src='images/alumni/default.png';">
                         </div>
                         <h3 class="profile-name">${alumni.nama}</h3>
@@ -936,9 +902,6 @@
                 `;
             }
 
-            // ============================================
-            // HIGHLIGHT
-            // ============================================
             function highlight(text, keyword) {
                 if (!keyword) return text;
                 const safe = keyword.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
@@ -946,16 +909,11 @@
                 return text.replace(regex, '<mark>$1</mark>');
             }
 
-            // ============================================
-            // SUGGESTIONS
-            // ============================================
             function showSuggestions(keyword = '') {
                 const kw = keyword.toLowerCase().trim();
-
                 currentSuggestions = alumniData.filter(a =>
                     !kw || a.nama.toLowerCase().includes(kw)
                 );
-
                 activeIndex = -1;
 
                 if (currentSuggestions.length === 0) {
@@ -979,9 +937,6 @@
                 activeIndex = -1;
             }
 
-            // ============================================
-            // PICK SUGGESTION
-            // ============================================
             window.pickSuggestion = function (index) {
                 const item = currentSuggestions[index];
                 if (!item) return;
@@ -991,9 +946,6 @@
                 renderResult([item]);
             };
 
-            // ============================================
-            // FILTER
-            // ============================================
             function getFiltered(keyword) {
                 const kw = (keyword !== undefined ? keyword : searchInput.value).toLowerCase().trim();
                 const tahun = filterTahunEl.value;
@@ -1011,9 +963,6 @@
                 renderResult(filtered);
             }
 
-            // ============================================
-            // EVENTS
-            // ============================================
             searchInput.addEventListener('focus', () => {
                 showSuggestions(searchInput.value);
             });
@@ -1082,9 +1031,6 @@
             btnSearch.addEventListener('click', performSearch);
             filterTahunEl.addEventListener('change', performSearch);
 
-            // ============================================
-            // DARK MODE
-            // ============================================
             const darkToggleBtn = document.getElementById('darkToggleBtn');
             const htmlElement = document.documentElement;
 
@@ -1107,17 +1053,14 @@
                 if (ball) ball.textContent = theme === 'light' ? '☀️' : '🌙';
             }
 
-            // ============================================
-            // INIT
-            // ============================================
             renderResult([alumniData[0]]);
 
         })();
     </script>
 
-    <!-- Script Eksternal Anda -->
-    <script src="js/main.js"></script>
-    <script src="js/navbar.js"></script>
+    <!-- Script Eksternal: defer agar tidak blocking -->
+    <script src="js/main.js" defer></script>
+    <script src="js/navbar.js" defer></script>
 </body>
 
 </html>
